@@ -1,0 +1,74 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: banglamathai_backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build: ./frontend
+    container_name: banglamathai_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: banglamathai_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: banglamathai
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: banglamathai
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: banglamathai_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+  celery_worker:
+    build: ./backend
+    container_name: banglamathai_celery_worker
+    restart: unless-stopped
+    command: celery -A main.celery_app worker --loglevel=info
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - redis
+      - postgres
+    volumes:
+      - ./backend:/app
+
+  nginx:
+    image: nginx:alpine
+    container_name: banglamathai_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+      - frontend
+
+volumes:
+  postgres_data:

@@ -1,0 +1,105 @@
+{
+  "books": [
+    {
+      "class": 6,
+      "book_type": "general",
+      "bangla_file": "class_6_math_bn.pdf",
+      "english_file": "class_6_math_en.pdf",
+      "chapters": [
+        {"number": 1, "title_bn": "স্বাভাবিক সংখ্যা ও ভগ্নাংশ", "title_en": "Natural Numbers and Fractions", "start_page_bn": 1, "start_page_en": 1},
+        {"number": 2, "title_bn": "অনুপাত ও শতকরা", "title_en": "Ratios and Percentages", "start_page_bn": 38, "start_page_en": 45},
+        {"number": 3, "title_bn": "পূর্ণসংখ্যা", "title_en": "Integers", "start_page_bn": 59, "start_page_en": 69},
+        {"number": 4, "title_bn": "বীজগাণিতীয় রাশি", "title_en": "Algebraic Expressions", "start_page_bn": 76, "start_page_en": 88},
+        {"number": 5, "title_bn": "সরল সমীকরণ", "title_en": "Simple Equations", "start_page_bn": 95, "start_page_en": 110},
+        {"number": 6, "title_bn": "জ্যামিতির মৌলিক ধারণা", "title_en": "Basic Concepts of Geometry", "start_page_bn": 106, "start_page_en": 123},
+        {"number": 7, "title_bn": "ব্যবহারিক জ্যামিতি", "title_en": "Practical Geometry", "start_page_bn": 124, "start_page_en": 143},
+        {"number": 8, "title_bn": "তথ্য ও উপাত্ত", "title_en": "Information and Data", "start_page_bn": 137, "start_page_en": 158}
+      ]
+    },
+    {
+      "class": 7,
+      "book_type": "general",
+      "bangla_file": "class_7_math_bn.pdf",
+      "english_file": "class_7_math_en.pdf",
+      "chapters": [
+        {"number": 1, "title_bn": "মূলদ ও অমূলদ সংখ্যা", "title_en": "Rational and Irrational Numbers", "start_page_bn": 1, "start_page_en": 1},
+        {"number": 2, "title_bn": "সমানুপাত ও লাভ-ক্ষতি", "title_en": "Proportion, Profit and Loss", "start_page_bn": 18, "start_page_en": 20},
+        {"number": 3, "title_bn": "পরিমাপ", "title_en": "Measurement", "start_page_bn": 38, "start_page_en": 43},
+        {"number": 4, "title_bn": "বীজগাণিতীয় রাশির গুণ ও ভাগ", "title_en": "Multiplication and Division of Algebraic Expressions", "start_page_bn": 50, "start_page_en": 56},
+        {"number": 5, "title_bn": "বীজগাণিতীয় সূত্রাবলি ও প্রয়োগ", "title_en": "Algebraic Formulae and Applications", "start_page_bn": 69, "start_page_en": 78},
+        {"number": 6, "title_bn": "বীজগাণিতীয় ভগ্নাংশ", "title_en": "Algebraic Fractions", "start_page_bn": 89, "start_page_en": 100},
+        {"number": 7, "title_bn": "সরল সমীকরণ", "title_en": "Simple Equations", "start_page_bn": 102, "start_page_en": 114},
+        {"number": 8, "title_bn": "সমান্তরাল সরলরেখা", "title_en": "Parallel Straight Lines", "start_page_bn": 119, "start_page_en": 133},
+        {"number": 9, "title_bn": "ত্রিভুজ", "title_en": "Triangles", "start_page_bn": 127, "start_page_en": 142},
+        {"number": 10, "title_bn": "সর্বসমতা ও সদৃশতা", "title_en": "Congruence and Similarity", "start_page_bn": 145, "start_page_en": 161},
+        {"number": 11, "title_bn": "তথ্য ও উপাত্ত", "title_en": "Information and Data", "start_page_bn": 162, "start_page_en": 180}
+      ]
+    },
+    {
+      "class": 8,
+      "book_type": "general",
+      "bangla_file": "class_8_math_bn.pdf",
+      "english_file": "class_8_math_en.pdf",
+      "chapters": [
+        {"number": 1, "title_bn": "প্যাটার্ন", "title_en": "Patterns", "start_page_bn": 1, "start_page_en": 1},
+        {"number": 2, "title_bn": "মুনাফা", "title_en": "Profits", "start_page_bn": 12, "start_page_en": 12},
+        {"number": 3, "title_bn": "পরিমাপ", "title_en": "Measurement", "start_page_bn": 28, "start_page_en": 29},
+        {"number": 4, "title_bn": "বীজগাণিতীয় সূত্রাবলি ও প্রয়োগ", "title_en": "Algebraic Formulae and Applications", "start_page_bn": 47, "start_page_en": 48},
+        {"number": 5, "title_bn": "বীজগাণিতীয় ভগ্নাংশ", "title_en": "Algebraic Fractions", "start_page_bn": 75, "start_page_en": 77},
+        {"number": 6, "title_bn": "সরল সহসমীকরণ", "title_en": "Simple Simultaneous Equations", "start_page_bn": 97, "start_page_en": 101},
+        {"number": 7, "title_bn": "সেট", "title_en": "Set", "start_page_bn": 115, "start_page_en": 121},
+        {"number": 8, "title_bn": "চতুর্ভুজ", "title_en": "Quadrilateral", "start_page_bn": 129, "start_page_en": 133},
+        {"number": 9, "title_bn": "পিথাগোরাসের উপপাদ্য", "title_en": "Pythagoras Theorem", "start_page_bn": 141, "start_page_en": 152},
+        {"number": 10, "title_bn": "বৃত্ত", "title_en": "Circle", "start_page_bn": 148, "start_page_en": 159},
+        {"number": 11, "title_bn": "তথ্য ও উপাত্ত", "title_en": "Information and Data", "start_page_bn": 159, "start_page_en": 171}
+      ]
+    },
+    {
+      "class": 9,
+      "book_type": "general",
+      "bangla_file": "class_9_General_math_bn.pdf",
+      "english_file": "class_9_General_math_en.pdf",
+      "chapters": [
+        {"number": 1, "title_bn": "বাস্তব সংখ্যা", "title_en": "Real Numbers", "start_page_bn": 1, "start_page_en": 1},
+        {"number": 2, "title_bn": "সেট ও ফাংশন", "title_en": "Sets and Functions", "start_page_bn": 21, "start_page_en": 22},
+        {"number": 3, "title_bn": "বীজগাণিতিক রাশি", "title_en": "Algebraic Expressions", "start_page_bn": 43, "start_page_en": 45},
+        {"number": 4, "title_bn": "সূচক ও লগারিদম", "title_en": "Exponents and Logarithms", "start_page_bn": 95, "start_page_en": 80},
+        {"number": 5, "title_bn": "এক চলকবিশিষ্ট সমীকরণ", "title_en": "Equations in One Variable", "start_page_bn": 93, "start_page_en": 98},
+        {"number": 6, "title_bn": "রেখা, কোণ ও ত্রিভুজ", "title_en": "Lines, Angles and Triangles", "start_page_bn": 111, "start_page_en": 118},
+        {"number": 7, "title_bn": "ব্যবহারিক জ্যামিতি", "title_en": "Practical Geometry", "start_page_bn": 136, "start_page_en": 146},
+        {"number": 8, "title_bn": "বৃত্ত", "title_en": "Circle", "start_page_bn": 152, "start_page_en": 164},
+        {"number": 9, "title_bn": "ত্রিকোণমিতিক অনুপাত", "title_en": "Trigonometric Ratio", "start_page_bn": 174, "start_page_en": 188},
+        {"number": 10, "title_bn": "দূরত্ব ও উচ্চতা", "title_en": "Distance and Elevation", "start_page_bn": 197, "start_page_en": 213},
+        {"number": 11, "title_bn": "বীজগাণিতিক অনুপাত ও সমানুপাত", "title_en": "Algebraic Ratio and Proportion", "start_page_bn": 205, "start_page_en": 222},
+        {"number": 12, "title_bn": "দুই চলকবিশিষ্ট সরল সহসমীকরণ", "title_en": "Simple Simultaneous Equations in Two Variables", "start_page_bn": 224, "start_page_en": 242},
+        {"number": 13, "title_bn": "সসীম ধারা", "title_en": "Finite Series", "start_page_bn": 249, "start_page_en": 270},
+        {"number": 14, "title_bn": "অনুপাত, সদৃশতা ও প্রতিসমতা", "title_en": "Ratio, Similarity and Symmetry", "start_page_bn": 266, "start_page_en": 289},
+        {"number": 15, "title_bn": "ক্ষেত্রফল সম্পর্কিত উপপাদ্য ও সম্পাদ্য", "title_en": "Area Related Theorems and Constructions", "start_page_bn": 285, "start_page_en": 310},
+        {"number": 16, "title_bn": "পরিমিতি", "title_en": "Mensuration", "start_page_bn": 294, "start_page_en": 319},
+        {"number": 17, "title_bn": "পরিসংখ্যান", "title_en": "Statistics", "start_page_bn": 326, "start_page_en": 353}
+      ]
+    },
+    {
+      "class": 9,
+      "book_type": "higher",
+      "bangla_file": "class_9_Hiher_math_bn.pdf",
+      "english_file": "class_9_Higher_math_en.pdf",
+      "chapters": [
+        {"number": 1, "title_bn": "সেট ও ফাংশন", "title_en": "Set and Function", "start_page_bn": 1, "start_page_en": 1},
+        {"number": 2, "title_bn": "বীজগাণিতিক রাশি", "title_en": "Algebraic Expression", "start_page_bn": 38, "start_page_en": 41},
+        {"number": 3, "title_bn": "জ্যামিতি", "title_en": "Geometry", "start_page_bn": 63, "start_page_en": 68},
+        {"number": 4, "title_bn": "জ্যামিতিক অঙ্কন", "title_en": "Geometric Constructions", "start_page_bn": 82, "start_page_en": 90},
+        {"number": 5, "title_bn": "সমীকরণ", "title_en": "Equation", "start_page_bn": 96, "start_page_en": 104},
+        {"number": 6, "title_bn": "অসমতা", "title_en": "Inequality", "start_page_bn": 123, "start_page_en": 133},
+        {"number": 7, "title_bn": "অসীম ধারা", "title_en": "Infinite Series", "start_page_bn": 136, "start_page_en": 147},
+        {"number": 8, "title_bn": "ত্রিকোণমিতি", "title_en": "Trigonometry", "start_page_bn": 146, "start_page_en": 158},
+        {"number": 9, "title_bn": "সূচকীয় ও লগারিদমীয় ফাংশন", "title_en": "Exponential and Logarithmic Function", "start_page_bn": 193, "start_page_en": 205},
+        {"number": 10, "title_bn": "দ্বিপদী বিস্তৃতি", "title_en": "Binomial Expansion", "start_page_bn": 223, "start_page_en": 236},
+        {"number": 11, "title_bn": "স্থানাঙ্ক জ্যামিতি", "title_en": "Coordinate Geometry", "start_page_bn": 239, "start_page_en": 252},
+        {"number": 12, "title_bn": "সমতলীয় ভেক্টর", "title_en": "Planar Vector", "start_page_bn": 271, "start_page_en": 288},
+        {"number": 13, "title_bn": "ঘন জ্যামিতি", "title_en": "Solid Geometry", "start_page_bn": 287, "start_page_en": 305},
+        {"number": 14, "title_bn": "সম্ভাবনা", "title_en": "Probability", "start_page_bn": 306, "start_page_en": 326}
+      ]
+    }
+  ]
+}

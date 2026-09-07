@@ -1,0 +1,1 @@
+# Glossary management (approve/reject)

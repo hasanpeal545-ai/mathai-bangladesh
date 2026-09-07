@@ -1,0 +1,60 @@
+# ---- Web framework ----
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+
+# ---- RAG / Agent pipeline ----
+langchain==0.3.0
+langgraph==0.2.28
+langchain-community==0.3.0
+
+# ---- Vector DB ----
+# NOT using the qdrant-client package: it hard-requires grpcio-tools>=7.35.1, which needs
+# protobuf>=7.35.1 — directly conflicting with google-generativeai's protobuf<6.0.0 requirement below.
+# Instead we talk to Qdrant Cloud directly over its REST API using httpx (see retrieval/vector_store.py).
+fastembed==0.8.0
+
+# ---- protobuf (pinned to satisfy google-generativeai's <6.0.0 and onnxruntime/fastembed's >=4.25.8) ----
+protobuf==5.29.6
+
+# ---- LLM providers ----
+groq==0.11.0
+google-generativeai==0.8.2
+
+# ---- HTTP client (pinned: groq==0.11.0 breaks on httpx>=0.28, which removed the "proxies" kwarg) ----
+httpx==0.27.2
+
+# ---- PDF processing ----
+# 1.24.10 has no prebuilt Windows wheel for Python 3.13 (would need Visual Studio to build from source)
+pymupdf==1.28.2
+
+# ---- OCR (NCTB PDFs are scanned images with no text layer — see ingestion/pdf_extractor.py) ----
+# Also requires the Tesseract OCR *engine* itself (not a pip package): installed via
+# `winget install UB-Mannheim.TesseractOCR`, plus a Bengali language file (ben.traineddata,
+# from tessdata_best on GitHub) placed in backend/data/tessdata/ alongside eng.traineddata.
+pytesseract==0.3.13
+
+# ---- Interactive figures ----
+plotly==5.24.1
+
+# ---- Auth ----
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.9
+
+# ---- Caching / rate limiting ----
+redis==5.0.8
+
+# ---- Database ----
+sqlalchemy==2.0.35
+psycopg2-binary==2.9.9
+alembic==1.13.2
+
+# ---- Background tasks ----
+celery==5.4.0
+
+# ---- Config / validation ----
+# pydantic drifted to 2.13.4 during install (pydantic-settings doesn't cap it) — pinned here to what's
+# actually tested and working; downgrading to 2.9.2 is untested and not required.
+pydantic==2.13.4
+pydantic-settings==2.5.2
+python-dotenv==1.0.1

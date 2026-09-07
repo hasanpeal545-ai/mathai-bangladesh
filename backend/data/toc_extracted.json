@@ -1,0 +1,708 @@
+{
+  "class_6_math_bn": {
+    "chapters": [
+      {
+        "number": 1,
+        "title": "প্রথম স্বাভাবিক সংখ্যা ও ভগ্নাংশ",
+        "start_page": 1,
+        "end_page": 37
+      },
+      {
+        "number": 2,
+        "title": "দ্বিতীয় অনুপাত ও শতকরা",
+        "start_page": 38,
+        "end_page": 58
+      },
+      {
+        "number": 3,
+        "title": "তৃতীয় পূর্ণসংখ্যা",
+        "start_page": 59,
+        "end_page": 94
+      },
+      {
+        "number": 4,
+        "title": "পঞ্চম সরল সমীকরণ",
+        "start_page": 95,
+        "end_page": 105
+      },
+      {
+        "number": 5,
+        "title": "ষষ্ঠ জ্যামিতির মৌলিক ধারণা",
+        "start_page": 106,
+        "end_page": 123
+      },
+      {
+        "number": 6,
+        "title": "সপ্তম ব্যবহারিক জ্যামিতি",
+        "start_page": 124,
+        "end_page": 136
+      },
+      {
+        "number": 7,
+        "title": "অষ্টম তথ্য ও উপাত্ত",
+        "start_page": 137,
+        "end_page": 149
+      },
+      {
+        "number": 8,
+        "title": "উত্তরমালা",
+        "start_page": 150,
+        "end_page": 2
+      },
+      {
+        "number": 9,
+        "title": "গণিত",
+        "start_page": 3,
+        "end_page": 6
+      },
+      {
+        "number": 10,
+        "title": "a ০ ৫ ৯ ০ ০ ০",
+        "start_page": 7,
+        "end_page": null
+      }
+    ]
+  },
+  "class_6_math_en": {
+    "chapters": [
+      {
+        "number": 1,
+        "title": "One Natural Numbers and Fractions",
+        "start_page": 1,
+        "end_page": 44
+      },
+      {
+        "number": 2,
+        "title": "Two Ratios and Percentages",
+        "start_page": 45,
+        "end_page": 68
+      },
+      {
+        "number": 3,
+        "title": "Three Integers",
+        "start_page": 69,
+        "end_page": 87
+      },
+      {
+        "number": 4,
+        "title": "Four Algebraic Expressions",
+        "start_page": 88,
+        "end_page": 109
+      },
+      {
+        "number": 5,
+        "title": "Five Simple Equations",
+        "start_page": 110,
+        "end_page": 122
+      },
+      {
+        "number": 6,
+        "title": "Six Basic Concepts of Geometry",
+        "start_page": 123,
+        "end_page": 142
+      },
+      {
+        "number": 7,
+        "title": "Seven Practical Geometry",
+        "start_page": 143,
+        "end_page": 157
+      },
+      {
+        "number": 8,
+        "title": "Eight Information and Data",
+        "start_page": 158,
+        "end_page": null
+      },
+      {
+        "number": 9,
+        "title": "i.e., 333 =3 x100 +3x10+",
+        "start_page": 3,
+        "end_page": 2
+      },
+      {
+        "number": 10,
+        "title": "Mathematics",
+        "start_page": 3,
+        "end_page": 6
+      },
+      {
+        "number": 11,
+        "title": "7 0 5 9 0 0 0",
+        "start_page": 7,
+        "end_page": null
+      }
+    ]
+  },
+  "class_7_math_bn": {
+    "chapters": [
+      {
+        "number": 1,
+        "title": "তৃতীয় পরিমাপ ৩৮ -",
+        "start_page": 49,
+        "end_page": 302
+      },
+      {
+        "number": 2,
+        "title": "w বীজগণিতীয় ভগ্নাংশ ৮৯ -",
+        "start_page": 303,
+        "end_page": 125
+      },
+      {
+        "number": 3,
+        "title": "অফ্টম সমান্তরাল সরলরেখা ddd -",
+        "start_page": 126,
+        "end_page": 143
+      },
+      {
+        "number": 4,
+        "title": "নবম ত্রিভুজ ১২৭ -",
+        "start_page": 144,
+        "end_page": 160
+      },
+      {
+        "number": 5,
+        "title": "দশম সর্বসমতা ও সদৃশতা ১৪৫ -",
+        "start_page": 161,
+        "end_page": 174
+      },
+      {
+        "number": 6,
+        "title": "উত্তরমালা ১৭০ -",
+        "start_page": 175,
+        "end_page": 1
+      },
+      {
+        "number": 7,
+        "title": "৪ এর বর্গমূল",
+        "start_page": 2,
+        "end_page": 255
+      },
+      {
+        "number": 8,
+        "title": "১ ১ v ৩৬ ১১ ১২১ ১৬",
+        "start_page": 256,
+        "end_page": 288
+      },
+      {
+        "number": 9,
+        "title": "২ ৪ ৭ ১২ ১৭",
+        "start_page": 289,
+        "end_page": 323
+      },
+      {
+        "number": 10,
+        "title": "৩ ৯ ৮ ৬৪ ১৩ ১৬৯ ১৮",
+        "start_page": 324,
+        "end_page": 360
+      },
+      {
+        "number": 11,
+        "title": "৪ > ৮১ ১৪ ১৯৬ ১৯",
+        "start_page": 361,
+        "end_page": 19
+      },
+      {
+        "number": 12,
+        "title": "৫ ২৫ ১০ ১৫",
+        "start_page": 20,
+        "end_page": 10
+      },
+      {
+        "number": 13,
+        "title": "১২১",
+        "start_page": 11,
+        "end_page": 18
+      },
+      {
+        "number": 14,
+        "title": "৩৬১",
+        "start_page": 19,
+        "end_page": 12
+      },
+      {
+        "number": 15,
+        "title": "১৬৯",
+        "start_page": 13,
+        "end_page": 13
+      },
+      {
+        "number": 16,
+        "title": "১৯৬",
+        "start_page": 14,
+        "end_page": 15
+      },
+      {
+        "number": 17,
+        "title": "২৫৬",
+        "start_page": 16,
+        "end_page": null
+      }
+    ]
+  },
+  "class_7_math_en": {
+    "chapters": [
+      {
+        "number": 1,
+        "title": "is the square root of the product. The square root of 4 is",
+        "start_page": 2,
+        "end_page": 440
+      },
+      {
+        "number": 2,
+        "title": "square of 21 is 21° or 441, which is a perfect square and square root of",
+        "start_page": 441,
+        "end_page": 255
+      },
+      {
+        "number": 3,
+        "title": "1 1 6 36 ll 121 16",
+        "start_page": 256,
+        "end_page": 288
+      },
+      {
+        "number": 4,
+        "title": "2 4 7 12 17",
+        "start_page": 289,
+        "end_page": 323
+      },
+      {
+        "number": 5,
+        "title": "3 9 8 64 13 169 18",
+        "start_page": 324,
+        "end_page": 360
+      },
+      {
+        "number": 6,
+        "title": "4 9 81 14 196 19",
+        "start_page": 361,
+        "end_page": 19
+      },
+      {
+        "number": 7,
+        "title": "5 25 10 15",
+        "start_page": 20,
+        "end_page": 2
+      },
+      {
+        "number": 8,
+        "title": "Rational and Irrational Numbers",
+        "start_page": 3,
+        "end_page": null
+      }
+    ]
+  },
+  "class_8_math_bn": {
+    "chapters": [
+      {
+        "number": 1,
+        "title": "৩১ | 2x] oe | a] BE] BE] ৩৭ [oH [oe",
+        "start_page": 45,
+        "end_page": 44
+      },
+      {
+        "number": 2,
+        "title": "৪১ | BX] ৪৩ | Be | ৪৫ Be | ৪৭ | BK | ৪২",
+        "start_page": 45,
+        "end_page": 84
+      },
+      {
+        "number": 3,
+        "title": "৭১ PX] ae Dae ৭৫) ৭৬৭৫ ৭ ৭৯",
+        "start_page": 85,
+        "end_page": 8
+      },
+      {
+        "number": 4,
+        "title": "পাশাপাশি দুইটি সংখ্যার পার্থক্য ৩ ৫ ৭",
+        "start_page": 9,
+        "end_page": null
+      }
+    ]
+  },
+  "class_8_math_en": {
+    "chapters": [
+      {
+        "number": 1,
+        "title": "check whether a number is prime or not. Let us write down the numbers",
+        "start_page": 1,
+        "end_page": 49
+      },
+      {
+        "number": 2,
+        "title": "41 || 43 [id | 4 47 [8 |",
+        "start_page": 50,
+        "end_page": 2
+      },
+      {
+        "number": 3,
+        "title": "Patterns",
+        "start_page": 3,
+        "end_page": 8
+      },
+      {
+        "number": 4,
+        "title": "difference 3 5 7",
+        "start_page": 9,
+        "end_page": null
+      }
+    ]
+  },
+  "class_9_General_math_bn": {
+    "chapters": [
+      {
+        "number": 1,
+        "title": "অধ্যায়",
+        "start_page": 1,
+        "end_page": 34
+      },
+      {
+        "number": 2,
+        "title": "স্বাভাবিক সংখ্যার গ.সা.গু. 1 হলে এদেরকে পরস্পরের সহমৌলিক সংখ্যা বলা হয়। যেমন 6 ও",
+        "start_page": 35,
+        "end_page": 2
+      },
+      {
+        "number": 3,
+        "title": "2’ 2’",
+        "start_page": 3,
+        "end_page": 4
+      },
+      {
+        "number": 4,
+        "title": "মূলদ সংখ্যা (Rational Number): P আকারের কোনো সংখ্যাকে মূলদ সংখ্যা বলা হয়, যখন p ও",
+        "start_page": 5,
+        "end_page": 2
+      },
+      {
+        "number": 5,
+        "title": "অধ্যায় ১. বাস্তব সংখ্যা",
+        "start_page": 3,
+        "end_page": 0
+      },
+      {
+        "number": 6,
+        "title": "122",
+        "start_page": 1,
+        "end_page": 72
+      },
+      {
+        "number": 7,
+        "title": "0 3 21721",
+        "start_page": 73,
+        "end_page": 10
+      },
+      {
+        "number": 8,
+        "title": "_ 3 — 9 4 ;",
+        "start_page": 11,
+        "end_page": 332
+      },
+      {
+        "number": 9,
+        "title": "বাস্তব সংখ্যার শ্রেণিবিন্যাসে তে V1, 0, 1, 7112, 25, 1.1234, 0",
+        "start_page": 333,
+        "end_page": null
+      }
+    ]
+  },
+  "class_9_General_math_en": {
+    "chapters": [
+      {
+        "number": 1,
+        "title": "2 Sets and Functions 22 -",
+        "start_page": 44,
+        "end_page": 78
+      },
+      {
+        "number": 2,
+        "title": "3 Algebraic Expressions 45 -",
+        "start_page": 79,
+        "end_page": 144
+      },
+      {
+        "number": 3,
+        "title": "6 Lines, Angles and Triangles 118 -",
+        "start_page": 145,
+        "end_page": 162
+      },
+      {
+        "number": 4,
+        "title": "7 Practical Geometry 146 -",
+        "start_page": 163,
+        "end_page": 186
+      },
+      {
+        "number": 5,
+        "title": "8 Circle 164 -",
+        "start_page": 187,
+        "end_page": 211
+      },
+      {
+        "number": 6,
+        "title": "9 Trigonometric Ratio 188 -",
+        "start_page": 212,
+        "end_page": 220
+      },
+      {
+        "number": 7,
+        "title": "10 Distance and Elevation 213 -",
+        "start_page": 221,
+        "end_page": 240
+      },
+      {
+        "number": 8,
+        "title": "11 Algebraic Ratio and Proportion 222 -",
+        "start_page": 241,
+        "end_page": 287
+      },
+      {
+        "number": 9,
+        "title": "13 Finite Series 270 -",
+        "start_page": 288,
+        "end_page": 308
+      },
+      {
+        "number": 10,
+        "title": "14 Ratio, Similarity and Symmetry 289 -",
+        "start_page": 309,
+        "end_page": 317
+      },
+      {
+        "number": 11,
+        "title": "15 Area Related Theorems and Constructions 310 -",
+        "start_page": 318,
+        "end_page": 351
+      },
+      {
+        "number": 12,
+        "title": "16 Mensuration 319 -",
+        "start_page": 352,
+        "end_page": 373
+      },
+      {
+        "number": 13,
+        "title": "17 Statistics 353 -",
+        "start_page": 374,
+        "end_page": null
+      },
+      {
+        "number": 14,
+        "title": "Chapter",
+        "start_page": 1,
+        "end_page": 3
+      },
+      {
+        "number": 15,
+        "title": "1 3 -5",
+        "start_page": 4,
+        "end_page": 2
+      },
+      {
+        "number": 16,
+        "title": "Chapter 1. Real Numbers",
+        "start_page": 3,
+        "end_page": 43
+      },
+      {
+        "number": 17,
+        "title": ": 4443",
+        "start_page": 44,
+        "end_page": null
+      }
+    ]
+  },
+  "class_9_Hiher_math_bn": {
+    "chapters": [
+      {
+        "number": 1,
+        "title": "প্রথম সেট ও ফাংশন",
+        "start_page": 1,
+        "end_page": 62
+      },
+      {
+        "number": 2,
+        "title": "তৃতীয় জ্যামিতি",
+        "start_page": 63,
+        "end_page": 95
+      },
+      {
+        "number": 3,
+        "title": "পঞ্চম সমীকরণ",
+        "start_page": 96,
+        "end_page": 122
+      },
+      {
+        "number": 4,
+        "title": "wD অসমতা",
+        "start_page": 123,
+        "end_page": 135
+      },
+      {
+        "number": 5,
+        "title": "সপ্তম অসীম ধারা",
+        "start_page": 136,
+        "end_page": 145
+      },
+      {
+        "number": 6,
+        "title": "aay ত্রিকোণমিতি",
+        "start_page": 146,
+        "end_page": 192
+      },
+      {
+        "number": 7,
+        "title": "নবম সূচকীয় ও লগারিদমীয় ফাংশন",
+        "start_page": 193,
+        "end_page": 222
+      },
+      {
+        "number": 8,
+        "title": "দশম দ্বিপদী বিস্তৃতি",
+        "start_page": 223,
+        "end_page": 238
+      },
+      {
+        "number": 9,
+        "title": "একাদশ স্থানাঙ্ক জ্যামিতি",
+        "start_page": 239,
+        "end_page": 270
+      },
+      {
+        "number": 10,
+        "title": "দ্বাদশ সমতলীয় ভেক্টর",
+        "start_page": 271,
+        "end_page": 286
+      },
+      {
+        "number": 11,
+        "title": "ত্রয়োদশ ঘন জ্যামিতি",
+        "start_page": 287,
+        "end_page": 305
+      },
+      {
+        "number": 12,
+        "title": "চতুর্দশ সম্ভাবনা",
+        "start_page": 306,
+        "end_page": 327
+      },
+      {
+        "number": 13,
+        "title": "স্মরণীয় কয়েকজন গণিতবিদ",
+        "start_page": 328,
+        "end_page": 332
+      },
+      {
+        "number": 14,
+        "title": "পরিশিষ্ট",
+        "start_page": 333,
+        "end_page": 0
+      },
+      {
+        "number": 15,
+        "title": "অধ্যায়",
+        "start_page": 1,
+        "end_page": null
+      }
+    ]
+  },
+  "class_9_Higher_math_en": {
+    "chapters": [
+      {
+        "number": 1,
+        "title": "1 Set and Function",
+        "start_page": 1,
+        "end_page": 40
+      },
+      {
+        "number": 2,
+        "title": "2 Algebraic Expression",
+        "start_page": 41,
+        "end_page": 67
+      },
+      {
+        "number": 3,
+        "title": "3 Geometry",
+        "start_page": 68,
+        "end_page": 89
+      },
+      {
+        "number": 4,
+        "title": "4 Geometric Constructions",
+        "start_page": 90,
+        "end_page": 103
+      },
+      {
+        "number": 5,
+        "title": "5 Equation",
+        "start_page": 104,
+        "end_page": 132
+      },
+      {
+        "number": 6,
+        "title": "6 Inequality",
+        "start_page": 133,
+        "end_page": 146
+      },
+      {
+        "number": 7,
+        "title": "7 Infinite Series",
+        "start_page": 147,
+        "end_page": 157
+      },
+      {
+        "number": 8,
+        "title": "8 Trigonometry",
+        "start_page": 158,
+        "end_page": 204
+      },
+      {
+        "number": 9,
+        "title": "9 Exponential and Logarithmic Function",
+        "start_page": 205,
+        "end_page": 235
+      },
+      {
+        "number": 10,
+        "title": "10 Binomial Expansion",
+        "start_page": 236,
+        "end_page": 251
+      },
+      {
+        "number": 11,
+        "title": "1 Coordinate Geometry",
+        "start_page": 252,
+        "end_page": 287
+      },
+      {
+        "number": 12,
+        "title": "12 Planar Vector",
+        "start_page": 288,
+        "end_page": 304
+      },
+      {
+        "number": 13,
+        "title": "13 Solid Geometry",
+        "start_page": 305,
+        "end_page": 325
+      },
+      {
+        "number": 14,
+        "title": "14 Probability",
+        "start_page": 326,
+        "end_page": 0
+      },
+      {
+        "number": 15,
+        "title": "Chapter",
+        "start_page": 1,
+        "end_page": 2
+      },
+      {
+        "number": 16,
+        "title": "Chapter 1. Set and Function",
+        "start_page": 3,
+        "end_page": null
+      }
+    ]
+  }
+}
