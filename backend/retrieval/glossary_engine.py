@@ -75,6 +75,12 @@ MATH_GLOSSARY_SEED = {
 _embedder = TextEmbedding(model_name=EMBEDDING_MODEL)
 
 
+def get_embedder() -> TextEmbedding:
+    # Shared across the retrieval package (e.g. retriever.py) so the ~2.24GB
+    # model is only ever loaded once per process, not once per module.
+    return _embedder
+
+
 # intfloat/e5 models are trained with asymmetric "query: " / "passage: " prefixes —
 # text being stored/searched-over uses "passage: ", the search text uses "query: ".
 def _embed_passage(text: str) -> list:

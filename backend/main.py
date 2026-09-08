@@ -45,8 +45,10 @@ class ChatRequest(BaseModel):
     query: str = Field(min_length=1)
     mode: Literal["reference", "direct"]
     class_: Optional[int] = Field(default=None, ge=6, le=10, alias="class")
+    book_type: Optional[Literal["general", "higher"]] = None
     chapter: Optional[int] = Field(default=None, ge=1)
-    exercise: Optional[int] = Field(default=None, ge=1)
+    exercise: Optional[str] = None
+    problem_number: Optional[int] = Field(default=None, ge=1)
     step_mode: bool = False
     practice_mode: bool = False
     exam_mode: bool = False
@@ -63,11 +65,22 @@ class ChatResponse(BaseModel):
     llm_agreement: bool
     error_analysis: Optional[str] = None
     glossary_terms: Optional[List[dict]] = None
+    retrieved_chunks: Optional[List[dict]] = None
+    rag_note: Optional[str] = None
 
 
 @app.post("/api/chat", response_model=ChatResponse)
 def chat(request: ChatRequest):
-    solve_result = solve(request.query, request.class_, request.language)
+    solve_result = solve(
+        request.query,
+        mode=request.mode,
+        class_number=request.class_,
+        language=request.language,
+        book_type=request.book_type,
+        chapter=request.chapter,
+        exercise=request.exercise,
+        problem_number=request.problem_number,
+    )
     result = solve_result.cross_check
     glossary_terms = solve_result.query_glossary_terms + solve_result.solution_glossary_terms
 
@@ -79,6 +92,8 @@ def chat(request: ChatRequest):
             llm_agreement=False,
             error_analysis="both LLM providers failed or rate-limited",
             glossary_terms=glossary_terms or None,
+            retrieved_chunks=solve_result.retrieved_chunks or None,
+            rag_note=solve_result.rag_note,
         )
 
     return ChatResponse(
@@ -90,6 +105,8 @@ def chat(request: ChatRequest):
         confidence_score=_CONFIDENCE_SCORE_MAP.get(result.confidence, 0.0),
         llm_agreement=result.match,
         glossary_terms=glossary_terms or None,
+        retrieved_chunks=solve_result.retrieved_chunks or None,
+        rag_note=solve_result.rag_note,
     )
 
 

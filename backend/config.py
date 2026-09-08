@@ -14,8 +14,8 @@ class Settings(BaseSettings):
     qdrant_url: str = ""
     qdrant_api_key: str = ""
 
-    groq_model: str = "llama-3.3-70b-versatile"
-    gemini_model: str = "gemini-2.5-flash"
+    groq_model: str = "qwen/qwen3.8-27b"
+    gemini_model: str = "gemini-3.6-flash"
     tiebreak_model: str = "openai/gpt-oss-120b"
 
 
