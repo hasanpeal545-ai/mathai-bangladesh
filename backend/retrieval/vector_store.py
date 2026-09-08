@@ -48,3 +48,9 @@ def search(name: str, vector: List[float], limit: int = 1) -> List[dict]:
     )
     response.raise_for_status()
     return response.json()["result"]
+
+
+def get_collection_info(name: str) -> dict:
+    response = _client.get(f"/collections/{name}")
+    response.raise_for_status()
+    return response.json()["result"]

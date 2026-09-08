@@ -11,6 +11,9 @@ import fitz
 import pytesseract
 from PIL import Image
 
+PAGE_RETRY_ATTEMPTS = 2
+PAGE_RETRY_DELAY_S = 3
+
 BACKEND_DIR = Path(__file__).resolve().parent
 TESSDATA_DIR = BACKEND_DIR / "data" / "tessdata"
 TESSERACT_CMD = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
@@ -49,7 +52,26 @@ def ocr_pdf(pdf_path: Path, language: str, stem: str) -> int:
         if not out_path.exists():
             pix = doc[i].get_pixmap(matrix=fitz.Matrix(2, 2))
             img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
-            text = pytesseract.image_to_string(img, lang=lang_code, config=TESS_CONFIG)
+
+            text = None
+            last_error = None
+            for attempt in range(1, PAGE_RETRY_ATTEMPTS + 1):
+                try:
+                    text = pytesseract.image_to_string(img, lang=lang_code, config=TESS_CONFIG)
+                    break
+                except Exception as e:
+                    last_error = e
+                    print(
+                        f"  ⚠️ {stem} page {page_num}: OCR failed (attempt {attempt}/{PAGE_RETRY_ATTEMPTS}): "
+                        f"{type(e).__name__}",
+                        flush=True,
+                    )
+                    time.sleep(PAGE_RETRY_DELAY_S)
+
+            if text is None:
+                text = f"[OCR_FAILED: {type(last_error).__name__}: {last_error}]"
+                print(f"  ❌ {stem} page {page_num}: giving up, wrote error placeholder", flush=True)
+
             out_path.write_text(text, encoding="utf-8")
         done_count += 1
 
@@ -85,9 +107,13 @@ def main():
             continue
 
         print(f"--- starting {stem} ({language}, {expected_pages} pages) ---", flush=True)
-        pages_done = ocr_pdf(pdf_path, language, stem)
-        files_processed += 1
-        total_pages_processed += pages_done
+        try:
+            pages_done = ocr_pdf(pdf_path, language, stem)
+            files_processed += 1
+            total_pages_processed += pages_done
+        except Exception as e:
+            print(f"❌❌ {stem} FILE-LEVEL FAILURE: {type(e).__name__}: {e}", flush=True)
+            print(f"--- skipping to next file ---", flush=True)
 
     elapsed_min = (time.time() - start_time) / 60
     print("\n=== SUMMARY ===", flush=True)

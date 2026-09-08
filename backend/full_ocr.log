@@ -113,3 +113,264 @@ class_8_math_bn: 130/190 pages done
 class_8_math_bn: 140/190 pages done
 class_8_math_bn: 150/190 pages done
 CHECKPOINT class_8_math_bn: 150/190
+class_8_math_bn: 160/190 pages done
+class_8_math_bn: 170/190 pages done
+class_8_math_bn: 180/190 pages done
+class_8_math_bn: 190/190 pages done
+✅ class_8_math_bn DONE — 190 pages
+--- starting class_8_math_en (en, 202 pages) ---
+class_8_math_en: 10/202 pages done
+class_8_math_en: 20/202 pages done
+class_8_math_en: 30/202 pages done
+class_8_math_en: 40/202 pages done
+class_8_math_en: 50/202 pages done
+CHECKPOINT class_8_math_en: 50/202
+class_8_math_en: 60/202 pages done
+class_8_math_en: 70/202 pages done
+class_8_math_en: 80/202 pages done
+class_8_math_en: 90/202 pages done
+class_8_math_en: 100/202 pages done
+CHECKPOINT class_8_math_en: 100/202
+class_8_math_en: 110/202 pages done
+class_8_math_en: 120/202 pages done
+class_8_math_en: 130/202 pages done
+class_8_math_en: 140/202 pages done
+class_8_math_en: 150/202 pages done
+CHECKPOINT class_8_math_en: 150/202
+class_8_math_en: 160/202 pages done
+class_8_math_en: 170/202 pages done
+class_8_math_en: 180/202 pages done
+class_8_math_en: 190/202 pages done
+class_8_math_en: 200/202 pages done
+CHECKPOINT class_8_math_en: 200/202
+class_8_math_en: 202/202 pages done
+✅ class_8_math_en DONE — 202 pages
+--- starting class_9_General_math_bn (bn, 362 pages) ---
+class_9_General_math_bn: 10/362 pages done
+class_9_General_math_bn: 20/362 pages done
+class_9_General_math_bn: 30/362 pages done
+class_9_General_math_bn: 40/362 pages done
+class_9_General_math_bn: 50/362 pages done
+CHECKPOINT class_9_General_math_bn: 50/362
+class_9_General_math_bn: 60/362 pages done
+Traceback (most recent call last):
+  File "D:\Paper_project\banglamathai\backend\run_full_ocr.py", line 102, in <module>
+    main()
+    ~~~~^^
+  File "D:\Paper_project\banglamathai\backend\run_full_ocr.py", line 88, in main
+    pages_done = ocr_pdf(pdf_path, language, stem)
+  File "D:\Paper_project\banglamathai\backend\run_full_ocr.py", line 52, in ocr_pdf
+    text = pytesseract.image_to_string(img, lang=lang_code, config=TESS_CONFIG)
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ~
+    ...<2 lines>...
+        Output.STRING: lambda: run_and_get_output(*args),
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    }[output_type]()
+    ~~~~~~~~~~~~~~^^
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+    ~~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (3, "read_params_file: Can't open txt read_params_file: Can't open txt Using params model of the primary language Estimating resolution as 221 terminate called after throwing an instance of 'std::bad_alloc'   what():  std::bad_alloc ObjectCache(00007ffc96154560)::~ObjectCache(): WARNING! LEAK! object 000001aa8a0fb190 still has count 1 (id D:\\Paper_project\\banglamathai\\backend\\data\\tessdata/ben.traineddatalstm-punc-dawg) ObjectCache(00007ffc96154560)::~ObjectCache(): WARNING! LEAK! object 000001aa8a10c7b0 still has count 1 (id D:\\Paper_project\\banglamathai\\backend\\data\\tessdata/ben.traineddatalstm-word-dawg) ObjectCache(00007ffc96154560)::~ObjectCache(): WARNING! LEAK! object 000001aa8a10c740 still has count 1 (id D:\\Paper_project\\banglamathai\\backend\\data\\tessdata/ben.traineddatalstm-number-dawg) ObjectCache(00007ffc96154560)::~ObjectCache(): WARNING! LEAK! object 000001aa8a211be0 still has count 1 (id D:\\Paper_project\\banglamathai\\backend\\data\\tessdata/eng.traineddatalstm-punc-dawg) ObjectCache(00007ffc96154560)::~ObjectCache(): WARNING! LEAK! object 000001aa8a10c820 still has count 1 (id D:\\Paper_project\\banglamathai\\backend\\data\\tessdata/eng.traineddatalstm-word-dawg) ObjectCache(00007ffc96154560)::~ObjectCache(): WARNING! LEAK! object 000001aa8a2542c0 still has count 1 (id D:\\Paper_project\\banglamathai\\backend\\data\\tessdata/eng.traineddatalstm-number-dawg)")
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+⏭️  class_6_math_bn SKIPPED — already has 161+ pages in ocr_raw
+⏭️  class_6_math_en SKIPPED — already has 182+ pages in ocr_raw
+⏭️  class_7_math_bn SKIPPED — already has 181+ pages in ocr_raw
+⏭️  class_7_math_en SKIPPED — already has 198+ pages in ocr_raw
+⏭️  class_8_math_bn SKIPPED — already has 190+ pages in ocr_raw
+⏭️  class_8_math_en SKIPPED — already has 202+ pages in ocr_raw
+--- starting class_9_General_math_bn (bn, 362 pages) ---
+class_9_General_math_bn: 10/362 pages done
+class_9_General_math_bn: 20/362 pages done
+class_9_General_math_bn: 30/362 pages done
+class_9_General_math_bn: 40/362 pages done
+class_9_General_math_bn: 50/362 pages done
+CHECKPOINT class_9_General_math_bn: 50/362
+class_9_General_math_bn: 60/362 pages done
+class_9_General_math_bn: 70/362 pages done
+class_9_General_math_bn: 80/362 pages done
+class_9_General_math_bn: 90/362 pages done
+class_9_General_math_bn: 100/362 pages done
+CHECKPOINT class_9_General_math_bn: 100/362
+class_9_General_math_bn: 110/362 pages done
+class_9_General_math_bn: 120/362 pages done
+class_9_General_math_bn: 130/362 pages done
+class_9_General_math_bn: 140/362 pages done
+class_9_General_math_bn: 150/362 pages done
+CHECKPOINT class_9_General_math_bn: 150/362
+class_9_General_math_bn: 160/362 pages done
+class_9_General_math_bn: 170/362 pages done
+class_9_General_math_bn: 180/362 pages done
+class_9_General_math_bn: 190/362 pages done
+class_9_General_math_bn: 200/362 pages done
+CHECKPOINT class_9_General_math_bn: 200/362
+class_9_General_math_bn: 210/362 pages done
+class_9_General_math_bn: 220/362 pages done
+class_9_General_math_bn: 230/362 pages done
+class_9_General_math_bn: 240/362 pages done
+class_9_General_math_bn: 250/362 pages done
+CHECKPOINT class_9_General_math_bn: 250/362
+class_9_General_math_bn: 260/362 pages done
+class_9_General_math_bn: 270/362 pages done
+class_9_General_math_bn: 280/362 pages done
+class_9_General_math_bn: 290/362 pages done
+class_9_General_math_bn: 300/362 pages done
+CHECKPOINT class_9_General_math_bn: 300/362
+class_9_General_math_bn: 310/362 pages done
+class_9_General_math_bn: 320/362 pages done
+class_9_General_math_bn: 330/362 pages done
+class_9_General_math_bn: 340/362 pages done
+class_9_General_math_bn: 350/362 pages done
+CHECKPOINT class_9_General_math_bn: 350/362
+class_9_General_math_bn: 360/362 pages done
+class_9_General_math_bn: 362/362 pages done
+✅ class_9_General_math_bn DONE — 362 pages
+--- starting class_9_General_math_en (en, 390 pages) ---
+class_9_General_math_en: 10/390 pages done
+class_9_General_math_en: 20/390 pages done
+class_9_General_math_en: 30/390 pages done
+class_9_General_math_en: 40/390 pages done
+class_9_General_math_en: 50/390 pages done
+CHECKPOINT class_9_General_math_en: 50/390
+class_9_General_math_en: 60/390 pages done
+class_9_General_math_en: 70/390 pages done
+class_9_General_math_en: 80/390 pages done
+class_9_General_math_en: 90/390 pages done
+class_9_General_math_en: 100/390 pages done
+CHECKPOINT class_9_General_math_en: 100/390
+class_9_General_math_en: 110/390 pages done
+class_9_General_math_en: 120/390 pages done
+class_9_General_math_en: 130/390 pages done
+class_9_General_math_en: 140/390 pages done
+class_9_General_math_en: 150/390 pages done
+CHECKPOINT class_9_General_math_en: 150/390
+class_9_General_math_en: 160/390 pages done
+class_9_General_math_en: 170/390 pages done
+class_9_General_math_en: 180/390 pages done
+class_9_General_math_en: 190/390 pages done
+class_9_General_math_en: 200/390 pages done
+CHECKPOINT class_9_General_math_en: 200/390
+class_9_General_math_en: 210/390 pages done
+class_9_General_math_en: 220/390 pages done
+class_9_General_math_en: 230/390 pages done
+class_9_General_math_en: 240/390 pages done
+class_9_General_math_en: 250/390 pages done
+CHECKPOINT class_9_General_math_en: 250/390
+class_9_General_math_en: 260/390 pages done
+class_9_General_math_en: 270/390 pages done
+class_9_General_math_en: 280/390 pages done
+class_9_General_math_en: 290/390 pages done
+class_9_General_math_en: 300/390 pages done
+CHECKPOINT class_9_General_math_en: 300/390
+class_9_General_math_en: 310/390 pages done
+class_9_General_math_en: 320/390 pages done
+class_9_General_math_en: 330/390 pages done
+class_9_General_math_en: 340/390 pages done
+class_9_General_math_en: 350/390 pages done
+CHECKPOINT class_9_General_math_en: 350/390
+class_9_General_math_en: 360/390 pages done
+class_9_General_math_en: 370/390 pages done
+class_9_General_math_en: 380/390 pages done
+class_9_General_math_en: 390/390 pages done
+✅ class_9_General_math_en DONE — 390 pages
+--- starting class_9_Hiher_math_bn (bn, 342 pages) ---
+class_9_Hiher_math_bn: 10/342 pages done
+class_9_Hiher_math_bn: 20/342 pages done
+class_9_Hiher_math_bn: 30/342 pages done
+class_9_Hiher_math_bn: 40/342 pages done
+class_9_Hiher_math_bn: 50/342 pages done
+CHECKPOINT class_9_Hiher_math_bn: 50/342
+class_9_Hiher_math_bn: 60/342 pages done
+class_9_Hiher_math_bn: 70/342 pages done
+class_9_Hiher_math_bn: 80/342 pages done
+class_9_Hiher_math_bn: 90/342 pages done
+class_9_Hiher_math_bn: 100/342 pages done
+CHECKPOINT class_9_Hiher_math_bn: 100/342
+class_9_Hiher_math_bn: 110/342 pages done
+class_9_Hiher_math_bn: 120/342 pages done
+class_9_Hiher_math_bn: 130/342 pages done
+class_9_Hiher_math_bn: 140/342 pages done
+class_9_Hiher_math_bn: 150/342 pages done
+CHECKPOINT class_9_Hiher_math_bn: 150/342
+class_9_Hiher_math_bn: 160/342 pages done
+class_9_Hiher_math_bn: 170/342 pages done
+class_9_Hiher_math_bn: 180/342 pages done
+class_9_Hiher_math_bn: 190/342 pages done
+class_9_Hiher_math_bn: 200/342 pages done
+CHECKPOINT class_9_Hiher_math_bn: 200/342
+class_9_Hiher_math_bn: 210/342 pages done
+class_9_Hiher_math_bn: 220/342 pages done
+class_9_Hiher_math_bn: 230/342 pages done
+class_9_Hiher_math_bn: 240/342 pages done
+class_9_Hiher_math_bn: 250/342 pages done
+CHECKPOINT class_9_Hiher_math_bn: 250/342
+class_9_Hiher_math_bn: 260/342 pages done
+class_9_Hiher_math_bn: 270/342 pages done
+class_9_Hiher_math_bn: 280/342 pages done
+class_9_Hiher_math_bn: 290/342 pages done
+class_9_Hiher_math_bn: 300/342 pages done
+CHECKPOINT class_9_Hiher_math_bn: 300/342
+class_9_Hiher_math_bn: 310/342 pages done
+class_9_Hiher_math_bn: 320/342 pages done
+class_9_Hiher_math_bn: 330/342 pages done
+class_9_Hiher_math_bn: 340/342 pages done
+class_9_Hiher_math_bn: 342/342 pages done
+✅ class_9_Hiher_math_bn DONE — 342 pages
+--- starting class_9_Higher_math_en (en, 354 pages) ---
+class_9_Higher_math_en: 10/354 pages done
+class_9_Higher_math_en: 20/354 pages done
+class_9_Higher_math_en: 30/354 pages done
+class_9_Higher_math_en: 40/354 pages done
+class_9_Higher_math_en: 50/354 pages done
+CHECKPOINT class_9_Higher_math_en: 50/354
+class_9_Higher_math_en: 60/354 pages done
+class_9_Higher_math_en: 70/354 pages done
+class_9_Higher_math_en: 80/354 pages done
+class_9_Higher_math_en: 90/354 pages done
+class_9_Higher_math_en: 100/354 pages done
+CHECKPOINT class_9_Higher_math_en: 100/354
+class_9_Higher_math_en: 110/354 pages done
+class_9_Higher_math_en: 120/354 pages done
+class_9_Higher_math_en: 130/354 pages done
+class_9_Higher_math_en: 140/354 pages done
+class_9_Higher_math_en: 150/354 pages done
+CHECKPOINT class_9_Higher_math_en: 150/354
+class_9_Higher_math_en: 160/354 pages done
+class_9_Higher_math_en: 170/354 pages done
+class_9_Higher_math_en: 180/354 pages done
+class_9_Higher_math_en: 190/354 pages done
+class_9_Higher_math_en: 200/354 pages done
+CHECKPOINT class_9_Higher_math_en: 200/354
+class_9_Higher_math_en: 210/354 pages done
+class_9_Higher_math_en: 220/354 pages done
+class_9_Higher_math_en: 230/354 pages done
+class_9_Higher_math_en: 240/354 pages done
+class_9_Higher_math_en: 250/354 pages done
+CHECKPOINT class_9_Higher_math_en: 250/354
+class_9_Higher_math_en: 260/354 pages done
+class_9_Higher_math_en: 270/354 pages done
+class_9_Higher_math_en: 280/354 pages done
+class_9_Higher_math_en: 290/354 pages done
+class_9_Higher_math_en: 300/354 pages done
+CHECKPOINT class_9_Higher_math_en: 300/354
+class_9_Higher_math_en: 310/354 pages done
+class_9_Higher_math_en: 320/354 pages done
+class_9_Higher_math_en: 330/354 pages done
+class_9_Higher_math_en: 340/354 pages done
+class_9_Higher_math_en: 350/354 pages done
+CHECKPOINT class_9_Higher_math_en: 350/354
+class_9_Higher_math_en: 354/354 pages done
+✅ class_9_Higher_math_en DONE — 354 pages
+
+=== SUMMARY ===
+Total files: 10
+Files newly processed: 4
+Files skipped (already done): 6
+Total pages processed: 1448
+Time taken: 113.7 minutes

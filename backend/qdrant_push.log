@@ -1,0 +1,162 @@
+Checking Qdrant connection...
+Qdrant reachable. Collection 'nctb_math_content' exists: True
+Collection 'nctb_math_content' already exists — skipping creation
+Loaded 3907 chunks from D:\Paper_project\banglamathai\backend\data\approved\all_chunks.json
+D:\Paper_project\banglamathai\backend\run_qdrant_push.py:41: UserWarning: The model intfloat/multilingual-e5-large now uses mean pooling instead of CLS embedding. In order to preserve the previous behaviour, consider either pinning fastembed version to 0.5.1 or using `add_custom_model` functionality.
+  embedder = TextEmbedding(model_name=EMBEDDING_MODEL)
+Pushed 500/3907 chunks
+Pushed 1000/3907 chunks
+Pushed 1500/3907 chunks
+Pushed 2000/3907 chunks
+Pushed 2500/3907 chunks
+Traceback (most recent call last):
+  File "D:\Paper_project\banglamathai\backend\run_qdrant_push.py", line 88, in <module>
+    main()
+    ~~~~^^
+  File "D:\Paper_project\banglamathai\backend\run_qdrant_push.py", line 49, in main
+    vectors = [list(embedder.embed([f"passage: {c['text']}"]))[0] for c in batch]
+               ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\fastembed\text\text_embedding.py", line 187, in embed
+    yield from self.model.embed(documents, batch_size, parallel, **kwargs)
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\fastembed\text\onnx_embedding.py", line 284, in embed
+    yield from self._embed_documents(
+    ...<12 lines>...
+    )
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\fastembed\text\onnx_text_model.py", line 132, in _embed_documents
+    yield from self._post_process_onnx_output(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.onnx_embed(batch, **kwargs), **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\fastembed\text\pooled_embedding.py", line 121, in _post_process_onnx_output
+    return self.mean_pooling(embeddings, attn_mask)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\fastembed\text\pooled_embedding.py", line 102, in mean_pooling
+    return mean_pooling(model_output, attention_mask)
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\fastembed\common\utils.py", line 28, in mean_pooling
+    input_mask_expanded = np.tile(input_mask_expanded, (1, 1, input_array.shape[-1]))
+  File "D:\Paper_project\banglamathai\backend\venv\Lib\site-packages\numpy\lib\_shape_base_impl.py", line 1245, in tile
+    c = c.reshape(-1, n).repeat(nrep, 0)
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 2.48 MiB for an array with shape (325632, 1) and data type int64
+Checking Qdrant connection...
+Qdrant reachable. Collection 'nctb_math_content' exists: True
+Collection 'nctb_math_content' already exists — skipping creation
+Loaded 3907 chunks from D:\Paper_project\banglamathai\backend\data\approved\all_chunks.json
+Resuming: 2800 points already in collection, skipping to there
+D:\Paper_project\banglamathai\backend\run_qdrant_push.py:50: UserWarning: The model intfloat/multilingual-e5-large now uses mean pooling instead of CLS embedding. In order to preserve the previous behaviour, consider either pinning fastembed version to 0.5.1 or using `add_custom_model` functionality.
+  embedder = TextEmbedding(model_name=EMBEDDING_MODEL)
+Pushed 3000/3907 chunks
+Pushed 3500/3907 chunks
+Pushed 3907/3907 chunks
+
+=== DONE ===
+Total pushed: 3907
+
+=== COLLECTION INFO ===
+{
+  "status": "green",
+  "optimizer_status": "ok",
+  "indexed_vectors_count": 0,
+  "points_count": 3907,
+  "segments_count": 2,
+  "config": {
+    "params": {
+      "vectors": {
+        "size": 1024,
+        "distance": "Cosine"
+      },
+      "shard_number": 1,
+      "replication_factor": 1,
+      "write_consistency_factor": 1,
+      "on_disk_payload": true
+    },
+    "hnsw_config": {
+      "m": 16,
+      "ef_construct": 100,
+      "full_scan_threshold": 10000,
+      "max_indexing_threads": 0,
+      "on_disk": false
+    },
+    "optimizer_config": {
+      "deleted_threshold": 0.2,
+      "vacuum_min_vector_number": 1000,
+      "default_segment_number": 0,
+      "max_segment_size": null,
+      "memmap_threshold": null,
+      "indexing_threshold": 10000,
+      "flush_interval_sec": 5,
+      "max_optimization_threads": null,
+      "prevent_unoptimized": null
+    },
+    "wal_config": {
+      "wal_capacity_mb": 32,
+      "wal_segments_ahead": 0,
+      "wal_retain_closed": 1
+    },
+    "quantization_config": null,
+    "strict_mode_config": {
+      "enabled": true,
+      "unindexed_filtering_retrieve": false,
+      "unindexed_filtering_update": false,
+      "max_payload_index_count": 100
+    }
+  },
+  "payload_schema": {},
+  "update_queue": {
+    "length": 0
+  }
+}
+
+=== TEST QUERY: 'সেট কাকে বলে' ===
+
+--- Result 1 (score=0.8269) ---
+  chunk_id: class8_bn_ch6_p119_c159
+  class=8 book_type=general language=bn
+  chapter=6 (সরল সহসমীকরণ) exercise=6.2
+  pages=[119, 120] source_file=class_8_math_bn.pdf
+  text: [অনুশীলনী 6.2]
+ির্ণয় করো।
+
+৬) 3%+ 2) 5 12 সরলরেখাটি x ও % অক্ষকে কোন কোন বিন্দুতে ছেদ করে।
+
+২০২৬
+
+২০২৬
+
+সপ্তম অধ্যায়
+
+সেট
+
+সেট শব্দটি আমাদের সুপরিচিত | যেমন : টিসেট, সোফাসেট, ডিনারসেট, এক সেট বই ইত্
+
+--- Result 2 (score=0.8209) ---
+  chunk_id: class9_bn_ch2_p29_c50
+  class=9 book_type=general language=bn
+  chapter=2 (সেট ও ফাংশন) exercise=None
+  pages=[29] source_file=class_9_General_math_bn.pdf
+  text: সেট ও অসীম সেট নির্ণয় করো:
+ক) {35,7}
+খ) {1,2,22,... 20}
+গ) {3,32,3%,...}
+ঘ) {xs a পূর্ণসংখ্যা এবং ৮ < 4}
+8) ঢু pS ৫ পরস্পর সহমৌলিক এবং ৫ > 1}
+
+চ) fy: ye N এবং y? < 100 < ঠ১])
+
+ফীকা সেট (Empty Set)
+
+য
+
+--- Result 3 (score=0.8189) ---
+  chunk_id: class9_bn_ch2_p31_c55
+  class=9 book_type=general language=bn
+  chapter=2 (সেট ও ফাংশন) exercise=None
+  pages=[31, 32] source_file=class_9_General_math_bn.pdf
+  text: lement of a Set)
+
+U সার্বিক সেট এবং A সেটটি (7 এর উপসেট। A U
+সেটের বহির্ভূত সকল উপাদান নিয়ে গঠিত সেটকে A
+সেটের পূরক সেট বলে। A এর পূরক সেটকে Ae বা Ae
+Al দ্বারা প্রকাশ করা হয় এবং পড়া হয় Complement
+
