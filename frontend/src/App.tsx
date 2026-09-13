@@ -59,8 +59,15 @@ const CLASS_LABEL_BN: Record<ClassChoice, string> = {
   "9-10": "৯-১০",
 };
 
-// Ordinal words for the natural-language query sent to the LLM (distinct from the
-// numeral shown on the selector chip).
+const CLASS_LABEL_EN: Record<ClassChoice, string> = {
+  "6": "6",
+  "7": "7",
+  "8": "8",
+  "9-10": "9-10",
+};
+
+// Ordinal words for the natural-language Bangla query sent to the LLM (distinct from
+// the numeral shown on the selector chip). English mode just uses "Class {n}" instead.
 const CLASS_ORDINAL_BN: Record<ClassChoice, string> = {
   "6": "ষষ্ঠ",
   "7": "সপ্তম",
@@ -68,87 +75,171 @@ const CLASS_ORDINAL_BN: Record<ClassChoice, string> = {
   "9-10": "নবম-দশম",
 };
 
-const SUB_PROBLEM_OPTIONS_BN = ["", "ক", "খ", "গ", "ঘ", "ঙ"];
-
-// Chapter names, keyed "<class>|<book_type>". Position in the array is the chapter
-// number (1-based) sent to the backend — confirmed against real ingested chunk metadata
-// (e.g. class 9 general chapter 2 = "সেট ও ফাংশন", class 8 general chapter 6 = "সরল
-// সহসমীকরণ" both match this list's ordering exactly).
-const CHAPTERS_BN: Record<string, string[]> = {
-  "6|general": [
-    "স্বাভাবিক সংখ্যা ও ভগ্নাংশ",
-    "অনুপাত ও শতকরা",
-    "পূর্ণসংখ্যা",
-    "বীজগাণিতীয় রাশি",
-    "সরল সমীকরণ",
-    "জ্যামিতির মৌলিক ধারণা",
-    "ব্যবহারিক জ্যামিতি",
-    "তথ্য ও উপাত্ত",
-  ],
-  "7|general": [
-    "মূলদ ও অমূলদ সংখ্যা",
-    "সমানুপাত ও লাভ-ক্ষতি",
-    "পরিমাপ",
-    "বীজগাণিতীয় রাশির গুণ ও ভাগ",
-    "বীজগাণিতীয় সূত্রাবলি ও প্রয়োগ",
-    "বীজগাণিতীয় ভগ্নাংশ",
-    "সরল সমীকরণ",
-    "সমান্তরাল সরলরেখা",
-    "ত্রিভুজ",
-    "সর্বসমতা ও সদৃশতা",
-    "তথ্য ও উপাত্ত",
-  ],
-  "8|general": [
-    "প্যাটার্ন",
-    "মুনাফা",
-    "পরিমাপ",
-    "বীজগাণিতীয় সূত্রাবলি ও প্রয়োগ",
-    "বীজগাণিতীয় ভগ্নাংশ",
-    "সরল সহসমীকরণ",
-    "সেট",
-    "চতুর্ভুজ",
-    "পিথাগোরাসের উপপাদ্য",
-    "বৃত্ত",
-    "তথ্য ও উপাত্ত",
-  ],
-  "9-10|general": [
-    "বাস্তব সংখ্যা",
-    "সেট ও ফাংশন",
-    "বীজগাণিতিক রাশি",
-    "সূচক ও লগারিদম",
-    "এক চলকবিশিষ্ট সমীকরণ",
-    "রেখা কোণ ও ত্রিভুজ",
-    "ব্যবহারিক জ্যামিতি",
-    "বৃত্ত",
-    "ত্রিকোণমিতিক অনুপাত",
-    "দূরত্ব ও উচ্চতা",
-    "বীজগাণিতিক অনুপাত ও সমানুপাত",
-    "দুই চলকবিশিষ্ট সরল সহসমীকরণ",
-    "সসীম ধারা",
-    "অনুপাত সদৃশতা ও প্রতিসমতা",
-    "ক্ষেত্রফল সম্পর্কিত উপপাদ্য ও সম্পাদ্য",
-    "পরিমিতি",
-    "পরিসংখ্যান",
-  ],
-  "9-10|higher": [
-    "সেট ও ফাংশন",
-    "বীজগাণিতিক রাশি",
-    "জ্যামিতি",
-    "জ্যামিতিক অঙ্কন",
-    "সমীকরণ",
-    "অসমতা",
-    "অসীম ধারা",
-    "ত্রিকোণমিতি",
-    "সূচকীয় ও লগারিদমীয় ফাংশন",
-    "দ্বিপদী বিস্তৃতি",
-    "স্থানাঙ্ক জ্যামিতি",
-    "সমতলীয় ভেক্টর",
-    "ঘন জ্যামিতি",
-    "সম্ভাবনা",
-  ],
+const SUB_PROBLEM_OPTIONS: Record<Language, string[]> = {
+  bn: ["", "ক", "খ", "গ", "ঘ", "ঙ"],
+  en: ["", "a", "b", "c", "d", "e"],
 };
 
 type Language = "bn" | "en";
+
+// Chapter names, keyed "<class>|<book_type>". Position in the array is the chapter
+// number (1-based) sent to the backend — confirmed against real ingested chunk metadata
+// (e.g. class 9 general chapter 2 = "সেট ও ফাংশন"/"Sets and Functions", class 8 general
+// chapter 6 = "সরল সহসমীকরণ" both match this list's ordering exactly).
+const CHAPTERS: Record<string, Record<Language, string[]>> = {
+  "6|general": {
+    bn: [
+      "স্বাভাবিক সংখ্যা ও ভগ্নাংশ",
+      "অনুপাত ও শতকরা",
+      "পূর্ণসংখ্যা",
+      "বীজগাণিতীয় রাশি",
+      "সরল সমীকরণ",
+      "জ্যামিতির মৌলিক ধারণা",
+      "ব্যবহারিক জ্যামিতি",
+      "তথ্য ও উপাত্ত",
+    ],
+    en: [
+      "Natural Numbers and Fractions",
+      "Ratios and Percentages",
+      "Integers",
+      "Algebraic Expressions",
+      "Simple Equations",
+      "Basic Concepts of Geometry",
+      "Practical Geometry",
+      "Information and Data",
+    ],
+  },
+  "7|general": {
+    bn: [
+      "মূলদ ও অমূলদ সংখ্যা",
+      "সমানুপাত ও লাভ-ক্ষতি",
+      "পরিমাপ",
+      "বীজগাণিতীয় রাশির গুণ ও ভাগ",
+      "বীজগাণিতীয় সূত্রাবলি ও প্রয়োগ",
+      "বীজগাণিতীয় ভগ্নাংশ",
+      "সরল সমীকরণ",
+      "সমান্তরাল সরলরেখা",
+      "ত্রিভুজ",
+      "সর্বসমতা ও সদৃশতা",
+      "তথ্য ও উপাত্ত",
+    ],
+    en: [
+      "Rational and Irrational Numbers",
+      "Proportion, Profit and Loss",
+      "Measurement",
+      "Multiplication and Division of Algebraic Expressions",
+      "Algebraic Formulae and Applications",
+      "Algebraic Fractions",
+      "Simple Equations",
+      "Parallel Straight Lines",
+      "Triangles",
+      "Congruence and Similarity",
+      "Information and Data",
+    ],
+  },
+  "8|general": {
+    bn: [
+      "প্যাটার্ন",
+      "মুনাফা",
+      "পরিমাপ",
+      "বীজগাণিতীয় সূত্রাবলি ও প্রয়োগ",
+      "বীজগাণিতীয় ভগ্নাংশ",
+      "সরল সহসমীকরণ",
+      "সেট",
+      "চতুর্ভুজ",
+      "পিথাগোরাসের উপপাদ্য",
+      "বৃত্ত",
+      "তথ্য ও উপাত্ত",
+    ],
+    en: [
+      "Patterns",
+      "Profits",
+      "Measurement",
+      "Algebraic Formulae and Applications",
+      "Algebraic Fractions",
+      "Simple Simultaneous Equations",
+      "Set",
+      "Quadrilateral",
+      "Pythagoras Theorem",
+      "Circle",
+      "Information and Data",
+    ],
+  },
+  "9-10|general": {
+    bn: [
+      "বাস্তব সংখ্যা",
+      "সেট ও ফাংশন",
+      "বীজগাণিতিক রাশি",
+      "সূচক ও লগারিদম",
+      "এক চলকবিশিষ্ট সমীকরণ",
+      "রেখা কোণ ও ত্রিভুজ",
+      "ব্যবহারিক জ্যামিতি",
+      "বৃত্ত",
+      "ত্রিকোণমিতিক অনুপাত",
+      "দূরত্ব ও উচ্চতা",
+      "বীজগাণিতিক অনুপাত ও সমানুপাত",
+      "দুই চলকবিশিষ্ট সরল সহসমীকরণ",
+      "সসীম ধারা",
+      "অনুপাত সদৃশতা ও প্রতিসমতা",
+      "ক্ষেত্রফল সম্পর্কিত উপপাদ্য ও সম্পাদ্য",
+      "পরিমিতি",
+      "পরিসংখ্যান",
+    ],
+    en: [
+      "Real Numbers",
+      "Sets and Functions",
+      "Algebraic Expressions",
+      "Exponents and Logarithms",
+      "Equations in One Variable",
+      "Lines Angles and Triangles",
+      "Practical Geometry",
+      "Circle",
+      "Trigonometric Ratio",
+      "Distance and Elevation",
+      "Algebraic Ratio and Proportion",
+      "Simple Simultaneous Equations in Two Variables",
+      "Finite Series",
+      "Ratio Similarity and Symmetry",
+      "Area Related Theorems and Constructions",
+      "Mensuration",
+      "Statistics",
+    ],
+  },
+  "9-10|higher": {
+    bn: [
+      "সেট ও ফাংশন",
+      "বীজগাণিতিক রাশি",
+      "জ্যামিতি",
+      "জ্যামিতিক অঙ্কন",
+      "সমীকরণ",
+      "অসমতা",
+      "অসীম ধারা",
+      "ত্রিকোণমিতি",
+      "সূচকীয় ও লগারিদমীয় ফাংশন",
+      "দ্বিপদী বিস্তৃতি",
+      "স্থানাঙ্ক জ্যামিতি",
+      "সমতলীয় ভেক্টর",
+      "ঘন জ্যামিতি",
+      "সম্ভাবনা",
+    ],
+    en: [
+      "Set and Function",
+      "Algebraic Expression",
+      "Geometry",
+      "Geometric Constructions",
+      "Equation",
+      "Inequality",
+      "Infinite Series",
+      "Trigonometry",
+      "Exponential and Logarithmic Function",
+      "Binomial Expansion",
+      "Coordinate Geometry",
+      "Planar Vector",
+      "Solid Geometry",
+      "Probability",
+    ],
+  },
+};
 
 const TEXT: Record<Language, {
   subtitle: string;
@@ -266,7 +357,7 @@ export default function App() {
   const needsBookStep = classChoice === "9-10";
   const effectiveBookType: BookType | "" = needsBookStep ? bookType : "general";
   const chapterKey = classChoice ? `${classChoice}|${effectiveBookType || "general"}` : "";
-  const chapterOptions = chapterKey ? CHAPTERS_BN[chapterKey] ?? [] : [];
+  const chapterOptions = chapterKey ? CHAPTERS[chapterKey]?.[language] ?? [] : [];
 
   const resetFrom = (level: "class" | "book" | "chapter" | "contentType") => {
     if (level === "class") setBookType("");
@@ -308,8 +399,9 @@ export default function App() {
         return;
       }
 
-      const ordinal = CLASS_ORDINAL_BN[classChoice as ClassChoice];
-      const chapterBn = toBangla(chapterNum);
+      const exNumAscii = toAsciiDigits(exampleNumber);
+      const exerciseAscii = toAsciiDigits(exerciseNumber);
+      const probAscii = toAsciiDigits(problemNumber);
 
       let generatedQuery: string;
       const refPayload: Record<string, unknown> = {
@@ -322,15 +414,21 @@ export default function App() {
       };
 
       if (contentType === "example") {
-        refPayload.problem_number = Number(toAsciiDigits(exampleNumber));
-        generatedQuery = `${ordinal} শ্রেণি অধ্যায় ${chapterBn} উদাহরণ ${toBangla(toAsciiDigits(exampleNumber))}`;
+        refPayload.problem_number = Number(exNumAscii);
+        generatedQuery =
+          language === "bn"
+            ? `${CLASS_ORDINAL_BN[classChoice as ClassChoice]} শ্রেণি অধ্যায় ${toBangla(chapterNum)} উদাহরণ ${toBangla(exNumAscii)}`
+            : `Class ${CLASS_LABEL_EN[classChoice as ClassChoice]} Chapter ${chapterNum} Example ${exNumAscii}`;
       } else {
-        refPayload.exercise = toAsciiDigits(exerciseNumber);
-        refPayload.problem_number = Number(toAsciiDigits(problemNumber));
+        refPayload.exercise = exerciseAscii;
+        refPayload.problem_number = Number(probAscii);
         if (subProblem) refPayload.sub_problem = subProblem;
         generatedQuery =
-          `${ordinal} শ্রেণি অধ্যায় ${chapterBn} অনুশীলনী ${toBangla(toAsciiDigits(exerciseNumber))} ` +
-          `${toBangla(toAsciiDigits(problemNumber))} নম্বর${subProblem ? " " + subProblem : ""}`;
+          language === "bn"
+            ? `${CLASS_ORDINAL_BN[classChoice as ClassChoice]} শ্রেণি অধ্যায় ${toBangla(chapterNum)} অনুশীলনী ${toBangla(exerciseAscii)} ` +
+              `${toBangla(probAscii)} নম্বর${subProblem ? " " + subProblem : ""}`
+            : `Class ${CLASS_LABEL_EN[classChoice as ClassChoice]} Chapter ${chapterNum} Exercise ${exerciseAscii} ` +
+              `Problem ${probAscii}${subProblem ? " Part " + subProblem : ""}`;
       }
 
       refPayload.query = generatedQuery;
@@ -422,7 +520,7 @@ export default function App() {
                 <option value="">{t.classLabel}</option>
                 {CLASS_CHOICES.map((c) => (
                   <option key={c.value} value={c.value}>
-                    {t.classLabel} {CLASS_LABEL_BN[c.value]}
+                    {t.classLabel} {language === "bn" ? CLASS_LABEL_BN[c.value] : CLASS_LABEL_EN[c.value]}
                   </option>
                 ))}
               </select>
@@ -456,7 +554,7 @@ export default function App() {
                   <option value="">{t.chapterPlaceholder}</option>
                   {chapterOptions.map((name, i) => (
                     <option key={name} value={i + 1}>
-                      {toBangla(i + 1)}. {name}
+                      {language === "bn" ? toBangla(i + 1) : i + 1}. {name}
                     </option>
                   ))}
                 </select>
@@ -528,8 +626,8 @@ export default function App() {
                     onChange={(e) => setSubProblem(e.target.value)}
                     className={selectClasses}
                   >
-                    <option value="">{t.subProblemLabel}</option>
-                    {SUB_PROBLEM_OPTIONS_BN.filter(Boolean).map((letter) => (
+                    <option value="">{t.subProblemNone}</option>
+                    {SUB_PROBLEM_OPTIONS[language].filter(Boolean).map((letter) => (
                       <option key={letter} value={letter}>
                         {letter}
                       </option>
