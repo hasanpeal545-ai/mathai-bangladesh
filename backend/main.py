@@ -44,11 +44,13 @@ def health_check():
 class ChatRequest(BaseModel):
     query: str = Field(min_length=1)
     mode: Literal["reference", "direct"]
-    class_: Optional[int] = Field(default=None, ge=6, le=10, alias="class")
+    class_number: Optional[int] = Field(default=None, ge=6, le=10)
     book_type: Optional[Literal["general", "higher"]] = None
     chapter: Optional[int] = Field(default=None, ge=1)
+    content_type: Optional[Literal["example", "exercise"]] = None
     exercise: Optional[str] = None
     problem_number: Optional[int] = Field(default=None, ge=1)
+    sub_problem: Optional[str] = None
     step_mode: bool = False
     practice_mode: bool = False
     exam_mode: bool = False
@@ -74,7 +76,7 @@ def chat(request: ChatRequest):
     solve_result = solve(
         request.query,
         mode=request.mode,
-        class_number=request.class_,
+        class_number=request.class_number,
         language=request.language,
         book_type=request.book_type,
         chapter=request.chapter,

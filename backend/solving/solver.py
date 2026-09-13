@@ -9,6 +9,23 @@ from solving.cross_checker import CrossCheckResult, cross_check
 
 _NO_RAG_CONTEXT_NOTE = "RAG context পাওয়া যায়নি"
 
+# Forces the LLM to always attempt a solution instead of deflecting with "নিজে কর" /
+# "সমাধান দেওয়া নেই" — observed failure mode when the retrieved context didn't contain
+# the exact question. Bangla-only for now (no English equivalent was specified).
+_ALWAYS_SOLVE_RULES_BN = (
+    "গুরুত্বপূর্ণ নিয়ম:\n"
+    "- তুমি সবসময় সমাধান করবে। কখনো \"নিজে কর\" বা \"সমাধান দেওয়া নেই\" বলবে না।\n"
+    "- যদি retrieved context এ exact question না থাকে,\n"
+    "  তাহলে chapter এর concept ও উদাহরণ দেখে নিজে solve করো।\n"
+    "- সমাধান সবসময় SSC board format এ দাও:\n"
+    "  সমাধানঃ\n"
+    "  দেওয়া আছে, ...\n"
+    "  আমরা জানি, ...\n"
+    "  সূত্রমতে, ...\n"
+    "  ∴ (উত্তর)\n"
+    "- কখনো অসম্পূর্ণ উত্তর দেবে না।"
+)
+
 
 _SSC_FORMAT_EXAMPLE_BN = (
     "উদাহরণঃ\n"
@@ -57,7 +74,7 @@ def build_prompt(
     if class_number is None:
         if language == "en":
             return f"Answer in English.\n\nQuestion: {query_with_hints}"
-        return query_with_hints
+        return f"{_ALWAYS_SOLVE_RULES_BN}\n\n{query_with_hints}"
 
     standard = get_class_standard(class_number)
 
@@ -72,6 +89,7 @@ def build_prompt(
                 f"Question: {query_with_hints}"
             )
         return (
+            f"{_ALWAYS_SOLVE_RULES_BN}\n\n"
             f"{_SSC_FORMAT_EXAMPLE_BN}\n\n"
             "উপরের উদাহরণের ঠিক এই ফরম্যাট অনুসরণ করে, লেবেলগুলো কপি না করে প্রতিটি ধাপে "
             "আসল সংখ্যা ও হিসাব বসিয়ে নিচের প্রশ্নের সম্পূর্ণ সমাধান লেখো। "
@@ -86,6 +104,7 @@ def build_prompt(
             f"Question: {query_with_hints}"
         )
     return (
+        f"{_ALWAYS_SOLVE_RULES_BN}\n\n"
         "তুমি একজন Bangladesh Math শিক্ষক। বাংলায় ধাপে ধাপে সমাধান করবে।\n"
         f"নিয়মঃ {standard.style_description}\n\n"
         f"প্রশ্নঃ {query_with_hints}"
