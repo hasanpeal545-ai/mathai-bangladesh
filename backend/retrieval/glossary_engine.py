@@ -2,6 +2,7 @@
 from typing import List, Optional
 
 from fastembed import TextEmbedding
+from huggingface_hub.constants import HF_HUB_CACHE
 
 from retrieval import term_learner, vector_store
 
@@ -72,7 +73,10 @@ MATH_GLOSSARY_SEED = {
     "গণসংখ্যা বহুভুজ": "Frequency Polygon",
 }
 
-_embedder = TextEmbedding(model_name=EMBEDDING_MODEL)
+# cache_dir explicitly set to huggingface_hub's own persistent cache — fastembed's own
+# default (unset cache_dir) resolves to %TEMP%\fastembed_cache, which Windows temp-cleanup
+# can wipe, forcing a full ~2.24GB re-download. See CLAUDE.md Known Issues for the incident.
+_embedder = TextEmbedding(model_name=EMBEDDING_MODEL, cache_dir=HF_HUB_CACHE)
 
 
 def get_embedder() -> TextEmbedding:

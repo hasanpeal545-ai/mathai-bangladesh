@@ -6,9 +6,8 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from fastembed import TextEmbedding
-
 from retrieval import vector_store
+from retrieval.glossary_engine import get_embedder
 
 COLLECTION = "nctb_math_content"
 EMBEDDING_MODEL = "intfloat/multilingual-e5-large"
@@ -47,7 +46,7 @@ def main():
         print(f"Resuming: {already_done} points already in collection, skipping to there", flush=True)
 
     # 4/5. Embed + push in batches of 50
-    embedder = TextEmbedding(model_name=EMBEDDING_MODEL)
+    embedder = get_embedder()  # shared instance — see glossary_engine.get_embedder()
     pushed = already_done
 
     for batch_start in range(already_done, total, BATCH_SIZE):
