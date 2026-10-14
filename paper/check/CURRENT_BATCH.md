@@ -1,65 +1,66 @@
 # Step 4 — Current batch for review
 
 **Book:** class_9_General_math_bn (book 1/10 in BOOK_ORDER)
-**Pages:** 131–140 (of 362) — batch 14. Batch 13's images cleared (text files untouched).
-**Settings:** all prior accumulated fixes, plus **FIX_BATCH13**: `_DUTI_RE`/`_DBIMATO_RE`/`_SONKHYAK_RE` word-boundary bugs fixed, prompt symbol-leak fix + 5 new Unicode symbols, margin-year 2021/2022, `∥` parallel-symbol fix, and a new `figure_labels_removed`/`figure_labels_suspect` QC step. **No RECITATION this batch — `escalate_split` was not exercised live** (see Task 1 note below on the earlier two batches' own standalone test).
+**Pages:** 141–150 (of 362) — batch 15. Batch 14's images cleared (text files untouched).
+**Settings:** all prior accumulated fixes, plus **FIX_BATCH14**: নির্বচন/উপপাদ্য heading typo fixes, blank-line-tolerant figure-label-run removal, a `figure_values_lost` flag, and a `margin_year_tail` rule for unknown rotated-margin years. **No RECITATION this batch — `escalate_split` not exercised live again.**
 
-## Task 1 — `_DUTI_RE` word-boundary bug + review of the rest
+## Task 1 — নির্বচন (rare word → common word)
 
-Fixed `_DUTI_RE` exactly as specified: `re.compile(r"(?<![ঀ-৿])দুটি")` (negative lookbehind for any Bangla character, since Python's `\b` doesn't treat Bangla conjuncts/matras reliably). Test: `"বিন্দুটি"` unchanged; `"দুটি"`, `"দুটিকে"`, `"(দুটি"` → `"দুইটি"`/`"দুইটিকে"`/`"(দুইটি"`. All pass.
+Added to `fix_known_bangla_typos()`: `"বিশেষ নির্বাচন"` → `"বিশেষ নির্বচন"`, `"সাধারণ নির্বাচন"` → `"সাধারণ নির্বচন"` -- scoped to exactly these two 2-word phrases (not a bare `"নির্বাচন"` rule), since `"নির্বাচন"` ("election") is also a real, common, unrelated word, and `"বহুনির্বাচনি"` ("multiple-choice") contains it as a literal substring too. Test: `"বহুনির্বাচনি প্রশ্ন"` unchanged; `"বিশেষ নির্বাচন:"` → `"বিশেষ নির্বচন:"`; also checked `"ছাত্র সংসদ নির্বাচন..."` (a real, unrelated election) stays untouched. All pass. **Did not fire live in batch 15** (pages 141-150 are Chapter 7's practical-geometry constructions, not yet back in theorem-heavy Chapter 6 content) -- ready for when it reappears.
 
-**Reviewed every other regex in `fix_known_bangla_typos()` by actually running each one against the real corpus (pages 1-130's `.raw.txt`/`.alt.raw.txt`, both directions: Bangla char immediately before the match, and immediately after) instead of reasoning in the abstract. Found two more REAL, confirmed instances of the same bug class — both fixed:**
+## Task 2 — উপপাদ্য heading
 
-- **`_DBIMATO_RE`** (`"দ্বিমাত"` → `"দ্বিঘাত"`, meant to fix a "quadratic" typo) was a literal PREFIX of `"দ্বিমাত্রিক"` ("two-dimensional") and `"দ্বিমাত্রা"` ("two dimensions") -- real geometry vocabulary, confirmed by running the function directly on page 106's own raw.txt (the exact page this rule was written for): it silently turned `"দ্বিমাত্রিক"` into `"দ্বিঘাত্রিক"` (nonsense). This never showed up in the delivered `page_106.txt` only because that page was later hand-rewritten by a human (MANUAL_PAGES.txt) -- the bug was live and armed, not merely theoretical, and Chapter 6 (solid geometry: points/lines/**planes**) is exactly where it would keep biting. Fixed: `re.compile(r"দ্বিমাত(?!্র)")` -- blocks both bad continuations (both start with "্র") while the real typo (always followed by a space before "সমীকরণ") still matches.
-- **`_SONKHYAK_RE`** (`"সংখ্যাক"` → `"সংখ্যক"`) was a literal PREFIX of the extremely common `"সংখ্যাকে"` ("the number", object case -- "সংখ্যা" + the everyday "-কে" suffix). 57 real occurrences found across pages 1-130's raw text that would hit this collision; none have corrupted the delivered corpus yet only because this rule (FIX_BATCH10) postdates those pages' processing. Fixed: `re.compile(r"সংখ্যাক(?!ে)")`.
+(a) Added `"উপপাদ্য"` into the existing `_SUTRO_ANUSIDDHANTO_PERIOD_RE` (now fixes `"উপপাদ্য N।"` → `"...N."` too, same as `"সূত্র"`/`"অনুসিদ্ধান্ত"`).
+(b) New `_UPOPADDO_MISSING_PHOLA_RE = re.compile(r"(?<![ঀ-৿])উপপাদ(?=\s+[০-৯])")` fixes `"উপপাদ N."` (missing্য) → `"উপপাদ্য N."`. Needed the lookahead guard since `"উপপাদ"` is a literal prefix of the already-correct `"উপপাদ্য"` -- without it, a correct heading would double up into `"উপপাদ্য্য"`. Runs BEFORE the period-fix (same ordering reason as the existing `_UDAAHARON_RE`/`_UDAHARON_PERIOD_RE` pair) so a hypothetical page with both bugs together gets both fixed in one pass. Tests: `"উপপাদ ১৫."` → `"উপপাদ্য ১৫."`; `"উপপাদ্য ১৫."` unchanged (no double-up); `"উপপাদ ১৫।"` (both bugs at once) → `"উপপাদ্য ১৫."`. All pass. **Also did not fire live in batch 15** (same reason as Task 1 -- this batch is Chapter 7 constructions, no numbered theorems on these 10 pages).
 
-All three fixes unit-tested (unchanged on the real word, still fires on the real typo) -- see the commit for the test transcript.
+## Task 3 — figure labels across a blank line
 
-**Read-only scan requested by the task** (`class_9_General_math_bn` pages 1-130, "[Bangla char]দুইটি"-style broken words): **0 found in the delivered `page_N.txt` files.** Also checked `page_N.alt.txt` (not asked, but free to check): 2 found -- pages 123 and 124, the exact two ERRORS_LOG already flagged (their main `.txt` output is already hand-fixed per MANUAL_PAGES.txt; the `.alt.txt` copies were left as-is, untouched, per the "don't touch anything" rule).
+`find_figure_label_runs()` no longer requires LITERAL consecutiveness: a blank line now keeps a run open (without counting toward its length) instead of ending it. A removed run's span (first label line to last, interior blanks included) collapses to exactly ONE blank line in the output rather than deleting outright, so two real paragraphs on either side of a stripped figure don't get mashed together. Tests: `"P\n\nC\n\nB\n\nQ"` (as a whole text) → collapses to empty; `"(i)\n\nকোনো লেখা"` stays untouched (only 1 label, flagged suspect, not removed); `"∴ x = 5"` stays (not a label line at all).
 
-## Task 2 — prompt: symbol leak + new symbols
+**Fired live, twice, in this very batch:**
+- **Page 142** (`figure_labels_removed: 25`, on the reading that was NOT chosen as the final output -- see its `.alt.raw.txt`): six small construction diagrams' point labels (`a`,`b`,`x`,`E`,`A`,`C`,`B`,`y`,`F`,`G`,`D`,`c`...) were scattered through a numbered list of triangle-construction cases. These particular clusters turned out to already be literally consecutive (no blank lines needed) -- so this specific instance would have fired under the OLD rule too -- but confirms the removal logic handles a real, dense, multi-cluster page correctly without touching the list's own numbered headings or the closing paragraph.
+- **Page 148** (`figure_labels_removed: 6`, chosen output): two separate 3-line clusters of stray `X`/`4`/page-number removed from around a square-construction diagram. **This one DOES exercise the new blank-line-tolerance** -- line 2 (`"১৪৩"`, directly adjacent) + line 3 (`"X"`) + a blank line + line 5 (`"X"`) form one cluster only because the blank line no longer breaks it.
 
-Replaced the negation-slash sentence (its own `R̸` example was being copied verbatim into real answers -- p129's `AB = AC ≠ BC` came back as `AB = AC R̸ BC`): now "Keep negation slashes on symbols exactly as printed (∉, ≠, ⊄) -- never drop them, and never replace one symbol with another." Added `∠ ∥ Δ ° ≠` to the Unicode symbol list (Chapter 6 geometry needs them -- p123's `∠POQ` had lost its `∠` three times).
+## Task 4 — figure value loss flag
 
-## Task 3 — three small post-process additions
+New: any removed run's label lines that are purely a number (optionally with ° / ⁰) are called out by value in `figure_values_lost`, never reconstructed. Test: a run of `"30°"`, `"40°"`, `"A"` → removed, `figure_values_lost: "30°, 40°"` (the `"A"` itself isn't a value, correctly excluded).
 
-(a) `MARGIN_YEAR_TOKENS` += `"২০২১"`, `"২০২২"`, `"2021"`, `"2022"`.
-(b) New `fix_parallel_symbol()`: `"AB || CD"` → `"AB ∥ CD"`. **Real bug caught running batch 14 itself** (not a synthetic test): the task's own literal regex (`([A-Z]{2})\s*\|\|\s*([A-Z]{2})` → `\1 ∥ \2`) consumes both flanking tokens, so a 3-way chain -- page 139's real `"AB || EF || CD"` -- only converted the first `||` (`"AB ∥ EF || CD"`), since `"EF"` was already spent as the first match's own capture group and had nothing left on its right to anchor a second match. Fixed with fixed-width lookaround instead of capturing letters (`(?<=[A-Z]{2})\s*\|\|\s*(?=[A-Z]{2})` → `" ∥ "`), so neither token is consumed and every `||` in a chain converts independently. Re-verified: `"AB || EF || CD"` → `"AB ∥ EF ∥ CD"`. Page 139 was reprocessed with `--reprocess-only` (no new API calls) after the fix, confirmed now reads `"AB ∥ EF ∥ CD"` correctly.
-(c) New `strip_figure_labels()` / `find_figure_label_runs()`: a run of **3+ consecutive** short (≤4 char), non-Bangla, letter/digit/x/y/°⁰/(i)(ii)-style lines is removed outright (`figure_labels_removed: N` in the QC note); a run of 1-2 is left alone and only flagged (`figure_labels_suspect`). Test: a p130-style sample with a 10-line label run gets the whole run removed, while `"∴ x = 5"` and a lone `"(i)"` survive untouched (confirmed: `"(i)"` alone → 0 removed, flagged as `figure_labels_suspect: L2`).
+**Fired live on page 148**: `figure_values_lost: ১৪৩, 4`. **Worth flagging honestly**: `"১৪৩"` here is actually just this page's own running-header PAGE NUMBER (PDF page 148 − offset 5 = printed ১৪৩ -- confirmed via `detect_page_number_mismatch`'s own offset table) -- it happened to sit immediately next to the real stray `"X"` labels and got swept into the same cluster. The other value, `"4"`, came from a broken diagram fraction (`"1/4p"` split across lines near `"2 s"` / `"P 1"` / `"--- p"`, themselves NOT label-shaped so left untouched) -- also not a clean "angle value" in the sense Task 4's own examples (p137/p139's 30°/40°/120°/150°) described. **Not fixed or filtered out** -- the task said flag, not judge, so both are reported as-is; a human checking page 148's image should expect one of the two flagged values to just be page-number noise.
 
-**Both new fixes fired for real in this very batch, not just in synthetic tests:**
-- Page 136: `figure_labels_removed: 6` -- a run of `C`/`B`/`O` and a separate run of `Q`/`A`/`R` (triangle-vertex labels) removed; a lone `P` right before them survived (it was isolated by a blank line from the next run, so "3+ *consecutive*" correctly didn't reach across the blank line -- a known, intentional limitation of "consecutive" as specified, not a bug: flagged here for visibility rather than silently left unmentioned).
-- Page 137: the *secondary* (temp 0.4) reading had a cleaner 13-line label run removed; the *primary* (chosen as the page's main output, since it had fewer OTHER quality issues) has the same labels scattered as non-consecutive 1-2-line runs, so they're only flagged (`figure_labels_suspect`, many lines) not removed -- worth a human glance at page 137's image.
-- Page 139: `parallel_fixes: 2` -- see the chain-bug fix above.
+## Task 5 — margin year (unknown year)
 
-## Task 4 — batch 14 (pages 131-140)
+New `strip_margin_year_tail()`: if a page's LAST non-empty line is exactly 4 digits (Bangla or Latin) starting with ২০/20, it's stripped regardless of which specific digits (catches a misread year like page 137's "২০২৯" that the fixed `MARGIN_YEAR_TOKENS` list can't name in advance), noted as `margin_year_tail: <year>`. Scoped to only the last line -- never a middle one. Tests: `"...\n২০২৯"` → year stripped, noted; `"...\n2029"` → same for Latin digits; a 4-digit token in the MIDDLE of the page → untouched; a non-২০/20-prefixed 4-digit tail (`"১২৩৪"`) → untouched. All pass. **Did not fire in batch 15** (no page in this batch had a stray year at the very end) -- its only real-page confirmation so far remains page 137 (re-tested directly against its raw text, read-only, not reprocessed since that page is in MANUAL_PAGES.txt).
 
-**No RECITATION at all this batch** -- all 20 calls (10 pages × primary+secondary) returned `OK ... finish_reason=STOP` on the first attempt. The new `escalate_split` ladder step (FIX_BATCH12) was therefore **not exercised live** in batch 13 or 14 -- its only real-page confirmation remains the standalone test against batch 12's pages 117/119/120 (see batch 13's report / RUN_LOG). Will report again the moment a page actually blocks.
+## Task 6 — batch 15 (pages 141-150)
+
+**No RECITATION at all this batch.** Already in **Chapter 7** (ব্যবহারিক জ্যামিতি, practical/construction geometry) as of page 142.
 
 | Page | Chars | Note |
 |---|---|---|
-| 131 | 1137 | 2 typo fixes; 1 line flagged `figure_labels_suspect`/`stacked_fraction` |
-| 132 | 1201 | 1 line flagged `figure_labels_suspect`/`stacked_fraction` |
-| 133 | 1288 | `script_digit_mismatch` flagged (1 Bangla digit on a math-like line) -- flag only |
-| 134 | 1120 | 1 line flagged `figure_labels_suspect`/`stacked_fraction` |
-| 135 | 711 | clean on both readings |
-| 136 | 785 | **`figure_labels_removed: 6`** (see Task 3c) |
-| 137 | 733 | heavy `figure_labels_suspect`/`stacked_fraction` flagging (13 lines) on the chosen primary reading -- worth a visual check against the image |
-| 138 | 1395 | 13 typo fixes; 1 line flagged |
-| 139 | 940 | **`parallel_fixes: 2`** (chain bug caught+fixed, see Task 3b) |
-| 140 | 1021 | 1 line flagged `figure_labels_suspect`/`stacked_fraction` |
+| 141 | 1426 | 1 typo fix |
+| 142 | 565 | **`figure_labels_removed: 25`** on the non-chosen reading (see Task 3) -- chosen reading itself clean |
+| 143 | 1014 | 4 typo fixes (secondary); 1 line flagged `figure_labels_suspect` |
+| 144 | 1163 | 7 typo fixes (Chapter 7 opening page) |
+| 145 | 1200 | `page_number_mismatch` flagged (header read as ১৮০, expected ১৪০) -- flag only |
+| 146 | 800 | clean (secondary has 1 flagged line) |
+| 147 | 1854 | `latex_left: \angle,\circ` flagged (pre-existing limitation, not in scope for this batch -- these two LaTeX commands aren't in the symbol map yet); `page_number_mismatch` on secondary |
+| **148** | 1408 | **`figure_labels_removed: 6`, `figure_values_lost: ১৪৩, 4`** -- see Tasks 3/4 above; also `latex_left: \angle,\circ,\perp` (same pre-existing limitation) |
+| 149 | 1314 | 1 typo fix; `page_number_mismatch` flagged (header read as ১৪৮, expected ১৪৪) |
+| 150 | 2696 | 1 typo fix; several lines flagged `figure_labels_suspect` (longest page this batch) |
 
-All 10 pages got both the primary (temp 0) and secondary (temp 0.4) bn readings, per policy.
+All 10 pages got both the primary (temp 0) and secondary (temp 0.4) bn readings.
 
 ## Cost
 
-Batch 14: 20 Gemini calls (10 pages × primary+secondary, no escalation needed), plus one `--reprocess-only` pass after the Task 3b fix (0 new API calls, $0 cost).
-**Cumulative gemini-3.5-flash-lite spend (Step 4 total so far): $0.5565** (471,941 in / 165,963 out tokens) of the $7.00 stop.
+Batch 15: 20 Gemini calls (10 pages × primary+secondary, no escalation needed).
+**Cumulative gemini-3.5-flash-lite spend (Step 4 total so far): $0.5864** (502,881 in / 174,212 out tokens) of the $7.00 stop.
 
-## Task 5 — commit + push
+## Task 7 — commit + push
 
-`git status` checked first: no `.env`/API keys/`venv` in the diff (only `full_gemini_ocr.py`, `RUN_LOG.csv`, `digit_disagreements.csv`, and this batch's new `backend/data/ocr_gemini/class_9_General_math_bn/page_131..140.*` files). Committed and pushed -- see the one-line result appended below after the push.
+`git status` checked first: no `.env`/API keys/`venv` in the diff (only `full_gemini_ocr.py`, `RUN_LOG.csv`, `digit_disagreements.csv`, and this batch's new `backend/data/ocr_gemini/class_9_General_math_bn/page_141..150.*` files).
+
+**Push result:** _(filled in after the push below)_
 
 ---
 
-**Batch ready: class_9_General_math_bn pages 131-140.**
+**Batch ready: class_9_General_math_bn pages 141-150.**

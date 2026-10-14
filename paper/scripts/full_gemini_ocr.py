@@ -819,6 +819,10 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
         parts.append(f"parallel_fixes: {counts['parallel_fixes']}")
     if counts.get("figure_labels_removed"):
         parts.append(f"figure_labels_removed: {counts['figure_labels_removed']}")
+    if counts.get("figure_values_lost"):
+        parts.append(f"figure_values_lost: {counts['figure_values_lost']}")
+    if counts.get("margin_year_tail"):
+        parts.append(f"margin_year_tail: {counts['margin_year_tail']}")
     suspect = find_figure_labels_suspect_lines(text)
     if suspect:
         parts.append(f"figure_labels_suspect: L{',L'.join(str(n) for n in suspect)}")
@@ -1087,7 +1091,9 @@ _UDAAHARON_RE = re.compile(r"উদাাহরণ")
 # FIX_BATCH5 task 1: "সূত্র N।"/"অনুসিদ্ধান্ত N।" -> "...N." -- same
 # dari-after-numbered-label fix as _UDAHARON_PERIOD_RE, for these two other
 # labels (page 49: "সূত্র ১।", "সূত্র ২।").
-_SUTRO_ANUSIDDHANTO_PERIOD_RE = re.compile(r"((?:সূত্র|অনুসিদ্ধান্ত)\s+[0-9০-৯]+)।")
+# FIX_BATCH14 task 2(a): "উপপাদ্য" (theorem) added -- same bug, pages
+# 125/133 ("উপপাদ্য ১১।" should be "উপপাদ্য ১১.").
+_SUTRO_ANUSIDDHANTO_PERIOD_RE = re.compile(r"((?:সূত্র|অনুসিদ্ধান্ত|উপপাদ্য)\s+[0-9০-৯]+)।")
 
 # FIX_BATCH6 task 1: a bare question-number at the very START of a line
 # ("৩। ...") uses the book's Western full stop too, not the Bangla dari --
@@ -1163,6 +1169,44 @@ _SONKHYAK_RE = re.compile(r"সংখ্যাক(?!ে)")
 _DBIMATO_RE = re.compile(r"দ্বিমাত(?!্র)")
 _BOHUMPODI2_RE = re.compile(r"বহুমপদী")
 
+# FIX_BATCH14 task 1: the geometric term "বিশেষ নির্বচন" ("particular
+# enunciation" -- a standard part of every উপপাদ্য/theorem's structure)
+# keeps coming back as "বিশেষ নির্বাচন" ("particular ELECTION") -- a
+# real, different, much more common Bangla word, so a bare "নির্বাচন" ->
+# "নির্বচন" substring rule would be far too broad (it would also wrongly
+# rewrite "নির্বাচন" used in its own correct sense elsewhere, e.g. student
+# council elections, and "বহুনির্বাচনি" -- "multiple-choice" -- which
+# contains "নির্বাচন" as a literal substring but means something else
+# again). Scoped to EXACTLY these two 2-word phrases (ERRORS_LOG batch=14,
+# pages 131/133/134, all three instances of "বিশেষ নির্বাচন"; "সাধারণ
+# নির্বচন" is the book's matching general-case counterpart, added
+# pre-emptively since the same misreading is equally likely there).
+_BISHESH_NIRBOCHON_RE = re.compile(r"বিশেষ নির্বাচন")
+_SADHARAN_NIRBOCHON_RE = re.compile(r"সাধারণ নির্বাচন")
+
+# FIX_BATCH14 task 2: two independent "উপপাদ্য N" (theorem N) heading
+# mis-readings, found on different pages. (a) the book always prints a
+# Western period after the number ("উপপাদ্য ১১."), but OCR sometimes wrote
+# the Bangla dari instead ("উপপাদ্য ১১।", pages 125/133) -- same family as
+# _SUTRO_ANUSIDDHANTO_PERIOD_RE just above, so "উপপাদ্য" is added into that
+# same regex rather than a new one (see fix_known_bangla_typos()). (b) a
+# separate misreading drops the "্য" (ya-phala) entirely -- "উপপাদ ১৫."
+# instead of "উপপাদ্য ১৫." (page 135). Needs its own lookahead guard: "উপপাদ"
+# (5 chars) is a literal PREFIX of the CORRECT "উপপাদ্য" (adds "্য" next),
+# so without a guard this would also fire on an already-correct
+# "উপপাদ্য N" and double up the fix into "উপপাদ্য্য N". Scoped instead to
+# "উপপাদ" followed by whitespace then a digit (i.e. the broken heading
+# with NO "্য" at all between the word and the number) -- "উপপাদ্য N" has
+# "্য" immediately after "উপপাদ", not whitespace+digit, so it never
+# matches. Also guarded on the left (no Bangla char immediately before)
+# for the same reason _DUTI_RE needed one -- so this can never fire
+# starting mid-word inside some longer, unrelated word.
+# MUST run before _SUTRO_ANUSIDDHANTO_PERIOD_RE (now also handling
+# "উপপাদ্য") so a page with BOTH bugs together ("উপপাদ ১৫।") gets the
+# period fixed too in the same pass -- same reasoning/ordering as
+# _UDAAHARON_RE running before _UDAHARON_PERIOD_RE above.
+_UPOPADDO_MISSING_PHOLA_RE = re.compile(r"(?<![ঀ-৿])উপপাদ(?=\s+[০-৯])")
+
 
 def fix_known_bangla_typos(text):
     """Returns (fixed_text, number_of_replacements_made)."""
@@ -1178,6 +1222,9 @@ def fix_known_bangla_typos(text):
     text, n6 = _UDAHARON_PERIOD_RE.subn(r"\1.", text)
     text, n7 = _BIJOGANITIK_RE.subn("বীজগাণিতিক", text)
     text, n8 = _DUTI_RE.subn("দুইটি", text)
+    # FIX_BATCH14 task 2(b): must run BEFORE the period-fix below, same
+    # ordering reason as _UDAAHARON_RE/_UDAHARON_PERIOD_RE.
+    text, n19 = _UPOPADDO_MISSING_PHOLA_RE.subn("উপপাদ্য", text)
     text, n9 = _SUTRO_ANUSIDDHANTO_PERIOD_RE.subn(r"\1.", text)
     text, n10 = _QUESTION_NUMBER_PERIOD_RE.subn(r"\1. ", text)
     text, n11 = _F_PAREN_SPACE_RE.subn("f(", text)
@@ -1188,7 +1235,12 @@ def fix_known_bangla_typos(text):
     text, n16 = _SONKHYAK_RE.subn("সংখ্যক", text)
     text, n17 = _DBIMATO_RE.subn("দ্বিঘাত", text)
     text, n18 = _BOHUMPODI2_RE.subn("বহুপদী", text)
-    return text, n1 + n2 + n3 + n4 + n5 + n6a + n6 + n7 + n8 + n9 + n10 + n11 + n12 + n13 + n14 + n15 + n16 + n17 + n18
+    text, n20 = _BISHESH_NIRBOCHON_RE.subn("বিশেষ নির্বচন", text)
+    text, n21 = _SADHARAN_NIRBOCHON_RE.subn("সাধারণ নির্বচন", text)
+    return text, (
+        n1 + n2 + n3 + n4 + n5 + n6a + n6 + n7 + n8 + n9 + n10 + n11 + n12
+        + n13 + n14 + n15 + n16 + n17 + n18 + n19 + n20 + n21
+    )
 
 
 # FIX_BATCH3 task 1: model special tokens (e.g. "<bos>") leaking into the
@@ -1295,13 +1347,31 @@ def fix_parallel_symbol(text):
 # (page 130: ~30 such lines -- A, B, C, 2, 1, x, y, 40⁰, (i), (ii)). A
 # SINGLE such line is ambiguous on its own (a real line of content could
 # legitimately BE just "x" or "(i)" -- e.g. "∴ x = 5" or a sub-part
-# heading), but a RUN of 3+ CONSECUTIVE ones is a strong, safe signal that
-# a whole cluster of figure labels leaked in -- removed outright. A run of
-# only 1-2 is left alone and merely flagged (figure_labels_suspect, see
+# heading), but a RUN of 3+ ones is a strong, safe signal that a whole
+# cluster of figure labels leaked in -- removed outright. A run of only 1-2
+# is left alone and merely flagged (figure_labels_suspect, see
 # build_qc_note) for a human to check against the page image.
+# FIX_BATCH14 task 3: the original version required the label lines to be
+# LITERALLY consecutive (no line in between at all), which missed page
+# 137's real labels (P, C, B, Q, A, R, D) -- each one was on its OWN line
+# separated by a BLANK line from the next, so no run of 3 ever formed.
+# find_figure_label_runs() now treats a blank line as transparent: it
+# never breaks an in-progress run, but it also never counts toward the
+# run's length on its own -- only actual label lines do. A removed run's
+# span (see strip_figure_labels) still includes those interior blanks (so
+# the whole cluster disappears together), collapsed down to exactly ONE
+# blank line in the output rather than deleted outright, so two unrelated
+# paragraphs on either side of the figure don't get mashed into one.
 _FIGURE_LABEL_LINE_RE = re.compile(
     r"^(?:[A-Z]{1,2}|[0-9০-৯]{1,3}[°⁰]?|[xy]|\([ivxIVX]{1,4}\))$"
 )
+# FIX_BATCH14 task 4: the subset of the above that is a NUMBER (optionally
+# with a degree sign, e.g. "30°", "40⁰", "120") -- the one label shape
+# whose loss can make a question unanswerable (the question text refers to
+# "the angle shown", answerable only from that number). Tracked separately
+# so a removed run's lost values can be called out BY VALUE, not just
+# counted.
+_FIGURE_VALUE_LINE_RE = re.compile(r"^[0-9০-৯]{1,3}[°⁰]?$")
 
 
 def _is_figure_label_line(line):
@@ -1310,37 +1380,76 @@ def _is_figure_label_line(line):
 
 
 def find_figure_label_runs(text):
-    """Returns (remove_line_nums, suspect_line_nums) -- sorted 1-based line
-    numbers that are part of a run of consecutive figure-label-like lines
-    (_is_figure_label_line): a run of length >=3 contributes to
-    remove_line_nums, a run of length 1-2 to suspect_line_nums."""
+    """Returns (remove_spans, suspect_line_nums).
+      - remove_spans: list of (start_line, end_line) 1-based INCLUSIVE
+        ranges, one per cluster of >=3 figure-label-like lines
+        (_is_figure_label_line) where every GAP between consecutive label
+        lines in the cluster is blank-only -- the span runs from the
+        cluster's first label line to its last (interior blanks included,
+        but never reaching past the outermost label lines into ordinary
+        surrounding blank/paragraph spacing).
+      - suspect_line_nums: flat list of 1-based line numbers of label
+        lines belonging to a cluster of only 1-2 (never removed, flag only)."""
     lines = text.split("\n")
-    remove_nums, suspect_nums = [], []
-    i, n = 0, len(lines)
+    n = len(lines)
+    remove_spans, suspect_nums = [], []
+    i = 0
     while i < n:
         if not _is_figure_label_line(lines[i]):
             i += 1
             continue
-        start = i
-        while i < n and _is_figure_label_line(lines[i]):
-            i += 1
-        run_nums = list(range(start + 1, i + 1))  # 1-based, inclusive
-        (remove_nums if len(run_nums) >= 3 else suspect_nums).extend(run_nums)
-    return remove_nums, suspect_nums
+        label_idxs = [i]
+        j = i + 1
+        while j < n:
+            if _is_figure_label_line(lines[j]):
+                label_idxs.append(j)
+                j += 1
+            elif lines[j].strip() == "":
+                j += 1  # blank -- keeps the run open, doesn't extend/count it
+            else:
+                break
+        if len(label_idxs) >= 3:
+            remove_spans.append((label_idxs[0] + 1, label_idxs[-1] + 1))
+        else:
+            suspect_nums.extend(p + 1 for p in label_idxs)
+        i = label_idxs[-1] + 1
+    return remove_spans, suspect_nums
 
 
 def strip_figure_labels(text):
-    """Returns (text, removed_count) -- deletes every line belonging to a
-    run of >=3 consecutive figure-label-like lines (find_figure_label_runs);
-    a shorter run (1-2 lines) is left untouched and only flagged
-    separately, never guessed at here."""
-    remove_nums, _ = find_figure_label_runs(text)
-    if not remove_nums:
-        return text, 0
-    remove_set = set(remove_nums)
+    """Returns (text, removed_count, lost_values).
+      - removed_count: number of actual LABEL lines removed (blank lines
+        collapsed in the same spans don't count).
+      - lost_values: comma-joined string of any number-shaped label lines
+        (_FIGURE_VALUE_LINE_RE, e.g. "30°", "120") that were part of a
+        removed run (FIX_BATCH14 task 4) -- empty string if none. Never
+        reconstructed or guessed at -- flag only, for a human to add the
+        real figure context back.
+    Each remove_span (see find_figure_label_runs) -- the run's full line
+    range, including any interior blank lines -- is collapsed down to a
+    SINGLE blank line (keeping one blank line as a paragraph separator)
+    rather than deleted outright. A shorter run (1-2 label lines) is left
+    completely untouched (only flagged, see find_figure_labels_suspect_lines)."""
+    remove_spans, _ = find_figure_label_runs(text)
+    if not remove_spans:
+        return text, 0, ""
     lines = text.split("\n")
-    kept = [line for i, line in enumerate(lines, start=1) if i not in remove_set]
-    return "\n".join(kept), len(remove_nums)
+    out = []
+    cursor = 0
+    removed_label_count = 0
+    lost_values = []
+    for start, end in remove_spans:
+        start0, end0 = start - 1, end - 1
+        out.extend(lines[cursor:start0])
+        span_lines = lines[start0:end0 + 1]
+        removed_label_count += sum(1 for ln in span_lines if _is_figure_label_line(ln))
+        lost_values.extend(
+            ln.strip() for ln in span_lines if _FIGURE_VALUE_LINE_RE.match(ln.strip())
+        )
+        out.append("")
+        cursor = end0 + 1
+    out.extend(lines[cursor:])
+    return "\n".join(out), removed_label_count, ", ".join(lost_values)
 
 
 def find_figure_labels_suspect_lines(text):
@@ -1444,9 +1553,11 @@ def post_process(text):
     Returns (processed_text, counts) where counts is a dict with keys
     typo_fixes, token_leak, overline, devanagari_leak, margin_digit,
     script_leak, greek_subscript, log_fixes, sqrt_parens, parallel_fixes,
-    figure_labels_removed (any may be 0). FIX_BATCH13 task 3 added the last
-    two (plus MARGIN_YEAR_TOKENS' 2021/2022 entries, inside
-    strip_margin_year itself)."""
+    figure_labels_removed, figure_values_lost, margin_year_tail (any may
+    be 0/empty). FIX_BATCH13 task 3 added parallel_fixes/
+    figure_labels_removed (plus MARGIN_YEAR_TOKENS' 2021/2022 entries,
+    inside strip_margin_year itself); FIX_BATCH14 tasks 4/5 added
+    figure_values_lost and margin_year_tail."""
     text = strip_margin_year(text)
     text, margin_digit_count = strip_margin_digit(text)
     text, overline_count = latex_to_plain(text)
@@ -1456,7 +1567,12 @@ def post_process(text):
     text, log_fixes_count = fix_log_misnotation(text)
     text, sqrt_parens_count = fix_sqrt_parens(text)
     text, parallel_count = fix_parallel_symbol(text)
-    text, figure_labels_removed_count = strip_figure_labels(text)
+    text, figure_labels_removed_count, figure_values_lost = strip_figure_labels(text)
+    # FIX_BATCH14 task 5: runs AFTER figure-label stripping so that if a
+    # label run sat right before the margin year, the year is still
+    # correctly seen as the page's last non-empty line once that run has
+    # already collapsed.
+    text, margin_year_tail = strip_margin_year_tail(text)
     devanagari_count = count_devanagari(text)
     script_leak_count = count_script_leak(text)
     return text, {
@@ -1471,6 +1587,8 @@ def post_process(text):
         "sqrt_parens": sqrt_parens_count,
         "parallel_fixes": parallel_count,
         "figure_labels_removed": figure_labels_removed_count,
+        "figure_values_lost": figure_values_lost,
+        "margin_year_tail": margin_year_tail,
     }
 
 
@@ -1686,6 +1804,39 @@ def strip_margin_year(text):
         line = _MARGIN_YEAR_TRAILING_RE.sub("", line)
         out_lines.append(line)
     return "\n".join(out_lines)
+
+
+# FIX_BATCH14 task 5: strip_margin_year() above only catches a KNOWN year
+# (MARGIN_YEAR_TOKENS -- the real printing years, 2021-2026). Page 137's
+# margin year got misread as "২০২৯" (a year that was never actually
+# printed in any of these books), which the fixed token list can't name in
+# advance. Generalized rule: if the page's LAST non-empty line is exactly
+# 4 digits (Bangla or Latin) starting with ২০/20, it's almost certainly
+# that same rotated-margin-year artifact landing at the very end of the
+# page (same position every other margin-year instance has been found in)
+# -- stripped, regardless of which specific 4 digits it misread as.
+# Deliberately scoped to ONLY the page's last non-empty line (never a
+# middle line) -- a real 4-digit number used inside a word problem (a
+# sum, a count, a different kind of year mentioned in the text) is never
+# touched, since those can appear anywhere, not just as the final line.
+_FOUR_DIGIT_YEAR_TAIL_RE = re.compile(r"^(?:২০[০-৯]{2}|20[0-9]{2})$")
+
+
+def strip_margin_year_tail(text):
+    """Returns (text, year_or_None) -- see module note above."""
+    lines = text.split("\n")
+    last_idx = None
+    for i in range(len(lines) - 1, -1, -1):
+        if lines[i].strip() != "":
+            last_idx = i
+            break
+    if last_idx is None:
+        return text, None
+    candidate = lines[last_idx].strip()
+    if not _FOUR_DIGIT_YEAR_TAIL_RE.match(candidate):
+        return text, None
+    del lines[last_idx]
+    return "\n".join(lines), candidate
 
 
 # FIX_BATCH5 task 2 (bullet 2): a content line ending in a tab followed by
