@@ -56,7 +56,7 @@ Batch 17: 20 Gemini calls (10 pages × primary+secondary, no escalation needed).
 
 `git status` checked first: no `.env`/API keys/`venv` in the diff (only `full_gemini_ocr.py`, `RUN_LOG.csv`, `digit_disagreements.csv`, this file, and this batch's new `backend/data/ocr_gemini/class_9_General_math_bn/page_161..170.*` + `paper/check/class_9_General_math_bn/page_161..170.png` files).
 
-**Push result:** _(filled in after the push below)_
+**Push result:** committed as `3dca08b` ("Batch 17: OCR p161-170 + FIX_BATCH16 (angle slash, heading digits, MCQ order, \Delta)") and pushed to `origin/main` successfully (`d06ae6f..3dca08b`) -- this push also carried up an earlier unpushed commit (`ac3f3dd`, the Batch 16 human-review commit that produced FIX_BATCH16.md itself, made by a separate session, not this one).
 
 ---
 
