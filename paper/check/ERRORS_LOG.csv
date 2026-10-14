@@ -212,3 +212,20 @@ pilot,2026-10-06,class_9_General_math_en,en,383,omission,margin_year,(missing),2
 14,2026-10-14,class_9_General_math_bn,bn,139,spelling,bangla_word,কিভাবে?,কীভাবে?,9,
 14,2026-10-14,class_9_General_math_bn,bn,139,omission,figure_data,(MCQ 3-4 figure values lost),"[চিত্র: ∠BAE = 120°, ∠ECD = 150° …]",,MCQ 3-4 unanswerable without figure angles; added bracketed figure note
 14,2026-10-14,class_9_General_math_bn,bn,140,ok,,,,,
+15,2026-10-14,class_9_General_math_bn,bn,141,ok,,,,,chapter 7 opening
+15,2026-10-14,class_9_General_math_bn,bn,142,spelling,bangla_word,লক্ষনীয়,লক্ষণীয়,22,
+15,2026-10-14,class_9_General_math_bn,bn,142,spelling,bangla_word,ফার্মা-১৮,ফর্মা-১৮,27,footer
+15,2026-10-14,class_9_General_math_bn,bn,143,format,stray_token,ও অনেক সময়,অনেক সময়,3,stray ও at paragraph start (figure-label residue)
+15,2026-10-14,class_9_General_math_bn,bn,144,omission,page_number,(missing),১৩৯,1,header page number dropped
+15,2026-10-14,class_9_General_math_bn,bn,144,spelling,bangla_word,[সমকোন],[সমকোণ],12,
+15,2026-10-14,class_9_General_math_bn,bn,145,digit,page_number,১৮০,১৪০,1,৪->৮ (flag fired)
+15,2026-10-14,class_9_General_math_bn,bn,145,spelling,bangla_word,দ্বিখন্ডক,দ্বিখণ্ডক,24,ন্ড vs ণ্ড
+15,2026-10-14,class_9_General_math_bn,bn,146,spelling,bangla_word,দ্বিখন্ডক (x2),দ্বিখণ্ডক,18,
+15,2026-10-14,class_9_General_math_bn,bn,146,spelling,word_substitution,নির্দিষ্ট ত্রিভুজ,উদ্দিষ্ট ত্রিভুজ,23,synonym-like substitution
+15,2026-10-14,class_9_General_math_bn,bn,147,digit,page_number,১৮২,১৪২,1,৪->৮; primary reading not flagged
+15,2026-10-14,class_9_General_math_bn,bn,147,format,ascii_figure,~30 lines of ASCII-art diagrams,[চিত্র …] note,21,NEW: model DRAWS the figure as ASCII art
+15,2026-10-14,class_9_General_math_bn,bn,148,fallback,layout_interleave,two columns + figure labels interleaved; \perp \angle ^\circ; 1/4p,manual,all,hand-rewritten (exercise 7.1); page number ১৪৩ was missing
+15,2026-10-14,class_9_General_math_bn,bn,149,digit,page_number,১৪৮,১৪৪,1,৪->৮ (flag fired)
+15,2026-10-14,class_9_General_math_bn,bn,149,spelling,bangla_word,অনেক ক্ষেত্রে,অনেক ক্ষেত্রেই,19,
+15,2026-10-14,class_9_General_math_bn,bn,149,spelling,script_leak,নিমne,নিম্নে,21,NEW: Latin letters inside a Bangla word
+15,2026-10-14,class_9_General_math_bn,bn,150,fallback,ascii_figure,ASCII-art figures mixed with text; ১৮৫; সংহিত; কোনটি; **bold**,manual,all,"hand-rewritten: page no ১৪৫ (৪->৮, not flagged), সংহিত->সন্নিহিত, কোনটি->কোণটি (meaning change), markdown ** leak"

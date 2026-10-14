@@ -106,3 +106,12 @@ class_9_General_math_bn/page_136.txt
 class_9_General_math_bn/page_137.txt
 class_9_General_math_bn/page_138.txt
 class_9_General_math_bn/page_139.txt
+class_9_General_math_bn/page_142.txt
+class_9_General_math_bn/page_143.txt
+class_9_General_math_bn/page_144.txt
+class_9_General_math_bn/page_145.txt
+class_9_General_math_bn/page_146.txt
+class_9_General_math_bn/page_147.txt
+class_9_General_math_bn/page_148.txt
+class_9_General_math_bn/page_149.txt
+class_9_General_math_bn/page_150.txt
