@@ -197,3 +197,18 @@ pilot,2026-10-06,class_9_General_math_en,en,383,omission,margin_year,(missing),2
 13,2026-10-14,class_9_General_math_bn,bn,130,format,figure_labels,"~30 label lines (A,B,C,D,1,2,3,x,y,E,40⁰,(i),(ii))",(removed),,caused the stacked_fraction flags
 13,2026-10-14,class_9_General_math_bn,bn,130,format,margin_year,২০২১,(removed),68,rotated margin year
 13,2026-10-14,class_9_General_math_bn,bn,130,format,notation,BA || CE,BA ∥ CE,32,
+14,2026-10-14,class_9_General_math_bn,bn,131,spelling,word_substitution,বিশেষ নির্বাচন,বিশেষ নির্বচন,32,"rare term নির্বচন (enunciation) normalised to common নির্বাচন (election); same on p133, p134"
+14,2026-10-14,class_9_General_math_bn,bn,132,ok,,,,,
+14,2026-10-14,class_9_General_math_bn,bn,133,format,heading,উপপাদ্য ১১। / উপপাদ্য ১২।,উপপাদ্য ১১. / উপপাদ্য ১২.,"10,16",দাঁড়ি instead of period
+14,2026-10-14,class_9_General_math_bn,bn,133,spelling,word_substitution,বিশেষ নির্বাচন,বিশেষ নির্বচন,19,
+14,2026-10-14,class_9_General_math_bn,bn,134,spelling,word_substitution,বিশেষ নির্বাচন,বিশেষ নির্বচন,15,
+14,2026-10-14,class_9_General_math_bn,bn,135,spelling,bangla_word,উপপাদ ১৫.,উপপাদ্য ১৫.,3,Pythagoras theorem heading — breaks search for উপপাদ্য ১৫
+14,2026-10-14,class_9_General_math_bn,bn,136,math,symbol_meaning,∠ADC = ACD,∠ADC = ∠ACD,6,angle sign dropped (prompt now lists ∠ — still happens)
+14,2026-10-14,class_9_General_math_bn,bn,136,format,figure_labels,P (lone label),(removed),23,"1-line run, below auto-strip threshold"
+14,2026-10-14,class_9_General_math_bn,bn,137,format,figure_labels,P C B Q A R D / Q P 30° 40° R S (blank-separated),(removed),,labels separated by blank lines evade the 3-consecutive-line rule
+14,2026-10-14,class_9_General_math_bn,bn,137,format,margin_year,২০২৯,(removed),,misread rotated margin year (not in token list)
+14,2026-10-14,class_9_General_math_bn,bn,137,omission,figure_data,(MCQ 2 figure values lost),"[চিত্র: ∠PQR = 30°, ∠PRQ = 40° …]",,exercise 6.3 Q2 unanswerable without the figure angles; added bracketed figure note
+14,2026-10-14,class_9_General_math_bn,bn,138,spelling,verb_form,প্রমাণ কর যে (x12),প্রমাণ করো যে,,exercise 6.3; book uses করো here (p130 কাজ box really says কর)
+14,2026-10-14,class_9_General_math_bn,bn,139,spelling,bangla_word,কিভাবে?,কীভাবে?,9,
+14,2026-10-14,class_9_General_math_bn,bn,139,omission,figure_data,(MCQ 3-4 figure values lost),"[চিত্র: ∠BAE = 120°, ∠ECD = 150° …]",,MCQ 3-4 unanswerable without figure angles; added bracketed figure note
+14,2026-10-14,class_9_General_math_bn,bn,140,ok,,,,,

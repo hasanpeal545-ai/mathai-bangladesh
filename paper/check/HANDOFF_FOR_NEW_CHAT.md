@@ -4,9 +4,9 @@
 
 ## অবস্থা
 - arXiv v1 = শুধু class 9-10 এর ৪টা বই (General bn/en, Higher bn/en)। class 6-8 → v2।
-- class_9_General_math_bn: পৃষ্ঠা 1-130 OCR + Claude (chat) দ্বারা প্রতি পৃষ্ঠা ছবির সাথে মিলিয়ে চেক ও ঠিক করা শেষ (batch 1-13)। বইয়ে মোট ৩৬২ পৃষ্ঠা।
-- পরের ধাপ: Peal Claude Code (VS Code) এ tasks/FIX_BATCH13.md চালাবে → batch 14 = পৃষ্ঠা 131-140 → "Batch ready" → Claude (chat) চেক করবে।
-- খরচ: ~$0.5271 / $7.00 (budget stop $7)।
+- class_9_General_math_bn: পৃষ্ঠা 1-140 OCR + Claude (chat) দ্বারা প্রতি পৃষ্ঠা ছবির সাথে মিলিয়ে চেক ও ঠিক করা শেষ (batch 1-14)। বইয়ে মোট ৩৬২ পৃষ্ঠা।
+- পরের ধাপ: Peal Claude Code (VS Code) এ tasks/FIX_BATCH14.md চালাবে → batch 15 = পৃষ্ঠা 141-150 → "Batch ready" → Claude (chat) চেক করবে।
+- খরচ: ~$0.5565 / $7.00 (budget stop $7)।
 - FIX_BATCH12 এর ফল: split page escalation p117/119/120 তিনটাই উদ্ধার করেছে (standalone test)। batch 13 এ কোনো RECITATION হয়নি।
 - FIX_BATCH13 এ নতুন: _DUTI_RE word-boundary bug (বিন্দুটি→বিন্দুইটি) ঠিক, prompt থেকে "x R̸ y" উদাহরণ সরানো (≠ কে R̸ বানাচ্ছিল), prompt এ ∠ ∥ যোগ, margin year ২০২১/২০২২, figure label লাইন সরানো, || → ∥। batch 14 এ দেখতে হবে এগুলো কাজ করল কিনা।
 
@@ -16,14 +16,14 @@
 3. পুরো খারাপ/RECITATION/Tesseract পৃষ্ঠা → হাতে পুরো লেখো, প্রথম লাইন: `[MANUAL: transcribed by Claude (chat) from page image — ...]`; আসলটা .tesseract.txt/.flashlite.txt হিসেবে রাখো। কোনো OCR ফাইল কখনো delete না।
 4. ঠিক করা পৃষ্ঠা check/MANUAL_PAGES.txt এ যোগ (format: class_9_General_math_bn/page_N.txt)।
 5. লগ: check/ERRORS_LOG.csv (batch,date,book,language,page,status,error_type,gemini_text,correct_text,line,note), check/PAGES_CHECKED.csv।
-6. Human audit: random.seed(20261008+batch) দিয়ে ২টা পৃষ্ঠা + হাতে rewrite করা exercise পৃষ্ঠা → check/HUMAN_AUDIT.csv (utf-8-sig), ছবি check/audit_images/ এ। এখন পর্যন্ত ২৮টা পৃষ্ঠা (batch 13: p127, p129)। Peal "audit done" বললে HUMAN_AUDIT.csv পড়ে ভুল ঠিক করো ও residual error rate হিসাব করো।
-7. নতুন ধরনের ভুল → results/OCR_FINDINGS_FOR_PAPER.md (এখন item 1-22)।
+6. Human audit: random.seed(20261008+batch) দিয়ে ২টা পৃষ্ঠা + হাতে rewrite করা exercise পৃষ্ঠা → check/HUMAN_AUDIT.csv (utf-8-sig), ছবি check/audit_images/ এ। এখন পর্যন্ত ৩২টা পৃষ্ঠা (batch 13: p127, p129; batch 14: p135, p136 random + p137, p139 figure note)। Peal "audit done" বললে HUMAN_AUDIT.csv পড়ে ভুল ঠিক করো ও residual error rate হিসাব করো।
+7. নতুন ধরনের ভুল → results/OCR_FINDINGS_FOR_PAPER.md (এখন item 1-25)।
 8. পরের batch এর জন্য tasks/FIX_BATCH<N>.md লেখো (বাংলায়; কাজ ১..n; শেষ কাজ = পরের ১০ পৃষ্ঠা OCR; শেষে "Batch ready" লিখে থামো)।
 9. প্রতিটা FIX_BATCH ফাইলের শেষ কাজ = commit + `git push origin main` (Claude Code করবে, Windows এ GitHub login আছে)। Claude (chat) এর device shell থেকে push হয় না (GitHub login নেই) — chat নিজে commit করলে Peal কে শুধু `git push` চালাতে বলো।
 10. Peal কে বাংলায় রিপোর্ট (পৃষ্ঠাভিত্তিক টেবিল) + এক লাইনের prompt দাও।
 
 ## Notation convention
-সমান্তরাল = ∥ (U+2225, || না); ত্রিভুজ = Δ; কোণ = ∠ (বাদ পড়লে যোগ করো); চিত্রের লেবেল (A, B, 1, x, 40⁰ …) টেক্সটে রাখা হয় না; recurring dot = U+0307 combining dot (scripts/manual_dotfix.py: digit এর পরে ' = U+0307); superscript Unicode (scripts/sup.py), না হলে ^(…); ভগ্নাংশ a/b, বন্ধনী সহ; মিশ্র "2 4/5"; log₁₀, logₐ; ∛, ⁿ√; বইয়ের শব্দ হুবহু (synonym বসানো যাবে না)।
+সমান্তরাল = ∥ (U+2225, || না); ত্রিভুজ = Δ; কোণ = ∠ (বাদ পড়লে যোগ করো); চিত্রের লেবেল (A, B, 1, x, 40⁰ …) টেক্সটে রাখা হয় না, কিন্তু প্রশ্নের উত্তরের জন্য চিত্রের মান লাগলে (কোণ, দৈর্ঘ্য) একটা লাইন যোগ করো: `[চিত্র (Claude দ্বারা বর্ণিত): …]`; বিশেষ/সাধারণ নির্বচন (নির্বাচন না); recurring dot = U+0307 combining dot (scripts/manual_dotfix.py: digit এর পরে ' = U+0307); superscript Unicode (scripts/sup.py), না হলে ^(…); ভগ্নাংশ a/b, বন্ধনী সহ; মিশ্র "2 4/5"; log₁₀, logₐ; ∛, ⁿ√; বইয়ের শব্দ হুবহু (synonym বসানো যাবে না)।
 
 ## Hand-written (full) পৃষ্ঠা এখন পর্যন্ত
 p9,17,18,20,23,24,75,85,86,91,92,98,101,102,117,119,120; p30 = Peal এর ground truth। (batch 13 এ পুরো হাতে লেখা পৃষ্ঠা নেই)

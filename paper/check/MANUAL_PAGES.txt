@@ -98,3 +98,11 @@ class_9_General_math_bn/page_127.txt
 class_9_General_math_bn/page_128.txt
 class_9_General_math_bn/page_129.txt
 class_9_General_math_bn/page_130.txt
+class_9_General_math_bn/page_131.txt
+class_9_General_math_bn/page_133.txt
+class_9_General_math_bn/page_134.txt
+class_9_General_math_bn/page_135.txt
+class_9_General_math_bn/page_136.txt
+class_9_General_math_bn/page_137.txt
+class_9_General_math_bn/page_138.txt
+class_9_General_math_bn/page_139.txt
