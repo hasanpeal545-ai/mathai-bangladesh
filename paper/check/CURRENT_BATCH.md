@@ -52,3 +52,9 @@ Batch 18: 20 Gemini calls (10 pages × primary+secondary, no escalation needed).
 **Cumulative gemini-3.5-flash-lite spend (Step 4 total so far): $0.6868** (596,301 in / 203,157 out tokens) of the $7.00 stop.
 
 ## Task 6 — commit + push
+
+`git status` checked first (only `full_gemini_ocr.py`, `RUN_LOG.csv`, `digit_disagreements.csv`, this file, and this batch's new `page_171..180.*`/`.png` files — no `.env`/API keys/`venv`). Committed as `28ce4d6` + a small follow-up `1b67099` (missed `digit_disagreements.csv` in the first commit) and pushed to `origin/main` successfully (`30a527f..1b67099`).
+
+---
+
+**Batch ready: class_9_General_math_bn pages 171-180.**
