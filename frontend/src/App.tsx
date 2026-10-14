@@ -452,7 +452,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 px-4 py-8 sm:py-12">
+    <div className="min-h-screen bg-bd-green px-4 py-8 sm:py-12">
       <div className="mx-auto w-full max-w-2xl">
         {/* Header */}
         <header className="relative mb-8 text-center">
@@ -467,8 +467,9 @@ export default function App() {
               <option value="en">English</option>
             </select>
           </div>
-          <h1 className="text-3xl font-bold text-emerald-700 sm:text-4xl">MathAI Bangladesh</h1>
-          <p className="mt-1 text-slate-500">{t.subtitle}</p>
+          <div className="mx-auto mb-3 h-14 w-14 rounded-full bg-bd-red shadow-lg" aria-hidden="true" />
+          <h1 className="text-3xl font-bold text-white sm:text-4xl">MathAI Bangladesh</h1>
+          <p className="mt-1 text-emerald-100">{t.subtitle}</p>
         </header>
 
         {/* Input Section */}
@@ -482,7 +483,7 @@ export default function App() {
               type="button"
               onClick={() => setMode("direct")}
               className={`flex-1 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                mode === "direct" ? "bg-emerald-600 text-white shadow" : "text-slate-600"
+                mode === "direct" ? "bg-bd-red text-white shadow" : "text-slate-600"
               }`}
             >
               {t.modeDirect}
@@ -491,7 +492,7 @@ export default function App() {
               type="button"
               onClick={() => setMode("reference")}
               className={`flex-1 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                mode === "reference" ? "bg-emerald-600 text-white shadow" : "text-slate-600"
+                mode === "reference" ? "bg-bd-red text-white shadow" : "text-slate-600"
               }`}
             >
               {t.modeReference}
@@ -572,7 +573,7 @@ export default function App() {
                       setSubProblem("");
                     }}
                     className={`flex-1 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                      contentType === "example" ? "bg-emerald-600 text-white shadow" : "text-slate-600"
+                      contentType === "example" ? "bg-bd-red text-white shadow" : "text-slate-600"
                     }`}
                   >
                     {t.contentTypeExample}
@@ -584,7 +585,7 @@ export default function App() {
                       setExampleNumber("");
                     }}
                     className={`flex-1 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                      contentType === "exercise" ? "bg-emerald-600 text-white shadow" : "text-slate-600"
+                      contentType === "exercise" ? "bg-bd-red text-white shadow" : "text-slate-600"
                     }`}
                   >
                     {t.contentTypeExercise}
@@ -642,7 +643,7 @@ export default function App() {
           <button
             type="submit"
             disabled={loading}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 font-medium text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-emerald-300"
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-bd-red px-4 py-3 font-medium text-white transition-colors hover:bg-bd-red/85 disabled:cursor-not-allowed disabled:bg-bd-red/40"
           >
             {loading && (
               <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
