@@ -212,3 +212,8 @@ Not yet implemented. Planned (from spec, to be created via Alembic migrations wh
 
 ## Performance Notes
 - `/api/chat` latency is currently dominated by sequential LLM calls: Groq + Gemini always, plus a third Groq call (tiebreak model) whenever the first two disagree. No caching, no concurrency yet. Fine for manual testing; will need attention (parallel calls, Redis response caching per the original architecture) before real user load.
+
+## Git rule (Peal, 2026-10-14) — commit + push regularly
+- Every finished task file (tasks/FIX_BATCH*.md) and every finished piece of work ends with a commit and `git push origin main`, before writing "Batch ready".
+- Author is Peal Hasan (use the repo/global git config as is). One clear message per commit (what changed + which batch/pages).
+- Never commit `.env`, API keys, `venv/`, or `paper/check/class_*/` (per-batch images; already in .gitignore). Check `git status` before committing.

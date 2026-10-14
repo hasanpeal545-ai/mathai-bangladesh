@@ -22,3 +22,6 @@ PROMPT এ আছে: "Keep negation slashes on relation symbols (e.g. x R̸ y, 
 
 ## কাজ ৪ — batch 14
 FULL_OCR.md Step 4: class_9_General_math_bn পৃষ্ঠা 131-140। CURRENT_BATCH.md আগের মতো লেখো (কাজ ১-৩ এর ফল + পৃষ্ঠার টেবিল + খরচ)। RECITATION হলে split ধাপ live কাজ করল কিনা আলাদা করে লেখো। শেষে "Batch ready" লিখে থামো।
+
+## কাজ ৫ — commit + push (এখন থেকে প্রতি batch এ)
+"Batch ready" লেখার আগে: `git status` দেখো (.env/key/venv যেন না থাকে), তারপর পরিবর্তিত ফাইল add করে commit করো — message: "Batch 14: OCR p131-140 + FIX_BATCH13 (DUTI fix, prompt symbols, figure labels)" — এবং `git push origin main`। push এর ফল CURRENT_BATCH.md এ এক লাইনে লেখো।

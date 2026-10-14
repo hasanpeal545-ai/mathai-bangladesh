@@ -19,7 +19,8 @@
 6. Human audit: random.seed(20261008+batch) দিয়ে ২টা পৃষ্ঠা + হাতে rewrite করা exercise পৃষ্ঠা → check/HUMAN_AUDIT.csv (utf-8-sig), ছবি check/audit_images/ এ। এখন পর্যন্ত ২৮টা পৃষ্ঠা (batch 13: p127, p129)। Peal "audit done" বললে HUMAN_AUDIT.csv পড়ে ভুল ঠিক করো ও residual error rate হিসাব করো।
 7. নতুন ধরনের ভুল → results/OCR_FINDINGS_FOR_PAPER.md (এখন item 1-22)।
 8. পরের batch এর জন্য tasks/FIX_BATCH<N>.md লেখো (বাংলায়; কাজ ১..n; শেষ কাজ = পরের ১০ পৃষ্ঠা OCR; শেষে "Batch ready" লিখে থামো)।
-9. Peal কে বাংলায় রিপোর্ট (পৃষ্ঠাভিত্তিক টেবিল) + এক লাইনের prompt দাও।
+9. প্রতিটা FIX_BATCH ফাইলের শেষ কাজ = commit + `git push origin main` (Claude Code করবে, Windows এ GitHub login আছে)। Claude (chat) এর device shell থেকে push হয় না (GitHub login নেই) — chat নিজে commit করলে Peal কে শুধু `git push` চালাতে বলো।
+10. Peal কে বাংলায় রিপোর্ট (পৃষ্ঠাভিত্তিক টেবিল) + এক লাইনের prompt দাও।
 
 ## Notation convention
 সমান্তরাল = ∥ (U+2225, || না); ত্রিভুজ = Δ; কোণ = ∠ (বাদ পড়লে যোগ করো); চিত্রের লেবেল (A, B, 1, x, 40⁰ …) টেক্সটে রাখা হয় না; recurring dot = U+0307 combining dot (scripts/manual_dotfix.py: digit এর পরে ' = U+0307); superscript Unicode (scripts/sup.py), না হলে ^(…); ভগ্নাংশ a/b, বন্ধনী সহ; মিশ্র "2 4/5"; log₁₀, logₐ; ∛, ⁿ√; বইয়ের শব্দ হুবহু (synonym বসানো যাবে না)।
