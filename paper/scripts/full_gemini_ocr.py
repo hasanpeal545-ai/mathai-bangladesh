@@ -598,6 +598,27 @@ _BANGLA_DIGITS = "০১২৩৪৫৬৭৮৯"
 _BANGLA_TO_LATIN_DIGITS = str.maketrans(_BANGLA_DIGITS, "0123456789")
 _LATIN_DIGIT_RUN_RE = re.compile(r"[0-9]+")
 _BANGLA_DIGIT_RUN_RE = re.compile(r"[০-৯]+")
+
+
+# FIX_BATCH18 task 1: each of 3 Bangla nukta letters has TWO valid codepoint
+# forms -- one precomposed single character, or a "base letter + nukta"
+# 2-codepoint sequence -- same glyph on screen, invisible in any diff or
+# editor, but a regex pattern typed in one form silently never matches text
+# written in the other. Confirmed live on a real page this batch: Gemini
+# wrote one of these letters as a single precomposed codepoint, while the
+# matching regex pattern typed into this source file was the decomposed
+# 2-codepoint form, so the rule never fired -- not visibly wrong, just a
+# silent no-op. All 3 letters happen to be on Unicode's own
+# composition-exclusion list, so unlike most characters, NFC normalization
+# *decomposes* them rather than composing them -- so running BOTH the text
+# being matched AND every pattern/replacement literal containing one of
+# these letters through the same NFC call always lands them in the same
+# (decomposed) form, and a real match can never silently fail this way
+# again. post_process() NFC-normalizes its input text as its very first
+# step (see below); this helper is for every module-load-time
+# pattern/replacement literal that needs the same treatment.
+def _nfc(s):
+    return unicodedata.normalize("NFC", s)
 # A chapter-opening title page's header is just "অধ্যায় N" (its CHAPTER
 # number, not a page number -- e.g. page 48: "অধ্যায় ৩" then a blank line,
 # no page number anywhere on the page). Strips that specific number out
@@ -624,7 +645,7 @@ _BANGLA_DIGIT_RUN_RE = re.compile(r"[০-৯]+")
 # character subject to the same renormalization risk. chr()-joining from
 # plain decimal ints is immune to both: nothing in this expression IS a
 # Unicode character until Python evaluates it at import time.
-_CHAPTER_WORD = "".join(chr(c) for c in (2437, 2471, 2509, 2479, 2494, 2527))
+_CHAPTER_WORD = _nfc("".join(chr(c) for c in (2437, 2471, 2509, 2479, 2494, 2527)))
 _CHAPTER_NUMBER_RE = re.compile(rf"({_CHAPTER_WORD}\s*)[০-৯]+")
 
 # FIX_BATCH7 fix (found while running batch 7, not a synthetic case): when
@@ -769,35 +790,43 @@ def detect_page_number_mismatch(text, book, pdf_page):
     return None
 
 
-# FIX_BATCH15 task 1: the ৪<->৮ digit is this batch's single most common
-# header-number misread (confirmed 4 times in ERRORS_LOG batch=15: p145
-# ১৮০->১৪০, p147 ১৮২->১৪২, p149 ১৪৮->১৪৪, p150 ১৮৫->১৪৫) -- narrow enough
-# (same digit COUNT, every differing position a 4/8 pair, nothing else
-# different) to auto-correct safely. Any other kind of mismatch is left
-# entirely to detect_page_number_mismatch's existing flag-only path.
-def _four_eight_swap_target(run, expected_bn):
-    """True if `run` and `expected_bn` are the same length and differ ONLY
-    at position(s) where one has ৪ and the other ৮ -- at least one such
-    differing position required (an exact match returns False; nothing to
-    fix). Any other kind of difference (extra/missing digit, a non-4/8
-    digit error) returns False."""
+# FIX_BATCH15 task 1 (widened by FIX_BATCH18 task 3): the ৪<->৮ digit is
+# this batch's single most common header-number misread (confirmed 4 times
+# in ERRORS_LOG batch=15: p145 ১৮০->১৪০, p147 ১৮২->১৪২, p149 ১৪৮->১৪৪, p150
+# ১৮৫->১৪৫) -- narrow enough (exactly one differing digit position, that
+# position a 4/8 pair, nothing else different) to auto-correct safely.
+# FIX_BATCH18 task 3: p175-177 batch 18 showed the exact same shape for a
+# DIFFERENT digit pair -- ৭<->৯ (১৯০/১৯১/১৯২ read for expected ১৭০/১৭১/১৭২,
+# one differing position each time). Both pairs share the same real-world
+# cause (visually similar digit glyphs), so both are listed in
+# _DIGIT_SWAP_PAIRS rather than writing a second near-duplicate function --
+# any OTHER digit pair, or more than one differing position in the same run,
+# is left entirely to detect_page_number_mismatch's existing flag-only path
+# (per the task's own test: ১৩৫ for expected ১২৮ differs at TWO positions
+# and must stay flag-only, even though each individual differing pair here
+# happens to look like a plausible misread).
+_DIGIT_SWAP_PAIRS = [{"৪", "৮"}, {"৭", "৯"}]
+
+
+def _digit_swap_target(run, expected_bn):
+    """True if `run` and `expected_bn` are the same length and differ at
+    EXACTLY ONE digit position, where that position's pair of digits is one
+    of _DIGIT_SWAP_PAIRS. Any other kind of difference (extra/missing digit,
+    more than one differing position, or a differing pair not in
+    _DIGIT_SWAP_PAIRS) returns False."""
     if len(run) != len(expected_bn):
         return False
-    swapped = False
-    for a, b in zip(run, expected_bn):
-        if a == b:
-            continue
-        if {a, b} == {"৪", "৮"}:
-            swapped = True
-        else:
-            return False
-    return swapped
+    diffs = [(a, b) for a, b in zip(run, expected_bn) if a != b]
+    if len(diffs) != 1:
+        return False
+    return set(diffs[0]) in _DIGIT_SWAP_PAIRS
 
 
 def fix_page_number_swap(text, book, pdf_page):
-    """FIX_BATCH15 task 1: auto-corrects a header's own printed page number
-    in place when the ONLY difference from the expected number is a ৪<->৮
-    digit swap (see _four_eight_swap_target). Reuses the same
+    """FIX_BATCH15 task 1 (widened by FIX_BATCH18 task 3): auto-corrects a
+    header's own printed page number in place when the ONLY difference from
+    the expected number is a single-digit swap within one of
+    _DIGIT_SWAP_PAIRS (see _digit_swap_target). Reuses the same
     _header_number_candidates() scan detect_page_number_mismatch uses, so
     every layout that function can flag (incl. the new chapter-opening
     trailing-number case) is also eligible to be fixed here. Replaces just
@@ -818,7 +847,7 @@ def fix_page_number_swap(text, book, pdf_page):
     if expected in [_bangla_digits_to_int(r) for _, r in bangla_runs]:
         return text, None  # already correct -- nothing to fix
     for idx, run in bangla_runs:
-        if _four_eight_swap_target(run, expected_bn):
+        if _digit_swap_target(run, expected_bn):
             lines = text.split("\n")
             lines[idx] = lines[idx].replace(run, expected_bn, 1)
             return "\n".join(lines), f"{run}->{expected_bn}"
@@ -990,12 +1019,17 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
     plus ascii_figure_suspect and latin_in_bangla_word (flag-only, computed
     directly from `text` same as figure_labels_suspect). FIX_BATCH16 added
     angle_slash_fixed/heading_digit_fixed/mcq_reordered (counts keys) plus
-    mcq_order_suspect (flag-only, same convention). Empty string if nothing
+    mcq_order_suspect (flag-only, same convention). FIX_BATCH18 added
+    duti_seen (counts key, flag-only -- see fix_known_bangla_typos) plus
+    zwj_in_bangla_word (flag-only, computed directly from `text` same as
+    latin_in_bangla_word). Empty string if nothing
     applies."""
     counts = counts or {}
     parts = []
     if counts.get("typo_fixes"):
         parts.append(f"typo_fixes: {counts['typo_fixes']}")
+    if counts.get("duti_seen"):
+        parts.append(f"duti_seen: {counts['duti_seen']}")
     if counts.get("token_leak"):
         parts.append(f"token_leak: {counts['token_leak']}")
     if counts.get("overline"):
@@ -1046,6 +1080,9 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
     latin_in_bangla = find_latin_in_bangla_words(text)
     if latin_in_bangla:
         parts.append(f"latin_in_bangla_word: {','.join(latin_in_bangla)}")
+    zwj_in_bangla = find_zwj_in_bangla_words(text)
+    if zwj_in_bangla:
+        parts.append(f"zwj_in_bangla_word: {','.join(zwj_in_bangla)}")
     leftover = find_latex_leftover(text)
     if leftover:
         parts.append(f"latex_left: {','.join(leftover)}")
@@ -1293,6 +1330,14 @@ _BIJOGANITIK_RE = re.compile(r"বীজগণিতিক")
 # FIX_BATCH5 task 1: the book always writes the full "দুইটি", never the
 # contracted "দুটি" -- a plain substring replace also fixes "দুটিকে" ->
 # "দুইটিকে" as a side effect, since "দুটি" is a literal prefix of "দুটিকে".
+# FIX_BATCH18 task 2 SUPERSEDES the auto-replace (not the pattern itself):
+# the book turns out to use BOTH "দুটি" and "দুইটি" in different places --
+# p178 batch 18 has a genuinely, correctly printed "দুটি" that this rule was
+# silently turning into the wrong "দুইটি". There's no deterministic way to
+# tell, from the OCR text alone, which spelling the page actually printed,
+# so fix_known_bangla_typos() now only COUNTS matches (duti_seen) instead of
+# replacing -- Claude (chat), reviewing the page image, decides per
+# occurrence.
 # FIX_BATCH13 task 1: that same substring-replace nature was a real bug --
 # with no word-boundary guard, the pattern also matched the "দুটি" hiding
 # INSIDE the unrelated, already-correct word "বিন্দুটি" ("বি"+"ন্দুটি"),
@@ -1346,7 +1391,7 @@ _F_PAREN_SPACE_RE = re.compile(r"\bf \(")
 # "া" inserted). "ফর্মী" for "ফর্মা" (noted back in batch 6 on page 54's
 # footer, "ফর্মী-৫৪" style printing-signature marker, but not yet added to
 # this function until now).
-_NIYAMABOLI_RE = re.compile(r"নিয়ামাবলি")
+_NIYAMABOLI_RE = re.compile(_nfc(r"নিয়ামাবলি"))
 _FORMI_RE = re.compile(r"ফর্মী")
 
 # FIX_BATCH10 task 2: three more recurring OCR mis-readings (ERRORS_LOG
@@ -1463,11 +1508,21 @@ _ANTOLIKHITO_RE = re.compile(r"(?<![ঀ-৿])অন্তলিখিত")
 # FIX_BATCH17 task 4: "লক্ষনীয়" (dental ন) for "লক্ষণীয়" (retroflex ণ,
 # "noteworthy") -- pages 142 and 162, same single-letter misreading both
 # times.
-_LOKKHONIYO_RE = re.compile(r"লক্ষনীয়")
+_LOKKHONIYO_RE = re.compile(_nfc(r"লক্ষনীয়"))
 
 
 def fix_known_bangla_typos(text):
-    """Returns (fixed_text, number_of_replacements_made)."""
+    """Returns (fixed_text, number_of_replacements_made, duti_seen).
+    FIX_BATCH18 task 2: _DUTI_RE no longer auto-replaces -- the book itself
+    genuinely prints BOTH "দুটি" and "দুইটি" in different places (p178 batch
+    18: a real, correctly-printed "দুটি" that this rule was turning into the
+    wrong "দুইটি"), so there is no single correct answer to apply
+    automatically. `duti_seen` is just a count of how many times the pattern
+    matched, for a human (Claude chat, reviewing the page image) to decide
+    per occurrence -- not included in the main replacement-count total,
+    since it no longer fixes anything.
+    FIX_BATCH18 task 4: n25 (_OXOMIYA_RA_RE) added -- a real fix, unlike the
+    other script_leak signatures (see that regex's own comment)."""
     text, n1 = _AABRIT_TYPO_RE.subn("আবৃত্ত", text)
     text, n2 = _AABRIT_WORD_RE.subn("আবৃত্ত", text)
     text, n3 = _ONABRIT_WORD_RE.subn("অনাবৃত্ত", text)
@@ -1479,14 +1534,14 @@ def fix_known_bangla_typos(text):
     text, n6a = _UDAAHARON_RE.subn("উদাহরণ", text)
     text, n6 = _UDAHARON_PERIOD_RE.subn(r"\1.", text)
     text, n7 = _BIJOGANITIK_RE.subn("বীজগাণিতিক", text)
-    text, n8 = _DUTI_RE.subn("দুইটি", text)
+    duti_seen = len(_DUTI_RE.findall(text))
     # FIX_BATCH14 task 2(b): must run BEFORE the period-fix below, same
     # ordering reason as _UDAAHARON_RE/_UDAHARON_PERIOD_RE.
     text, n19 = _UPOPADDO_MISSING_PHOLA_RE.subn("উপপাদ্য", text)
     text, n9 = _SUTRO_ANUSIDDHANTO_PERIOD_RE.subn(r"\1.", text)
     text, n10 = _QUESTION_NUMBER_PERIOD_RE.subn(r"\1.\2", text)
     text, n11 = _F_PAREN_SPACE_RE.subn("f(", text)
-    text, n12 = _NIYAMABOLI_RE.subn("নিয়মাবলি", text)
+    text, n12 = _NIYAMABOLI_RE.subn(_nfc("নিয়মাবলি"), text)
     text, n13 = _FORMI_RE.subn("ফর্মা", text)
     text, n14 = _LOGNER_RE.subn("লগের", text)
     text, n15 = _BOHUMPODI_RE.subn("বহুপদী", text)
@@ -1497,11 +1552,12 @@ def fix_known_bangla_typos(text):
     text, n21 = _SADHARAN_NIRBOCHON_RE.subn("সাধারণ নির্বচন", text)
     text, n22 = _VISARGA_COLON_RE.subn(r"\1:", text)
     text, n23 = _ANTOLIKHITO_RE.subn("অন্তর্লিখিত", text)
-    text, n24 = _LOKKHONIYO_RE.subn("লক্ষণীয়", text)
+    text, n24 = _LOKKHONIYO_RE.subn(_nfc("লক্ষণীয়"), text)
+    text, n25 = _OXOMIYA_RA_RE.subn("র", text)
     return text, (
-        n1 + n2 + n3 + n4 + n5 + n6a + n6 + n7 + n8 + n9 + n10 + n11 + n12
-        + n13 + n14 + n15 + n16 + n17 + n18 + n19 + n20 + n21 + n22 + n23 + n24
-    )
+        n1 + n2 + n3 + n4 + n5 + n6a + n6 + n7 + n9 + n10 + n11 + n12
+        + n13 + n14 + n15 + n16 + n17 + n18 + n19 + n20 + n21 + n22 + n23 + n24 + n25
+    ), duti_seen
 
 
 # FIX_BATCH16 task 3: this book always numbers these heading words in Bangla
@@ -2074,6 +2130,29 @@ def find_latin_in_bangla_words(text):
     return sorted(words)
 
 
+# FIX_BATCH18 task 4: a ZWJ (Zero Width Joiner, U+200D) glued inside an
+# otherwise-Bangla word is a second script-leak signature, distinct from an
+# actual foreign-script character landing in the word -- p175 batch 18's
+# "অন্তর্লিখিত" picked up a stray Malayalam "র্" + ZWJ cluster mid-word. The
+# Malayalam LETTERS in that cluster are already caught by count_script_leak
+# (its range is widened below to include Malayalam), but the ZWJ itself is
+# not IN any script's own codepoint block (it lives in Unicode's General
+# Punctuation/format-character block), so it needs its own check. Flag-only,
+# same reasoning as find_latin_in_bangla_words above -- no safe way to guess
+# the intended Bangla spelling.
+_ZWJ = "‍"
+
+
+def find_zwj_in_bangla_words(text):
+    """Returns the sorted, distinct list of whitespace-delimited tokens that
+    mix Bangla script with a ZWJ (empty if none)."""
+    words = set()
+    for token in text.split():
+        if _BANGLA_CHAR_RE.search(token) and _ZWJ in token:
+            words.add(token)
+    return sorted(words)
+
+
 # FIX_BATCH9 task 1: Gemini occasionally writes a styled "Mathematical
 # Alphanumeric Symbols" character (bold/italic/script/etc., U+1D400-
 # U+1D7FF) instead of a plain ASCII letter/digit -- page 83 batch 9: "a𝑞"
@@ -2111,23 +2190,40 @@ def count_devanagari(text):
     return len(_DEVANAGARI_RE.findall(text))
 
 
-# FIX_BATCH6 task 2 (extended by FIX_BATCH8 task 1): script-leak families,
-# flagged (never touched, same reasoning as devanagari_leak above -- no safe
-# way to guess the intended Bangla spelling) under a new "script_leak"
-# count, alongside the existing devanagari_leak: Cyrillic (U+0400-U+04FF --
-# page 60 batch 6: "উৎপাদке" for "উৎপাদকে", a Cyrillic "ке" glued into a
-# Bangla word), the two Assamese-only letters ৰ/ৱ (U+09F0/U+09F1 -- already
-# seen misused inside a Bangla word in batch 4: "সম্পৰ্কযুক্ত" for
-# "সম্পর্কযুক্ত", see ERRORS_LOG batch=4), and FIX_BATCH8's addition:
-# Gurmukhi/Gujarati/Odia/Tamil, U+0A00-U+0BFF in ONE combined range per the
-# task (page 76 batch 8: "বিশ্লেଷায়িত" for "বিশ্লেষায়িত", Odia letter ଷ
-# U+0B37 glued into a Bangla word -- Odia's own block U+0B00-U+0B7F is a
-# subset of this wider range, so it's covered without a separate entry).
-_SCRIPT_LEAK_RE = re.compile(r"[Ѐ-ӿৰৱ਀-௿]")
+# FIX_BATCH6 task 2 (extended by FIX_BATCH8 task 1 and FIX_BATCH18 task 4):
+# script-leak families, flagged (never touched, same reasoning as
+# devanagari_leak above -- no safe way to guess the intended Bangla
+# spelling) under a new "script_leak" count, alongside the existing
+# devanagari_leak: Cyrillic (U+0400-U+04FF -- page 60 batch 6: "উৎপাদке" for
+# "উৎপাদকে", a Cyrillic "ке" glued into a Bangla word), the Assamese-only
+# letter ৱ (U+09F1 -- ৰ/U+09F0 used to be flagged here too, but FIX_BATCH18
+# task 4 moved it to a real auto-fix instead, see _OXOMIYA_RA_RE below, so
+# it's deliberately left OUT of this char class now), and FIX_BATCH8's
+# addition, widened by FIX_BATCH18 task 4: Gurmukhi/Gujarati/Odia/Tamil/
+# Telugu/Kannada/Malayalam, U+0A00-U+0D7F in ONE combined range (page 76
+# batch 8: Odia letter glued into a Bangla word; p175 batch 18: Malayalam
+# "র্"+ZWJ glued into "অন্তর্লিখিত" -- U+0D00-U+0D7F is the Malayalam block
+# named in that task; Telugu U+0C00-U+0C7F and Kannada U+0C80-U+0CFF ride
+# along in the same combined span, same reasoning FIX_BATCH8 used for Tamil/
+# Odia riding along inside the original U+0A00-U+0BFF span). Written with
+# \uXXXX escapes (not literal glyphs) for the same reason _CHAPTER_WORD uses
+# chr()-joining elsewhere in this file -- these characters are never typed
+# directly into this source.
+_SCRIPT_LEAK_RE = re.compile(r"[Ѐ-ӿৱ਀-ൿ]")
 
 
 def count_script_leak(text):
     return len(_SCRIPT_LEAK_RE.findall(text))
+
+
+# FIX_BATCH18 task 4: unlike every other script_leak signature above, ৰ
+# (U+09F0, the Assamese/Oxomiya letter RA) is a genuinely SAFE, deterministic
+# fix -- this book's own script is standard Bangla, which has no occasion to
+# ever print ৰ, so any ৰ seen is certainly a misread of the visually similar
+# ordinary Bangla র (U+09B0) and can be corrected outright rather than merely
+# flagged. (ৱ, the other Assamese-only letter, stays flag-only above -- no
+# equally safe plain-Bangla substitute exists for it.)
+_OXOMIYA_RA_RE = re.compile(r"ৰ")
 
 
 # FIX_BATCH2 task 3: a page that talks about recurring decimals ("আবৃত্ত" /
@@ -2175,15 +2271,27 @@ def post_process(text, book=None, pdf_page=None):
     added trailing_labels_removed (a same-line figure label cut from the
     end of a content line, before the whole-line run-based removal below).
     Returns (processed_text, counts) where counts is a dict with keys
-    typo_fixes, token_leak, overline, devanagari_leak, margin_digit,
-    script_leak, greek_subscript, log_fixes, sqrt_parens, parallel_fixes,
-    angle_slash_fixed, heading_digit_fixed, mcq_reordered,
+    typo_fixes, duti_seen, token_leak, overline, devanagari_leak,
+    margin_digit, script_leak, greek_subscript, log_fixes, sqrt_parens,
+    parallel_fixes, angle_slash_fixed, heading_digit_fixed, mcq_reordered,
     figure_labels_removed, figure_values_lost, margin_year_tail,
     page_number_fixed, markdown_stripped, ascii_figure_removed,
     trailing_labels_removed (any may be 0/empty/None). FIX_BATCH13 task 3
     added parallel_fixes/figure_labels_removed (plus MARGIN_YEAR_TOKENS'
     2021/2022 entries, inside strip_margin_year itself); FIX_BATCH14 tasks
-    4/5 added figure_values_lost and margin_year_tail."""
+    4/5 added figure_values_lost and margin_year_tail. FIX_BATCH18 added:
+    task 1's NFC-normalize-first step (this function's very first line now,
+    fixing silent য়/ড়/ঢ় codepoint-mismatch no-ops in several existing
+    rules); task 2's duti_seen (counts key -- _DUTI_RE no longer
+    auto-replaces, see fix_known_bangla_typos); task 3's ৭<->৯ extension to
+    the existing ৪<->৮ page-number auto-fix (still surfaced as
+    page_number_fixed); and task 4's script_leak range widening
+    (Telugu/Kannada/Malayalam) plus the new ৰ->র auto-fix (folded into
+    typo_fixes) and zwj_in_bangla_word flag (see build_qc_note)."""
+    # FIX_BATCH18 task 1: NFC-normalize the raw input FIRST, before any other
+    # step -- see _nfc()'s own comment for why this matters (silent
+    # precomposed-vs-decomposed mismatches on য়/ড়/ঢ়).
+    text = _nfc(text)
     text = strip_margin_year(text)
     text, margin_digit_count = strip_margin_digit(text)
     # FIX_BATCH15 task 1: runs early, before anything else has a chance to
@@ -2197,7 +2305,7 @@ def post_process(text, book=None, pdf_page=None):
     text, overline_count = latex_to_plain(text)
     text, markdown_stripped_count = strip_markdown_bold(text)
     text, ascii_figure_removed_count = strip_ascii_figures(text)
-    text, typo_count = fix_known_bangla_typos(text)
+    text, typo_count, duti_seen = fix_known_bangla_typos(text)
     text, heading_digit_fixed_count = fix_heading_latin_digits(text)
     text, token_leak_count = strip_model_tokens(text)
     text, greek_subscript_count = fix_log_greek_subscript(text)
@@ -2223,6 +2331,7 @@ def post_process(text, book=None, pdf_page=None):
     script_leak_count = count_script_leak(text)
     return text, {
         "typo_fixes": typo_count,
+        "duti_seen": duti_seen,
         "token_leak": token_leak_count,
         "overline": overline_count,
         "devanagari_leak": devanagari_count,

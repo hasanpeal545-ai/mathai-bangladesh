@@ -1,0 +1,33 @@
+১৮২                                                                                   গণিত
+
+উদাহরণ ৮. প্রমাণ করো: $\frac{1}{2 - \sin^2\theta} + \frac{1}{2 + \tan^2\theta} = 1$
+
+সমাধান:
+বামপক্ষ $= \frac{1}{2 - \sin^2\theta} + \frac{1}{2 + \tan^2\theta}$
+
+$= \frac{1}{2 - \sin^2\theta} + \frac{1}{2 + \frac{\sin^2\theta}{\cos^2\theta}}$
+
+$= \frac{1}{2 - \sin^2\theta} + \frac{\cos^2\theta}{2\cos^2\theta + \sin^2\theta}$
+
+$= \frac{1}{2 - \sin^2\theta} + \frac{\cos^2\theta}{2(1 - \sin^2\theta) + \sin^2\theta}$
+
+$= \frac{1}{2 - \sin^2\theta} + \frac{\cos^2\theta}{2 - 2\sin^2\theta + \sin^2\theta}$
+
+$= \frac{1}{2 - \sin^2\theta} + \frac{1 - \sin^2\theta}{2 - \sin^2\theta}$
+
+$= \frac{2 - \sin^2\theta}{2 - \sin^2\theta}$
+
+$= 1 =$ ডানপক্ষ (প্রমাণিত)
+
+উদাহরণ ৯. প্রমাণ করো: $\frac{\tan A}{\sec A + 1} - \frac{\sec A - 1}{\tan A} = 0$
+
+সমাধান:
+বামপক্ষ $= \frac{\tan A}{\sec A + 1} - \frac{\sec A - 1}{\tan A}$
+
+$= \frac{\tan^2A - (\sec^2A - 1)}{(\sec A + 1)\tan A}$
+
+$= \frac{\tan^2A - \tan^2A}{(\sec A + 1)\tan A}$ [$\because \sec^2A - 1 = \tan^2A$]
+
+$= \frac{0}{(\sec A + 1)\tan A} = 0 =$ ডানপক্ষ (প্রমাণিত)
+
+উদাহরণ ১০. প্রমাণ করো: $\sqrt{\frac{1 - \sin A}{1 + \sin A}} = \sec A - \tan A$

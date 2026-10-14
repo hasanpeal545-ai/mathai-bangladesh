@@ -1,0 +1,33 @@
+১৮২                                                                                   গণিত
+
+উদাহরণ ৮. প্রমাণ করো: 1/(2 - \sin²\theta) + 1/(2 + \tan²\theta) = 1
+
+সমাধান:
+বামপক্ষ = 1/(2 - \sin²\theta) + 1/(2 + \tan²\theta)
+
+= 1/(2 - \sin²\theta) + 1/(2 + (\sin²\theta)/(\cos²\theta))
+
+= 1/(2 - \sin²\theta) + (\cos²\theta)/(2\cos²\theta + \sin²\theta)
+
+= 1/(2 - \sin²\theta) + (\cos²\theta)/(2(1 - \sin²\theta) + \sin²\theta)
+
+= 1/(2 - \sin²\theta) + (\cos²\theta)/(2 - 2\sin²\theta + \sin²\theta)
+
+= 1/(2 - \sin²\theta) + (1 - \sin²\theta)/(2 - \sin²\theta)
+
+= (2 - \sin²\theta)/(2 - \sin²\theta)
+
+= 1 = ডানপক্ষ (প্রমাণিত)
+
+উদাহরণ ৯. প্রমাণ করো: (\tan A)/(\sec A + 1) - (\sec A - 1)/(\tan A) = 0
+
+সমাধান:
+বামপক্ষ = (\tan A)/(\sec A + 1) - (\sec A - 1)/(\tan A)
+
+= (\tan²A - (\sec²A - 1))/((\sec A + 1)\tan A)
+
+= (\tan²A - \tan²A)/((\sec A + 1)\tan A) [∵ \sec²A - 1 = \tan²A]
+
+= 0/((\sec A + 1)\tan A) = 0 = ডানপক্ষ (প্রমাণিত)
+
+উদাহরণ ১০. প্রমাণ করো: √((1 - \sin A)/(1 + \sin A)) = \sec A - \tan A

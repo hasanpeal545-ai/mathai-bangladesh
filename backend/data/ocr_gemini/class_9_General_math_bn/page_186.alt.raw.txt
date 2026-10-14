@@ -1,0 +1,42 @@
+অধ্যায় ৯. ত্রিকোণমিতিক অনুপাত
+১৮১
+
+= $\frac{\sin²\theta + \cos²\theta}{\sin\theta \cdot \cos\theta}$
+
+= $\frac{1}{\sin\theta \cdot \cos\theta}$ [∵ sin²$\theta$ + cos²$\theta$ = 1]
+
+= $\frac{1}{\sin\theta} \cdot \frac{1}{\cos\theta}$
+
+= $\text{cosec}\theta \cdot \sec\theta$
+
+= $\sec\theta \cdot \text{cosec}\theta$ = ডানপক্ষ (প্রমাণিত)
+
+উদাহরণ ৬. প্রমাণ করো যে, $\sec²\theta + \text{cosec²}\theta$ = $\sec²\theta \cdot \text{cosec²}\theta$
+
+সমাধান:
+বামপক্ষ = $\sec²\theta + \text{cosec²}\theta$
+
+= $\frac{1}{\cos²\theta} + \frac{1}{\sin²\theta}$
+
+= $\frac{\sin²\theta + \cos²\theta}{\cos²\theta \cdot \sin²\theta}$
+
+= $\frac{1}{\cos²\theta \cdot \sin²\theta}$
+
+= $\frac{1}{\cos²\theta} \cdot \frac{1}{\sin²\theta}$
+
+= $\sec²\theta \cdot \text{cosec²}\theta$
+
+= ডানপক্ষ (প্রমাণিত)
+
+উদাহরণ ৭. প্রমাণ করো যে, $\frac{1}{1 + \sin²\theta} + \frac{1}{1 + \text{cosec²}\theta}$ = 1
+
+সমাধান:
+বামপক্ষ = $\frac{1}{1 + \sin²\theta} + \frac{1}{1 + \text{cosec²}\theta}$
+
+= $\frac{1}{1 + \sin²\theta} + \frac{1}{1 + \frac{1}{\sin²\theta}}$
+
+= $\frac{1}{1 + \sin²\theta} + \frac{\sin²\theta}{1 + \sin²\theta}$
+
+= $\frac{1 + \sin²\theta}{1 + \sin²\theta}$
+
+= 1 = ডানপক্ষ (প্রমাণিত)

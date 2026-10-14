@@ -1,0 +1,41 @@
+অধ্যায় ৯. ত্রিকোণমিতিক অনুপাত
+১৭৯
+
+ত্রিকোণমিতিক অভেদাবলি
+
+(i) (\sin\ \theta)² + (\cos\ \theta)² = ((PM)/(OP))² + ((OM)/(OP))²
+
+= (PM²)/(OP²) + (OM²)/(OP²) = (PM² + OM²)/(OP²) = (OP²)/(OP²) [পিথাগোরাসের সূত্র]
+
+= 1
+
+বা, (\sin\ \theta)² + (\cos\ \theta)² = 1
+
+∴ \boxed{(\sin\ \theta)² + (\cos\ \theta)² = 1}
+
+মন্তব্য: পূর্ণসংখ্যা সূচক n এর জন্য (\sin\ \theta)ⁿ কে \sinⁿ\theta ও (\cos\ \theta)ⁿ কে \cosⁿ\theta ইত্যাদি লেখা
+হয়।
+
+(ii) \sec²\theta = (\sec\ \theta)² = ((OP)/(OM))²
+
+= (OP²)/(OM²) = (OM² + PM²)/(OM²) [OP সমকোণী ΔPOM এর অতিভুজ বলে]
+
+= (OM²)/(OM²) + (PM²)/(OM²)
+
+= 1 + ((PM)/(OM))² = 1 + (\tan\ \theta)² = 1 + \tan²\theta
+
+∴ \boxed{\sec²\theta - \tan²\theta = 1} এবং \boxed{\tan²\theta = \sec²\theta - 1}
+
+(iii) \csc²\theta = (\csc²\theta)² = ((OP)/(PM))²
+
+= (OP²)/(PM²) = (PM² + OM²)/(PM²) [OP সমকোণী ΔPOM এর অতিভুজ বলে]
+
+= (PM²)/(PM²) + (OM²)/(PM²) = 1 + ((OM)/(PM))²
+
+= 1 + (\cot\ \theta)² = 1 + \cot²\theta
+
+∴ \boxed{\csc²\theta - \cot²\theta = 1} এবং \boxed{\cot²\theta = \csc²\theta - 1}
+
+উদাহরণ ৩. \tan\ A = 4/3 হলে, A কোণের অন্যান্য ত্রিকোণমিতিক অনুপাতসমূহ নির্ণয় করো।
+
+সমাধান: দেওয়া আছে, \tan\ A = 4/3 ।

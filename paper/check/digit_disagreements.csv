@@ -731,3 +731,9 @@ class_9_General_math_bn,171,32,,৩. AB কোনো বৃত্তের ব�
 class_9_General_math_bn,171,34,"৪.	প্রমাণ করো যে, কোনো বৃত্তের পরিলিখিত চতুর্ভুজের যেকোনো দুইটি বিপরীত বাহু কেন্দ্রে যে",
 class_9_General_math_bn,171,34,,"৪. প্রমাণ করো যে, কোনো বৃত্তের পরিলিখিত চতুর্ভুজের যেকোনো দুইটি বিপরীত বাহু কেন্দ্রে যে"
 class_9_General_math_bn,177,14,২. দুইটি বৃত্ত পরস্পরকে বহিঃস্পর্শ করে। এদের একটির ব্যাস 8 সে.মি. এবং অপরটির ব্যাসার্ধ 4,২. দুইটি বৃত্ত পরস্পরকে বহিঃস্পর্শ করে। এদের একটির ব্যাস ৪ সে.মি. এবং অপরটির ব্যাসার্ধ 4
+class_9_General_math_bn,186,5,= 1/(\sin\theta · \cos\theta) [∵ \sin²\theta + \cos²\theta = 1],
+class_9_General_math_bn,186,5,,= 1/(\sin\theta · \cos\theta) [∵ sin²\theta + cos²\theta = 1]
+class_9_General_math_bn,188,12,,= 1 − sin A / cos A
+class_9_General_math_bn,188,15,= (1 / cos A) − (sin A / cos A),
+class_9_General_math_bn,188,35,,= 4/((tan A + sin A)(tan A − sin A))
+class_9_General_math_bn,188,36,= 4√((tan A + sin A)(tan A − sin A)),

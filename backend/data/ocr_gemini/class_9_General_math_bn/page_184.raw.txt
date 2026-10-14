@@ -1,0 +1,41 @@
+অধ্যায় ৯. ত্রিকোণমিতিক অনুপাত
+১৭৯
+
+ত্রিকোণমিতিক অভেদাবলি
+
+(i) $(\sin\ \theta)² + (\cos\ \theta)² = (\frac{PM}{OP})² + (\frac{OM}{OP})²$
+
+$= \frac{PM²}{OP²} + \frac{OM²}{OP²} = \frac{PM² + OM²}{OP²} = \frac{OP²}{OP²}$ [পিথাগোরাসের সূত্র]
+
+$= 1$
+
+বা, $(\sin\ \theta)² + (\cos\ \theta)² = 1$
+
+$\therefore$ $\boxed{(\sin\ \theta)² + (\cos\ \theta)² = 1}$
+
+মস্তব্যঃ পূর্ণসংখ্যা সূচক $n$ এর জন্য $(\sin\ \theta)ⁿ$ কে $\sinⁿ\theta$ ও $(\cos\ \theta)ⁿ$ কে $\cosⁿ\theta$ ইত্যাদি লেখা
+হয়।
+
+(ii) $\sec²\theta = (\sec\ \theta)² = (\frac{OP}{OM})²$
+
+$= \frac{OP²}{OM²} = \frac{OM² + PM²}{OM²}$ [$OP$ সমকোণী $\Delta POM$ এর অতিভুজ বলে]
+
+$= \frac{OM²}{OM²} + \frac{PM²}{OM²}$
+
+$= 1 + (\frac{PM}{OM})² = 1 + (\tan\ \theta)² = 1 + \tan²\theta$
+
+$\therefore$ $\boxed{\sec²\theta - \tan²\theta = 1}$ এবং $\boxed{\tan²\theta = \sec²\theta - 1}$
+
+(iii) $\csc²\theta = (\csc²\theta)² = (\frac{OP}{PM})²$
+
+$= \frac{OP²}{PM²} = \frac{PM² + OM²}{PM²}$ [$OP$ সমকোণী $\Delta POM$ এর অতিভুজ বলে]
+
+$= \frac{PM²}{PM²} + \frac{OM²}{PM²} = 1 + (\frac{OM}{PM})²$
+
+$= 1 + (\cot\ \theta)² = 1 + \cot²\theta$
+
+$\therefore$ $\boxed{\csc²\theta - \cot²\theta = 1}$ এবং $\boxed{\cot²\theta = \csc²\theta - 1}$
+
+উদাহরণ ৩. $\tan\ A = \frac{4}{3}$ হলে, $A$ কোণের অন্যান্য ত্রিকোণমিতিক অনুপাতসমূহ নির্ণয় করো।
+
+সমাধান: দেওয়া আছে, $\tan\ A = \frac{4}{3}$ ।

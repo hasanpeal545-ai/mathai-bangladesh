@@ -1,0 +1,21 @@
+অধ্যায় ৯. ত্রিকোণমিতিক অনুপাত
+১৮৫
+
+৭. ক) \frac{\sin A}{\operatorname{cosec} A} + (\cos A)/(\sec A) = 1
+   খ) (\sec A)/(\cos A) - (\tan A)/(\cot A) = 1
+   গ) 1/(1 + \sin² A) + \frac{1}{1 + \operatorname{cosec}² A} = 1
+৮. ক) (\tan A)/(1 - \cot A) + (\cot A)/(1 - \tan A) = \sec A.\operatorname{cosec} A + 1
+   খ) 1/(1 + \tan² A) + 1/(1 + \cot² A) = 1
+৯. (\cos A)/(1 - \tan A) + (\sin A)/(1 - \cot A) = \sin A + \cos A
+১০. \tan A√(1 - \sin² A) = \sin A
+১১. \frac{\sec A + \tan A}{\operatorname{cosec} A + \cot A} = \frac{\operatorname{cosec} A - \cot A}{\sec A - \tan A}
+১২. \frac{\operatorname{cosec} A}{\operatorname{cosec} A - 1} + \frac{\operatorname{cosec} A}{\operatorname{cosec} A + 1} = 2\sec² A
+১৩. 1/(1 + \sin A) + 1/(1 - \sin A) = 2\sec² A
+১৪. \frac{1}{\operatorname{cosec} A - 1} - \frac{1}{\operatorname{cosec} A + 1} = 2\tan² A
+১৫. (\sin A)/(1 - \cos A) + (1 - \cos A)/(\sin A) = 2\operatorname{cosec} A
+১৬. (\tan A)/(\sec A + 1) - (\sec A - 1)/(\tan A) = 0
+১৭. (\tan\theta + \sec\theta)² = (1 + \sin\theta)/(1 - \sin\theta)
+১৮. (\cot A + \tan B)/(\cot B + \tan A) = \cot A.\tan B
+১৯. √((1 - \sin A)/(1 + \sin A)) = \sec A - \tan A
+২০. √((\sec A + 1)/(\sec A - 1)) = \cot A + \operatorname{cosec} A
+২১. \cos A + \sin A = √2\cos A হলে, তবে প্রমাণ করো যে, \cos A - \sin A = √2\sin A
