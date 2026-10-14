@@ -1032,6 +1032,8 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
         parts.append(f"markdown_stripped: {counts['markdown_stripped']}")
     if counts.get("ascii_figure_removed"):
         parts.append(f"ascii_figure_removed: {counts['ascii_figure_removed']}")
+    if counts.get("trailing_labels_removed"):
+        parts.append(f"trailing_labels_removed: {counts['trailing_labels_removed']}")
     suspect = find_figure_labels_suspect_lines(text)
     if suspect:
         parts.append(f"figure_labels_suspect: L{',L'.join(str(n) for n in suspect)}")
@@ -1318,13 +1320,18 @@ _UDAAHARON_RE = re.compile(r"উদাাহরণ")
 # 125/133 ("উপপাদ্য ১১।" should be "উপপাদ্য ১১.").
 _SUTRO_ANUSIDDHANTO_PERIOD_RE = re.compile(r"((?:সূত্র|অনুসিদ্ধান্ত|উপপাদ্য)\s+[0-9০-৯]+)।")
 
-# FIX_BATCH6 task 1: a bare question-number at the very START of a line
-# ("৩। ...") uses the book's Western full stop too, not the Bangla dari --
-# page 59's exercise list ("১৩। যদি...", "১৪। ..."). Anchored to line start
-# (^, re.MULTILINE) specifically so this never touches the already-handled
-# LABELLED cases above (those require a preceding word like "উদাহরণ"/
-# "সূত্র", so a line starting directly with a digit never matches them).
-_QUESTION_NUMBER_PERIOD_RE = re.compile(r"^([0-9০-৯]+)। ", re.MULTILINE)
+# FIX_BATCH6 task 1 (extended by FIX_BATCH17 task 3): a bare question-number
+# at the very START of a line ("৩। ...") uses the book's Western full stop
+# too, not the Bangla dari -- page 59's exercise list ("১৩। যদি...", "১৪।
+# ..."). Anchored to line start (^, re.MULTILINE) specifically so this never
+# touches the already-handled LABELLED cases above (those require a
+# preceding word like "উদাহরণ"/"সূত্র", so a line starting directly with a
+# digit never matches them). FIX_BATCH17: page 167's exercise 8.3 uses a TAB
+# after the dari ("১।\tΔABC..."), not a space -- the original version only
+# matched a literal space and missed every one of these. The separator
+# character is captured and reused as-is in the replacement (not normalized
+# to a space) so a tab used for column alignment elsewhere stays a tab.
+_QUESTION_NUMBER_PERIOD_RE = re.compile(r"^([0-9০-৯]+)।([ \t])", re.MULTILINE)
 
 # FIX_BATCH7 task 2: "f (" -> "f(" -- a stray space after the function name
 # "f" before its argument paren (pages 65/66/67: "f (− b/a)", "f (- b/a)").
@@ -1430,6 +1437,34 @@ _SADHARAN_NIRBOCHON_RE = re.compile(r"সাধারণ নির্বাচ�
 # _UDAAHARON_RE running before _UDAHARON_PERIOD_RE above.
 _UPOPADDO_MISSING_PHOLA_RE = re.compile(r"(?<![ঀ-৿])উপপাদ(?=\s+[০-৯])")
 
+# FIX_BATCH17 task 3: this book writes a colon after these 5 section-label
+# words ("মন্তব্যঃ"/"অঙ্কনঃ"/"প্রমাণঃ"/"সমাধানঃ"/"কাজঃ" -- Comment/
+# Construction/Proof/Solution/Task), but OCR sometimes reads it as the
+# visarga ঃ (U+0983) instead -- same glyph shape, different meaning/code
+# point. Anchored to the START of a line (re.MULTILINE) right after one of
+# these exact words, same scoping discipline as the other heading-word
+# fixes above -- NOT a general "ঃ -> :" rule, which would wrongly rewrite
+# the many ordinary words that legitimately contain a mid-word visarga
+# (দুঃখ, অন্তঃস্থ, বহিঃস্থ, ...; verified none of those words start with
+# any of these 5 labels, so the line-start+exact-word anchor can't collide
+# with them even in principle).
+_VISARGA_COLON_RE = re.compile(r"^(মন্তব্য|অঙ্কন|প্রমাণ|সমাধান|কাজ)ঃ", re.MULTILINE)
+
+# FIX_BATCH17 task 4: "অন্তলিখিত" ("inscribed") keeps losing its র-ফলা --
+# should be "অন্তর্লিখিত" (page 167, x3, always followed by a space before
+# the next word in every observed instance, but the lookbehind-only guard
+# below handles a suffixed form too, e.g. a hypothetical "অন্তলিখিতের",
+# since it only checks what comes BEFORE the match and leaves whatever
+# follows untouched either way). Guarded the same way as _DUTI_RE/
+# _UPOPADDO_MISSING_PHOLA_RE -- no Bangla character immediately before --
+# so this can't fire starting mid-word inside some longer, unrelated word.
+_ANTOLIKHITO_RE = re.compile(r"(?<![ঀ-৿])অন্তলিখিত")
+
+# FIX_BATCH17 task 4: "লক্ষনীয়" (dental ন) for "লক্ষণীয়" (retroflex ণ,
+# "noteworthy") -- pages 142 and 162, same single-letter misreading both
+# times.
+_LOKKHONIYO_RE = re.compile(r"লক্ষনীয়")
+
 
 def fix_known_bangla_typos(text):
     """Returns (fixed_text, number_of_replacements_made)."""
@@ -1449,7 +1484,7 @@ def fix_known_bangla_typos(text):
     # ordering reason as _UDAAHARON_RE/_UDAHARON_PERIOD_RE.
     text, n19 = _UPOPADDO_MISSING_PHOLA_RE.subn("উপপাদ্য", text)
     text, n9 = _SUTRO_ANUSIDDHANTO_PERIOD_RE.subn(r"\1.", text)
-    text, n10 = _QUESTION_NUMBER_PERIOD_RE.subn(r"\1. ", text)
+    text, n10 = _QUESTION_NUMBER_PERIOD_RE.subn(r"\1.\2", text)
     text, n11 = _F_PAREN_SPACE_RE.subn("f(", text)
     text, n12 = _NIYAMABOLI_RE.subn("নিয়মাবলি", text)
     text, n13 = _FORMI_RE.subn("ফর্মা", text)
@@ -1460,9 +1495,12 @@ def fix_known_bangla_typos(text):
     text, n18 = _BOHUMPODI2_RE.subn("বহুপদী", text)
     text, n20 = _BISHESH_NIRBOCHON_RE.subn("বিশেষ নির্বচন", text)
     text, n21 = _SADHARAN_NIRBOCHON_RE.subn("সাধারণ নির্বচন", text)
+    text, n22 = _VISARGA_COLON_RE.subn(r"\1:", text)
+    text, n23 = _ANTOLIKHITO_RE.subn("অন্তর্লিখিত", text)
+    text, n24 = _LOKKHONIYO_RE.subn("লক্ষণীয়", text)
     return text, (
         n1 + n2 + n3 + n4 + n5 + n6a + n6 + n7 + n8 + n9 + n10 + n11 + n12
-        + n13 + n14 + n15 + n16 + n17 + n18 + n19 + n20 + n21
+        + n13 + n14 + n15 + n16 + n17 + n18 + n19 + n20 + n21 + n22 + n23 + n24
     )
 
 
@@ -1710,10 +1748,31 @@ _FIGURE_LABEL_LINE_RE = re.compile(
 # counted.
 _FIGURE_VALUE_LINE_RE = re.compile(r"^[0-9০-৯]{1,3}[°⁰]?$")
 
+# FIX_BATCH17 task 2 (second bullet): a line with NO Bangla characters,
+# mostly whitespace (>=70%), and whatever's left being only short (1-2
+# char) Latin point-label tokens is figure-label debris scattered across a
+# whole line rather than confined to one bare token -- page 168's "P   AP
+# P" (point labels for a tangent-figure, where "AP" sits where two labels'
+# positions overlapped in the drawing). Checked separately from
+# _FIGURE_LABEL_LINE_RE above (which only matches a line that IS a single
+# bare token) so it can feed into the SAME run-based removal logic below.
+_WS_LABEL_TOKEN_RE = re.compile(r"^[A-Z]{1,2}$")
+
+
+def _is_whitespace_majority_label_line(line):
+    if not line.strip() or _BANGLA_CHAR_RE.search(line):
+        return False
+    if line.count(" ") / len(line) < 0.70:
+        return False
+    tokens = line.split()
+    return bool(tokens) and all(_WS_LABEL_TOKEN_RE.match(tok) for tok in tokens)
+
 
 def _is_figure_label_line(line):
     stripped = line.strip()
-    return bool(stripped) and len(stripped) <= 4 and bool(_FIGURE_LABEL_LINE_RE.match(stripped))
+    if stripped and len(stripped) <= 4 and _FIGURE_LABEL_LINE_RE.match(stripped):
+        return True
+    return _is_whitespace_majority_label_line(line)
 
 
 def find_figure_label_runs(text):
@@ -1804,6 +1863,59 @@ def find_figure_labels_suspect_lines(text):
     return suspect_nums
 
 
+# FIX_BATCH17 task 2 (first bullet): a figure label sitting to the RIGHT of
+# real text on the SAME line (page 168: "AB = 3                        D",
+# the figure's point label "D" glued onto the end of an unrelated content
+# line via a big horizontal gap) -- not caught by any existing rule, which
+# all assume a label occupies a WHOLE line of its own. Scoped to >=8
+# consecutive spaces (this book's own wide label-gutter, well past normal
+# word-spacing) followed by ONLY 1-3 short tokens -- each a single
+# uppercase Latin letter or a parenthesized single Bangla character
+# (sub-item marker like "(ক)") -- running to the end of the line. A
+# multi-digit Bangla number (e.g. this book's own page-number-in-header,
+# "...বৃত্ত                      ১৬৩") never matches either token shape, so
+# the running header is never at risk from this rule.
+_TRAILING_LABEL_TOKEN_RE = r"(?:[A-Z]|\([ঀ-৿]\))"
+_TRAILING_LABEL_RUN_RE = re.compile(
+    rf" {{8,}}{_TRAILING_LABEL_TOKEN_RE}(?:\s+{_TRAILING_LABEL_TOKEN_RE}){{0,2}}$"
+)
+
+
+def strip_trailing_figure_labels(text):
+    """Returns (text, trailing_labels_removed_count). Real bug found while
+    testing against page 168: a line that's ENTIRELY label tokens (e.g.
+    "P   AP   P", matched by _is_whitespace_majority_label_line) also
+    satisfies the trailing-run pattern from its last internal gap onward,
+    so this function would partially nibble just its final token instead
+    of leaving the whole line for find_figure_label_runs to handle (remove
+    as part of a >=3 run, or leave it COMPLETELY untouched as a flagged
+    1-2-line suspect, per that function's own established policy). Skips
+    any line that already qualifies as a whole label line under ANY
+    existing shape, regardless of call order."""
+    lines = text.split("\n")
+    count = 0
+    out = []
+    for line in lines:
+        if _is_figure_label_line(line):
+            out.append(line)
+            continue
+        m = _TRAILING_LABEL_RUN_RE.search(line)
+        # FIX_BATCH17 task 2: also require real content BEFORE the matched
+        # gap -- found on page 168's own "(খ)                     (গ)" line
+        # (two parenthesized-Bangla sub-item markers, nothing else): with
+        # nothing preceding the first 8+-space gap, this match would
+        # consume the WHOLE line, doing bullet 2's "whole line is labels"
+        # job but without that rule's explicit Bangla exclusion. A real
+        # trailing-label line always has actual content before the gap by
+        # definition -- if there's none, this isn't that case at all.
+        if m and line[:m.start()].strip():
+            out.append(line[:m.start()].rstrip())
+            count += 1
+        else:
+            out.append(line)
+    return "\n".join(out), count
+
+
 # FIX_BATCH15 task 2: on p147/p150, Gemini literally DREW a page's geometric
 # figures as ASCII art instead of skipping them -- lines like
 # "a__________________", "-----+-----", "_.-'|". A line qualifies as
@@ -1817,10 +1929,30 @@ def find_figure_labels_suspect_lines(text):
 _ASCII_ART_CHARS = set("_-|/\\*.'+")
 _ASCII_ART_RUN_RE = re.compile(r"[_-]{4,}")
 
+# FIX_BATCH17 task 1: real bug found in review -- a Markdown table row (e.g.
+# page 166's "| ১ | | | | | | |") is almost ALL "|" characters once spaces
+# are stripped, which tripped the >=50% art-glyph density rule below and got
+# the whole table deleted (ascii_figure_removed: 6, a false fire). A line
+# that both STARTS and ENDS with "|" is a real Markdown table row (header,
+# separator, or data), never hand-drawn ASCII art in this corpus -- the
+# actual drawn figures (p147/p150) only ever end a line with "|" as a
+# vertical construction guide, never start one with it (confirmed by
+# checking every line of both pages before relying on this), so this
+# exclusion can't suppress real art. A separator row without enclosing
+# pipes (e.g. "---|---|---") is covered too, per the task's own second
+# bullet, even though every separator observed in this corpus already has
+# them.
+def _is_markdown_table_row(stripped):
+    if stripped.startswith("|") and stripped.endswith("|"):
+        return True
+    return bool(re.fullmatch(r"[-:|\s]+", stripped)) and "-" in stripped
+
 
 def _is_ascii_art_line(line):
     stripped = line.strip()
     if not stripped:
+        return False
+    if _is_markdown_table_row(stripped):
         return False
     if _ASCII_ART_RUN_RE.search(stripped):
         return True
@@ -2038,17 +2170,20 @@ def post_process(text, book=None, pdf_page=None):
     and (only when both `book` and `pdf_page` are given, same convention as
     build_qc_note) task 1's narrow ৪<->৮ page-number auto-fix. FIX_BATCH16
     added heading Latin-digit fixing, the "/"->"∠" angle-slash fix, and
-    2-column MCQ reordering.
+    2-column MCQ reordering. FIX_BATCH17 task 1 fixed a real bug in the
+    ASCII-art detector (it was deleting Markdown table rows) and task 2
+    added trailing_labels_removed (a same-line figure label cut from the
+    end of a content line, before the whole-line run-based removal below).
     Returns (processed_text, counts) where counts is a dict with keys
     typo_fixes, token_leak, overline, devanagari_leak, margin_digit,
     script_leak, greek_subscript, log_fixes, sqrt_parens, parallel_fixes,
     angle_slash_fixed, heading_digit_fixed, mcq_reordered,
     figure_labels_removed, figure_values_lost, margin_year_tail,
-    page_number_fixed, markdown_stripped, ascii_figure_removed (any may be
-    0/empty/None). FIX_BATCH13 task 3 added parallel_fixes/
-    figure_labels_removed (plus MARGIN_YEAR_TOKENS' 2021/2022 entries,
-    inside strip_margin_year itself); FIX_BATCH14 tasks 4/5 added
-    figure_values_lost and margin_year_tail."""
+    page_number_fixed, markdown_stripped, ascii_figure_removed,
+    trailing_labels_removed (any may be 0/empty/None). FIX_BATCH13 task 3
+    added parallel_fixes/figure_labels_removed (plus MARGIN_YEAR_TOKENS'
+    2021/2022 entries, inside strip_margin_year itself); FIX_BATCH14 tasks
+    4/5 added figure_values_lost and margin_year_tail."""
     text = strip_margin_year(text)
     text, margin_digit_count = strip_margin_digit(text)
     # FIX_BATCH15 task 1: runs early, before anything else has a chance to
@@ -2071,7 +2206,14 @@ def post_process(text, book=None, pdf_page=None):
     text, parallel_count = fix_parallel_symbol(text)
     text, angle_slash_fixed_count = fix_angle_slash(text)
     text, mcq_reordered_count = fix_mcq_order(text)
+    # FIX_BATCH17 task 2: whole-line run-based removal runs FIRST, so any
+    # line that's entirely label tokens is already gone (or correctly left
+    # untouched as a flagged suspect) before the trailing/same-line check
+    # below ever sees it -- strip_trailing_figure_labels also independently
+    # guards against this via _is_figure_label_line, but ordering it this
+    # way means a removed run's lines were never even candidates.
     text, figure_labels_removed_count, figure_values_lost = strip_figure_labels(text)
+    text, trailing_labels_removed_count = strip_trailing_figure_labels(text)
     # FIX_BATCH14 task 5: runs AFTER figure-label stripping so that if a
     # label run sat right before the margin year, the year is still
     # correctly seen as the page's last non-empty line once that run has
@@ -2099,6 +2241,7 @@ def post_process(text, book=None, pdf_page=None):
         "figure_labels_removed": figure_labels_removed_count,
         "figure_values_lost": figure_values_lost,
         "margin_year_tail": margin_year_tail,
+        "trailing_labels_removed": trailing_labels_removed_count,
     }
 
 

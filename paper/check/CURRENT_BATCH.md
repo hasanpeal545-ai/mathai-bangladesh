@@ -1,63 +1,54 @@
 # Step 4 — Current batch for review
 
 **Book:** class_9_General_math_bn (book 1/10 in BOOK_ORDER)
-**Pages:** 161–170 (of 362) — batch 17. Batch 16's images cleared (text files untouched).
-**Settings:** all prior accumulated fixes, plus **FIX_BATCH16**: `\Delta`→Δ, "/"→"∠" angle-slash fix, heading Latin-digit fix, 2-column MCQ reordering. **No RECITATION this batch.**
+**Pages:** 171–180 (of 362) — batch 18. Batch 17's images cleared (text files untouched).
+**Settings:** all prior accumulated fixes, plus **FIX_BATCH17**: a real bug fix (ASCII-art rule was deleting Markdown tables), trailing same-line figure labels, visarga→colon, and 2 spelling fixes. **No RECITATION this batch.**
 
-## Task 1 — `\Delta` → `Δ`
+## Task 1 — real bug fix: the ASCII-art rule was deleting a real Markdown table
+`_is_ascii_art_line()` now excludes any line that both starts AND ends with `|` (a Markdown table row — header, separator, or data) before it even checks the `|`-density heuristic that was wrongly firing on them. Also excludes a bare `---|---|---`-style separator row without enclosing pipes, per the task's own second bullet, though every separator actually observed in this corpus already has them.
 
-Added to `latex_to_plain()` via its own space-swallowing regex (`_LATEX_DELTA_RE`), same treatment as `\angle` from FIX_BATCH15 — this book always writes `ΔABC`/`ΔOAE` glued directly to the point letters (confirmed by grepping the whole corpus's existing Δ usage, already produced via `\triangle`), never `Δ ABC`. Test passes: `"\Delta OAE \cong \Delta OCF"` → `"ΔOAE ≅ ΔOCF"`. Per Peal's confirmation, `\Delta` is always the triangle symbol in this book (never "change in x"); left unguarded against that other meaning since it hasn't come up — Claude (chat) will catch it in review if it ever does.
+**Regression, full corpus (page_1..170, both readings where present):** 27 Markdown table-row lines exist across the whole corpus (all on page 166 — the only page with a real table so far); under the OLD rule, **14 of those 27 would have been wrongly deleted** as ASCII art. Under the new rule: **0**. Re-verified p147/p150's real hand-drawn ASCII art (the original target of this rule) is still fully caught — neither page has any line that both starts and ends with `|`, so the exclusion can't suppress real art there.
 
-## Task 2 — ∠ written as "/"
+## Task 2 — same-line (trailing) figure labels
+Two additions, both verified against the real page-168 content and the task's own test cases:
+- **`strip_trailing_figure_labels()`**: a line ending in ≥8 spaces then only 1-3 short tokens (a single uppercase Latin letter, or a parenthesized single Bangla character like `(ক)`) gets that tail cut — `trailing_labels_removed: N`. Test passes: `"AB = 3          D"` → `"AB = 3"`; the tab-separated MCQ test case is correctly left unchanged (the rule requires literal spaces, not tabs).
+- **Whitespace-majority label lines** (no Bangla, ≥70% whitespace, remaining tokens all short Latin, e.g. page 168's `"P   AP   P"`) now also count as label lines inside the *existing* run-based `find_figure_label_runs()` machinery, via `_is_figure_label_line()`.
 
-New `fix_angle_slash()`: `"/"` becomes `"∠"` when immediately preceded by a space, start-of-line, or `"("`, AND immediately followed by 1-3 **uppercase** Latin letters then a non-letter — qc note `angle_slash_fixed: N`. Fraction safety confirmed with the task's own tests (`"a/2 = OC"`, `"AB/CD"`, `"p/3"`, `"(1/2)AB"` all unchanged — every one of those has a letter/digit/`")"` right before the `"/"`, which the rule excludes) plus two extra edge cases I added: a `"("`-preceded match (`"(/ABC এর সমান)"` → `"(∠ABC এর সমান)"`) and a 4+-letter run correctly NOT matching (`"/ABCD"` stays untouched, outside the 1-3 letter scope).
+**2 real bugs found and fixed while testing against page 168 itself, not assumed up front:** (1) the trailing-run regex, applied to a line that is *entirely* label tokens, would partially match from its last internal gap and chop off just the final token instead of leaving the whole line for the run-based remover — fixed by skipping any line `_is_figure_label_line()` already recognizes as a whole-line label, checked regardless of which function runs first. (2) separately, a line with *nothing but* parenthesized-Bangla tokens (page 168's own `"(খ)                     (গ)"`, two sub-item markers positioned over two sub-figures) could still be matched end-to-end by the trailing-run regex itself, silently doing the whole-line job *without* that job's explicit Bangla exclusion — fixed by also requiring real, non-empty content before the matched gap. Both fixes verified live: page 168's actual figure-label cluster (P/AP/A/Q/Q, 3 removed) now collapses cleanly, its 4 genuine trailing labels (D, C, O, "A B") are removed, and the Bangla sub-marker line is correctly left untouched (out of this task's stated scope).
 
-**Fired live on p154's real text**: `angle_slash_fixed: 3` — all three of the task's cited instances (`"কোণ /B"`, `"/ABE"`, `"/ABC"`) now correctly read `∠B`/`∠ABE`/`∠ABC`.
+## Task 3 — ঃ/। punctuation
+- **Visarga→colon**: `মন্তব্যঃ`/`অঙ্কনঃ`/`প্রমাণঃ`/`সমাধানঃ`/`কাজঃ` at the start of a line → `:` (word kept, just the glyph swapped). Verified these 5 fire correctly and that genuine mid-word visarga (`দুঃখ`, `অন্তঃস্থ`, `বহিঃস্থ`) is never touched.
+- **Tab after question-number dari**: `_QUESTION_NUMBER_PERIOD_RE` only matched a literal space after `।` — confirmed broken exactly as the task suspected (page 167's `"১।\tΔABC..."` uses a tab). Fixed by capturing and reusing whichever of space/tab was actually there, rather than normalizing it away (so a tab used for MCQ column alignment elsewhere on a page is never disturbed).
 
-## Task 3 — heading number in Latin digits
+## Task 4 — spelling
+`অন্তলিখিত`→`অন্তর্লিখিত` (র-ফলা restored; page 167 ×3) and `লক্ষনীয়`→`লক্ষণীয়` (page 142/162). Both scoped and tested per the task's own guidance (word-start lookbehind for the first; a plain literal for the second, consistent with this file's other single-word fixes).
 
-New `fix_heading_latin_digits()`: a Latin digit (or `digit.digit`) right after `উদাহরণ`/`অনুশীলনী`/`উপপাদ্য`/`সম্পাদ্য`/`অনুসিদ্ধান্ত`/`অধ্যায়` at the start of a line converts to Bangla digits — qc note `heading_digit_fixed: N`. Every digit transliterates at face value EXCEPT `"8"`, which maps to `"৪"` instead of the literal `"৮"`: this book's own well-documented ৪/৮ visual mix-up (every recorded instance anywhere in this corpus, across FIX_BATCH5/14/15, is a real printed ৪ misread as ৮, never the reverse) turned out to apply across scripts too, not just within Bangla digits. Test passes: `"উদাহরণ 8."` → `"উদাহরণ ৪."`. Scoped tightly to right after these 6 exact words — the prompt's own "same script" rule stays in force everywhere else on the page.
+**Full-corpus regression (473 raw+alt files, all 4 tasks combined): 0 crashes.** The 3 non-manually-fixed batch-17 pages (163, 165, 170) were also re-checked against the new rules — none would change.
 
-**Fired live on p153's real text**: `heading_digit_fixed: 1` — `"উদাহরণ 8. ABC ত্রিভুজের..."` → `"উদাহরণ ৪. ABC ত্রিভুজের..."`.
+## Task 5 — batch 18 (pages 171-180)
 
-## Task 4 — two-column MCQ order
-
-New `fix_mcq_order()`: scans every 4 *literally* consecutive lines (no blank-line tolerance, unlike the figure-label/ASCII-art run logic — a real MCQ's options are always printed back-to-back); a block already in `ক) খ) গ) ঘ)` order is left alone and not flagged; a block read column-by-column as `ক) গ) খ) ঘ)` gets its middle two lines swapped back into the correct order — qc note `mcq_reordered: N`; any other 4-marker order is left untouched, only flagged (`mcq_order_suspect`).
-
-**Fired live on p154's real text**: `mcq_reordered: 1` — the first option block (`"ক) 60° ও 36°" / "গ) 30° ও 70°" / "খ) 40° ও 50°" / "ঘ) 80° ও 20°"`) is now correctly ordered `ক, খ, গ, ঘ`. The page's other two option blocks were already in the correct order and were correctly left untouched (confirmed: neither appears in the swap count nor the suspect flag).
-
-**Regression swept the whole already-OCR'd book (162 pages) for all 4 tasks**: zero crashes, zero false positives — `angle_slash_fixed`/`heading_digit_fixed`/`mcq_reordered`/`mcq_order_suspect` fired on exactly p154/p153/p154 (nowhere else).
-
-## Task 5 — batch 17 (pages 161-170)
-
-**No RECITATION, no escalation needed.** Still in Chapter 7 (ব্যবহারিক জ্যামিতি, practical geometry).
+**No RECITATION, no escalation needed.** Chapter 8 (বৃত্ত, Circle) ends around page 178; **Chapter 9 (ত্রিকোণমিতিক অনুপাত — Trigonometric Ratios) begins at page 179.**
 
 | Page | Chars | Note |
 |---|---|---|
-| 161 | 2809 | 10 typo fixes (both readings) |
-| 162 | 4263 | 7 typo fixes; secondary (discarded alt) had `devanagari_leak: 3` |
-| 163 | 4002 | clean primary; secondary (discarded alt) had 1 typo fix + `devanagari_leak: 4` |
-| 164 | 2942 | 1 typo fix |
-| 165 | 2687 | 7 typo fixes; `stacked_fraction: L1` |
-| **166** | 2808 | **`ascii_figure_removed: 6`** (both readings) — Task 2 from FIX_BATCH15, not this batch's own tasks, but a nice live confirmation it's still catching real pages |
-| 167 | 3859 | 5 typo fixes; secondary (discarded alt) had 3 |
-| 168 | 4630 | `figure_labels_suspect: L29`, `stacked_fraction: L29` (flag only, not removed — single line) |
-| **169** | 4660 | **`page_number_fixed: ১৬৮->১৬৪`** (FIX_BATCH15's ৪↔৮ self-fix, still firing correctly on new pages) |
-| 170 | 3331 | 4 typo fixes; `script_digit_mismatch` flagged (both readings) |
+| 171 | 1519 | 8 typo fixes |
+| 172 | 1569 | 3 typo fixes; `stacked_fraction: L2` |
+| 173 | 1585 | clean |
+| 174 | 1651 | 2 typo fixes |
+| 175 | 1267 | 2 typo fixes; `page_number_mismatch`: header `১৯০` vs expected `১৭০` |
+| 176 | 1336 | `script_leak: 1`; `page_number_mismatch`: header `১৯১` vs expected `১৭১`; `script_digit_mismatch` |
+| 177 | 797 | 2 typo fixes; `page_number_mismatch`: header `১৯২` vs expected `১৭২` |
+| 178 | 859 | 2 typo fixes; `ascii_figure_suspect: L5` |
+| 179 | 1779 | clean — Chapter 9's opening page (no running header, as usual for a chapter-opener) |
+| **180** | 1272 | **`figure_labels_removed: 12`, `figure_values_lost: 17, 15, 8`** — see note below |
 
-This batch's own FIX_BATCH16 tasks (1-4) did not fire live on these specific 10 pages (no `\Delta`, angle-slash, heading-Latin-digit, or MCQ-column content on them) — all four are verified against real p153/p154 data from the prior batch instead (see their sections above).
+**On p175-177's `page_number_mismatch`**: checked the raw headers directly before writing this up — it's **not** a systematic offset shift (the 190/191/192-vs-170/171/172 gap looked like one at first glance) but 3 consecutive instances of this corpus's already-documented ৭/৯ digit confusion: `১৯০`/`১৯১`/`১৯২` vs the correct `১৭০`/`১৭১`/`১৭২` (single middle-digit misread each time, same pattern as earlier batches' ৭↔৯ findings). p178's own header (`১৭৩`) reads correctly, confirming the underlying page-number sequence itself never actually jumped.
+
+**On p180's figure-label loss**: this page (উদাহরণ ১, Chapter 9's first worked example) has THREE small right-triangle sub-figures labelled (ক)/(খ)/(গ), each with its own set of axis/side labels — (ক)'s are the numeric side lengths **17, 15, 8** (needed to answer "চিহ্নিত করো" for that sub-figure), (খ)'s are variables p/q/r, (গ)'s are point labels E/F/G. The run-based remover correctly caught all of these as label clusters (plus an earlier P/N/O ×2 cluster higher up the page) and flagged the lost numeric values by name, exactly as designed — this is a real content loss on a question-critical sub-figure, not a formatting nit, flagged here for Claude (chat) to add back from the image.
 
 ## Cost
 
-Batch 17: 20 Gemini calls (10 pages × primary+secondary, no escalation needed).
-**Cumulative gemini-3.5-flash-lite spend (Step 4 total so far): $0.6537** (565,161 in / 193,659 out tokens) of the $7.00 stop.
+Batch 18: 20 Gemini calls (10 pages × primary+secondary, no escalation needed).
+**Cumulative gemini-3.5-flash-lite spend (Step 4 total so far): $0.6868** (596,301 in / 203,157 out tokens) of the $7.00 stop.
 
 ## Task 6 — commit + push
-
-`git status` checked first: no `.env`/API keys/`venv` in the diff (only `full_gemini_ocr.py`, `RUN_LOG.csv`, `digit_disagreements.csv`, this file, and this batch's new `backend/data/ocr_gemini/class_9_General_math_bn/page_161..170.*` + `paper/check/class_9_General_math_bn/page_161..170.png` files).
-
-**Push result:** committed as `3dca08b` ("Batch 17: OCR p161-170 + FIX_BATCH16 (angle slash, heading digits, MCQ order, \Delta)") and pushed to `origin/main` successfully (`d06ae6f..3dca08b`) -- this push also carried up an earlier unpushed commit (`ac3f3dd`, the Batch 16 human-review commit that produced FIX_BATCH16.md itself, made by a separate session, not this one).
-
----
-
-**Batch ready: class_9_General_math_bn pages 161-170.**
