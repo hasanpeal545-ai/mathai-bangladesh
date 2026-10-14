@@ -34,3 +34,6 @@
 145,random,paper/check/audit_images/page_145.png,backend/data/ocr_gemini/class_9_General_math_bn/page_145.txt,,
 150,random,paper/check/audit_images/page_150.png,backend/data/ocr_gemini/class_9_General_math_bn/page_150.txt,,
 148,hand-rewritten by Claude,paper/check/audit_images/page_148.png,backend/data/ocr_gemini/class_9_General_math_bn/page_148.txt,,
+153,random,paper/check/audit_images/page_153.png,backend/data/ocr_gemini/class_9_General_math_bn/page_153.txt,,
+160,random,paper/check/audit_images/page_160.png,backend/data/ocr_gemini/class_9_General_math_bn/page_160.txt,,
+156,figure note added by Claude,paper/check/audit_images/page_156.png,backend/data/ocr_gemini/class_9_General_math_bn/page_156.txt,,

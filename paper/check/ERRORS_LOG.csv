@@ -229,3 +229,23 @@ pilot,2026-10-06,class_9_General_math_en,en,383,omission,margin_year,(missing),2
 15,2026-10-14,class_9_General_math_bn,bn,149,spelling,bangla_word,অনেক ক্ষেত্রে,অনেক ক্ষেত্রেই,19,
 15,2026-10-14,class_9_General_math_bn,bn,149,spelling,script_leak,নিমne,নিম্নে,21,NEW: Latin letters inside a Bangla word
 15,2026-10-14,class_9_General_math_bn,bn,150,fallback,ascii_figure,ASCII-art figures mixed with text; ১৮৫; সংহিত; কোনটি; **bold**,manual,all,"hand-rewritten: page no ১৪৫ (৪->৮, not flagged), সংহিত->সন্নিহিত, কোনটি->কোণটি (meaning change), markdown ** leak"
+16,2026-10-14,class_9_General_math_bn,bn,151,spelling,bangla_word,রশ্মিদয়,রশ্মিদ্বয়,7,same error as p123
+16,2026-10-14,class_9_General_math_bn,bn,151,math,fraction_form,"(1/2)a, (1/2)b (2 lines)","a/2, b/2",30,"book prints a/2; value equal, form changed"
+16,2026-10-14,class_9_General_math_bn,bn,152,ok,,,,,
+16,2026-10-14,class_9_General_math_bn,bn,153,digit,latin_digit,উদাহরণ 8.,উদাহরণ ৪.,5,Bangla ৪ read as Latin 8 in an example number (dropdown key)
+16,2026-10-14,class_9_General_math_bn,bn,154,math,symbol_meaning,"/B, /ABE, /ABC","∠B, ∠ABE, ∠ABC",4,NEW: angle sign rendered as slash /
+16,2026-10-14,class_9_General_math_bn,bn,154,spelling,word_substitution,নিচের কোন ক্ষেত্রে,নিম্নের কোন ক্ষেত্রে,16,exercise 7.2
+16,2026-10-14,class_9_General_math_bn,bn,154,spelling,word_substitution,দেওয়া থাকে,দেয়া থাকে,30,spelling normalised to standard form
+16,2026-10-14,class_9_General_math_bn,bn,154,format,option_order,ক গ খ ঘ,ক খ গ ঘ,18,2-column MCQ read column-wise
+16,2026-10-14,class_9_General_math_bn,bn,155,spelling,word_substitution,ওপরের তথ্যের (x2),উপরের তথ্যের,25,ওপর/উপর normalised
+16,2026-10-14,class_9_General_math_bn,bn,155,spelling,spacing,পরিসীমা বিশিষ্ট,পরিসীমাবিশিষ্ট,28,
+16,2026-10-14,class_9_General_math_bn,bn,156,omission,figure_data,(EF ⊥ AB only in figure),"[চিত্র …: F on AB, EF ⊥ AB]",25,MCQ 3-4 need the right angle at F
+16,2026-10-14,class_9_General_math_bn,bn,157,ok,,,,,chapter 8 opening
+16,2026-10-14,class_9_General_math_bn,bn,158,spelling,bangla_word,বহির্বাগ,বহির্ভাগ,3,same as p128
+16,2026-10-14,class_9_General_math_bn,bn,158,spacing,bangla_word,বিন্দু র,বিন্দুর,6,
+16,2026-10-14,class_9_General_math_bn,bn,158,spelling,word_substitution,জ্যাটি বৃত্তের কেন্দ্রগামী,জ্যাটি বৃত্তটির কেন্দ্রগামী,17,
+16,2026-10-14,class_9_General_math_bn,bn,158,spelling,word_substitution,জ্যা এর ওপর লম্ব,জ্যা এর উপর লম্ব,26,ওপর/উপর
+16,2026-10-14,class_9_General_math_bn,bn,159,spelling,bangla_word,দুইটিটি,দুইটি,13,"raw had দুটিটি (doubled syllable), DUTI rule then expanded it"
+16,2026-10-14,class_9_General_math_bn,bn,159,spelling,word_substitution,ওপর (x2) / ধরে নেওয়া,উপর / ধরে নেয়া,"16,23,27",spelling normalisation
+16,2026-10-14,class_9_General_math_bn,bn,159,latex_left,latex_left,\Delta (x4),Δ,31,\Delta here = triangle sign
+16,2026-10-14,class_9_General_math_bn,bn,160,spelling,bangla_word,ব্যাসাই,ব্যাসই,25,

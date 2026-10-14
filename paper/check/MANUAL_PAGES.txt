@@ -115,3 +115,11 @@ class_9_General_math_bn/page_147.txt
 class_9_General_math_bn/page_148.txt
 class_9_General_math_bn/page_149.txt
 class_9_General_math_bn/page_150.txt
+class_9_General_math_bn/page_151.txt
+class_9_General_math_bn/page_153.txt
+class_9_General_math_bn/page_154.txt
+class_9_General_math_bn/page_155.txt
+class_9_General_math_bn/page_156.txt
+class_9_General_math_bn/page_158.txt
+class_9_General_math_bn/page_159.txt
+class_9_General_math_bn/page_160.txt
