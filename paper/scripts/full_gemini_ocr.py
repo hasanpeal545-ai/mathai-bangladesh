@@ -268,6 +268,14 @@ _LATEX_SYMBOL_MAP = {
     r"\perp": "⊥", r"\parallel": "∥", r"\triangle": "Δ",
     r"\cong": "≅", r"\circ": "°",
 }
+# FIX_BATCH16 task 1: in this book, "\Delta" is always the triangle symbol,
+# never "change in x" (confirmed by Peal -- p159 batch 16: "\Delta OAE ≅
+# \Delta OCF"; Claude (chat) will catch it in review if that ever changes).
+# Handled the same way as \angle above, not a plain dict entry -- grepping
+# the whole corpus's existing "Δ" usage (already produced via \triangle)
+# shows it's always glued directly to the point letters (ΔABC, ΔOAE),
+# never "Δ ABC", so the trailing space after "\Delta" needs consuming too.
+_LATEX_DELTA_RE = re.compile(r"\\Delta\s*")
 # FIX_BATCH3 task 1: Gemini sometimes renders "⊆" as the Unicode "⊂" symbol
 # immediately followed by literal text "eq" (a garbled \subseteq) instead of
 # either the symbol or the LaTeX command -- fix the literal garbled string.
@@ -980,8 +988,10 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
     `counts`, since it's never auto-fixed). FIX_BATCH15 added
     page_number_fixed/markdown_stripped/ascii_figure_removed (counts keys)
     plus ascii_figure_suspect and latin_in_bangla_word (flag-only, computed
-    directly from `text` same as figure_labels_suspect). Empty string if
-    nothing applies."""
+    directly from `text` same as figure_labels_suspect). FIX_BATCH16 added
+    angle_slash_fixed/heading_digit_fixed/mcq_reordered (counts keys) plus
+    mcq_order_suspect (flag-only, same convention). Empty string if nothing
+    applies."""
     counts = counts or {}
     parts = []
     if counts.get("typo_fixes"):
@@ -1004,6 +1014,12 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
         parts.append(f"sqrt_parens: {counts['sqrt_parens']}")
     if counts.get("parallel_fixes"):
         parts.append(f"parallel_fixes: {counts['parallel_fixes']}")
+    if counts.get("angle_slash_fixed"):
+        parts.append(f"angle_slash_fixed: {counts['angle_slash_fixed']}")
+    if counts.get("heading_digit_fixed"):
+        parts.append(f"heading_digit_fixed: {counts['heading_digit_fixed']}")
+    if counts.get("mcq_reordered"):
+        parts.append(f"mcq_reordered: {counts['mcq_reordered']}")
     if counts.get("figure_labels_removed"):
         parts.append(f"figure_labels_removed: {counts['figure_labels_removed']}")
     if counts.get("figure_values_lost"):
@@ -1022,6 +1038,9 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
     ascii_suspect = find_ascii_figure_suspect_lines(text)
     if ascii_suspect:
         parts.append(f"ascii_figure_suspect: L{',L'.join(str(n) for n in ascii_suspect)}")
+    mcq_suspect = find_mcq_order_suspect_lines(text)
+    if mcq_suspect:
+        parts.append(f"mcq_order_suspect: L{',L'.join(str(n) for n in mcq_suspect)}")
     latin_in_bangla = find_latin_in_bangla_words(text)
     if latin_in_bangla:
         parts.append(f"latin_in_bangla_word: {','.join(latin_in_bangla)}")
@@ -1227,6 +1246,7 @@ def latex_to_plain(text):
 
     text = _SUBSETEQ_GARBLED_RE.sub("⊆", text)
     text = _LATEX_ANGLE_RE.sub("∠", text)
+    text = _LATEX_DELTA_RE.sub("Δ", text)
     for cmd, repl in _LATEX_SYMBOL_MAP.items():
         text = text.replace(cmd, repl)
     text = _LATEX_ESCAPED_BRACE_RE.sub(r"\1", text)  # \{ -> {, \} -> }
@@ -1446,6 +1466,40 @@ def fix_known_bangla_typos(text):
     )
 
 
+# FIX_BATCH16 task 3: this book always numbers these heading words in Bangla
+# digits (উদাহরণ ৪., অনুশীলনী ৪.২, উপপাদ্য ১১., সম্পাদ্য ৪., অনুসিদ্ধান্ত ২.,
+# অধ্যায় ৭) -- a Latin digit right after one of them is always a misread,
+# never a legitimate alternate style (p153 batch 16: "উদাহরণ 8." should be
+# "উদাহরণ ৪." -- this exercise's dropdown filtering, per CLAUDE.md's
+# retriever.py note, runs on exactly this number). Scoped to right after one
+# of these exact words at the START of a line -- the prompt's own "keep
+# digits in the same script as printed" rule stays in force everywhere else
+# on the page; this is a narrow, known exception, not a general policy
+# change.
+_HEADING_DIGIT_WORDS = ["উদাহরণ", "অনুশীলনী", "উপপাদ্য", "সম্পাদ্য", "অনুসিদ্ধান্ত", _CHAPTER_WORD]
+_HEADING_DIGIT_WORDS_ALT = "|".join(_HEADING_DIGIT_WORDS)
+_HEADING_LATIN_DIGIT_RE = re.compile(
+    rf"^((?:{_HEADING_DIGIT_WORDS_ALT})\s+)([0-9]+(?:\.[0-9]+)?)", re.MULTILINE
+)
+# Plain same-value transliteration for every digit EXCEPT "8", which maps to
+# "৪" instead of the literal "৮" -- this book's own well-documented ৪/৮
+# visual mix-up (FIX_BATCH5/15: every recorded instance anywhere in this
+# corpus is a real printed ৪ coming back as ৮, never the reverse) shows up
+# here too, just crossing script this time instead of staying in Bangla.
+# Confirmed against the page image for p153's own "8." (Claude chat's
+# review), not guessed from the digit shape alone.
+_HEADING_DIGIT_MAP = dict(zip("0123456789", _BANGLA_DIGITS))
+_HEADING_DIGIT_MAP["8"] = "৪"
+
+
+def fix_heading_latin_digits(text):
+    """Returns (text, heading_digit_fixed_count)."""
+    def repl(m):
+        converted = "".join(_HEADING_DIGIT_MAP.get(ch, ch) for ch in m.group(2))
+        return m.group(1) + converted
+    return _HEADING_LATIN_DIGIT_RE.subn(repl, text)
+
+
 # FIX_BATCH3 task 1: model special tokens (e.g. "<bos>") leaking into the
 # transcription -- strip them and flag so a human knows a token was there
 # (there was often other OCR damage right next to it, e.g. page 22's
@@ -1542,6 +1596,86 @@ _PARALLEL_SYMBOL_RE = re.compile(r"(?<=[A-Z]{2})\s*\|\|\s*(?=[A-Z]{2})")
 def fix_parallel_symbol(text):
     """Returns (text, parallel_count)."""
     return _PARALLEL_SYMBOL_RE.subn(" ∥ ", text)
+
+
+# FIX_BATCH16 task 2: Gemini sometimes transcribes the "∠" (angle) symbol as
+# a plain "/" instead (p154 batch 16: "একটি কোণ /B = 60°", "/ABE", "/ABC" --
+# all should be "∠B"/"∠ABE"/"∠ABC"). Scoped narrowly so a real fraction is
+# never touched: "/" must be immediately preceded by a space, the start of
+# a line, or "(" -- never a letter/digit/")" (which is exactly what rules
+# out "a/2", "p/3", "(1/2)AB", "AB/CD") -- and immediately followed by 1-3
+# UPPERCASE Latin letters (this book's own point-naming convention) then a
+# non-letter (or end of line), so a longer run of letters (not a point name)
+# is left alone rather than guessed at.
+_ANGLE_SLASH_RE = re.compile(
+    r"(?:(?<=^)|(?<=[ (]))/(?=[A-Z]{1,3}(?:[^A-Za-z]|$))", re.MULTILINE
+)
+
+
+def fix_angle_slash(text):
+    """Returns (text, angle_slash_fixed_count)."""
+    return _ANGLE_SLASH_RE.subn("∠", text)
+
+
+# FIX_BATCH16 task 4: a 2-column MCQ layout sometimes gets OCR'd reading
+# DOWN each column before moving to the next, instead of left-to-right --
+# p154 batch 16: options came back ক) গ) খ) ঘ) (column 1 top-to-bottom, then
+# column 2 top-to-bottom) instead of the book's real ক) খ) গ) ঘ) reading
+# order. Scoped to exactly 4 LITERALLY consecutive lines each starting with
+# one of ক)/খ)/গ)/ঘ) -- no blank-line tolerance here (unlike the figure-
+# label/ASCII-art run logic above), since a real MCQ's 4 options are always
+# printed back-to-back with no gap. A block already in the correct ক,খ,গ,ঘ
+# order is left untouched and not flagged at all; a block in the known
+# column-swap order ক,গ,খ,ঘ gets its middle two lines swapped (qc note
+# "mcq_reordered"); any OTHER 4-marker order is left alone, only flagged
+# (qc note "mcq_order_suspect") -- reordering an unrecognized pattern would
+# be guessing, not correcting a known, confirmed misread.
+_MCQ_OPTION_LINE_RE = re.compile(r"^([কখগঘ])\)")
+_MCQ_CORRECT_ORDER = ["ক", "খ", "গ", "ঘ"]
+_MCQ_COLUMN_SWAPPED_ORDER = ["ক", "গ", "খ", "ঘ"]
+
+
+def find_mcq_order_spans(text):
+    """Returns (reorder_starts, suspect_starts) -- both lists of 0-based
+    line indices marking the FIRST line of a 4-line option block. Scans
+    non-overlapping 4-line windows: once a block of 4 option-marker lines is
+    found (in any order), the scan resumes right after it rather than
+    sliding by 1, since a real MCQ's options are never nested inside
+    another MCQ's own 4 lines."""
+    lines = text.split("\n")
+    n = len(lines)
+    reorder_starts, suspect_starts = [], []
+    i = 0
+    while i <= n - 4:
+        markers = [m.group(1) for ln in lines[i:i + 4] if (m := _MCQ_OPTION_LINE_RE.match(ln))]
+        if len(markers) == 4:
+            if markers == _MCQ_CORRECT_ORDER:
+                pass  # already correct -- not touched, not flagged
+            elif markers == _MCQ_COLUMN_SWAPPED_ORDER:
+                reorder_starts.append(i)
+            else:
+                suspect_starts.append(i)
+            i += 4
+        else:
+            i += 1
+    return reorder_starts, suspect_starts
+
+
+def fix_mcq_order(text):
+    """Returns (text, mcq_reordered_count)."""
+    reorder_starts, _ = find_mcq_order_spans(text)
+    if not reorder_starts:
+        return text, 0
+    lines = text.split("\n")
+    for start in reorder_starts:
+        lines[start + 1], lines[start + 2] = lines[start + 2], lines[start + 1]
+    return "\n".join(lines), len(reorder_starts)
+
+
+def find_mcq_order_suspect_lines(text):
+    """QC-only flag (never reordered) -- see fix_mcq_order()."""
+    _, suspect_starts = find_mcq_order_spans(text)
+    return [i + 1 for i in suspect_starts]
 
 
 # FIX_BATCH13 task 3(c): on geometry pages a figure's own labels (point
@@ -1902,10 +2036,13 @@ def post_process(text, book=None, pdf_page=None):
     log₁0/log_e notation fix, and FIX_BATCH11's √(N) parens-stripping fix.
     FIX_BATCH15 added Markdown-bold stripping, ASCII-art figure stripping,
     and (only when both `book` and `pdf_page` are given, same convention as
-    build_qc_note) task 1's narrow ৪<->৮ page-number auto-fix.
+    build_qc_note) task 1's narrow ৪<->৮ page-number auto-fix. FIX_BATCH16
+    added heading Latin-digit fixing, the "/"->"∠" angle-slash fix, and
+    2-column MCQ reordering.
     Returns (processed_text, counts) where counts is a dict with keys
     typo_fixes, token_leak, overline, devanagari_leak, margin_digit,
     script_leak, greek_subscript, log_fixes, sqrt_parens, parallel_fixes,
+    angle_slash_fixed, heading_digit_fixed, mcq_reordered,
     figure_labels_removed, figure_values_lost, margin_year_tail,
     page_number_fixed, markdown_stripped, ascii_figure_removed (any may be
     0/empty/None). FIX_BATCH13 task 3 added parallel_fixes/
@@ -1926,11 +2063,14 @@ def post_process(text, book=None, pdf_page=None):
     text, markdown_stripped_count = strip_markdown_bold(text)
     text, ascii_figure_removed_count = strip_ascii_figures(text)
     text, typo_count = fix_known_bangla_typos(text)
+    text, heading_digit_fixed_count = fix_heading_latin_digits(text)
     text, token_leak_count = strip_model_tokens(text)
     text, greek_subscript_count = fix_log_greek_subscript(text)
     text, log_fixes_count = fix_log_misnotation(text)
     text, sqrt_parens_count = fix_sqrt_parens(text)
     text, parallel_count = fix_parallel_symbol(text)
+    text, angle_slash_fixed_count = fix_angle_slash(text)
+    text, mcq_reordered_count = fix_mcq_order(text)
     text, figure_labels_removed_count, figure_values_lost = strip_figure_labels(text)
     # FIX_BATCH14 task 5: runs AFTER figure-label stripping so that if a
     # label run sat right before the margin year, the year is still
@@ -1950,6 +2090,9 @@ def post_process(text, book=None, pdf_page=None):
         "log_fixes": log_fixes_count,
         "sqrt_parens": sqrt_parens_count,
         "parallel_fixes": parallel_count,
+        "angle_slash_fixed": angle_slash_fixed_count,
+        "heading_digit_fixed": heading_digit_fixed_count,
+        "mcq_reordered": mcq_reordered_count,
         "page_number_fixed": page_number_fixed,
         "markdown_stripped": markdown_stripped_count,
         "ascii_figure_removed": ascii_figure_removed_count,

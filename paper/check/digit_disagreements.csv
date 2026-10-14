@@ -716,3 +716,11 @@ class_9_General_math_bn,159,27,ধাপ ২. কিন্তু AB = CD	[ধর
 class_9_General_math_bn,159,28,,    AE = CF [ধাপ ২]
 class_9_General_math_bn,159,31,ধাপ ৩. এখন \Delta OAE এবং \Delta OCF সমকোণী ত্রিভুজদ্বয়ের মধ্যে,
 class_9_General_math_bn,159,37,AE = CF	[ধাপ ২],
+class_9_General_math_bn,164,19,,"	সুতাং, ∠BOD = 2∠BAD এবং ∠BOD = 2∠BED    [∵ একই চাপের ওপর"
+class_9_General_math_bn,164,20,"         সুতরাং, ∠BOD = 2∠BAD এবং ∠BOD = 2∠BED        [∵ একই চাপের ওপর",	দণ্ডায়মান কেন্দ্রস্থ কোণ বৃত্তস্থ কোণের দ্বিগুণ ]
+class_9_General_math_bn,164,21,         দণ্ডায়মান কেন্দ্রস্থ কোণ বৃত্তস্থ কোণের দ্বিগুণ ],	∴ 2∠BAD = 2∠BED
+class_9_General_math_bn,164,23,     ∴ 2∠BAD = 2∠BED,
+class_9_General_math_bn,164,38,,	বৃত্তস্থ ∠ACB = (1/2) (কেন্দ্রস্থ সরল কোণ ∠AOB)     [∵ একই চাপের ওপর দণ্ডায়মান
+class_9_General_math_bn,164,39,         বৃত্তস্থ ∠ACB = (1/2)(কেন্দ্রস্থ সরল কোণ ∠AOB)        [∵ একই চাপের ওপর দণ্ডায়মান,	বৃত্তস্থ কোণ কেন্দ্রস্থ কোণের অর্ধেক]
+class_9_General_math_bn,164,43,,	∴ ∠ACB = (1/2) (দুই সমকোণ) = এক সমকোণ। (প্রমাণিত)
+class_9_General_math_bn,164,44,     ∴ ∠ACB = (1/2)(দুই সমকোণ) = এক সমকোণ। (প্রমাণিত),

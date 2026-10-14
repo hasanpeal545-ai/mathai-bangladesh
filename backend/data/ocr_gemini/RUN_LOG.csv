@@ -525,3 +525,23 @@ class_9_General_math_bn,159,2026-10-14T14:47:47,gemini-3.5-flash-lite,1557,506,"
 class_9_General_math_bn,159,2026-10-14T14:47:51,gemini-3.5-flash-lite,1557,509,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 4; latex_left: \Delta; quality: promoted secondary over primary (1 < 3 issues)
 class_9_General_math_bn,160,2026-10-14T14:47:55,gemini-3.5-flash-lite,1557,418,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
 class_9_General_math_bn,160,2026-10-14T14:47:58,gemini-3.5-flash-lite,1557,418,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,161,2026-10-14T15:15:02,gemini-3.5-flash-lite,1557,357,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 10; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,161,2026-10-14T15:15:14,gemini-3.5-flash-lite,1557,357,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 10
+class_9_General_math_bn,162,2026-10-14T15:15:21,gemini-3.5-flash-lite,1557,490,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 7; quality: kept primary (0 <= 3 issues)
+class_9_General_math_bn,162,2026-10-14T15:15:25,gemini-3.5-flash-lite,1557,482,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 5; devanagari_leak: 3
+class_9_General_math_bn,163,2026-10-14T15:15:33,gemini-3.5-flash-lite,1557,581,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 4 issues)
+class_9_General_math_bn,163,2026-10-14T15:15:41,gemini-3.5-flash-lite,1557,582,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; devanagari_leak: 4
+class_9_General_math_bn,164,2026-10-14T15:15:48,gemini-3.5-flash-lite,1557,423,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,164,2026-10-14T15:15:53,gemini-3.5-flash-lite,1557,423,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1
+class_9_General_math_bn,165,2026-10-14T15:15:59,gemini-3.5-flash-lite,1557,398,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 7; stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,165,2026-10-14T15:16:04,gemini-3.5-flash-lite,1557,403,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 7; stacked_fraction: L1
+class_9_General_math_bn,166,2026-10-14T15:16:10,gemini-3.5-flash-lite,1557,535,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; ascii_figure_removed: 6; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,166,2026-10-14T15:16:16,gemini-3.5-flash-lite,1557,525,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; ascii_figure_removed: 6
+class_9_General_math_bn,167,2026-10-14T15:16:22,gemini-3.5-flash-lite,1557,553,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 5; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,167,2026-10-14T15:16:28,gemini-3.5-flash-lite,1557,553,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 3
+class_9_General_math_bn,168,2026-10-14T15:16:36,gemini-3.5-flash-lite,1557,522,"OK primary temp=0 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L29; stacked_fraction: L29; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,168,2026-10-14T15:16:45,gemini-3.5-flash-lite,1557,472,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,169,2026-10-14T15:16:57,gemini-3.5-flash-lite,1557,520,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; page_number_fixed: ১৬৮->১৬৪; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,169,2026-10-14T15:17:06,gemini-3.5-flash-lite,1557,518,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,170,2026-10-14T15:17:14,gemini-3.5-flash-lite,1557,468,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 4; script_digit_mismatch: 1 Bangla digit(s) vs 0 Latin digit(s) on math-like lines; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,170,2026-10-14T15:17:20,gemini-3.5-flash-lite,1557,459,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; script_digit_mismatch: 1 Bangla digit(s) vs 0 Latin digit(s) on math-like lines
