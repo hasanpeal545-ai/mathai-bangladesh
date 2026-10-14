@@ -1,0 +1,37 @@
+94
+Algebraic Formulae and Applications
+
+In algebraic expressions,
+    x² y² ÷ x² y = y
+and x² y² ÷ xy² = x
+That is, x² y² is divisible by both the quantities x² y and xy² .
+Therefore, x² y² is a common multiple of x² y and xy² .
+Again, x² y = x × x × y
+          xy² = x × y × y
+Here, x occurs maximum two times and y occurs maximum two times in the
+two expressions.
+∴ L.C.M. = x × x × y × y = x² y²
+Remark : L.C.M. = common factors × factors which are not common.
+
+The product of highest power of all possible factors of two or more expressions
+is called the least common multiple (L.C.M.) of the expressions.
+
+Rules of finding L.C.M.
+
+At first the L.C.M. of the numerical coefficients should be determined for
+finding the L.C.M. Then the highest power of factors should be found. Then
+their product will be the L.C.M. of the given expressions.
+
+Example 35. Determine the L.C.M. of 4x² y³ z, 6xy³ z² and 8x³ yz³ .
+
+Solution : The L.C.M. of the numerical coefficients of the given expressions
+4, 6 and 8 is 24 The highest power of the included factors of the given
+expressions x, y, z are x³, y³ and z³ respectively.
+The required L.C.M. is 24x³ y³ z³
+
+Example 36. Determine the L.C.M. of a² − b² and a² + 2ab + b² .
+
+Solution : 1ˢᵗ expression = a² − b² = (a + b)(a − b)
+                 2ⁿᵈ expression = a² + 2ab + b² = (a + b)²
+The highest powers of the included factors of given expressions are (a − b) and (a + b)²
+The required L.C.M. is (a − b)(a + b)²

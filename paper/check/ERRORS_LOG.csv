@@ -1,0 +1,199 @@
+﻿batch,date,book,language,page,status,error_type,gemini_text,correct_text,line,note
+pilot,2026-10-06,class_6_math_bn,bn,156,error,bangla_digit,(ঘ) ৯০ : ২৩,(ঘ) ৭০ : ২৩,অনুশীলনী ২.১ প্রশ্ন ১,answer key value wrong (৭→৯); English edition confirms 70
+pilot,2026-10-06,class_7_math_bn,bn,14,error,bangla_digit,১০৮,১০৪,উদাহরণ ২ divisor,long-division divisor wrong (৪→৮)
+pilot,2026-10-06,class_7_math_bn,bn,177,error,bangla_digit,২৯ । 1,২৭। 1,অনুশীলনী ৫.১ answers,question number wrong (৭→৯) — would break question-number mapping
+pilot,2026-10-06,class_9_General_math_bn,bn,29,error,word_substitution,প্রতিটি,প্রত্যেকটি,subset paragraph (2 places),synonym substituted
+pilot,2026-10-06,class_9_General_math_bn,bn,29,format,latex_mixed,\frac{p}{q},p/q,কাজ ঙ),LaTeX used instead of plain text
+pilot,2026-10-06,class_6_math_bn,bn,156,format,decimal_point,.,·,অনুশীলনী ১.৬,Bangla decimal dot normalised to '.' (meaning unchanged)
+pilot,2026-10-06,class_8_math_en,en,196,note,print_glyph,+,∸ (misprint),"answer 7, 8",book prints an odd dotted minus; Gemini output '+' (likely intended)
+pilot,2026-10-06,class_6_math_bn,bn,13,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_6_math_bn,bn,156,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_6_math_bn,bn,80,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_7_math_bn,bn,177,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_7_math_bn,bn,90,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_8_math_bn,bn,15,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_8_math_bn,bn,95,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_8_math_bn,bn,183,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_9_General_math_bn,bn,181,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_9_General_math_bn,bn,268,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_9_General_math_bn,bn,29,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_9_Hiher_math_bn,bn,27,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_9_Hiher_math_bn,bn,171,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_9_Hiher_math_bn,bn,233,error,margin_year,২০২৩/২০২৪/split,২০২৬,vertical margin text,rotated Bangla year misread; sometimes inserted mid-text
+pilot,2026-10-06,class_7_math_en,en,99,omission,margin_year,(missing),2026,vertical margin text,margin year omitted
+pilot,2026-10-06,class_7_math_en,en,195,omission,margin_year,(missing),2026,vertical margin text,margin year omitted
+pilot,2026-10-06,class_9_General_math_en,en,383,omission,margin_year,(missing),2026,vertical margin text,margin year omitted
+1,2026-10-07,class_9_General_math_bn,bn,3,spelling,bangla_word,আবদুস,আব্দুস,,
+1,2026-10-07,class_9_General_math_bn,bn,3,spelling,bangla_word,মণ্ডল,মন্ডল,,
+1,2026-10-07,class_9_General_math_bn,bn,3,spelling,bangla_symbol,মো:,মোঃ,,
+1,2026-10-07,class_9_General_math_bn,bn,4,spelling,bangla_word,অনুসঙ্গ,অনুষঙ্গ,25,
+1,2026-10-07,class_9_General_math_bn,bn,4,substitution,bangla_word,আনন্দদায়কী,আনন্দাশ্রয়ী,25,
+1,2026-10-07,class_9_General_math_bn,bn,4,substitution,bangla_word,মার্জনা,পরিমার্জন,28,
+1,2026-10-07,class_9_General_math_bn,bn,4,spelling,bangla_word,যথাথ,যথাযথ,30,
+1,2026-10-07,class_9_General_math_bn,bn,4,spelling,bangla_word,লক্ষ্যভিসারী,লক্ষ্যাভিসারী,11,
+1,2026-10-07,class_9_General_math_bn,bn,5,spelling,bangla_word,বীজগণিতিক,বীজগাণিতিক,7;15,2 rows of TOC
+1,2026-10-07,class_9_General_math_bn,bn,5,digit,bangla_digit,৩৩৫-৩৫৪,৩৪৫-৩৫৪,22,caught by alt reading (double-call)
+1,2026-10-07,class_9_General_math_bn,bn,6,spelling,bangla_word,সংখ্যাীতি,সংখ্যারীতি,9,
+1,2026-10-07,class_9_General_math_bn,bn,6,spelling,bangla_word,চীনা,চিনা,13,
+1,2026-10-07,class_9_General_math_bn,bn,6,substitution,bangla_word,বীজগাণিতিক,বীজগণিতীয়,16,
+1,2026-10-07,class_9_General_math_bn,bn,6,spelling,bangla_word,প্রণালীবদ্ধ,প্রণালিবদ্ধ,19,
+1,2026-10-07,class_9_General_math_bn,bn,6,spelling,bangla_word,সুম্পষ্ট,সুস্পষ্ট,20,
+1,2026-10-07,class_9_General_math_bn,bn,7,spelling,bangla_word,শ্রেণিভিন্যাস,শ্রেণিবিন্যাস,4,
+1,2026-10-07,class_9_General_math_bn,bn,7,spelling,bangla_word,হিসেবেও,হিসাবেও,22,
+1,2026-10-07,class_9_General_math_bn,bn,8,format,latex_left,\dots \dot{} \sqrt{} \qquad,… ̇ √ spaces,5-28,LaTeX post-processing missed these
+1,2026-10-07,class_9_General_math_bn,bn,8,spelling,bangla_word,আবৃ্ত,আবৃত্ত,4;6,x2
+1,2026-10-07,class_9_General_math_bn,bn,8,math,mixed_number,24/5,2 4/5,28,mixed number lost
+1,2026-10-07,class_9_General_math_bn,bn,8,omission,figure,[Flowchart...],flowchart of real number classes,26,figure replaced by placeholder
+1,2026-10-07,class_9_General_math_bn,bn,9,fallback,recitation,Tesseract text,whole page,all,"RECITATION block -> Tesseract; math garbled (V3, ৫ ৮, FRETS FARR, axioms broken). Example 1 + axioms + sqrt2 proof. Must re-OCR"
+1,2026-10-07,class_9_General_math_bn,bn,10,format,fraction_layout,p² / — / q (3 lines),p²/q,4-49,"fractions written vertically, not plain a/b"
+1,2026-10-07,class_9_General_math_bn,bn,9,fixed_manual,recitation,Tesseract text,manual transcription,all,"5 Gemini attempts blocked; Claude (chat) transcribed from image; Tesseract kept as page_9.tesseract.txt"
+1,2026-10-07,class_9_General_math_bn,bn,8,open,mixed_number,24/5,2 4/5,28,"reprocess cannot fix; prompt fix applies from batch 2"
+1,2026-10-07,class_9_General_math_bn,bn,10,open,fraction_layout,stacked,a/b,,"reprocess cannot fix; prompt fix applies from batch 2"
+1,2026-10-07,class_9_General_math_bn,bn,10,fixed_manual,fraction_layout,stacked,a/b,,"fixed by Claude (chat); original kept as page_10.before_fracfix.txt"
+1,2026-10-07,class_9_General_math_bn,bn,8,fixed_manual,mixed_number,24/5,2 4/5,28,"fixed by Claude (chat); original kept as page_8.before_fracfix.txt"
+2,2026-10-07,class_9_General_math_bn,bn,11,spelling,bangla_word,মস্তব্য,মন্তব্য,9,
+2,2026-10-07,class_9_General_math_bn,bn,11,math,recurring_dot,3.12̇4̇ / 4.2351̇1̇,3.1̇24̇ / 4.2351̇2̇,45;50,dot on wrong digit; digit 2 dropped
+2,2026-10-07,class_9_General_math_bn,bn,12,math,recurring_dot,"0.27, 2.567, 0.3, 0.24, 42.3478","0.2̇7̇, 2.5̇67̇, 0.3̇, 0.2̇4̇, 42.34̇7̇8̇",39-52,ALL recurring dots lost -> meaning changes
+2,2026-10-07,class_9_General_math_bn,bn,12,format,fraction_layout,"3/11, 95/37 stacked",a/b,9-15;38-44,prompt fix did not work here
+2,2026-10-07,class_9_General_math_bn,bn,12,spelling,bangla_word,শেযে / অংক,শেষে / অঙ্ক,5;7,
+2,2026-10-07,class_9_General_math_bn,bn,13,omission,page_number,(missing),৮,1,otherwise excellent: dots + fractions + mixed number all right
+2,2026-10-07,class_9_General_math_bn,bn,14,math,recurring_dot,5.23457,5.234̇57̇,13-23,all dots lost (6x)
+2,2026-10-07,class_9_General_math_bn,bn,14,spelling,bangla_word,করার / দানে / মস্তব্য,করায় / ডানে / মন্তব্য,4;5;10,
+2,2026-10-07,class_9_General_math_bn,bn,15,math,recurring_dot,"45.2346, 32.567, 6.4537 ...","45.23̇46̇, 32.5̇67̇, 6.453̇7̇ ...",3-22,all dots lost (~20 numbers); '6.4537 = 6.453737' becomes meaningless
+2,2026-10-07,class_9_General_math_bn,bn,16,math,recurring_dot,"5.6, 7.345, 10.78423 ...","5.6̇, 7.34̇5̇, 10.784̇23̇ ...",7-35,all dots lost
+2,2026-10-07,class_9_General_math_bn,bn,16,spelling,bangla_word,আবৃত,আবৃত্ত,many,"~20x, key term (also অনাবৃত)"
+2,2026-10-07,class_9_General_math_bn,bn,17,fixed_manual,recitation,Tesseract,manual transcription,all,5 attempts blocked; Claude (chat) transcribed; Tesseract kept as page_17.tesseract.txt
+2,2026-10-07,class_9_General_math_bn,bn,18,math,recurring_dot,"8.9478, 4.7i ...","8.94̇78̇, 4.7̇1̇ ...",4-45,all dots lost; dotted 1 read as letter i
+2,2026-10-07,class_9_General_math_bn,bn,18,spelling,bangla_word,আবৃত,আবৃত্ত,10;18;35,
+2,2026-10-07,class_9_General_math_bn,bn,19,math,recurring_dot,8.019̇02̇,8.01902,14,"gemini-3.6-flash escalation: dots kept, 1 extra; good page"
+2,2026-10-07,class_9_General_math_bn,bn,19,spelling,bangla_word,আবৃত,আবৃত্ত,28-32,
+2,2026-10-07,class_9_General_math_bn,bn,20,math,recurring_dot,"0.28, 42.18, 12.185 ...","0.28̇, 42.1̇8̇, 12.1̇85̇ ...",4-31,all dots lost
+2b,2026-10-08,class_9_General_math_bn,bn,11,math,recurring_dot_misplaced,3.1̇2̇4̇ / 4.2351̇1̇২,3.1̇24̇ / 4.23511̇2̇,,after dot-prompt; 2 wrong; Bangla digit ২ inserted; fixed manually
+2b,2026-10-08,class_9_General_math_bn,bn,11,spelling,bangla_word,শ্রেণিভিন্যাস,শ্রেণিবিন্যাস,,fixed manually
+2b,2026-10-08,class_9_General_math_bn,bn,12,ok,,,,,"re-run good: fractions on one line, all dots right"
+2b,2026-10-08,class_9_General_math_bn,bn,14,spelling,postprocess_artifact,মমন্তব্য,মন্তব্য,,fixed manually; dots right
+2b,2026-10-08,class_9_General_math_bn,bn,15,math,recurring_dot_misplaced,13 numbers,see page,,dots on every digit of block / shifted; 6 dropped from 45.2346; fixed manually
+2b,2026-10-08,class_9_General_math_bn,bn,16,math,recurring_dot_misplaced,10 numbers,see page,,fixed manually
+2b,2026-10-08,class_9_General_math_bn,bn,18,math,recurring_dot_misplaced,~16 numbers,see page,,also wrong digit counts; rewritten manually
+2b,2026-10-08,class_9_General_math_bn,bn,19,math,recurring_dot_misplaced,4 numbers,see page,,gemini-3.6-flash also misplaces; fixed manually
+2b,2026-10-08,class_9_General_math_bn,bn,20,math,recurring_dot_misplaced+fraction_parens,~12 numbers; (28-2)/90 -> 28 - 2/90,see page,,rewritten manually
+3,2026-10-08,class_9_General_math_bn,bn,21,math,recurring_dot_misplaced,"2.2̇71̇8̇, 1.9̇12̇, 1.188̇1̇","2.2̇718̇, 1.91̇2̇, 1.1̇881̇",,fixed manually; also 'উউদাহরণ' doubled letter (in raw Gemini output)
+3,2026-10-08,class_9_General_math_bn,bn,22,artifact,token_leak,<bos>7র্মা-৩,ফর্মা-৩,footer,model special token leaked; also dropped word 'ভগ্নাংশে'
+3,2026-10-08,class_9_General_math_bn,bn,23,fallback,recitation,Tesseract,manual transcription,all,5 attempts blocked; contains start of অনুশীলনী-১; transcribed manually
+3,2026-10-08,class_9_General_math_bn,bn,24,math,mixed_number,"32/9, 38/15","3 2/9, 3 8/15",৮,exercise page; mixed numbers became wrong fractions; ~20 dots misplaced; rewritten manually
+3,2026-10-08,class_9_General_math_bn,bn,25,math,latex_left,\frac{23/3}{33/7},(2/3)/(3/7),ছ,+2 dots misplaced; fixed
+3,2026-10-08,class_9_General_math_bn,bn,26,script,devanagari_leak,डिनার,ডিনার,5,Devanagari letters inside Bangla word; also গণিতিক->গাণিতিক
+3,2026-10-08,class_9_General_math_bn,bn,27,spelling,bangla_word,এরুপ / প্রতিটি,এরূপ / প্রত্যেকটি,,
+3,2026-10-08,class_9_General_math_bn,bn,28,ok,,,,,clean
+3,2026-10-08,class_9_General_math_bn,bn,29,digit,bangla_digit,১৮৩৮,১৮৩৪,17,John Venn birth year: ৪->৮ digit confusion; also প্রতিটি->প্রত্যেকটি
+3,2026-10-08,class_9_General_math_bn,bn,30,cer,ground_truth_page,primary CER 5.15% / alt CER 0.36%,bn_page_30 ground truth,all,"production Flash-Lite vs Peal-verified GT; primary had ⊂eq, \setminus, \text, <bos>, দুটি; replaced by GT"
+4,2026-10-08,class_9_General_math_bn,bn,31,format,numbering,উদাহরণ ৭।,উদাহরণ ৭.,,Venn diagram not transcribed (figure)
+4,2026-10-08,class_9_General_math_bn,bn,32,spelling,bangla_word,দুটি,দুইটি,,book uses দুইটি; 2 Venn diagrams not transcribed
+4,2026-10-08,class_9_General_math_bn,bn,33,ok,,,,,recovered by temp-0.4 retry; only numbering punctuation
+4,2026-10-08,class_9_General_math_bn,bn,34,spelling,bangla_word,ক্রমানজোড় / উপরিযুক্ত / '.',ক্রমজোড় / উপরিউক্ত / '।',,
+4,2026-10-08,class_9_General_math_bn,bn,35,spelling,bangla_word,নিঃছেদ,নিশ্ছেদ,33,
+4,2026-10-08,class_9_General_math_bn,bn,36,cer,ground_truth_page,primary & alt CER 1.86%,bn_page_36 GT,all,Flash-Lite vs Peal-verified GT
+4,2026-10-08,class_9_General_math_bn,bn,37,spelling,verb_form,কর।  / দুটিই খেলাই / \longrightarrow,করো। / দুইটি খেলাই / →,,exercise numbering ৮। -> ৮.
+4,2026-10-08,class_9_General_math_bn,bn,38,math,symbol_meaning,xRy (not related),x R̸ y,13,"negation slash lost -> statement meaning inverted; also ⊂ vs ⊆ x2, সেদ্বয়ের"
+4,2026-10-08,class_9_General_math_bn,bn,39,spelling,bangla_word,দুটি / সম্পৰ্কযুক্ত,দুইটি / সম্পর্কযুক্ত,,Assamese ৰ in Bangla word
+4,2026-10-08,class_9_General_math_bn,bn,40,latex_left,tabular,\begin{tabular}...,plain table,21,
+5,2026-10-08,class_9_General_math_bn,bn,41,artifact,margin_text,তৈরি করে ৯ / করি। ২,(removed),28-29,"rotated margin year digits leaked into text; also যথাথ, দুটিকে"
+5,2026-10-08,class_9_General_math_bn,bn,42,math,fraction_parens,1/y(1 - 1/y),(1/y)(1 - 1/y),14,ambiguous denominator; also তাতেই->তাহলেই
+5,2026-10-08,class_9_General_math_bn,bn,43,spelling,doubled_letter,উদাাহরণ,উদাহরণ,4,
+5,2026-10-08,class_9_General_math_bn,bn,44,ok,,,,,
+5,2026-10-08,class_9_General_math_bn,bn,45,digit,page_number,৮০,৪০,1,৪->৮ confusion; also exercise ১০ fraction lost outer parens: f(1/x²)+1 / f(1/x²)-1
+5,2026-10-08,class_9_General_math_bn,bn,46,ok,,,,,clean
+5,2026-10-08,class_9_General_math_bn,bn,47,digit,question_number,৮.,৪.,10,question number ৪ read as ৮ (৪/৮ confusion); also নিশ্চেদ
+5,2026-10-08,class_9_General_math_bn,bn,48,spelling,bangla_word,বীজগণিতিক x13,বীজগাণিতিক,,systematic: chapter-title word misspelled throughout
+5,2026-10-08,class_9_General_math_bn,bn,49,digit,page_number,88,৪৪,1,Bangla page number turned into Latin 88; fraction parens lost x2; বীজগণিতিক
+5,2026-10-08,class_9_General_math_bn,bn,50,spelling,bangla_word,বীজগণিতিক / দুটি / সমষ্টীরূপে,বীজগাণিতিক / দুইটি / সমষ্টিরূপে,,
+6,2026-10-08,class_9_General_math_bn,bn,51,ok,,,,,
+6,2026-10-08,class_9_General_math_bn,bn,52,ok,,,,,
+6,2026-10-08,class_9_General_math_bn,bn,53,symbol,variable,2(ab + bc + ac),2(ab + bc + ca),17,
+6,2026-10-08,class_9_General_math_bn,bn,54,spelling,footer,ফর্মী,ফর্মা,48,
+6,2026-10-08,class_9_General_math_bn,bn,55,spelling,heading,ঘন সমবলিত,ঘন সংবলিত,4,
+6,2026-10-08,class_9_General_math_bn,bn,56,ok,,,,,
+6,2026-10-08,class_9_General_math_bn,bn,57,latex_left,because,\because,∵,15,also 3·a·1/a(a+1/a) ambiguous -> (1/a)
+6,2026-10-08,class_9_General_math_bn,bn,58,math,fraction_parens,- 3/2 · 26,- (3/2) · 26,6-7,
+6,2026-10-08,class_9_General_math_bn,bn,59,math,fraction_parens,((b+c)²)/3bc,(b+c)²/(3bc),15,denominator product without parens; exercise numbering ।->.
+6,2026-10-08,class_9_General_math_bn,bn,60,script,cyrillic_leak,উৎপাদке বিশ্লেষন,উৎপাদকে বিশ্লেষণ,18,Cyrillic 'ке' inside Bangla word
+7,2026-10-08,class_9_General_math_bn,bn,61,ok,,,,,
+7,2026-10-08,class_9_General_math_bn,bn,62,ok,,,,,
+7,2026-10-08,class_9_General_math_bn,bn,63,math,fraction_coefficient,"1/27(27a³+1), 1/2x²","(1/27)(27a³+1), (1/2)x²",5-17,fraction-coefficient ambiguity x5; ভগ্নাংশসহযুক্ত->ভগ্নাংশসহগযুক্ত
+7,2026-10-08,class_9_General_math_bn,bn,64,latex_left,underline_phantom,\underline / \; long division,plain layout,25-29,polynomial long division garbled; quotient merged into remainder line
+7,2026-10-08,class_9_General_math_bn,bn,65,format,spacing,f (− b/a),f(−b/a),,prতিজ্ঞা ১২। numbering
+7,2026-10-08,class_9_General_math_bn,bn,66,format,spacing,f (- b/a),f(−b/a),,
+7,2026-10-08,class_9_General_math_bn,bn,67,math,fraction_coefficient,"f (− 1/2 a), 27/8 a⁴","f(−(1/2)a), (27/8)a⁴",11-13,reads as −1/(2a); also কর->করো
+7,2026-10-08,class_9_General_math_bn,bn,68,ok,,,,,
+7,2026-10-08,class_9_General_math_bn,bn,69,digit,page_number,৫৪,৬৪,1,৬->৫ confusion (new pair)
+7,2026-10-08,class_9_General_math_bn,bn,70,latex_left,subscript_percent,"Q_0, s\%","Q₀, s%",6-12,also শর্ত->শর্তে
+8,2026-10-08,class_9_General_math_bn,bn,71,ok,,,,,
+8,2026-10-08,class_9_General_math_bn,bn,72,ok,,,,,recovered via escalation; table correct
+8,2026-10-08,class_9_General_math_bn,bn,73,digit,latin_digit,4 টাকা বৃদ্ধি,8 টাকা বৃদ্ধি,কাজ ক,digit 8 read as 4 in a কাজ question -> wrong problem
+8,2026-10-08,class_9_General_math_bn,bn,74,ok,,,,,
+8,2026-10-08,class_9_General_math_bn,bn,75,format,stacked_fraction,stacked fractions + 6 1/2,"inline a/b, 6 1/2",all,stacked layout returned despite prompt; mixed number lost; rewritten manually
+8,2026-10-08,class_9_General_math_bn,bn,76,script,odia_leak,বিশ্লেଷায়িত,বিশ্লেষায়িত,26,Odia letter ଷ inside Bangla word
+8,2026-10-08,class_9_General_math_bn,bn,77,ok,,,,,punctuation only
+8,2026-10-08,class_9_General_math_bn,bn,78,digit,script_digit,"৩৬, ৭২ (Bangla digits)","36, 72",3,digits converted to Bangla script; footer ফর্মা->353; 1/2{...} coefficient
+8,2026-10-08,class_9_General_math_bn,bn,79,ok,,,,,
+8,2026-10-08,class_9_General_math_bn,bn,80,spelling,bangla_word,নিয়ামাবলি / হিসেবে,নিয়মাবলি / হিসাবে,,
+9,2026-10-08,class_9_General_math_bn,bn,81,format,cases_layout,stacked piecewise / table fractions,inline,35-48,
+9,2026-10-08,class_9_General_math_bn,bn,82,latex_left,superscript,"a^m, a^{m+n}, \begin{cases}","aᵐ, aᵐ⁺ⁿ",all,chapter 4 exponents: Flash-Lite falls back to LaTeX superscripts
+9,2026-10-08,class_9_General_math_bn,bn,83,math,exponent_lost,(aᵖ) q⁻r · (a𝑞) r⁻p,(aᵖ)^(q−r) · (a^q)^(r−p),30-33,exponent detached from base -> different expression; math-italic 𝑞 chars; footer গাণিত
+9,2026-10-08,class_9_General_math_bn,bn,84,digit,example_number,উদাহরণ ৮,উদাহরণ ৪,25,৪->৮ again; plus \sqrt[3] \frac LaTeX
+9,2026-10-08,class_9_General_math_bn,bn,85,format,scrambled,90 lines of fragments,manual transcription,all,stacked exponents split into separate lines; অনুশীলনী ৪.১ unusable; rewritten
+9,2026-10-08,class_9_General_math_bn,bn,86,latex_left,dfrac,\dfrac ^{...} \sqrt[pq],plain,all,whole exercise page in LaTeX; rewritten
+9,2026-10-08,class_9_General_math_bn,bn,87,format,html_table,<table>..</table>,plain table,21-66,also ⁴√ read as ∛
+9,2026-10-08,class_9_General_math_bn,bn,88,symbol,greek_subscript,logᵪM (chi),log_bM,28-30,subscript b read as Greek chi -> wrong base
+9,2026-10-08,class_9_General_math_bn,bn,89,symbol,greek_subscript,logᵦ (beta),log_b,4-9,subscript b read as Greek beta x6
+9,2026-10-08,class_9_General_math_bn,bn,90,digit,chapter_number,অধ্যায় ৮,অধ্যায় ৪,1,৪->৮; fraction parens lost in উদাহরণ ১০ x4
+10,2026-10-08,class_9_General_math_bn,bn,91,format,stacked_fraction,stacked + 'অনুশীলনী ৮.২',inline + অনুশীলনী ৪.২,all,exercise header ৪->৮ (would break chapter/exercise dropdown); rewritten
+10,2026-10-08,class_9_General_math_bn,bn,92,fallback,recitation,Tesseract,manual transcription,all,5 attempts blocked
+10,2026-10-08,class_9_General_math_bn,bn,93,format,table_header,header split over 3 lines,one line,22,
+10,2026-10-08,class_9_General_math_bn,bn,94,ok,,,,,
+10,2026-10-08,class_9_General_math_bn,bn,95,spelling,bangla_word,লগ্নের / log₁0 / log_e,লগের / log₁₀ / logₑ,3;20-21,
+10,2026-10-08,class_9_General_math_bn,bn,96,digit,exercise_number,অনুশীলনী ৮.৩,অনুশীলনী ৪.৩,4,৪->৮ in exercise header again
+10,2026-10-08,class_9_General_math_bn,bn,97,math,bar_lost,ক) 2 (option),ক) 2̅,22,"bar over 2 lost -> MCQ options ক and ঘ identical; also (5ⁿ+2) read as 5ⁿ⁺², Bangla ০ in 0.0225"
+10,2026-10-08,class_9_General_math_bn,bn,98,fallback,recitation,Tesseract,manual transcription,all,5 attempts blocked; chapter 5 opening
+10,2026-10-08,class_9_General_math_bn,bn,99,spelling,bangla_word,সংখ্যাক / সাধারণতঃ,সংখ্যক / সাধারণত,,
+10,2026-10-08,class_9_General_math_bn,bn,100,math,fraction_parens,y − 1/3,(y − 1)/3,22,also বহুম্পদী x6
+11,2026-10-08,class_9_General_math_bn,bn,101,digit,script_digit,all Latin digits -> Bangla + stacked,"Latin, inline",all,despite prompt rule; rewritten
+11,2026-10-08,class_9_General_math_bn,bn,102,fallback,recitation,Tesseract,manual transcription,all,5 attempts blocked
+11,2026-10-08,class_9_General_math_bn,bn,103,ok,,,,,
+11,2026-10-08,class_9_General_math_bn,bn,104,omission,page_number,(missing),৯৯,2,
+11,2026-10-08,class_9_General_math_bn,bn,105,format,verb_form,কর (,করো (,,exercise 5.1 cont. correct
+11,2026-10-08,class_9_General_math_bn,bn,106,spelling,heading,দ্বিমাত / বহুমপদী / রূপ,দ্বিঘাত / বহুপদী / এরূপ,,section heading misspelled
+11,2026-10-08,class_9_General_math_bn,bn,107,format,sqrt_parens,√(3)y,√3y,,also কর->করো
+11,2026-10-08,class_9_General_math_bn,bn,108,math,fraction_parens,x + a / x − a,(x + a)/(x − a),6-23,7 occurrences; meaning changed
+11,2026-10-08,class_9_General_math_bn,bn,109,digit,page_number,১০৮,১০৪,1,৪->৮ again
+11,2026-10-08,class_9_General_math_bn,bn,110,ok,,,,,
+12,2026-10-08,class_9_General_math_bn,bn,111,spelling,bangla_word,অর্ধা-জ্যা,অর্ধ-জ্যা,,
+12,2026-10-08,class_9_General_math_bn,bn,112,ok,,,,,
+12,2026-10-08,class_9_General_math_bn,bn,113,spelling,bangla_word,সমীকরণেণে,সমীকরণে,6,√2x ambiguity -> √2·x
+12,2026-10-08,class_9_General_math_bn,bn,114,spelling,bangla_word,বাহুদ্বয়ের,বহুদ্বয়ের (as printed),,Gemini 'corrected' the book's wording
+12,2026-10-08,class_9_General_math_bn,bn,115,ok,,,,,
+12,2026-10-08,class_9_General_math_bn,bn,116,spelling,bangla_word,মহেঞ্জোদোরোর খনে / দ্বিখণ্ডিত / বিধিষদ্ধ,মহেঞ্জোদারোর খননে / দ্বিবিভক্ত / বিধিবদ্ধ,,chapter 6 opening; Gemini substituted a synonym (দ্বিখণ্ডিত)
+12,2026-10-08,class_9_General_math_bn,bn,117,fallback,recitation,Tesseract,manual,all,5 attempts blocked
+12,2026-10-08,class_9_General_math_bn,bn,118,spelling,bangla_word,বাস্তব পক্ষে,বাস্তবিক পক্ষে,,
+12,2026-10-08,class_9_General_math_bn,bn,119,fallback,recitation,Tesseract,manual,all,5 attempts blocked
+12,2026-10-08,class_9_General_math_bn,bn,120,fallback,recitation,Tesseract,manual,all,5 attempts blocked; |a−b| was |a—d|
+13,2026-10-14,class_9_General_math_bn,bn,121,spelling,word_substitution,নির্দেশ করে,নির্দিষ্ট করে,15,synonym substitution despite FIX_BATCH12 anti-synonym prompt
+13,2026-10-14,class_9_General_math_bn,bn,121,spelling,bangla_word,এররূপ,এরূপ,20,doubled letter
+13,2026-10-14,class_9_General_math_bn,bn,121,spelling,bangla_word,গণিতিক উক্তির প্রমাণ,গাণিতিক উক্তির প্রমাণ,30,section heading
+13,2026-10-14,class_9_General_math_bn,bn,121,spelling,bangla_word,যুক্তিবদ্যার,যুক্তিবিদ্যার,34,
+13,2026-10-14,class_9_General_math_bn,bn,122,ok,,,,,
+13,2026-10-14,class_9_General_math_bn,bn,123,spelling,bangla_word,রশ্মিদয়,রশ্মিদ্বয়,26,
+13,2026-10-14,class_9_General_math_bn,bn,123,math,symbol_meaning,POQ (x3),∠POQ (x3),26,angle sign dropped; ∠POQ becomes a bare point list
+13,2026-10-14,class_9_General_math_bn,bn,123,error,postprocess_artifact,বিন্দুইটি,বিন্দুটি,26,"OUR pipeline bug: _DUTI_RE (দুটি->দুইটি) has no word boundary, hits বিন্দুটি; raw Gemini text was correct"
+13,2026-10-14,class_9_General_math_bn,bn,123,format,figure_labels,A C B / P O Q label lines,(removed),,diagram labels leaked as text lines
+13,2026-10-14,class_9_General_math_bn,bn,124,error,postprocess_artifact,বিন্দুইটি,বিন্দুটি,16,same _DUTI_RE bug
+13,2026-10-14,class_9_General_math_bn,bn,125,format,heading,উপপাদ্য ১।,উপপাদ্য ১.,31,দাঁড়ি instead of period
+13,2026-10-14,class_9_General_math_bn,bn,126,ok,,,,,secondary (temp 0.4) reading promoted; clean
+13,2026-10-14,class_9_General_math_bn,bn,127,format,notation,AB || CD,AB ∥ CD,28,normalised to U+2225 (|| can be confused with absolute value)
+13,2026-10-14,class_9_General_math_bn,bn,128,spelling,bangla_word,বহির্বাগের,বহির্ভাগের,6,exercise 6.2 question 1
+13,2026-10-14,class_9_General_math_bn,bn,128,format,figure_labels,A / B C label lines,(removed),,one label line sat between text and a heading
+13,2026-10-14,class_9_General_math_bn,bn,129,digit,page_number,১২৮,১২৪,1,৪->৮ again (finding 13); pipeline flagged it correctly
+13,2026-10-14,class_9_General_math_bn,bn,129,math,symbol_meaning,AB = AC R̸ BC,AB = AC ≠ BC,6,"≠ rendered as R̸ (not-related, from ch.1 relations) — wrong symbol"
+13,2026-10-14,class_9_General_math_bn,bn,130,format,figure_labels,"~30 label lines (A,B,C,D,1,2,3,x,y,E,40⁰,(i),(ii))",(removed),,caused the stacked_fraction flags
+13,2026-10-14,class_9_General_math_bn,bn,130,format,margin_year,২০২১,(removed),68,rotated margin year
+13,2026-10-14,class_9_General_math_bn,bn,130,format,notation,BA || CE,BA ∥ CE,32,

@@ -1,0 +1,29 @@
+অধ্যায় ৪. সূচক ও লগারিদম
+৭৯
+
+$n$ তম মূল ($n$ th Root)
+
+লক্ষ করি, $5^{\frac{1}{2}} \times 5^{\frac{1}{2}} = \left(5^{\frac{1}{2}}\right)^2$
+আবার, $5^{\frac{1}{2}} \times 5^{\frac{1}{2}} = 5^{\frac{1}{2} + \frac{1}{2}} = 5^{2 \times \frac{1}{2}} = 5$
+$\therefore \left(5^{\frac{1}{2}}\right)^2 = 5$
+$5^{\frac{1}{2}}$ এর বর্গ (দ্বিতীয় ঘাত) $= 5$ এবং $5$ এর বর্গমূল (দ্বিতীয় মূল) $= 5^{\frac{1}{2}}$
+$5^{\frac{1}{2}}$ কে বর্গমূলের চিহ্ন $\sqrt{ }$ এর মাধ্যমে $\sqrt{5}$ আকারে লেখা হয়।
+আরো লক্ষ করি, $5^{\frac{1}{3}} \times 5^{\frac{1}{3}} \times 5^{\frac{1}{3}} = \left(5^{\frac{1}{3}}\right)^3$
+আবার, $5^{\frac{1}{3}} \times 5^{\frac{1}{3}} \times 5^{\frac{1}{3}} = 5^{\frac{1}{3} + \frac{1}{3} + \frac{1}{3}} = 5^{3 \times \frac{1}{3}} = 5$
+$5^{\frac{1}{3}}$ এর ঘন (তৃতীয় ঘাত) $= 5$ এবং $5$ এর ঘনমূল (তৃতীয় মূল) $= 5^{\frac{1}{3}}$
+$5^{\frac{1}{3}}$ কে ঘনমূলের চিহ্ন $\sqrt[3]{ }$ এর মাধ্যমে $\sqrt[3]{5}$ আকারে লেখা হয়।
+$n$ তম মূলের ক্ষেত্রে,
+$a^{\frac{1}{n}} \times a^{\frac{1}{n}} \times a^{\frac{1}{n}} \times \ldots \times a^{\frac{1}{n}}$ [$n$ সংখ্যক $a^{\frac{1}{n}}$ এর ক্রমিক গুণ] $= \left(a^{\frac{1}{n}}\right)^n$
+আবার, $a^{\frac{1}{n}} \times a^{\frac{1}{n}} \times a^{\frac{1}{n}} \times \ldots \times a^{\frac{1}{n}}$
+$= a^{\frac{1}{n} + \frac{1}{n} + \frac{1}{n} + \ldots + \frac{1}{n}}$ [সূচকে $n$ সংখ্যক $\frac{1}{n}$ এর যোগ]
+$= a^{n \times \frac{1}{n}} = a$
+$\therefore \left(a^{\frac{1}{n}}\right)^n = a$
+$a^{\frac{1}{n}}$ এর $n$ তম ঘাত $a$ এবং $a$ এর $n$ তম মূল $a^{\frac{1}{n}}$
+অর্থাৎ, $a^{\frac{1}{n}}$ এর $n$ তম ঘাত $\left(a^{\frac{1}{n}}\right)^n = a$ এবং $a$ এর $n$ তম মূল $(a)^{\frac{1}{n}} = a^{\frac{1}{n}} = \sqrt[n]{a}$
+$a$ এর $n$ তম মূলকে $\sqrt[n]{a}$ আকারে লেখা হয়।
+
+উদাহরণ ৮. সরল করো: ক) $(12)^{-\frac{1}{2}} \times \sqrt[3]{54}$ খ) $(-3)^3 \times \left(-\frac{1}{2}\right)^2$
+
+সমাধান:
+ক) $(12)^{-\frac{1}{2}} \times \sqrt[3]{54} = \frac{1}{(12)^{\frac{1}{2}}} \times (54)^{\frac{1}{3}} = \frac{1}{(2^2 \times 3)^{\frac{1}{2}}} \times (3^3 \times 2)^{\frac{1}{3}}$
+$= \frac{1}{(2^2)^{\frac{1}{2}} \times 3^{\frac{1}{2}}} \times (3^3)^{\frac{1}{3}} \cdot 2^{\frac{1}{3}} = \frac{1}{2 \cdot 3^{\frac{1}{2}}} \times (3^3 \times 2)^{\frac{1}{3}}$

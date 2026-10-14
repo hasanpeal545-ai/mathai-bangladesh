@@ -1,0 +1,31 @@
+অধ্যায় ৪. সূচক ও লগারিদম
+৮৩
+
+প্রমাণ: ধরি, \log_a M = x, \log_a N = y
+∴ M = a^x, N = a^y
+এখন, MN = a^x · a^y = a^{x+y}
+∴ \log_a(MN) = x + y
+বা, \log_a(MN) = \log_a M + \log_a N [x, y এর মান বসিয়ে]
+∴ \log_a(MN) = \log_a M + \log_a N (প্রমাণিত)
+দ্রষ্টব্য: \log_a(MNP...) = \log_a M + \log_a N + \log_a P + ...
+দ্রষ্টব্য: \log_a(M ± N) ≠ \log_a M ± \log_a N
+সূত্র ৮ (ভাগফলের লগ). \log_a M/N = \log_a M - \log_a N
+
+প্রমাণ: ধরি, \log_a M = x, \log_a N = y
+∴ M = a^x, N = a^y
+এখন, M/N = (a^x)/(a^y) = a^{x-y}
+∴ \log_a M/N = x - y
+∴ \log_a M/N = \log_a M - \log_a N (প্রমাণিত)
+সূত্র ৯ (ঘাতের লগ). \log_a M^r = r \log_a M
+
+প্রমাণ: ধরি, \log_a M = x, ∴ M = a^x
+বা, (M)^r = (a^x)^r বা, M^r = a^{rx}
+∴ \log_a M^r = rx বা, \log_a M^r = r \log_a M
+∴ \log_a M^r = r \log_a M (প্রমাণিত)।
+দ্রষ্টব্য: (\log_a M)^r এবং r\log_a M সমান নাও হতে পারে।
+যেমন (\log₂ 4)⁵ = (\log₂ 2²)⁵ = 2⁵ = 32, 5\log₂ 4 = 5 · 2 = 10 ≠ 32
+সূত্র ১০ (ভিত্তি পরিবর্তন). \log_a M = \log_b M × \log_a b
+
+প্রমাণ: ধরি, \log_a M = x, \log_b M = y
+∴ a^x = M, b^y = M
+∴ a^x = b^y বা, (a^x)^{1/y} = (b^y)^{1/y} বা, b = a^{x/y}

@@ -1,0 +1,32 @@
+৩৮
+গণিত
+
+উদাাহরণ ২৪. সার্বিক সেট $U = \{x : x \in N$ এবং $x \leq 6\}$, $A = \{x : x$ মৌলিক সংখ্যা এবং
+$x \leq 5\}$, $B = \{x : x$ জোড় সংখ্যা এবং $x \leq 6\}$ এবং $C = A \setminus B$
+ক) $A^c$ নির্ণয় করো।
+খ) দেখাও যে, $A \cup B = (A \setminus B) \cup (B \setminus A) \cup (A \cap B)$
+গ) দেখাও যে, $(A \cap C) \times B = (A \times B) \cap (C \times B)$
+
+সমাধান:
+ক) দেওয়া আছে, $U = \{x : x \in N$ এবং $x \leq 6\} = \{1, 2, 3, 4, 5, 6\}$
+$A = \{x : x$ মৌলিক সংখ্যা এবং $x \leq 5\} = \{2, 3, 5\}$
+$\therefore A^c = U \setminus A = \{1, 2, 3, 4, 5, 6\} - \{2, 3, 5\} = \{1, 4, 6\}$
+খ) দেওয়া আছে,
+$B = \{x : x$ জোড় সংখ্যা এবং $x \leq 6\} = \{2, 4, 6\}$
+$\therefore A \cup B = \{2, 3, 5\} \cup \{2, 4, 6\} = \{2, 3, 4, 5, 6\} \dots \dots (1)$
+$A \setminus B = \{2, 3, 5\} - \{2, 4, 6\} = \{3, 5\}$
+$B \setminus A = \{2, 4, 6\} - \{2, 3, 5\} = \{4, 6\}$
+$A \cap B = \{2, 3, 5\} \cap \{2, 4, 6\} = \{2\}$
+$\therefore (A \setminus B) \cup (B \setminus A) \cup (A \cap B) = \{3, 5\} \cup \{4, 6\} \cup \{2\} = \{2, 3, 4, 5, 6\} \dots (2)$
+সুতরাং (1) ও (2) তুলনা করে পাই,
+$A \cup B = (A \setminus B) \cup (B \setminus A) \cup (A \cap B)$
+গ) 'খ' হতে পাই,
+$C = A \setminus B = \{3, 5\}$
+$A \cap C = \{2, 3, 5\} \cap \{3, 5\} = \{3, 5\}$
+$\therefore (A \cap C) \times B = \{3, 5\} \times \{2, 4, 6\}$
+$= \{(3, 2), (3, 4), (3, 6), (5, 2), (5, 4), (5, 6)\} \dots \dots (3)$
+$A \times B = \{2, 3, 5\} \times \{2, 4, 6\}$
+$= \{(2, 2), (2, 4), (2, 6), (3, 2), (3, 4), (3, 6), (5, 2), (5, 4), (5, 6)\}$
+$C \times B = \{3, 5\} \times \{2, 4, 6\}$
+$= \{(3, 2), (3, 4), (3, 6), (5, 2), (5, 4), (5, 6)\}$
+$\therefore (A \times B) \cap (C \times B)$

@@ -1,0 +1,447 @@
+book,page,time,model,input_tokens,output_tokens,status,error
+class_6_math_bn,13,2026-10-06T19:14:56,gemini-3.6-flash,1176,526,"OK (attempt 1, finish_reason=STOP)",
+class_6_math_bn,80,2026-10-06T19:15:25,gemini-3.6-flash,1176,346,"OK (attempt 1, finish_reason=STOP)",
+class_6_math_bn,156,2026-10-06T19:15:58,gemini-3.6-flash,1176,611,"OK (attempt 1, finish_reason=STOP)",
+class_6_math_en,15,2026-10-06T19:16:37,gemini-3.6-flash,0,0,FAILED (all 3 attempts),Unknown field for Candidate: finish_message
+class_6_math_en,91,2026-10-06T19:18:00,gemini-3.6-flash,1176,436,"OK (attempt 1, finish_reason=STOP)",
+class_6_math_en,178,2026-10-06T19:18:25,gemini-3.6-flash,1176,910,"OK (attempt 1, finish_reason=STOP)",
+class_7_math_bn,14,2026-10-06T19:19:07,gemini-3.6-flash,1166,614,"OK (attempt 1, finish_reason=STOP)",
+class_7_math_bn,90,2026-10-06T19:19:37,gemini-3.6-flash,1166,683,"OK (attempt 1, finish_reason=STOP)",
+class_7_math_bn,177,2026-10-06T19:19:59,gemini-3.6-flash,1166,1285,"OK (attempt 1, finish_reason=STOP)",
+class_7_math_en,16,2026-10-06T19:20:43,gemini-3.6-flash,1176,418,"OK (attempt 1, finish_reason=STOP)",
+class_7_math_en,99,2026-10-06T19:21:09,gemini-3.6-flash,1176,491,"OK (attempt 1, finish_reason=STOP)",
+class_7_math_en,195,2026-10-06T19:21:45,gemini-3.6-flash,1176,1460,"OK (attempt 1, finish_reason=STOP)",
+class_8_math_bn,15,2026-10-06T19:22:41,gemini-3.6-flash,1166,435,"OK (attempt 1, finish_reason=STOP)",
+class_8_math_bn,95,2026-10-06T19:23:20,gemini-3.6-flash,1166,632,"OK (attempt 1, finish_reason=STOP)",
+class_8_math_bn,183,2026-10-06T19:23:48,gemini-3.6-flash,1166,873,"OK (attempt 1, finish_reason=STOP)",
+class_8_math_en,16,2026-10-06T19:24:17,gemini-3.6-flash,1176,637,"OK (attempt 1, finish_reason=STOP)",
+class_8_math_en,101,2026-10-06T19:24:48,gemini-3.6-flash,1176,680,"OK (attempt 1, finish_reason=STOP)",
+class_8_math_en,196,2026-10-06T19:25:36,gemini-3.6-flash,1176,824,"OK (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,29,2026-10-06T19:26:11,gemini-3.6-flash,1176,642,"OK (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,181,2026-10-06T19:26:44,gemini-3.6-flash,1176,440,"OK (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,268,2026-10-06T19:27:17,gemini-3.6-flash,1176,809,"OK (attempt 1, finish_reason=STOP)",
+class_9_General_math_en,31,2026-10-06T19:27:45,gemini-3.6-flash,1176,723,"OK (attempt 1, finish_reason=STOP)",
+class_9_General_math_en,195,2026-10-06T19:28:09,gemini-3.6-flash,1176,364,"OK (attempt 1, finish_reason=STOP)",
+class_9_General_math_en,383,2026-10-06T19:28:36,gemini-3.6-flash,1176,956,"OK (attempt 1, finish_reason=STOP)",
+class_9_Hiher_math_bn,27,2026-10-06T19:29:10,gemini-3.6-flash,1176,666,"OK (attempt 1, finish_reason=STOP)",
+class_9_Hiher_math_bn,171,2026-10-06T19:29:40,gemini-3.6-flash,1176,499,"OK (attempt 1, finish_reason=STOP)",
+class_9_Hiher_math_bn,233,2026-10-06T19:30:14,gemini-3.6-flash,1176,799,"OK (attempt 1, finish_reason=STOP)",
+class_9_Higher_math_en,28,2026-10-06T19:31:04,gemini-3.6-flash,0,0,FAILED (all 3 attempts),Unknown field for Candidate: finish_message
+class_9_Higher_math_en,177,2026-10-06T19:32:13,gemini-3.6-flash,1176,604,"OK (attempt 1, finish_reason=STOP)",
+class_9_Higher_math_en,246,2026-10-06T19:32:39,gemini-3.6-flash,1176,778,"OK (attempt 1, finish_reason=STOP)",
+class_6_math_en,15,2026-10-06T19:38:37,gemini-3.6-flash,1176,2807,BLOCKED (RECITATION),
+class_9_Higher_math_en,28,2026-10-06T19:39:00,gemini-3.6-flash,1176,3226,BLOCKED (RECITATION),
+class_6_math_bn,13,2026-10-06T22:11:56,gemini-3.6-flash,1228,2412,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_6_math_bn,13,2026-10-06T22:12:12,gemini-3.6-flash,1228,3650,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_6_math_bn,80,2026-10-06T22:12:30,gemini-3.6-flash,1228,6391,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_6_math_bn,80,2026-10-06T22:13:06,gemini-3.6-flash,1228,4039,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_6_math_bn,156,2026-10-06T22:13:31,gemini-3.6-flash,1228,4741,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_6_math_bn,156,2026-10-06T22:13:53,gemini-3.6-flash,1228,5557,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_6_math_en,15,2026-10-06T22:14:21,gemini-3.6-flash,1228,5040,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_6_math_en,91,2026-10-06T22:14:46,gemini-3.6-flash,1228,4313,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_6_math_en,178,2026-10-06T22:15:13,gemini-3.6-flash,1228,12563,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_Higher_math_en,28,2026-10-06T22:19:12,gemini-3.6-flash,1228,3465,BLOCKED primary temp=0 (RECITATION),
+class_9_Higher_math_en,177,2026-10-06T22:19:36,gemini-3.6-flash,1228,2996,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_Higher_math_en,246,2026-10-06T22:19:59,gemini-3.6-flash,1228,8029,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_7_math_bn,14,2026-10-06T22:21:42,gemini-3.6-flash,1218,2714,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_7_math_bn,14,2026-10-06T22:22:03,gemini-3.6-flash,1218,2770,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_7_math_bn,90,2026-10-06T22:22:24,gemini-3.6-flash,1218,4974,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_7_math_bn,90,2026-10-06T22:22:48,gemini-3.6-flash,1218,4820,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_7_math_bn,177,2026-10-06T22:23:12,gemini-3.6-flash,1218,5232,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_7_math_bn,177,2026-10-06T22:23:38,gemini-3.6-flash,1218,2839,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_7_math_en,16,2026-10-06T22:23:53,gemini-3.6-flash,1228,4408,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_7_math_en,99,2026-10-06T22:24:16,gemini-3.6-flash,1228,3617,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_7_math_en,195,2026-10-06T22:24:36,gemini-3.6-flash,1228,8023,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_8_math_bn,15,2026-10-06T22:25:11,gemini-3.6-flash,1218,3580,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_8_math_bn,15,2026-10-06T22:25:29,gemini-3.6-flash,1218,7453,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_8_math_bn,95,2026-10-06T22:26:11,gemini-3.6-flash,1218,3691,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_8_math_bn,95,2026-10-06T22:26:29,gemini-3.6-flash,1218,3870,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_8_math_bn,183,2026-10-06T22:26:48,gemini-3.6-flash,1218,5229,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_8_math_bn,183,2026-10-06T22:27:12,gemini-3.6-flash,1218,4758,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_8_math_en,16,2026-10-06T22:27:34,gemini-3.6-flash,1228,5615,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_8_math_en,101,2026-10-06T22:28:02,gemini-3.6-flash,1228,3596,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_8_math_en,196,2026-10-06T22:28:18,gemini-3.6-flash,1228,8660,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,29,2026-10-06T22:29:00,gemini-3.6-flash,1228,5258,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,29,2026-10-06T22:29:24,gemini-3.6-flash,1228,4707,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,181,2026-10-06T22:29:49,gemini-3.6-flash,1228,4005,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,181,2026-10-06T22:30:10,gemini-3.6-flash,1228,4985,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,268,2026-10-06T22:30:38,gemini-3.6-flash,1228,5235,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,268,2026-10-06T22:31:02,gemini-3.6-flash,1228,5027,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_en,31,2026-10-06T22:31:27,gemini-3.6-flash,1228,3888,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_en,195,2026-10-06T22:31:47,gemini-3.6-flash,1228,4270,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_en,383,2026-10-06T22:32:11,gemini-3.6-flash,1228,5995,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_Hiher_math_bn,27,2026-10-06T22:32:39,gemini-3.6-flash,1228,6827,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_Hiher_math_bn,27,2026-10-06T22:33:11,gemini-3.6-flash,1228,5510,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_Hiher_math_bn,171,2026-10-06T22:33:40,gemini-3.6-flash,1228,4461,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_Hiher_math_bn,171,2026-10-06T22:34:03,gemini-3.6-flash,1228,3259,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_Hiher_math_bn,233,2026-10-06T22:34:23,gemini-3.6-flash,1228,8064,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_Hiher_math_bn,233,2026-10-06T22:35:00,gemini-3.6-flash,1228,7070,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_6_math_bn,156,2026-10-07T06:39:13,gemini-3.6-flash,1196,3564,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_6_math_bn,156,2026-10-07T06:39:31,gemini-3.6-flash,1196,5111,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_7_math_bn,14,2026-10-07T06:39:56,gemini-3.6-flash,1186,4602,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_7_math_bn,14,2026-10-07T06:40:21,gemini-3.6-flash,1186,7613,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_8_math_en,196,2026-10-07T06:41:00,gemini-3.6-flash,1196,6405,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,29,2026-10-07T06:41:32,gemini-3.6-flash,1196,4384,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,29,2026-10-07T06:41:57,gemini-3.6-flash,1196,4241,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,1,2026-10-07T07:31:34,gemini-3.5-flash-lite,1195,23,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,1,2026-10-07T07:31:37,gemini-3.5-flash-lite,1195,23,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,2,2026-10-07T07:31:41,gemini-3.5-flash-lite,1195,67,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,2,2026-10-07T07:31:44,gemini-3.5-flash-lite,1195,67,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,3,2026-10-07T07:31:47,gemini-3.5-flash-lite,1195,162,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,3,2026-10-07T07:31:51,gemini-3.5-flash-lite,1195,162,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,4,2026-10-07T07:31:54,gemini-3.5-flash-lite,1195,674,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,4,2026-10-07T07:32:00,gemini-3.5-flash-lite,1195,671,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,5,2026-10-07T07:32:06,gemini-3.5-flash-lite,1195,285,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,5,2026-10-07T07:32:10,gemini-3.5-flash-lite,1195,284,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,6,2026-10-07T07:32:14,gemini-3.5-flash-lite,1195,523,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,6,2026-10-07T07:32:18,gemini-3.5-flash-lite,1195,523,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,7,2026-10-07T07:32:23,gemini-3.5-flash-lite,1195,834,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,7,2026-10-07T07:32:28,gemini-3.5-flash-lite,1195,804,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,8,2026-10-07T07:32:34,gemini-3.5-flash-lite,1195,649,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,8,2026-10-07T07:32:39,gemini-3.5-flash-lite,1195,721,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,9,2026-10-07T07:32:44,gemini-3.5-flash-lite,1195,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,9,2026-10-07T07:32:49,gemini-3.5-flash-lite,1195,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,10,2026-10-07T07:32:54,gemini-3.5-flash-lite,1195,564,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,10,2026-10-07T07:32:58,gemini-3.5-flash-lite,1195,603,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,1,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,1,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,2,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,2,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,3,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,3,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,4,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,4,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,5,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,5,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,6,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,6,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,7,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,7,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,8,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,8,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,10,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,10,2026-10-07T07:56:12,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,9,2026-10-07T07:56:45,gemini-3.5-flash-lite,1239,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,9,2026-10-07T07:56:50,gemini-3.5-flash-lite,1239,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,9,2026-10-07T07:56:55,gemini-3.5-flash-lite,1239,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,9,2026-10-07T07:56:59,gemini-3.5-flash-lite,1254,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,9,2026-10-07T07:57:05,gemini-3.6-flash,1239,0,BLOCKED escalate_gemini-3.6-flash temp=0 (RECITATION),
+class_9_General_math_bn,11,2026-10-07T08:15:38,gemini-3.5-flash-lite,1239,698,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L1,L19,L21,L22,L24,L25,L27,L28,L30"
+class_9_General_math_bn,11,2026-10-07T08:15:43,gemini-3.5-flash-lite,1239,693,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","stacked_fraction: L1,L20,L22,L23,L25,L26,L28,L29,L31"
+class_9_General_math_bn,12,2026-10-07T08:15:48,gemini-3.5-flash-lite,1239,554,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L2,L22,L23,L37,L42,L44"
+class_9_General_math_bn,12,2026-10-07T08:15:54,gemini-3.5-flash-lite,1239,563,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","stacked_fraction: L2,L19,L20,L34,L39,L41"
+class_9_General_math_bn,13,2026-10-07T08:15:58,gemini-3.5-flash-lite,1239,766,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,13,2026-10-07T08:16:05,gemini-3.5-flash-lite,1239,776,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,14,2026-10-07T08:16:10,gemini-3.5-flash-lite,1239,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,14,2026-10-07T08:16:16,gemini-3.5-flash-lite,1239,675,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,15,2026-10-07T08:16:22,gemini-3.5-flash-lite,1239,804,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,15,2026-10-07T08:16:27,gemini-3.5-flash-lite,1239,806,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,16,2026-10-07T08:16:34,gemini-3.5-flash-lite,1239,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,16,2026-10-07T08:16:40,gemini-3.5-flash-lite,1239,944,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,17,2026-10-07T08:16:47,gemini-3.5-flash-lite,1239,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,17,2026-10-07T08:16:53,gemini-3.5-flash-lite,1239,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,17,2026-10-07T08:16:58,gemini-3.5-flash-lite,1239,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,17,2026-10-07T08:17:03,gemini-3.5-flash-lite,1254,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,17,2026-10-07T08:17:09,gemini-3.6-flash,1239,0,BLOCKED escalate_gemini-3.6-flash temp=0 (RECITATION),
+class_9_General_math_bn,18,2026-10-07T08:17:16,gemini-3.5-flash-lite,1239,946,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,18,2026-10-07T08:17:22,gemini-3.5-flash-lite,1239,1007,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","latex_left: \begin,\end,\hline; stacked_fraction: L2"
+class_9_General_math_bn,19,2026-10-07T08:17:28,gemini-3.5-flash-lite,1239,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,19,2026-10-07T08:17:34,gemini-3.5-flash-lite,1239,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,19,2026-10-07T08:17:40,gemini-3.5-flash-lite,1239,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,19,2026-10-07T08:17:44,gemini-3.5-flash-lite,1254,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,19,2026-10-07T08:17:49,gemini-3.6-flash,1239,657,"OK escalate_gemini-3.6-flash temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,20,2026-10-07T08:17:57,gemini-3.5-flash-lite,1239,538,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,20,2026-10-07T08:18:01,gemini-3.5-flash-lite,1239,734,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,11,2026-10-08T15:00:00,gemini-3.5-flash-lite,1321,684,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L1,L18,L20,L21,L23,L24,L26,L27,L29"
+class_9_General_math_bn,11,2026-10-08T15:00:06,gemini-3.5-flash-lite,1321,697,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","typo_fixes: 1; stacked_fraction: L1,L19,L21,L22,L24,L25,L27,L28,L30"
+class_9_General_math_bn,12,2026-10-08T15:00:11,gemini-3.5-flash-lite,1321,578,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L2,L18,L20,L21,L23,L24,L26,L27,L29,L34,L36,L37,L39,L40,L42,L43,L45,L46,L48,L49,L51,L52,L54"
+class_9_General_math_bn,12,2026-10-08T15:00:16,gemini-3.5-flash-lite,1321,549,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","stacked_fraction: L2,L37"
+class_9_General_math_bn,14,2026-10-08T15:00:23,gemini-3.5-flash-lite,1321,675,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,14,2026-10-08T15:00:28,gemini-3.5-flash-lite,1321,681,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,15,2026-10-08T15:00:34,gemini-3.5-flash-lite,1321,845,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,15,2026-10-08T15:00:40,gemini-3.5-flash-lite,1321,840,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,16,2026-10-08T15:00:45,gemini-3.5-flash-lite,1321,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,16,2026-10-08T15:00:54,gemini-3.5-flash-lite,1321,992,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 26; stacked_fraction: L2
+class_9_General_math_bn,18,2026-10-08T15:01:00,gemini-3.5-flash-lite,1321,757,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2
+class_9_General_math_bn,18,2026-10-08T15:01:05,gemini-3.5-flash-lite,1321,769,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,20,2026-10-08T15:01:10,gemini-3.5-flash-lite,1321,775,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,20,2026-10-08T15:01:15,gemini-3.5-flash-lite,1321,584,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,19,2026-10-08T15:02:43,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,typo_fixes: 6
+class_9_General_math_bn,21,2026-10-08T15:21:58,gemini-3.5-flash-lite,1321,617,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,21,2026-10-08T15:22:03,gemini-3.5-flash-lite,1321,626,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,22,2026-10-08T15:22:07,gemini-3.5-flash-lite,1321,572,"OK primary temp=0 (attempt 1, finish_reason=STOP)","typo_fixes: 1; stacked_fraction: L2,L5,L7,L9"
+class_9_General_math_bn,22,2026-10-08T15:22:11,gemini-3.5-flash-lite,1321,575,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","typo_fixes: 1; stacked_fraction: L2,L5,L7,L9"
+class_9_General_math_bn,23,2026-10-08T15:22:15,gemini-3.5-flash-lite,1321,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,23,2026-10-08T15:22:20,gemini-3.5-flash-lite,1321,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,23,2026-10-08T15:22:24,gemini-3.5-flash-lite,1321,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,23,2026-10-08T15:22:29,gemini-3.5-flash-lite,1336,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,23,2026-10-08T15:22:32,gemini-3.6-flash,1321,0,BLOCKED escalate_gemini-3.6-flash temp=0 (RECITATION),
+class_9_General_math_bn,24,2026-10-08T15:22:38,gemini-3.5-flash-lite,1321,1026,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 2; latex_left: \overline; stacked_fraction: L2
+class_9_General_math_bn,24,2026-10-08T15:22:43,gemini-3.5-flash-lite,1321,1032,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",latex_left: \overline; stacked_fraction: L2
+class_9_General_math_bn,25,2026-10-08T15:22:49,gemini-3.5-flash-lite,1321,631,"OK primary temp=0 (attempt 1, finish_reason=STOP)",latex_left: \frac; stacked_fraction: L1
+class_9_General_math_bn,25,2026-10-08T15:22:54,gemini-3.5-flash-lite,1321,626,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","latex_left: \hline,\text; stacked_fraction: L1"
+class_9_General_math_bn,26,2026-10-08T15:22:59,gemini-3.5-flash-lite,1321,429,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,26,2026-10-08T15:23:04,gemini-3.5-flash-lite,1321,433,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,27,2026-10-08T15:23:09,gemini-3.5-flash-lite,1321,650,"OK primary temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,27,2026-10-08T15:23:15,gemini-3.5-flash-lite,1321,650,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,28,2026-10-08T15:23:19,gemini-3.5-flash-lite,1321,643,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,28,2026-10-08T15:23:25,gemini-3.5-flash-lite,1321,652,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,29,2026-10-08T15:23:30,gemini-3.5-flash-lite,1321,606,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,29,2026-10-08T15:23:35,gemini-3.5-flash-lite,1321,606,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,30,2026-10-08T15:23:40,gemini-3.5-flash-lite,1321,865,"OK primary temp=0 (attempt 1, finish_reason=STOP)","latex_left: \setminus,\text; stacked_fraction: L2"
+class_9_General_math_bn,30,2026-10-08T15:23:46,gemini-3.5-flash-lite,1321,771,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",latex_left: \B; stacked_fraction: L2
+class_9_General_math_bn,31,2026-10-08T16:08:55,gemini-3.5-flash-lite,1321,720,"OK primary temp=0 (attempt 1, finish_reason=STOP)",devanagari_leak: 15; stacked_fraction: L1; quality: kept primary (15 <= 18 issues)
+class_9_General_math_bn,31,2026-10-08T16:09:00,gemini-3.5-flash-lite,1321,738,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",devanagari_leak: 18; stacked_fraction: L1
+class_9_General_math_bn,31,2026-10-08T16:10:28,gemini-3.5-flash-lite,1321,738,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,31,2026-10-08T16:10:33,gemini-3.5-flash-lite,1321,810,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,32,2026-10-08T16:10:54,gemini-3.5-flash-lite,1321,706,"OK primary temp=0 (attempt 1, finish_reason=STOP)",latex_left: \mathbb; stacked_fraction: L2
+class_9_General_math_bn,32,2026-10-08T16:10:59,gemini-3.5-flash-lite,1321,698,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: promoted secondary over primary (0 < 1 issues)
+class_9_General_math_bn,33,2026-10-08T16:11:04,gemini-3.5-flash-lite,1321,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,33,2026-10-08T16:11:09,gemini-3.5-flash-lite,1321,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,33,2026-10-08T16:11:14,gemini-3.5-flash-lite,1321,591,"OK escalate_temp0.4 temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,34,2026-10-08T16:11:18,gemini-3.5-flash-lite,1321,714,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: kept primary (0 <= 1 issues)
+class_9_General_math_bn,34,2026-10-08T16:11:23,gemini-3.5-flash-lite,1321,716,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",latex_left: \right; stacked_fraction: L2
+class_9_General_math_bn,35,2026-10-08T16:11:32,gemini-3.5-flash-lite,1321,693,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,35,2026-10-08T16:11:36,gemini-3.5-flash-lite,1321,693,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,36,2026-10-08T16:11:50,gemini-3.5-flash-lite,1321,800,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,36,2026-10-08T16:11:56,gemini-3.5-flash-lite,1321,789,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,37,2026-10-08T16:12:02,gemini-3.5-flash-lite,1321,499,"OK primary temp=0 (attempt 1, finish_reason=STOP)",latex_left: \longrightarrow; stacked_fraction: L1; quality: kept primary (1 <= 1 issues)
+class_9_General_math_bn,37,2026-10-08T16:12:16,gemini-3.5-flash-lite,1321,503,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",latex_left: \longrightarrow; stacked_fraction: L1
+class_9_General_math_bn,38,2026-10-08T16:12:21,gemini-3.5-flash-lite,1321,815,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: kept primary (0 <= 1 issues)
+class_9_General_math_bn,38,2026-10-08T16:12:27,gemini-3.5-flash-lite,1321,941,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",token_leak: 1; stacked_fraction: L2
+class_9_General_math_bn,39,2026-10-08T16:12:33,gemini-3.5-flash-lite,1321,557,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L1,L20; quality: kept primary (0 <= 0 issues)"
+class_9_General_math_bn,39,2026-10-08T16:12:38,gemini-3.5-flash-lite,1321,534,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,40,2026-10-08T16:12:43,gemini-3.5-flash-lite,1321,869,"OK primary temp=0 (attempt 1, finish_reason=STOP)","latex_left: \begin,\end,\hline; stacked_fraction: L2; quality: kept primary (3 <= 3 issues)"
+class_9_General_math_bn,40,2026-10-08T16:12:49,gemini-3.5-flash-lite,1321,872,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","latex_left: \begin,\end,\hline; stacked_fraction: L2"
+class_9_General_math_bn,41,2026-10-08T16:47:29,gemini-3.5-flash-lite,1348,556,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,41,2026-10-08T16:47:34,gemini-3.5-flash-lite,1348,553,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,42,2026-10-08T16:47:40,gemini-3.5-flash-lite,1348,585,"OK primary temp=0 (attempt 1, finish_reason=STOP)","latex_left: \begin,\end; stacked_fraction: L2; quality: kept primary (2 <= 3 issues)"
+class_9_General_math_bn,42,2026-10-08T16:47:45,gemini-3.5-flash-lite,1348,642,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","latex_left: \begin,\end,\frac; stacked_fraction: L2"
+class_9_General_math_bn,43,2026-10-08T16:47:50,gemini-3.5-flash-lite,1348,871,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,43,2026-10-08T16:47:55,gemini-3.5-flash-lite,1348,872,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,44,2026-10-08T16:48:01,gemini-3.5-flash-lite,1348,832,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,44,2026-10-08T16:48:07,gemini-3.5-flash-lite,1348,707,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","stacked_fraction: L2,L29,L30,L31,L32,L33,L34,L35,L36,L37,L38"
+class_9_General_math_bn,45,2026-10-08T16:48:12,gemini-3.5-flash-lite,1348,624,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,45,2026-10-08T16:48:17,gemini-3.5-flash-lite,1348,625,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,46,2026-10-08T16:48:22,gemini-3.5-flash-lite,1348,537,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,46,2026-10-08T16:48:27,gemini-3.5-flash-lite,1348,551,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,47,2026-10-08T16:48:32,gemini-3.5-flash-lite,1348,479,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,47,2026-10-08T16:48:37,gemini-3.5-flash-lite,1348,480,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,48,2026-10-08T16:48:42,gemini-3.5-flash-lite,1348,450,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,48,2026-10-08T16:48:47,gemini-3.5-flash-lite,1348,451,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,49,2026-10-08T16:48:52,gemini-3.5-flash-lite,1348,592,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,49,2026-10-08T16:48:56,gemini-3.5-flash-lite,1348,603,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L1
+class_9_General_math_bn,50,2026-10-08T16:49:02,gemini-3.5-flash-lite,1348,827,"OK primary temp=0 (attempt 1, finish_reason=STOP)",latex_left: \hline; stacked_fraction: L2
+class_9_General_math_bn,50,2026-10-08T16:49:08,gemini-3.5-flash-lite,1348,814,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2; quality: promoted secondary over primary (0 < 1 issues)
+class_9_General_math_bn,42,2026-10-08T16:52:23,gemini-3.5-flash-lite,1348,616,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,42,2026-10-08T16:52:27,gemini-3.5-flash-lite,1348,616,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,50,2026-10-08T16:52:32,gemini-3.5-flash-lite,1348,854,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,50,2026-10-08T16:52:37,gemini-3.5-flash-lite,1348,807,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,51,2026-10-08T18:39:42,gemini-3.5-flash-lite,1348,706,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,51,2026-10-08T18:39:49,gemini-3.5-flash-lite,1348,707,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,52,2026-10-08T18:39:56,gemini-3.5-flash-lite,1348,739,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,52,2026-10-08T18:40:02,gemini-3.5-flash-lite,1348,739,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1
+class_9_General_math_bn,53,2026-10-08T18:40:08,gemini-3.5-flash-lite,1348,619,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 2; stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,53,2026-10-08T18:40:14,gemini-3.5-flash-lite,1348,619,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 2; stacked_fraction: L1
+class_9_General_math_bn,54,2026-10-08T18:40:19,gemini-3.5-flash-lite,1348,762,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 3; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,54,2026-10-08T18:40:26,gemini-3.5-flash-lite,1348,762,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 3; stacked_fraction: L2
+class_9_General_math_bn,55,2026-10-08T18:40:32,gemini-3.5-flash-lite,1348,584,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,55,2026-10-08T18:40:37,gemini-3.5-flash-lite,1348,584,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,56,2026-10-08T18:40:45,gemini-3.5-flash-lite,1348,745,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,56,2026-10-08T18:40:51,gemini-3.5-flash-lite,1348,745,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2
+class_9_General_math_bn,57,2026-10-08T18:40:57,gemini-3.5-flash-lite,1348,741,"OK primary temp=0 (attempt 1, finish_reason=STOP)",latex_left: \because; quality: kept primary (1 <= 1 issues)
+class_9_General_math_bn,57,2026-10-08T18:41:02,gemini-3.5-flash-lite,1348,776,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",latex_left: \because
+class_9_General_math_bn,58,2026-10-08T18:41:09,gemini-3.5-flash-lite,1348,654,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,58,2026-10-08T18:41:15,gemini-3.5-flash-lite,1348,654,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2
+class_9_General_math_bn,59,2026-10-08T18:41:21,gemini-3.5-flash-lite,1348,732,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,59,2026-10-08T18:41:25,gemini-3.5-flash-lite,1348,736,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,60,2026-10-08T18:41:33,gemini-3.5-flash-lite,1348,735,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 3; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,60,2026-10-08T18:41:39,gemini-3.5-flash-lite,1348,668,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 3; stacked_fraction: L2
+class_9_General_math_bn,61,2026-10-08T19:11:40,gemini-3.5-flash-lite,1348,880,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 3; stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,61,2026-10-08T19:11:46,gemini-3.5-flash-lite,1348,759,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 3; stacked_fraction: L1
+class_9_General_math_bn,62,2026-10-08T19:11:51,gemini-3.5-flash-lite,1348,727,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,62,2026-10-08T19:11:56,gemini-3.5-flash-lite,1348,722,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","typo_fixes: 3; page_number_mismatch: Latin digits ['8', '36', '54', '27'] in header (expected page 57 in Bangla digits)"
+class_9_General_math_bn,63,2026-10-08T19:12:01,gemini-3.5-flash-lite,1348,888,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 2; stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,63,2026-10-08T19:12:07,gemini-3.5-flash-lite,1348,905,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L1
+class_9_General_math_bn,64,2026-10-08T19:12:22,gemini-3.5-flash-lite,1348,832,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; latex_left: \underline; stacked_fraction: L2; quality: kept primary (1 <= 3 issues)
+class_9_General_math_bn,64,2026-10-08T19:12:28,gemini-3.5-flash-lite,1348,937,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","typo_fixes: 1; latex_left: \big,\phantom,\underline; stacked_fraction: L2"
+class_9_General_math_bn,65,2026-10-08T19:12:33,gemini-3.5-flash-lite,1348,620,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,65,2026-10-08T19:12:39,gemini-3.5-flash-lite,1348,618,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,66,2026-10-08T19:12:43,gemini-3.5-flash-lite,1348,648,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,66,2026-10-08T19:12:48,gemini-3.5-flash-lite,1348,648,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2
+class_9_General_math_bn,67,2026-10-08T19:12:53,gemini-3.5-flash-lite,1348,639,"OK primary temp=0 (attempt 1, finish_reason=STOP)","typo_fixes: 2; page_number_mismatch: Latin digits ['2', '0'] in header (expected page 62 in Bangla digits); quality: kept primary (0 <= 0 issues)"
+class_9_General_math_bn,67,2026-10-08T19:12:59,gemini-3.5-flash-lite,1348,639,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","typo_fixes: 2; page_number_mismatch: Latin digits ['2', '0'] in header (expected page 62 in Bangla digits)"
+class_9_General_math_bn,68,2026-10-08T19:13:04,gemini-3.5-flash-lite,1348,726,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 3; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,68,2026-10-08T19:13:10,gemini-3.5-flash-lite,1348,726,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 3; stacked_fraction: L2
+class_9_General_math_bn,69,2026-10-08T19:13:16,gemini-3.5-flash-lite,1348,363,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L1; page_number_mismatch: header number(s) ['৫৪'] don't match expected page 64; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,69,2026-10-08T19:13:20,gemini-3.5-flash-lite,1348,362,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L1
+class_9_General_math_bn,70,2026-10-08T19:13:25,gemini-3.5-flash-lite,1348,401,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,70,2026-10-08T19:13:30,gemini-3.5-flash-lite,1348,403,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2
+class_9_General_math_bn,71,2026-10-08T19:39:04,gemini-3.5-flash-lite,1421,523,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,71,2026-10-08T19:39:10,gemini-3.5-flash-lite,1421,527,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,72,2026-10-08T19:39:16,gemini-3.5-flash-lite,1421,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,72,2026-10-08T19:39:23,gemini-3.5-flash-lite,1421,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,72,2026-10-08T19:39:29,gemini-3.5-flash-lite,1421,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,72,2026-10-08T19:39:33,gemini-3.5-flash-lite,1436,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,72,2026-10-08T19:39:39,gemini-3.6-flash,1421,520,"OK escalate_gemini-3.6-flash temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,73,2026-10-08T19:39:45,gemini-3.5-flash-lite,1421,550,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 3; stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,73,2026-10-08T19:39:51,gemini-3.5-flash-lite,1421,558,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 2; stacked_fraction: L1
+class_9_General_math_bn,74,2026-10-08T19:39:56,gemini-3.5-flash-lite,1421,485,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,74,2026-10-08T19:40:01,gemini-3.5-flash-lite,1421,484,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2
+class_9_General_math_bn,75,2026-10-08T19:40:05,gemini-3.5-flash-lite,1421,685,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L1,L6,L8,L14,L16,L32,L34,L41,L44,L47; quality: kept primary (0 <= 0 issues)"
+class_9_General_math_bn,75,2026-10-08T19:40:11,gemini-3.5-flash-lite,1421,645,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","stacked_fraction: L1,L6,L8,L14,L16,L31,L33,L40,L43,L46"
+class_9_General_math_bn,76,2026-10-08T19:40:17,gemini-3.5-flash-lite,1421,819,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,76,2026-10-08T19:40:24,gemini-3.5-flash-lite,1421,810,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L2
+class_9_General_math_bn,77,2026-10-08T19:40:33,gemini-3.5-flash-lite,1421,721,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 12; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,77,2026-10-08T19:40:40,gemini-3.5-flash-lite,1421,696,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,78,2026-10-08T19:40:47,gemini-3.5-flash-lite,1421,616,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; token_leak: 1; stacked_fraction: L2; quality: kept primary (1 <= 1 issues)
+class_9_General_math_bn,78,2026-10-08T19:40:54,gemini-3.5-flash-lite,1421,593,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; token_leak: 1; stacked_fraction: L2
+class_9_General_math_bn,79,2026-10-08T19:41:00,gemini-3.5-flash-lite,1421,511,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,79,2026-10-08T19:41:05,gemini-3.5-flash-lite,1421,422,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1
+class_9_General_math_bn,80,2026-10-08T19:41:10,gemini-3.5-flash-lite,1421,371,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,80,2026-10-08T19:41:14,gemini-3.5-flash-lite,1421,377,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,81,2026-10-08T19:54:53,gemini-3.5-flash-lite,1455,816,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,81,2026-10-08T19:54:59,gemini-3.5-flash-lite,1455,869,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,82,2026-10-08T19:55:07,gemini-3.5-flash-lite,1455,791,"OK primary temp=0 (attempt 1, finish_reason=STOP)","latex_left: \begin,\end,\frac; stacked_fraction: L2; quality: kept primary (3 <= 3 issues)"
+class_9_General_math_bn,82,2026-10-08T19:55:13,gemini-3.5-flash-lite,1455,806,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","latex_left: \begin,\end,\frac; stacked_fraction: L2"
+class_9_General_math_bn,83,2026-10-08T19:55:19,gemini-3.5-flash-lite,1455,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,83,2026-10-08T19:55:26,gemini-3.5-flash-lite,1455,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,83,2026-10-08T19:55:31,gemini-3.5-flash-lite,1455,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,83,2026-10-08T19:55:36,gemini-3.5-flash-lite,1470,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,83,2026-10-08T19:55:41,gemini-3.6-flash,1455,812,"OK escalate_gemini-3.6-flash temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,84,2026-10-08T19:55:51,gemini-3.5-flash-lite,1455,1013,"OK primary temp=0 (attempt 1, finish_reason=STOP)","latex_left: \frac,\sqrt; stacked_fraction: L2; quality: kept primary (2 <= 2 issues)"
+class_9_General_math_bn,84,2026-10-08T19:55:58,gemini-3.5-flash-lite,1455,1011,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","latex_left: \frac,\sqrt; stacked_fraction: L2"
+class_9_General_math_bn,85,2026-10-08T19:56:03,gemini-3.5-flash-lite,1455,551,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L1,L4,L5,L9,L15,L20,L21,L22,L23,L24,L25,L31,L32,L33,L34,L35,L41,L42,L49,L50,L51,L61,L63,L66,L78; quality: kept primary (0 <= 1 issues)"
+class_9_General_math_bn,85,2026-10-08T19:56:18,gemini-3.5-flash-lite,1455,560,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","script_leak: 1; stacked_fraction: L1,L4,L5,L9,L15,L20,L21,L22,L23,L24,L25,L26,L27,L32,L33,L34,L35,L36,L42,L43,L49,L50,L51,L61,L63,L66,L77"
+class_9_General_math_bn,86,2026-10-08T19:56:23,gemini-3.5-flash-lite,1455,929,"OK primary temp=0 (attempt 1, finish_reason=STOP)","typo_fixes: 1; latex_left: \dfrac,\sqrt; stacked_fraction: L2; quality: kept primary (2 <= 2 issues)"
+class_9_General_math_bn,86,2026-10-08T19:56:30,gemini-3.5-flash-lite,1455,931,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","latex_left: \dfrac,\sqrt; stacked_fraction: L2"
+class_9_General_math_bn,87,2026-10-08T19:56:46,gemini-3.5-flash-lite,1455,795,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,87,2026-10-08T19:56:52,gemini-3.5-flash-lite,1455,735,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1
+class_9_General_math_bn,88,2026-10-08T19:56:58,gemini-3.5-flash-lite,1455,583,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: kept primary (0 <= 1 issues)
+class_9_General_math_bn,88,2026-10-08T19:57:03,gemini-3.5-flash-lite,1455,689,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",latex_left: \log; stacked_fraction: L2
+class_9_General_math_bn,89,2026-10-08T19:57:10,gemini-3.5-flash-lite,1455,575,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,89,2026-10-08T19:57:15,gemini-3.5-flash-lite,1455,583,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,90,2026-10-08T19:57:20,gemini-3.5-flash-lite,1455,506,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L2; fraction_parens: L29,L31,L32,L33; quality: kept primary (0 <= 2 issues)"
+class_9_General_math_bn,90,2026-10-08T19:57:25,gemini-3.5-flash-lite,1455,705,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","latex_left: \frac,\log; stacked_fraction: L2"
+class_9_General_math_bn,91,2026-10-08T23:14:32,gemini-3.5-flash-lite,1512,529,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L1,L4,L6,L10,L12,L17,L19; fraction_parens: L48; fraction_coefficient: L5; quality: kept primary (0 <= 0 issues)"
+class_9_General_math_bn,91,2026-10-08T23:14:36,gemini-3.5-flash-lite,1512,541,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; fraction_parens: L44
+class_9_General_math_bn,92,2026-10-08T23:14:41,gemini-3.5-flash-lite,1512,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,92,2026-10-08T23:14:47,gemini-3.5-flash-lite,1512,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,92,2026-10-08T23:14:52,gemini-3.5-flash-lite,1512,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,92,2026-10-08T23:14:56,gemini-3.5-flash-lite,1527,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,92,2026-10-08T23:15:01,gemini-3.6-flash,1512,0,BLOCKED escalate_gemini-3.6-flash temp=0 (RECITATION),
+class_9_General_math_bn,93,2026-10-08T23:15:09,gemini-3.5-flash-lite,1512,704,"OK primary temp=0 (attempt 1, finish_reason=STOP)","latex_left: \bar,\log; stacked_fraction: L1"
+class_9_General_math_bn,93,2026-10-08T23:15:15,gemini-3.5-flash-lite,1512,618,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",quality: promoted secondary over primary (0 < 2 issues)
+class_9_General_math_bn,94,2026-10-08T23:15:20,gemini-3.5-flash-lite,1512,767,"OK primary temp=0 (attempt 1, finish_reason=STOP)",latex_left: \bar; stacked_fraction: L2
+class_9_General_math_bn,94,2026-10-08T23:15:24,gemini-3.5-flash-lite,1512,649,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: promoted secondary over primary (0 < 1 issues)
+class_9_General_math_bn,95,2026-10-08T23:15:29,gemini-3.5-flash-lite,1512,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,95,2026-10-08T23:15:34,gemini-3.5-flash-lite,1512,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,95,2026-10-08T23:15:38,gemini-3.5-flash-lite,1512,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,95,2026-10-08T23:15:42,gemini-3.5-flash-lite,1527,549,"OK escalate_accessibility_prompt temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 4; stacked_fraction: L1
+class_9_General_math_bn,96,2026-10-08T23:15:48,gemini-3.5-flash-lite,1512,690,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 11; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,96,2026-10-08T23:15:53,gemini-3.5-flash-lite,1512,690,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 11; stacked_fraction: L2
+class_9_General_math_bn,97,2026-10-08T23:15:57,gemini-3.5-flash-lite,1512,488,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,97,2026-10-08T23:16:03,gemini-3.5-flash-lite,1512,488,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,98,2026-10-08T23:16:07,gemini-3.5-flash-lite,1512,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,98,2026-10-08T23:16:12,gemini-3.5-flash-lite,1512,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,98,2026-10-08T23:16:16,gemini-3.5-flash-lite,1512,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,98,2026-10-08T23:16:20,gemini-3.5-flash-lite,1527,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,98,2026-10-08T23:16:24,gemini-3.6-flash,1512,0,BLOCKED escalate_gemini-3.6-flash temp=0 (RECITATION),
+class_9_General_math_bn,99,2026-10-08T23:16:31,gemini-3.5-flash-lite,1512,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,99,2026-10-08T23:16:36,gemini-3.5-flash-lite,1512,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,99,2026-10-08T23:16:41,gemini-3.5-flash-lite,1512,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,99,2026-10-08T23:16:46,gemini-3.5-flash-lite,1527,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,99,2026-10-08T23:16:51,gemini-3.6-flash,1512,725,"OK escalate_gemini-3.6-flash temp=0 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,100,2026-10-08T23:16:59,gemini-3.5-flash-lite,1512,496,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 10; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,100,2026-10-08T23:17:03,gemini-3.5-flash-lite,1512,518,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,101,2026-10-08T23:36:30,gemini-3.5-flash-lite,1512,585,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 3; margin_digit: 6; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,101,2026-10-08T23:36:34,gemini-3.5-flash-lite,1512,711,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 3
+class_9_General_math_bn,102,2026-10-08T23:36:39,gemini-3.5-flash-lite,1512,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,102,2026-10-08T23:36:44,gemini-3.5-flash-lite,1512,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,102,2026-10-08T23:36:49,gemini-3.5-flash-lite,1512,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,102,2026-10-08T23:36:53,gemini-3.5-flash-lite,1527,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,102,2026-10-08T23:36:57,gemini-3.6-flash,1512,0,BLOCKED escalate_gemini-3.6-flash temp=0 (RECITATION),
+class_9_General_math_bn,103,2026-10-08T23:37:04,gemini-3.5-flash-lite,1512,611,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,103,2026-10-08T23:37:08,gemini-3.5-flash-lite,1512,579,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,104,2026-10-08T23:37:13,gemini-3.5-flash-lite,1512,598,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,104,2026-10-08T23:37:18,gemini-3.5-flash-lite,1512,598,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,105,2026-10-08T23:37:22,gemini-3.5-flash-lite,1512,588,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,105,2026-10-08T23:37:27,gemini-3.5-flash-lite,1512,652,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,106,2026-10-08T23:37:32,gemini-3.5-flash-lite,1512,542,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,106,2026-10-08T23:37:37,gemini-3.5-flash-lite,1512,523,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,107,2026-10-08T23:37:42,gemini-3.5-flash-lite,1512,518,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 3; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,107,2026-10-08T23:37:47,gemini-3.5-flash-lite,1512,521,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 3
+class_9_General_math_bn,108,2026-10-08T23:37:51,gemini-3.5-flash-lite,1512,409,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L2; fraction_parens: L6,L8,L9,L17,L23; quality: kept primary (0 <= 0 issues)"
+class_9_General_math_bn,108,2026-10-08T23:37:55,gemini-3.5-flash-lite,1512,425,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,109,2026-10-08T23:37:59,gemini-3.5-flash-lite,1512,443,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; page_number_mismatch: header number(s) ['১০৮'] don't match expected page 104; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,109,2026-10-08T23:38:03,gemini-3.5-flash-lite,1512,443,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 2; page_number_mismatch: header number(s) ['১০৮'] don't match expected page 104
+class_9_General_math_bn,110,2026-10-08T23:38:08,gemini-3.5-flash-lite,1512,551,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,110,2026-10-08T23:38:12,gemini-3.5-flash-lite,1512,550,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,111,2026-10-08T23:48:01,gemini-3.5-flash-lite,1512,527,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,111,2026-10-08T23:48:06,gemini-3.5-flash-lite,1512,515,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 2
+class_9_General_math_bn,112,2026-10-08T23:48:11,gemini-3.5-flash-lite,1512,570,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,112,2026-10-08T23:48:15,gemini-3.5-flash-lite,1512,570,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,113,2026-10-08T23:48:20,gemini-3.5-flash-lite,1512,506,"OK primary temp=0 (attempt 1, finish_reason=STOP)",sqrt_parens: 2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,113,2026-10-08T23:48:25,gemini-3.5-flash-lite,1512,519,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,114,2026-10-08T23:48:30,gemini-3.5-flash-lite,1512,588,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,114,2026-10-08T23:48:36,gemini-3.5-flash-lite,1512,600,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,115,2026-10-08T23:48:41,gemini-3.5-flash-lite,1512,459,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,115,2026-10-08T23:48:46,gemini-3.5-flash-lite,1512,497,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1
+class_9_General_math_bn,116,2026-10-08T23:48:51,gemini-3.5-flash-lite,1512,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,116,2026-10-08T23:48:56,gemini-3.5-flash-lite,1512,579,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,117,2026-10-08T23:49:02,gemini-3.5-flash-lite,1512,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,117,2026-10-08T23:49:09,gemini-3.5-flash-lite,1512,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,117,2026-10-08T23:49:13,gemini-3.5-flash-lite,1512,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,117,2026-10-08T23:49:18,gemini-3.5-flash-lite,1527,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,117,2026-10-08T23:49:23,gemini-3.6-flash,1512,0,BLOCKED escalate_gemini-3.6-flash temp=0 (RECITATION),
+class_9_General_math_bn,118,2026-10-08T23:49:31,gemini-3.5-flash-lite,1512,539,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 2; stacked_fraction: L2; script_digit_mismatch: 5 Bangla digit(s) vs 0 Latin digit(s) on math-like lines; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,118,2026-10-08T23:49:36,gemini-3.5-flash-lite,1512,541,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 3; stacked_fraction: L2; script_digit_mismatch: 5 Bangla digit(s) vs 0 Latin digit(s) on math-like lines
+class_9_General_math_bn,119,2026-10-08T23:49:42,gemini-3.5-flash-lite,1512,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,119,2026-10-08T23:49:47,gemini-3.5-flash-lite,1512,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,119,2026-10-08T23:49:52,gemini-3.5-flash-lite,1512,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,119,2026-10-08T23:49:58,gemini-3.5-flash-lite,1527,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,119,2026-10-08T23:50:02,gemini-3.6-flash,1512,0,BLOCKED escalate_gemini-3.6-flash temp=0 (RECITATION),
+class_9_General_math_bn,120,2026-10-08T23:50:11,gemini-3.5-flash-lite,1512,0,BLOCKED primary temp=0 (RECITATION),
+class_9_General_math_bn,120,2026-10-08T23:50:56,gemini-3.5-flash-lite,1512,0,BLOCKED secondary temp=0.4 (RECITATION),
+class_9_General_math_bn,120,2026-10-08T23:51:02,gemini-3.5-flash-lite,1512,0,BLOCKED escalate_temp0.4 temp=0.4 (RECITATION),
+class_9_General_math_bn,120,2026-10-08T23:51:07,gemini-3.5-flash-lite,1527,0,BLOCKED escalate_accessibility_prompt temp=0 (RECITATION),
+class_9_General_math_bn,120,2026-10-08T23:51:12,gemini-3.6-flash,1512,0,BLOCKED escalate_gemini-3.6-flash temp=0 (RECITATION),
+class_9_General_math_bn,111,2026-10-08T23:52:47,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,typo_fixes: 1
+class_9_General_math_bn,111,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,typo_fixes: 2
+class_9_General_math_bn,112,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,stacked_fraction: L2
+class_9_General_math_bn,112,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,stacked_fraction: L2
+class_9_General_math_bn,113,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,sqrt_parens: 2
+class_9_General_math_bn,113,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,114,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,114,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,115,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,typo_fixes: 1
+class_9_General_math_bn,115,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,typo_fixes: 1
+class_9_General_math_bn,116,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,118,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,typo_fixes: 2; stacked_fraction: L2
+class_9_General_math_bn,118,2026-10-08T23:52:48,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,typo_fixes: 3; stacked_fraction: L2
+class_9_General_math_bn,121,2026-10-14T12:30:10,gemini-3.5-flash-lite,1536,547,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 2; script_digit_mismatch: 1 Bangla digit(s) vs 0 Latin digit(s) on math-like lines; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,121,2026-10-14T12:30:16,gemini-3.5-flash-lite,1536,548,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 2; script_digit_mismatch: 1 Bangla digit(s) vs 0 Latin digit(s) on math-like lines
+class_9_General_math_bn,122,2026-10-14T12:30:24,gemini-3.5-flash-lite,1536,397,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,122,2026-10-14T12:30:33,gemini-3.5-flash-lite,1536,398,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,123,2026-10-14T12:30:40,gemini-3.5-flash-lite,1536,490,"OK primary temp=0 (attempt 1, finish_reason=STOP)","typo_fixes: 1; stacked_fraction: L1,L17,L18,L19,L21,L22,L23,L28,L29,L30; quality: kept primary (0 <= 0 issues)"
+class_9_General_math_bn,123,2026-10-14T12:30:46,gemini-3.5-flash-lite,1536,492,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; stacked_fraction: L24
+class_9_General_math_bn,124,2026-10-14T12:30:53,gemini-3.5-flash-lite,1536,539,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 7; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,124,2026-10-14T12:31:00,gemini-3.5-flash-lite,1536,539,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 9; stacked_fraction: L2
+class_9_General_math_bn,125,2026-10-14T12:31:06,gemini-3.5-flash-lite,1536,536,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,125,2026-10-14T12:31:13,gemini-3.5-flash-lite,1536,536,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,126,2026-10-14T12:31:20,gemini-3.5-flash-lite,1536,602,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; latex_left: \angle; stacked_fraction: L2
+class_9_General_math_bn,126,2026-10-14T12:31:26,gemini-3.5-flash-lite,1536,501,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2; quality: promoted secondary over primary (0 < 1 issues)
+class_9_General_math_bn,127,2026-10-14T12:31:33,gemini-3.5-flash-lite,1536,447,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 2; quality: kept primary (0 <= 4 issues)
+class_9_General_math_bn,127,2026-10-14T12:31:39,gemini-3.5-flash-lite,1536,446,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; devanagari_leak: 4; stacked_fraction: L1
+class_9_General_math_bn,128,2026-10-14T12:31:44,gemini-3.5-flash-lite,1536,476,"OK primary temp=0 (attempt 1, finish_reason=STOP)","stacked_fraction: L2,L28,L31; quality: kept primary (0 <= 0 issues)"
+class_9_General_math_bn,128,2026-10-14T12:31:54,gemini-3.5-flash-lite,1536,461,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L2
+class_9_General_math_bn,129,2026-10-14T12:32:06,gemini-3.5-flash-lite,1536,499,"OK primary temp=0 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; page_number_mismatch: header number(s) ['১২৮'] don't match expected page 124; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,129,2026-10-14T12:32:12,gemini-3.5-flash-lite,1536,499,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",stacked_fraction: L1; page_number_mismatch: header number(s) ['১২৮'] don't match expected page 124
+class_9_General_math_bn,130,2026-10-14T12:32:18,gemini-3.5-flash-lite,1536,559,"OK primary temp=0 (attempt 1, finish_reason=STOP)","typo_fixes: 4; stacked_fraction: L9,L10,L11,L12,L15,L16,L17,L18,L19,L20,L21,L22,L23,L24,L25,L26,L27,L28,L29,L54,L55,L56,L57,L58,L59,L60,L61,L63,L64,L65,L66; quality: kept primary (0 <= 0 issues)"
+class_9_General_math_bn,130,2026-10-14T12:32:24,gemini-3.5-flash-lite,1536,555,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","stacked_fraction: L9,L10,L11,L12,L15,L16,L17,L18,L19,L20,L21,L22,L23,L24,L25,L26,L27,L28,L29,L55,L56,L57,L58,L63,L64,L65,L66,L67,L68,L69,L70"
+class_9_General_math_bn,117,2026-10-14T12:34:07,gemini-3.5-flash-lite,1514,247,"OK escalate_split_top temp=0 (attempt 1, finish_reason=STOP)","FIX_BATCH12 task 1: standalone test of new escalate_split step against a known pre-existing fully-RECITATION-blocked page (already manually fixed in MANUAL_PAGES.txt -- this call does NOT overwrite that output, verification only)"
+class_9_General_math_bn,117,2026-10-14T12:34:11,gemini-3.5-flash-lite,1514,307,"OK escalate_split_bottom temp=0 (attempt 1, finish_reason=STOP)","FIX_BATCH12 task 1: standalone test of new escalate_split step against a known pre-existing fully-RECITATION-blocked page (already manually fixed in MANUAL_PAGES.txt -- this call does NOT overwrite that output, verification only)"
+class_9_General_math_bn,119,2026-10-14T12:34:15,gemini-3.5-flash-lite,1514,312,"OK escalate_split_top temp=0 (attempt 1, finish_reason=STOP)","FIX_BATCH12 task 1: standalone test of new escalate_split step against a known pre-existing fully-RECITATION-blocked page (already manually fixed in MANUAL_PAGES.txt -- this call does NOT overwrite that output, verification only)"
+class_9_General_math_bn,119,2026-10-14T12:34:19,gemini-3.5-flash-lite,1514,353,"OK escalate_split_bottom temp=0 (attempt 1, finish_reason=STOP)","FIX_BATCH12 task 1: standalone test of new escalate_split step against a known pre-existing fully-RECITATION-blocked page (already manually fixed in MANUAL_PAGES.txt -- this call does NOT overwrite that output, verification only)"
+class_9_General_math_bn,120,2026-10-14T12:34:25,gemini-3.5-flash-lite,1514,284,"OK escalate_split_top temp=0 (attempt 1, finish_reason=STOP)","FIX_BATCH12 task 1: standalone test of new escalate_split step against a known pre-existing fully-RECITATION-blocked page (already manually fixed in MANUAL_PAGES.txt -- this call does NOT overwrite that output, verification only)"
+class_9_General_math_bn,120,2026-10-14T12:34:29,gemini-3.5-flash-lite,1514,367,"OK escalate_split_bottom temp=0 (attempt 1, finish_reason=STOP)","FIX_BATCH12 task 1: standalone test of new escalate_split step against a known pre-existing fully-RECITATION-blocked page (already manually fixed in MANUAL_PAGES.txt -- this call does NOT overwrite that output, verification only)"

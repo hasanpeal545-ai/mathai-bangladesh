@@ -1,0 +1,41 @@
+অধ্যায় ৮. সূচক ও লগারিদম
+৮১
+
+প্রমাণ করো (৯ - ১৫):
+
+৯. $\dfrac{4^n - 1}{2^n - 1} = 2^n + 1$
+১২. $\dfrac{a^{p+q}}{a^{2r}} \times \dfrac{a^{q+r}}{a^{2p}} \times \dfrac{a^{r+p}}{a^{2q}} = 1$
+
+১০. $\dfrac{2^{2p+1} \cdot 3^{2p+q} \cdot 5^{p+q} \cdot 6^p}{3^{p-2} \cdot 6^{2p+2} \cdot 10^p \cdot 15^q} = \dfrac{1}{2}$
+১৩. $\left(\dfrac{x^a}{x^b}\right)^{\frac{1}{ab}} \cdot \left(\dfrac{x^b}{x^c}\right)^{\frac{1}{bc}} \cdot \left(\dfrac{x^c}{x^a}\right)^{\frac{1}{ca}} = 1$
+
+১১. $\left(\dfrac{a^l}{a^m}\right)^n \cdot \left(\dfrac{a^m}{a^n}\right)^l \cdot \left(\dfrac{a^n}{a^l}\right)^m = 1$
+১৪. $\left(\dfrac{x^a}{x^b}\right)^{a+b} \cdot \left(\dfrac{x^b}{x^c}\right)^{b+c} \cdot \left(\dfrac{x^c}{x^a}\right)^{c+a} = 1$
+
+১৫. $\left(\dfrac{x^p}{x^q}\right)^{p+q-r} \cdot \left(\dfrac{x^q}{x^r}\right)^{q+r-p} \cdot \left(\dfrac{x^r}{x^p}\right)^{r+p-q} = 1$
+
+১৬. যদি $a^x = b$, $b^y = c$ এবং $c^z = a$ হয়, তবে দেখাও যে, $xyz = 1$
+
+সমাধান করো (১৭ - ২০):
+
+১৭. $4^x = 8$
+১৮. $2^{2x+1} = 128$
+
+১৯. $(\sqrt{3})^{x+1} = (\sqrt[3]{3})^{2x-1}$
+২০. $2^x + 2^{1-x} = 3$
+
+২১. $P = x^a$, $Q = x^b$ এবং $R = x^c$
+
+ক) $\left(\dfrac{P}{Q}\right)^{a+b} \times \left(\dfrac{Q}{R}\right)^{b+c} \div 2(RP)^{a-c}$ এর মান নির্ণয় করো।
+
+খ) দেখাও যে, $\left(\dfrac{P}{Q}\right)^{a^2+ab+b^2} \times \left(\dfrac{Q}{R}\right)^{b^2+bc+c^2} \times \left(\dfrac{R}{P}\right)^{c^2+ca+a^2} = 1$
+
+২২. $X = (2a^{-1} + 3b^{-1})^{-1}$, $Y = \sqrt[pq]{\dfrac{x^p}{x^q}} \times \sqrt[qr]{\dfrac{x^q}{x^r}} \times \sqrt[rp]{\dfrac{x^r}{x^p}}$
+
+$Z = \dfrac{25^{m+1}}{(5^{m-1})^{m+1}} \div \dfrac{5^{m+1}}{(5^m)^{m-1}} + (5^2)^x$, $p, q, r > 0$
+
+(ক) $X$-এর সরলমান নির্ণয় করো।
+(খ) দেখাও যে, $Y = 1$.
+(গ) $Z = 30$ হলে, $x$-এর মান নির্ণয় করো।
+
+ফর্মা-১১, গণিত- ৯ম-১০ম শ্রেণি

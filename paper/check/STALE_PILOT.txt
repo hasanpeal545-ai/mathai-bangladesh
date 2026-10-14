@@ -1,0 +1,50 @@
+# FIX_BATCH1 task 4 — stale pilot pages
+# (book, page) pairs already OCR'd under an OLDER model (gemini-3.6-flash,
+# Steps 2-3d pilot/test runs) that have NOT yet been redone under the
+# current production model (gemini-3.5-flash-lite, Step 3e final settings).
+# Computed from backend/data/ocr_gemini/RUN_LOG.csv via
+# full_gemini_ocr.load_stale_pilot_pages() on 2026-10-07.
+#
+# NOT reprocessed now (per FIX_BATCH1 task 4's instruction). The normal
+# sequential Step-4 run auto-forces each of these when it reaches that page in
+# its own book's batch (see the [STALE_PILOT] auto-force logic added to
+# main()'s page loop in full_gemini_ocr.py) -- no separate pass needed.
+#
+# Note: FULL_OCR.md's own Step 3b/3c text calls this "the 28 pilot pages", but
+# the actual count, computed directly from RUN_LOG.csv, is 30 (3 sample pages
+# x 10 books). Going with the real data, not the earlier approximate figure
+# (my own batch-1 report also mistakenly said "28" -- corrected here).
+
+book	page
+class_6_math_bn	13
+class_6_math_bn	80
+class_6_math_bn	156
+class_6_math_en	15
+class_6_math_en	91
+class_6_math_en	178
+class_7_math_bn	14
+class_7_math_bn	90
+class_7_math_bn	177
+class_7_math_en	16
+class_7_math_en	99
+class_7_math_en	195
+class_8_math_bn	15
+class_8_math_bn	95
+class_8_math_bn	183
+class_8_math_en	16
+class_8_math_en	101
+class_8_math_en	196
+class_9_General_math_bn	29
+class_9_General_math_bn	181
+class_9_General_math_bn	268
+class_9_General_math_en	31
+class_9_General_math_en	195
+class_9_General_math_en	383
+class_9_Higher_math_en	28
+class_9_Higher_math_en	177
+class_9_Higher_math_en	246
+class_9_Hiher_math_bn	27
+class_9_Hiher_math_bn	171
+class_9_Hiher_math_bn	233
+
+TOTAL: 30 pages

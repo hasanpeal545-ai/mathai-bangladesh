@@ -1,0 +1,90 @@
+﻿page,before,after,label,note
+30,7,৭,neutral/unclear,GT@before-pos='B' | GT@after-pos='B'
+30,...,∴,neutral/unclear,"GT@before-pos='∴ B,' | GT@after-pos=''"
+30,ঠ,,neutral/unclear,GT@before-pos='∅' | GT@after-pos=''
+30,"(2,2]),","(2,2],",neutral/unclear,GT@before-pos='' | GT@after-pos=''
+30,"2}. (2), ty}, (2),","2}, {2}, {y},",neutral/unclear,"GT@before-pos='z}, {x}, {y}, {z}, ∅ ।' | GT@after-pos='z}, {x}, {y},'"
+30,"fy,","{y,",neutral/unclear,"GT@before-pos='' | GT@after-pos='{y,'"
+30,"(৮), fyb","({2}), {y}",neutral/unclear,GT@before-pos='' | GT@after-pos=''
+30,"2""",2ⁿ,neutral/unclear,GT@before-pos='2ⁿ' | GT@after-pos=''
+30,2”,2ⁿ,neutral/unclear,GT@before-pos='2ⁿ − 1 ।' | GT@after-pos=''
+30,11,1,fixed,GT@before-pos='2ⁿ − 1 ।' | GT@after-pos='1'
+30,BAM,BA,neutral/unclear,GT@before-pos='B যদি' | GT@after-pos='B যদি'
+30,€,∈,neutral/unclear,GT@before-pos='' | GT@after-pos=''
+30,BS,"B,",neutral/unclear,GT@before-pos='B ও C' | GT@after-pos='B ও C'
+30,A=B=C1,A=B=C,neutral/unclear,GT@before-pos='' | GT@after-pos=''
+30,BW,B W,neutral/unclear,GT@before-pos='B সেট' | GT@after-pos='ও B সেট'
+30,4৬,4−B,neutral/unclear,GT@before-pos='A\B' | GT@after-pos='A\B'
+30,4 - 9,4−B,neutral/unclear,GT@before-pos='A − B' | GT@after-pos='A − B'
+30,বাদ ») এবং 418,\ B এবং 4∖B,neutral/unclear,GT@before-pos='' | GT@after-pos=''
+30,"64,","∈ 4,",neutral/unclear,"GT@before-pos='∈ A,' | GT@after-pos='x ∈ A,'"
+30,₹ »],∉ B),neutral/unclear,GT@before-pos='∉ B}' | GT@after-pos='x ∉ B}'
+30,"{3,5}1","{3,5} ১",neutral/unclear,GT@before-pos='' | GT@after-pos=''
+30,"A-B={1,2,3,4,5}","A−B={1,2,3,4,5}",neutral/unclear,GT@before-pos='' | GT@after-pos=''
+30,৫ €,5 ∈,neutral/unclear,GT@before-pos='x ≤ 12}' | GT@after-pos='x ≤ 12}'
+30,P—Q,P−Q,neutral/unclear,GT@before-pos='P − Q নির্ণয়' | GT@after-pos='P − Q নির্ণয়'
+30,"fa: ৫,","{a: 5,",neutral/unclear,GT@before-pos='' | GT@after-pos=''
+30,গুণনীয়কসমূহ),গুণনীয়কসমূহ},fixed,GT@before-pos='গুণনীয়কসমূহ}' | GT@after-pos='গুণনীয়কসমূহ}'
+36,—,-,neutral/unclear,GT@before-pos='−' | GT@after-pos='−'
+36,...,∴,neutral/unclear,GT@before-pos='∴ উভয় বিষয়ে' | GT@after-pos='98 = 2 ∴'
+36,(৫ ০: ৬::৫১ ৯,{x: x > 5 এবং x <,neutral/unclear,GT@before-pos='{x ∈ N : x² >' | GT@after-pos=''
+36,৫১,x,neutral/unclear,GT@before-pos='x³' | GT@after-pos='x³ ≤'
+36,(৫ ০/:৫১ ৯,{x: x >,neutral/unclear,GT@before-pos='' | GT@after-pos='x³ ≤'
+36,x?,x²,neutral/unclear,GT@before-pos='x³ ≤' | GT@after-pos='x³ ≤'
+36,"{cv EN: 2,36","{x: 2, 3",neutral/unclear,GT@before-pos='' | GT@after-pos=''
+36,গুণিতক },গুণিতক},neutral/unclear,GT@before-pos='গুণিতক}' | GT@after-pos=''
+36,{re N: 23,{x: x,neutral/unclear,GT@before-pos='{x ∈ N : x³' | GT@after-pos='{x ∈ N : x³'
+36,25 এবং xt,2 এবং x,neutral/unclear,GT@before-pos='> 25 এবং x⁴' | GT@after-pos='25 এবং x⁴'
+36,264},26},neutral/unclear,GT@before-pos='' | GT@after-pos='264}'
+36,"(3,5,7,9,11] খ) (1,2,3,4,6,9,12,18,36) গ) (4,8,12,16,20,24,28,32,36,40)","{3, 5, 7, 9, 11} খ) {1, 2, 3, 4, 6, 9, 12, 18, 36} গ) {4, 8, 12, 16, 20, 24, 28, 32, 36, 40}",neutral/unclear,"GT@before-pos='{3, 5, 7, 9, 11} খ) {1, 2, 3, 4, 6, 9, 12, 18, 36} গ) {4, 8, 12, 16, 20, 24, 28, 32, 36, 40}' | GT@after-pos=''"
+36,"(+4,-5,+-6)","{±4, ±5, ±6}",neutral/unclear,"GT@before-pos='{±4, ±5, ±6}' | GT@after-pos=''"
+36,"A= {2,3,4} এবং B={1,2,a} এবং 0 = (2, ৫,]","A = {2, 3, 4} এবং B = {1, 2, a} এবং C = {2, 5, 7}",neutral/unclear,"GT@before-pos='A = {2, 3, 4} এবং B = {1, 2, a} এবং C = {2, a, b}' | GT@after-pos=''"
+36,AU(BNC),AU(BUC),neutral/unclear,GT@before-pos='' | GT@after-pos=''
+36,8 U=,U =,neutral/unclear,GT@before-pos='' | GT@after-pos=''
+36,"2,3,","2, 3,",neutral/unclear,"GT@before-pos='2, 3,' | GT@after-pos=''"
+36,"5,6,","5, 6,",neutral/unclear,"GT@before-pos='5, 6,' | GT@after-pos=''"
+36,A=,A =,neutral/unclear,GT@before-pos='A =' | GT@after-pos=''
+36,B=,B =,neutral/unclear,GT@before-pos='B =' | GT@after-pos=''
+36,"5,6,","5, 6,",neutral/unclear,"GT@before-pos='5, 6,' | GT@after-pos=''"
+36,=ANB খ) (BAC! =BUC গ) (AUB)NC=(ANC)U(BNC),= ANB খ) (BAC) = BUC গ) (AUB)NC = (ANC)U(BNC),neutral/unclear,GT@before-pos='' | GT@after-pos=''
+36,=(AUC)N,= (AUC)N,neutral/unclear,GT@before-pos='' | GT@after-pos=''
+36,"{x,y} এবং R= {m,n","{x, y} এবং R = {m, n,",neutral/unclear,"GT@before-pos='{x, y} এবং R = {m, n, l}' | GT@after-pos='Q = {x, y} এবং R = {m, n,'"
+36,"A= {a,b},","A = {a, b},",neutral/unclear,GT@before-pos='' | GT@after-pos=''
+36,"{a,b,c}","{a, b, c}",neutral/unclear,GT@before-pos='' | GT@after-pos=''
+36,"2"",","2^n,",neutral/unclear,"GT@before-pos='2ⁿ,' | GT@after-pos='2ⁿ,'"
+36,? WRC,n = C,neutral/unclear,GT@before-pos='n হচ্ছে C' | GT@after-pos=''
+36,"(w©—1,y+2) =(y— 2,20 +1) হলে, x এবং ৪","(x - 1, y + 2) = (y - 2, x + 1) হলে, x এবং y",neutral/unclear,"GT@before-pos='(x − 1, y + 2) = (y − 2, 2x + 1) হলে, x এবং y' | GT@after-pos=''"
+36,—,-,neutral/unclear,GT@before-pos='−' | GT@after-pos='−'
+36,a? —,ax -,neutral/unclear,GT@before-pos='' | GT@after-pos='a² − c²)'
+36,"(0,৫& —","(0, 5x -",neutral/unclear,"GT@before-pos='' | GT@after-pos='= (0, ay −'"
+36,"(x,y)","(x, y)",neutral/unclear,"GT@before-pos='(x, y)' | GT@after-pos=''"
+36,—,-,neutral/unclear,GT@before-pos='−' | GT@after-pos='−'
+36,"(1,30","(1, 30",neutral/unclear,"GT@before-pos='(1, 3x' | GT@after-pos=''"
+36,"(x,y)","(x, y)",neutral/unclear,"GT@before-pos='(x, y) নির্ণয়' | GT@after-pos=''"
+44,"(2,4), (2,6), (3, 2), (3, 4), (3,6), (5, 2), (5, 4), (5, 6))","(2, 4), (2, 6), (3, 2), (3, 4), (3, 6), (5, 2), (5, 4), (5, 6)}",neutral/unclear,"GT@before-pos='(2, 4), (2, 6), (3, 2), (3, 4), (3, 6), (5, 2), (5, 4), (5, 6)} ∩' | GT@after-pos=''"
+44,"(3,4), (3,6), (5,2), (5,4), (5,6)","(3, 4), (3, 6), (5, 2), (5, 4), (5, 6)}",neutral/unclear,"GT@before-pos='(3, 4), (3, 6), (5, 2), (5, 4), (5, 6)} ……' | GT@after-pos=''"
+44,(4ম60)72-(4 « 73),(4 × 6)² = (4 × 7³),neutral/unclear,GT@before-pos='' | GT@after-pos=''
+44,x,×,neutral/unclear,GT@before-pos='' | GT@after-pos=''
+44,"A= {4,5,6,7}, B= {0,1,2,3} এবং R={(x,y): ce Aye A এবং y=x+1}","A = {4, 5, 6, 7}, B = {0, 1, 2, 3} এবং R = {(x, y): x ∈ A ∧ y ∈ A ∧ y = x + 1}",neutral/unclear,"GT@before-pos='A = {4, 5, 6, 7}, B = {0, 1, 2, 3} এবং R = {(x, y) : x ∈ A, y ∈ A এবং y = x + 1}' | GT@after-pos=''"
+44,1 ও 7,A এবং B,neutral/unclear,GT@before-pos='A ও B সেটদ্বয়' | GT@after-pos=''
+44,সেট ।,সেট।,neutral/unclear,GT@before-pos='সেট।' | GT@after-pos=''
+44,"2""",2ⁿ,neutral/unclear,GT@before-pos='2ⁿ' | GT@after-pos=''
+44,1,R,neutral/unclear,GT@before-pos='R অন্বয়টিকে' | GT@after-pos='গ) R'
+44,"(4, 5, 6, 7] এবং B= {0,1,2,3} 4017 -514,5,6,7)(0,1,2,3) =o","{4, 5, 6, 7} এবং B = {0, 1, 2, 3} A ∩ B = {4, 5, 6, 7} ∩ {0, 1, 2, 3} = ∅",neutral/unclear,"GT@before-pos='{4, 5, 6, 7} এবং B = {0, 1, 2, 3} ∴ A ∩ B = {4, 5, 6, 7} ∩ {0, 1, 2, 3} = ∅' | GT@after-pos=''"
+44,40173 -,A ∩ B = ∅,neutral/unclear,GT@before-pos='A ∩ B = ∅' | GT@after-pos=''
+44,1 ও 1?,A এবং B,neutral/unclear,GT@before-pos='A ও B সেটদ্বয়' | GT@after-pos=''
+44,"{0,1,2,3} ..","{0, 1, 2, 3} ∴",neutral/unclear,"GT@before-pos='{0, 1, 2, 3} ∴' | GT@after-pos=''"
+44,"{{O},","{{0},",neutral/unclear,"GT@before-pos='{{0},' | GT@after-pos=''"
+44,"(2), (3), 10,","{2}, {3}, {0,",neutral/unclear,"GT@before-pos='{2}, {3}, {0,' | GT@after-pos=''"
+44,"{0,2}, (0.3), {1,2}, {1,3}, {2,3}, {0, 1,2}, {0, 1, 3}, {0, 2,3},","{0, 2}, {0, 3},",neutral/unclear,"GT@before-pos='{0, 2}, {0.3},' | GT@after-pos=''"
+44,"2,3}, {0, 1,2, 3}, a}","2}, {1, 3}, {2, 3}, {0, 1, 2}, {0, 1, 3}, {0, 2, 3}, {1, 2, 3}, {0, 1, 2, 3}, ∅}",neutral/unclear,"GT@before-pos='2}, {1, 3}, {2, 3}, {0, 1, 2}, {0, 1, 3}, {0, 2, 3}, {1, 2, 3}, {0, 1, 2, 3}, ∅}' | GT@after-pos=''"
+44,BAA,B এর,neutral/unclear,GT@before-pos='B এর' | GT@after-pos=''
+44,24,2⁴,neutral/unclear,GT@before-pos='2⁴' | GT@after-pos=''
+44,.-.,∴,neutral/unclear,GT@before-pos='∴ B' | GT@after-pos=''
+44,"2"" ৷ .*.",2ⁿ। ∴,neutral/unclear,GT@before-pos='2ⁿ । ∴' | GT@after-pos=''
+44,"2""",2ⁿ,neutral/unclear,GT@before-pos='2ⁿ' | GT@after-pos=''
+44,"R= ((৫,৪) : ৫ 6.4, 6 4 এবং & ৮ ৫৭ 1) এবং 1 ৮ {4,5,6,7}","R = {(x, y): x ∈ A ∧ y ∈ A ∧ y = x + 1} এবং A = {4, 5, 6, 7}",neutral/unclear,"GT@before-pos='R = {(x, y) : x ∈ A, y ∈ A এবং y = x + 1} এবং A = {4, 5, 6, 7}' | GT@after-pos=''"
+44,- rt,"x = 4, y = 5 x = 5, y = 6 x = 6, y = 7",neutral/unclear,GT@before-pos='y = x + 1' | GT@after-pos='y = x + 1'
+44,৫ eC,x ∈,neutral/unclear,GT@before-pos='x ∈' | GT@after-pos=''
+44,/ - ৫47,y = x +,neutral/unclear,GT@before-pos='y = x +' | GT@after-pos=''
+44,41567 ;7 5678,"R = {(4, 5), (5, 6), (6, 7)} ∴ R এর ডোমেন = {4, 5, 6}",neutral/unclear,GT@before-pos='' | GT@after-pos=''

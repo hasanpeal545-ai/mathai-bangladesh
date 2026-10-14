@@ -1,0 +1,159 @@
+batch,date,book,language,page,page_type,chars,errors,result
+pilot,2026-10-06,class_6_math_bn,bn,13,,,0,content errors: 0
+pilot,2026-10-06,class_6_math_bn,bn,156,,,1,content errors: 1
+pilot,2026-10-06,class_6_math_bn,bn,80,,,0,content errors: 0
+pilot,2026-10-06,class_6_math_en,en,178,,,0,content errors: 0
+pilot,2026-10-06,class_6_math_en,en,91,,,0,content errors: 0
+pilot,2026-10-06,class_7_math_bn,bn,14,,,1,content errors: 1
+pilot,2026-10-06,class_7_math_bn,bn,177,,,1,content errors: 1
+pilot,2026-10-06,class_7_math_bn,bn,90,,,0,content errors: 0
+pilot,2026-10-06,class_7_math_en,en,16,,,0,content errors: 0
+pilot,2026-10-06,class_7_math_en,en,195,,,0,content errors: 0
+pilot,2026-10-06,class_7_math_en,en,99,,,0,content errors: 0
+pilot,2026-10-06,class_8_math_bn,bn,15,,,0,content errors: 0
+pilot,2026-10-06,class_8_math_bn,bn,183,,,0,content errors: 0
+pilot,2026-10-06,class_8_math_bn,bn,95,,,0,content errors: 0
+pilot,2026-10-06,class_8_math_en,en,101,,,0,content errors: 0
+pilot,2026-10-06,class_8_math_en,en,16,,,0,content errors: 0
+pilot,2026-10-06,class_8_math_en,en,196,,,0,content errors: 0
+pilot,2026-10-06,class_9_General_math_bn,bn,181,,,0,content errors: 0
+pilot,2026-10-06,class_9_General_math_bn,bn,268,,,0,content errors: 0
+pilot,2026-10-06,class_9_General_math_bn,bn,29,,,1,content errors: 1
+pilot,2026-10-06,class_9_General_math_en,en,195,,,0,content errors: 0
+pilot,2026-10-06,class_9_General_math_en,en,31,,,0,content errors: 0
+pilot,2026-10-06,class_9_General_math_en,en,383,,,0,content errors: 0
+pilot,2026-10-06,class_9_Higher_math_en,en,177,,,0,content errors: 0
+pilot,2026-10-06,class_9_Higher_math_en,en,246,,,0,content errors: 0
+pilot,2026-10-06,class_9_Hiher_math_bn,bn,171,,,0,content errors: 0
+pilot,2026-10-06,class_9_Hiher_math_bn,bn,233,,,0,content errors: 0
+pilot,2026-10-06,class_9_Hiher_math_bn,bn,27,,,0,content errors: 0
+1,2026-10-07,class_9_General_math_bn,bn,1,cover,186,0,OK
+1,2026-10-07,class_9_General_math_bn,bn,2,front,592,0,OK
+1,2026-10-07,class_9_General_math_bn,bn,3,credits,1308,3,minor
+1,2026-10-07,class_9_General_math_bn,bn,4,preface,7070,5,minor
+1,2026-10-07,class_9_General_math_bn,bn,5,toc,1583,2,fix_needed
+1,2026-10-07,class_9_General_math_bn,bn,6,chapter_intro,5345,5,minor
+1,2026-10-07,class_9_General_math_bn,bn,7,theory,4855,2,minor
+1,2026-10-07,class_9_General_math_bn,bn,8,theory,2712,4,fix_needed
+1,2026-10-07,class_9_General_math_bn,bn,9,example,3034,1,redo
+1,2026-10-07,class_9_General_math_bn,bn,10,example,3096,1,minor
+2,2026-10-07,class_9_General_math_bn,bn,11,theory,4365,2,fix_needed
+2,2026-10-07,class_9_General_math_bn,bn,12,example,3477,3,redo
+2,2026-10-07,class_9_General_math_bn,bn,13,example,2821,1,OK
+2,2026-10-07,class_9_General_math_bn,bn,14,example,4401,2,redo
+2,2026-10-07,class_9_General_math_bn,bn,15,example,3598,1,redo
+2,2026-10-07,class_9_General_math_bn,bn,16,example,5473,2,redo
+2,2026-10-07,class_9_General_math_bn,bn,17,example,4364,1,fixed_manual
+2,2026-10-07,class_9_General_math_bn,bn,18,example,3790,2,redo
+2,2026-10-07,class_9_General_math_bn,bn,19,example,2572,2,minor
+2,2026-10-07,class_9_General_math_bn,bn,20,example,1114,1,redo
+3,2026-10-08,class_9_General_math_bn,bn,21,example,,1,fixed
+3,2026-10-08,class_9_General_math_bn,bn,22,example,,2,fixed
+3,2026-10-08,class_9_General_math_bn,bn,23,exercise,,1,fixed_manual
+3,2026-10-08,class_9_General_math_bn,bn,24,exercise,,3,fixed_manual
+3,2026-10-08,class_9_General_math_bn,bn,25,exercise,,2,fixed
+3,2026-10-08,class_9_General_math_bn,bn,26,chapter_intro,,2,fixed
+3,2026-10-08,class_9_General_math_bn,bn,27,theory,,2,fixed
+3,2026-10-08,class_9_General_math_bn,bn,28,theory,,0,OK
+3,2026-10-08,class_9_General_math_bn,bn,29,theory,,2,fixed
+3,2026-10-08,class_9_General_math_bn,bn,30,theory,,1,replaced_by_GT
+4,2026-10-08,class_9_General_math_bn,bn,31,,,1,fixed
+4,2026-10-08,class_9_General_math_bn,bn,32,,,1,fixed
+4,2026-10-08,class_9_General_math_bn,bn,33,,,0,OK
+4,2026-10-08,class_9_General_math_bn,bn,34,,,3,fixed
+4,2026-10-08,class_9_General_math_bn,bn,35,,,1,fixed
+4,2026-10-08,class_9_General_math_bn,bn,36,,,0,GT_compare
+4,2026-10-08,class_9_General_math_bn,bn,37,,,3,fixed
+4,2026-10-08,class_9_General_math_bn,bn,38,,,4,fixed
+4,2026-10-08,class_9_General_math_bn,bn,39,,,2,fixed
+4,2026-10-08,class_9_General_math_bn,bn,40,,,1,fixed
+5,2026-10-08,class_9_General_math_bn,bn,41,,,3,fixed
+5,2026-10-08,class_9_General_math_bn,bn,42,,,2,fixed
+5,2026-10-08,class_9_General_math_bn,bn,43,,,1,fixed
+5,2026-10-08,class_9_General_math_bn,bn,44,,,0,OK
+5,2026-10-08,class_9_General_math_bn,bn,45,,,2,fixed
+5,2026-10-08,class_9_General_math_bn,bn,46,,,0,OK
+5,2026-10-08,class_9_General_math_bn,bn,47,,,2,fixed
+5,2026-10-08,class_9_General_math_bn,bn,48,,,3,fixed
+5,2026-10-08,class_9_General_math_bn,bn,49,,,4,fixed
+5,2026-10-08,class_9_General_math_bn,bn,50,,,5,fixed
+6,2026-10-08,class_9_General_math_bn,bn,51,,,0,OK
+6,2026-10-08,class_9_General_math_bn,bn,52,,,0,OK
+6,2026-10-08,class_9_General_math_bn,bn,53,,,1,fixed
+6,2026-10-08,class_9_General_math_bn,bn,54,,,1,fixed
+6,2026-10-08,class_9_General_math_bn,bn,55,,,1,fixed
+6,2026-10-08,class_9_General_math_bn,bn,56,,,0,OK
+6,2026-10-08,class_9_General_math_bn,bn,57,,,2,fixed
+6,2026-10-08,class_9_General_math_bn,bn,58,,,1,fixed
+6,2026-10-08,class_9_General_math_bn,bn,59,,,2,fixed
+6,2026-10-08,class_9_General_math_bn,bn,60,,,1,fixed
+7,2026-10-08,class_9_General_math_bn,bn,61,,,0,OK
+7,2026-10-08,class_9_General_math_bn,bn,62,,,0,OK
+7,2026-10-08,class_9_General_math_bn,bn,63,,,2,fixed
+7,2026-10-08,class_9_General_math_bn,bn,64,,,1,fixed
+7,2026-10-08,class_9_General_math_bn,bn,65,,,1,fixed
+7,2026-10-08,class_9_General_math_bn,bn,66,,,1,fixed
+7,2026-10-08,class_9_General_math_bn,bn,67,,,2,fixed
+7,2026-10-08,class_9_General_math_bn,bn,68,,,0,OK
+7,2026-10-08,class_9_General_math_bn,bn,69,,,1,fixed
+7,2026-10-08,class_9_General_math_bn,bn,70,,,2,fixed
+8,2026-10-08,class_9_General_math_bn,bn,71,,,0,OK
+8,2026-10-08,class_9_General_math_bn,bn,72,,,0,OK
+8,2026-10-08,class_9_General_math_bn,bn,73,,,2,fixed
+8,2026-10-08,class_9_General_math_bn,bn,74,,,0,OK
+8,2026-10-08,class_9_General_math_bn,bn,75,,,3,fixed_manual
+8,2026-10-08,class_9_General_math_bn,bn,76,,,1,fixed
+8,2026-10-08,class_9_General_math_bn,bn,77,,,1,fixed
+8,2026-10-08,class_9_General_math_bn,bn,78,,,3,fixed
+8,2026-10-08,class_9_General_math_bn,bn,79,,,0,OK
+8,2026-10-08,class_9_General_math_bn,bn,80,,,2,fixed
+9,2026-10-08,class_9_General_math_bn,bn,81,,,2,fixed
+9,2026-10-08,class_9_General_math_bn,bn,82,,,3,fixed
+9,2026-10-08,class_9_General_math_bn,bn,83,,,3,fixed
+9,2026-10-08,class_9_General_math_bn,bn,84,,,3,fixed
+9,2026-10-08,class_9_General_math_bn,bn,85,,,5,fixed_manual
+9,2026-10-08,class_9_General_math_bn,bn,86,,,5,fixed_manual
+9,2026-10-08,class_9_General_math_bn,bn,87,,,2,fixed
+9,2026-10-08,class_9_General_math_bn,bn,88,,,2,fixed
+9,2026-10-08,class_9_General_math_bn,bn,89,,,2,fixed
+9,2026-10-08,class_9_General_math_bn,bn,90,,,2,fixed
+10,2026-10-08,class_9_General_math_bn,bn,91,,,2,fixed_manual
+10,2026-10-08,class_9_General_math_bn,bn,92,,,1,fixed_manual
+10,2026-10-08,class_9_General_math_bn,bn,93,,,1,fixed
+10,2026-10-08,class_9_General_math_bn,bn,94,,,0,OK
+10,2026-10-08,class_9_General_math_bn,bn,95,,,3,fixed
+10,2026-10-08,class_9_General_math_bn,bn,96,,,1,fixed
+10,2026-10-08,class_9_General_math_bn,bn,97,,,4,fixed
+10,2026-10-08,class_9_General_math_bn,bn,98,,,1,fixed_manual
+10,2026-10-08,class_9_General_math_bn,bn,99,,,2,fixed
+10,2026-10-08,class_9_General_math_bn,bn,100,,,2,fixed
+11,2026-10-08,class_9_General_math_bn,bn,101,,,2,fixed_manual
+11,2026-10-08,class_9_General_math_bn,bn,102,,,1,fixed_manual
+11,2026-10-08,class_9_General_math_bn,bn,103,,,0,OK
+11,2026-10-08,class_9_General_math_bn,bn,104,,,1,fixed
+11,2026-10-08,class_9_General_math_bn,bn,105,,,1,fixed
+11,2026-10-08,class_9_General_math_bn,bn,106,,,3,fixed
+11,2026-10-08,class_9_General_math_bn,bn,107,,,2,fixed
+11,2026-10-08,class_9_General_math_bn,bn,108,,,1,fixed
+11,2026-10-08,class_9_General_math_bn,bn,109,,,1,fixed
+11,2026-10-08,class_9_General_math_bn,bn,110,,,0,OK
+12,2026-10-08,class_9_General_math_bn,bn,111,,,1,fixed
+12,2026-10-08,class_9_General_math_bn,bn,112,,,0,OK
+12,2026-10-08,class_9_General_math_bn,bn,113,,,2,fixed
+12,2026-10-08,class_9_General_math_bn,bn,114,,,2,fixed
+12,2026-10-08,class_9_General_math_bn,bn,115,,,0,OK
+12,2026-10-08,class_9_General_math_bn,bn,116,,,5,fixed
+12,2026-10-08,class_9_General_math_bn,bn,117,,,1,fixed_manual
+12,2026-10-08,class_9_General_math_bn,bn,118,,,3,fixed
+12,2026-10-08,class_9_General_math_bn,bn,119,,,1,fixed_manual
+12,2026-10-08,class_9_General_math_bn,bn,120,,,1,fixed_manual
+13,2026-10-14,class_9_General_math_bn,bn,121,,,4,fixed
+13,2026-10-14,class_9_General_math_bn,bn,122,,,0,OK
+13,2026-10-14,class_9_General_math_bn,bn,123,,,4,fixed
+13,2026-10-14,class_9_General_math_bn,bn,124,,,1,fixed
+13,2026-10-14,class_9_General_math_bn,bn,125,,,1,fixed
+13,2026-10-14,class_9_General_math_bn,bn,126,,,0,OK
+13,2026-10-14,class_9_General_math_bn,bn,127,,,1,fixed
+13,2026-10-14,class_9_General_math_bn,bn,128,,,2,fixed
+13,2026-10-14,class_9_General_math_bn,bn,129,,,2,fixed
+13,2026-10-14,class_9_General_math_bn,bn,130,,,3,fixed

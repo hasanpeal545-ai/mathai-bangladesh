@@ -1,0 +1,44 @@
+Mathematics                                                                          11
+
+Rules for finding approximate value of square root
+
+• To find the square root upto two decimal places, the square root upto
+three decimal point is to be determined.
+
+• If the next digit after decimal place upto which square root is to be
+determined is 0, 1, 2, 3 or 4, 1 should not be added with the previous digit.
+
+• If the next digit after decimal place upto which square root is to be
+determined is 5, 6, 7, 8 or 9, 1 is to be added to the previous digit.
+
+Activity:
+1. Find the square root of 50·6944.
+2. Find the square root of 7·12 upto two decimal places.
+
+1·5 Perfect square fraction
+
+Writing 50/32 in its lowest terms, we get: 25/16
+
+Here, the numerator of the fraction 25/16 is 25, which is a perfect square number
+
+and denominator 16 is also a perfect square number.
+
+So, 25/16 is a perfect square fraction. ∴ When the numerator and denominator
+
+of a fraction are perfect square or numerator and denominator of a reduced
+fraction are perfect square, the fraction is called a perfect square fraction.
+
+1·6 Square root of a fraction
+
+The square root of a fraction is determined by dividing the square root of
+numerator by the square root of denominator of the fraction.
+
+Example 5. Find the square root of 64/81.
+
+Solution : Square root of the numerator 64 of the fraction = √64 = 8
+
+and square root of denominator 81 = √81 = 9
+
+∴    Square root of 64/81 = √64/√81 = 8/9
+
+The required square root = 8/9

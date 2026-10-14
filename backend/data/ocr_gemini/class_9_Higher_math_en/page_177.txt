@@ -1,0 +1,43 @@
+172 Higher Mathematics Classes IX-X
+
+Exercise 8.1
+
+Use calculator to solve the following problems. Use (π = 3.1416) as the
+approximate value of π in every case where necessary.
+
+1. 1) Express in radians :
+(i) 75°30′ (ii) 55°54′53″ (iii) 33°22′11″
+
+2) Express in degrees :
+(i) 8π/13 radian (ii) 1.3177 radian (iii) 0.9759 radian
+
+2. If we express an angle by D° and Rᶜ in radian and circular system then
+prove that, D/180 = R/π.
+
+3. The radius of a wheel is 2 metre 3 c.m. Find approximate value of its
+circumference to four decimal places.
+
+4. The diameter of the wheel of a car is 0.84 metre and the wheel makes 6
+revolutions per second. Find the speed of the car.
+
+5. The anglesof a triangle are in the ratio 2 : 5 : 3; what are the circular
+measures of the smallest and the largest angles ?
+
+6. The angles of a triangle are in arithmetical progression and the largest angle
+is twice the smallest angle. What are the radian measures of the angles ?
+
+7. The arc joining Dhaka with Chittagong subtends an angle of 5° at the centre
+of the earth. Taking the earth to be a sphere of radius 6440 k.m. find the
+distance of Chittagong from Dhaka.
+
+8. The arc joining Teknaf with Tetulia subtends an angle of 10°6′3″ at the
+centre of the earth. Taking the earth to be a sphere of radius 6440 k.m.,
+find the distance of Tetulia and Teknaf.
+
+9. Riding a bicycle Shahed traverses a segment of a circular path in 11 seconds.
+The diameter of the circular path is 201 metre and the angle subtended by
+the segment at the centre is 30°; find Shahed's speed.
+
+10. Given that the radius of the earth is 6440 k.m, what is the distance between
+the two places on the surface of the earth which subtends an angle of 32″
+at the centre of the earth?

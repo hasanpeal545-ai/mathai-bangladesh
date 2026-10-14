@@ -10,3 +10,6 @@ __pycache__/
 node_modules/
 dist/
 .claude/
+
+# per-batch review images (regenerated every batch; audit_images/ is kept)
+paper/check/class_*/

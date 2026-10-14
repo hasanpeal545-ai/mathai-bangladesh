@@ -1,0 +1,31 @@
+অধ্যায় ৪. সূচক ও লগারিদম
+৮৩
+
+প্রমাণ: ধরি, logₐM = x, logₐN = y
+∴ M = aˣ, N = aʸ
+এখন, MN = aˣ ⋅ aʸ = aˣ⁺ʸ
+∴ logₐ(MN) = x + y
+বা, logₐ(MN) = logₐM + logₐN [x, y এর মান বসিয়ে]
+∴ logₐ(MN) = logₐM + logₐN (প্রমাণিত)
+দ্রষ্টব্য: logₐ(MNP . . .) = logₐM + logₐN + logₐP + . . .
+দ্রষ্টব্য: logₐ(M ± N) ≠ logₐM ± logₐN
+সূত্র ৮ (ভাগফলের লগ). logₐ(M/N) = logₐM − logₐN
+
+প্রমাণ: ধরি, logₐM = x, logₐN = y
+∴ M = aˣ, N = aʸ
+এখন, M/N = aˣ/aʸ = aˣ⁻ʸ
+∴ logₐ(M/N) = x − y
+∴ logₐ(M/N) = logₐM − logₐN (প্রমাণিত)
+সূত্র ৯ (ঘাতের লগ). logₐMʳ = r logₐM
+
+প্রমাণ: ধরি, logₐM = x, ∴ M = aˣ
+বা, (M)ʳ = (aˣ)ʳ বা, Mʳ = aʳˣ
+∴ logₐMʳ = rx বা, logₐMʳ = r logₐM
+∴ logₐMʳ = r logₐM (প্রমাণিত)।
+দ্রষ্টব্য: (logₐM)ʳ এবং r logₐM সমান নাও হতে পারে।
+যেমন (log₂4)⁵ = (log₂2²)⁵ = 2⁵ = 32, 5log₂4 = 5 ⋅ 2 = 10 ≠ 32
+সূত্র ১০ (ভিত্তি পরিবর্তন). logₐM = log_bM × logₐb
+
+প্রমাণ: ধরি, logₐM = x, log_bM = y
+∴ aˣ = M, bʸ = M
+∴ aˣ = bʸ বা, (aˣ)^(1/y) = (bʸ)^(1/y) বা, b = a^(x/y)

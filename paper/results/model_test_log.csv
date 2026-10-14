@@ -1,0 +1,11 @@
+setting,model,book,page,status,input_tokens,output_tokens,candidates_tokens,total_tokens,finish_reason,cost_usd
+A_gemini-3.6-flash_minimal,gemini-3.6-flash,class_9_General_math_bn,30,OK,1195,770,770,1965,STOP,0.007567
+A_gemini-3.6-flash_minimal,gemini-3.6-flash,class_9_General_math_bn,36,OK,1195,796,796,1991,STOP,0.007763
+A_gemini-3.6-flash_minimal,gemini-3.6-flash,class_9_General_math_bn,44,OK,1195,819,819,2014,STOP,0.007935
+A_gemini-3.6-flash_minimal,gemini-3.6-flash,class_6_math_bn,156,OK,1195,577,577,1772,STOP,0.00612
+A_gemini-3.6-flash_minimal,gemini-3.6-flash,class_7_math_bn,14,OK,1185,557,557,1742,STOP,0.005955
+B_gemini-3.5-flash-lite_minimal,gemini-3.5-flash-lite,class_9_General_math_bn,30,OK,1195,778,778,1973,STOP,0.002303
+B_gemini-3.5-flash-lite_minimal,gemini-3.5-flash-lite,class_9_General_math_bn,36,OK,1195,800,800,1995,STOP,0.002358
+B_gemini-3.5-flash-lite_minimal,gemini-3.5-flash-lite,class_9_General_math_bn,44,OK,1195,700,700,1895,STOP,0.002108
+B_gemini-3.5-flash-lite_minimal,gemini-3.5-flash-lite,class_6_math_bn,156,OK,1195,598,598,1793,STOP,0.001854
+B_gemini-3.5-flash-lite_minimal,gemini-3.5-flash-lite,class_7_math_bn,14,OK,1185,840,840,2025,STOP,0.002455

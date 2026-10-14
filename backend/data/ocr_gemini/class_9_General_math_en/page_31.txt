@@ -1,0 +1,37 @@
+26                                                       Mathematics Classes IX-X
+
+Proper Subset
+Of the subsets constructed from a set, the ones that have lesser number of elements
+than the original set is called proper set. For example, A = {3, 4, 5, 6} and
+B = {3, 5} are two sets. Here all elements of B are also elements of A, and
+number of elements in B is less than that of A.
+∴ B is a proper subset of A and is expressed as B ⊂ A.
+In the examples of subsets Q and R are each proper subset of P. It may be
+mentioned here that ∅ is a proper subset of any set.
+Example 5. Write down the subsets of P = {x, y, z} and identify those that
+are proper subsets.
+Solution: Given, P = {x, y, z}
+Subsets of P are {x, y, z}, {x, y}, {x, z}, {y, z}, {x}, {y}, {z}, ∅.
+Proper subsets of P are {x, y}, {x, z}, {y, z}, {x}, {y}, {z}, ∅
+Observation: If number of elements of a set is n, then it has 2ⁿ subsets, and
+number of proper subsets is 2ⁿ − 1.
+Equivalent Set
+If two sets have the same elements, then they are said to be equivalent sets. For
+example, A = {3, 5, 7} and B = {5, 3, 3, 7} are two equivalent sets, then they are
+denoted by A = B. Note that A = B if and only if A ⊆ B and B ⊆ A
+Again, if A = {3, 5, 7}, B = {5, 3, 3, 7} and C = {7, 7, 3, 5, 5}, then sets A, B and
+C are equivalent sets. That is A = B = C
+Observation: If order of elements in the set are changed or certain element is
+repeated set is not changed.
+Difference of Sets
+The set obtained by removing the elements of the second set from the elements
+of the first set is called the difference of the two sets. The difference of two sets,
+A and B, is written as A \ B or A − B (read as ‘A minus B’). It is defined as:
+A − B = {x : x ∈ A, x ∉ B}
+This means that the resulting set consists of all elements (x) that are in set A
+but are not in set B.
+Let A = {1, 2, 3, 4, 5} and B = {3, 5}. If we delete the elements of set B from
+that of A, then we get {1, 2, 4}.
+∴ A − B = {1, 2, 3, 4, 5} − {3, 5} = {1, 2, 4}
+Example 6. If P = {x : x is a factor of 12 } and Q = {x : x is a multiple of 3
+and x ≤ 12}, then determine P − Q.

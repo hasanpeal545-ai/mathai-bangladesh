@@ -1,0 +1,27 @@
+[MANUAL: transcribed by Claude (chat) from page image — Flash-Lite stacked fractions + "অনুশীলনী ৮.২" (should be ৪.২)]
+৮৬
+গণিত
+
+= ((3/2)log₁₀3 + 3log₁₀2 − (3/2)log₁₀10)/(log₁₀(3 × 2²) − log₁₀10)
+= ((3/2)(log₁₀3 + 2log₁₀2 − 1))/(log₁₀3 + 2log₁₀2 − 1)   [∵ log₁₀10 = 1]
+= 3/2
+
+অনুশীলনী ৪.২
+
+১. মান নির্ণয় করো:
+   ক) log₃81    খ) log₅∛5    গ) log₄2
+   ঘ) log_(2√5)400    ঙ) log₅(∛5 · √5)
+২. x এর মান নির্ণয় করো:
+   ক) log₅x = 3    খ) logₓ25 = 2    গ) logₓ(1/16) = −2
+৩. দেখাও যে,
+   ক) 5log₁₀5 − log₁₀25 = log₁₀125
+   খ) log₁₀(50/147) = log₁₀2 + 2log₁₀5 − log₁₀3 − 2log₁₀7
+   গ) 3log₁₀2 + 2log₁₀3 + log₁₀5 = log₁₀360
+৪. সরল করো:
+   ক) 7log₁₀(10/9) − 2log₁₀(25/24) + 3log₁₀(81/80)
+   খ) log₇(⁵√7 · √7) − log₃∛3 + log₄2
+   গ) logₑ(a³b³/c³) + logₑ(b³c³/d³) + logₑ(c³d³/a³) − 3logₑb²c
+৫. x = 2, y = 3, z = 5, w = 7
+   ক) √(y³) এর 3 ভিত্তিক লগ নির্ণয় করো।
+   খ) wlog(xz/y²) − xlog(z²/(x²y)) + ylog(y⁴/(x⁴z)) এর মান নির্ণয় করো।
+   গ) দেখাও যে, (log√(y³) + ylogx − (y/x)log(xz))/(log(xy) − logz) = log_y√(y³)

@@ -1,0 +1,43 @@
+Patterns                                                                           11
+
+    According to the stimuli answer to the question no. 4 & 5 :
+
+    ┌────┬────┬────┐
+    │ 12 │ 19 │ 14 │
+    ├────┼────┼────┤
+    │ 17 │ A  │ 13 │ ← A magic square
+    ├────┼────┼────┤
+    │ 16 │ 11 │ 18 │
+    └────┴────┴────┘
+
+4.  In the magic square, what is the magic number?
+    A. 15        B. 34        C. 35        D. 45
+
+5.  What would be the right number in the square marked ‘A’?
+    A. 45        B. 20        C. 15        D. 3
+
+Creative Question:
+
+6.  ┌──┐  ┌──┬──┐  ┌──┬──┬──┬──┐
+    └──┘  └──┴──┘  └──┴──┴──┴──┘ .... .... .... K-th figure.
+    1ˢᵗ fig.   2ⁿᵈ fig.      3ʳᵈ fig.
+    A figure made with sticks of equal length has 88 sticks in the 15ᵗʰ figure.
+
+    (a) Draw the next figure in the pattern and determine the number of sticks in it.
+    (b) Form a formula to determine the number of sticks in the K-th figure, and find the 21ˢᵗ term.
+    (c) Determine how many sticks are needed to construct the last 12 figures among the first 15 figures.
+
+7.  Number pattern: 3, 6, 9, 12, 15, …
+    The k-th term of this number pattern is 3k.
+
+    (a) Show that 69 and the number obtained by interchanging its digits add up to a multiple of 11.
+    (b) Find the sum of the first 20 terms of the number pattern.
+    (c) From the sum of every two consecutive terms of the number pattern, a new pattern is formed. Find the (k − 2)-th term of this new pattern.
+
+Short Answer Questions:
+
+    (a) Determine the number pattern of the algebraic expression (4k − 1).
+    (b) Express 130 as the sum of two squares in two different ways.
+    (c) From the pattern 14, 17, 20, …, determine the next two terms.
+    (d) Find the algebraic expression for the number pattern 5, 7, 9, 11, …
+    (e) Find the 55ᵗʰ term of the number pattern of the algebraic expression (3k + 2).

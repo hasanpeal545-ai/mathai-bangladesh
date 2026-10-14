@@ -1,0 +1,101 @@
+﻿page,method,class,ref_count,errors,error_rate
+30,M1_tesseract_raw,Bangla letter/vowel sign,956,7,0.0073
+30,M1_tesseract_raw,Bangla digit,9,0,0.0
+30,M1_tesseract_raw,Latin letter,125,41,0.328
+30,M1_tesseract_raw,ASCII digit,65,0,0.0
+30,M1_tesseract_raw,Math symbol,21,21,1.0
+30,M1_tesseract_raw,Bracket/other punctuation,203,40,0.197
+30,M1b_tesseract_raw_altrun,Bangla letter/vowel sign,956,11,0.0115
+30,M1b_tesseract_raw_altrun,Bangla digit,9,0,0.0
+30,M1b_tesseract_raw_altrun,Latin letter,125,41,0.328
+30,M1b_tesseract_raw_altrun,ASCII digit,65,1,0.0154
+30,M1b_tesseract_raw_altrun,Math symbol,21,21,1.0
+30,M1b_tesseract_raw_altrun,Bracket/other punctuation,203,45,0.2217
+30,M2_tesseract_groq_fixed,Bangla letter/vowel sign,956,10,0.0105
+30,M2_tesseract_groq_fixed,Bangla digit,9,0,0.0
+30,M2_tesseract_groq_fixed,Latin letter,125,35,0.28
+30,M2_tesseract_groq_fixed,ASCII digit,65,0,0.0
+30,M2_tesseract_groq_fixed,Math symbol,21,13,0.619
+30,M2_tesseract_groq_fixed,Bracket/other punctuation,203,28,0.1379
+30,M3_gemini_vision,Bangla letter/vowel sign,956,0,0.0
+30,M3_gemini_vision,Bangla digit,9,0,0.0
+30,M3_gemini_vision,Latin letter,125,0,0.0
+30,M3_gemini_vision,ASCII digit,65,0,0.0
+30,M3_gemini_vision,Math symbol,21,0,0.0
+30,M3_gemini_vision,Bracket/other punctuation,203,0,0.0
+36,M1_tesseract_raw,Bangla letter/vowel sign,416,9,0.0216
+36,M1_tesseract_raw,Bangla digit,16,7,0.4375
+36,M1_tesseract_raw,Latin letter,109,23,0.211
+36,M1_tesseract_raw,ASCII digit,98,0,0.0
+36,M1_tesseract_raw,Math symbol,53,52,0.9811
+36,M1_tesseract_raw,Bracket/other punctuation,224,21,0.0938
+36,M1b_tesseract_raw_altrun,Bangla letter/vowel sign,416,7,0.0168
+36,M1b_tesseract_raw_altrun,Bangla digit,16,10,0.625
+36,M1b_tesseract_raw_altrun,Latin letter,109,15,0.1376
+36,M1b_tesseract_raw_altrun,ASCII digit,98,0,0.0
+36,M1b_tesseract_raw_altrun,Math symbol,53,52,0.9811
+36,M1b_tesseract_raw_altrun,Bracket/other punctuation,224,18,0.0804
+36,M2_tesseract_groq_fixed,Bangla letter/vowel sign,416,9,0.0216
+36,M2_tesseract_groq_fixed,Bangla digit,16,7,0.4375
+36,M2_tesseract_groq_fixed,Latin letter,109,12,0.1101
+36,M2_tesseract_groq_fixed,ASCII digit,98,4,0.0408
+36,M2_tesseract_groq_fixed,Math symbol,53,48,0.9057
+36,M2_tesseract_groq_fixed,Bracket/other punctuation,224,5,0.0223
+36,M3_gemini_vision,Bangla letter/vowel sign,416,0,0.0
+36,M3_gemini_vision,Bangla digit,16,1,0.0625
+36,M3_gemini_vision,Latin letter,109,0,0.0
+36,M3_gemini_vision,ASCII digit,98,0,0.0
+36,M3_gemini_vision,Math symbol,53,0,0.0
+36,M3_gemini_vision,Bracket/other punctuation,224,0,0.0
+44,M1_tesseract_raw,Bangla letter/vowel sign,464,2,0.0043
+44,M1_tesseract_raw,Bangla digit,9,4,0.4444
+44,M1_tesseract_raw,Latin letter,62,33,0.5323
+44,M1_tesseract_raw,ASCII digit,128,2,0.0156
+44,M1_tesseract_raw,Math symbol,25,25,1.0
+44,M1_tesseract_raw,Bracket/other punctuation,290,46,0.1586
+44,M1b_tesseract_raw_altrun,Bangla letter/vowel sign,464,11,0.0237
+44,M1b_tesseract_raw_altrun,Bangla digit,9,4,0.4444
+44,M1b_tesseract_raw_altrun,Latin letter,62,24,0.3871
+44,M1b_tesseract_raw_altrun,ASCII digit,128,1,0.0078
+44,M1b_tesseract_raw_altrun,Math symbol,25,25,1.0
+44,M1b_tesseract_raw_altrun,Bracket/other punctuation,290,27,0.0931
+44,M2_tesseract_groq_fixed,Bangla letter/vowel sign,464,8,0.0172
+44,M2_tesseract_groq_fixed,Bangla digit,9,4,0.4444
+44,M2_tesseract_groq_fixed,Latin letter,62,9,0.1452
+44,M2_tesseract_groq_fixed,ASCII digit,128,3,0.0234
+44,M2_tesseract_groq_fixed,Math symbol,25,5,0.2
+44,M2_tesseract_groq_fixed,Bracket/other punctuation,290,21,0.0724
+44,M3_gemini_vision,Bangla letter/vowel sign,464,2,0.0043
+44,M3_gemini_vision,Bangla digit,9,4,0.4444
+44,M3_gemini_vision,Latin letter,62,0,0.0
+44,M3_gemini_vision,ASCII digit,128,0,0.0
+44,M3_gemini_vision,Math symbol,25,0,0.0
+44,M3_gemini_vision,Bracket/other punctuation,290,0,0.0
+ALL_PAGES,M1_tesseract_raw,Bangla letter/vowel sign,1836,18,0.0098
+ALL_PAGES,M1_tesseract_raw,Bangla digit,34,11,0.3235
+ALL_PAGES,M1_tesseract_raw,Latin letter,296,97,0.3277
+ALL_PAGES,M1_tesseract_raw,ASCII digit,291,2,0.0069
+ALL_PAGES,M1_tesseract_raw,Math symbol,99,98,0.9899
+ALL_PAGES,M1_tesseract_raw,Bracket/other punctuation,717,107,0.1492
+ALL_PAGES,M1_tesseract_raw,"(insertions, no ref class -- not in error_rate above)",,17,
+ALL_PAGES,M1b_tesseract_raw_altrun,Bangla letter/vowel sign,1836,29,0.0158
+ALL_PAGES,M1b_tesseract_raw_altrun,Bangla digit,34,14,0.4118
+ALL_PAGES,M1b_tesseract_raw_altrun,Latin letter,296,80,0.2703
+ALL_PAGES,M1b_tesseract_raw_altrun,ASCII digit,291,2,0.0069
+ALL_PAGES,M1b_tesseract_raw_altrun,Math symbol,99,98,0.9899
+ALL_PAGES,M1b_tesseract_raw_altrun,Bracket/other punctuation,717,90,0.1255
+ALL_PAGES,M1b_tesseract_raw_altrun,"(insertions, no ref class -- not in error_rate above)",,18,
+ALL_PAGES,M2_tesseract_groq_fixed,Bangla letter/vowel sign,1836,27,0.0147
+ALL_PAGES,M2_tesseract_groq_fixed,Bangla digit,34,11,0.3235
+ALL_PAGES,M2_tesseract_groq_fixed,Latin letter,296,56,0.1892
+ALL_PAGES,M2_tesseract_groq_fixed,ASCII digit,291,7,0.0241
+ALL_PAGES,M2_tesseract_groq_fixed,Math symbol,99,66,0.6667
+ALL_PAGES,M2_tesseract_groq_fixed,Bracket/other punctuation,717,54,0.0753
+ALL_PAGES,M2_tesseract_groq_fixed,"(insertions, no ref class -- not in error_rate above)",,25,
+ALL_PAGES,M3_gemini_vision,Bangla letter/vowel sign,1836,2,0.0011
+ALL_PAGES,M3_gemini_vision,Bangla digit,34,5,0.1471
+ALL_PAGES,M3_gemini_vision,Latin letter,296,0,0.0
+ALL_PAGES,M3_gemini_vision,ASCII digit,291,0,0.0
+ALL_PAGES,M3_gemini_vision,Math symbol,99,0,0.0
+ALL_PAGES,M3_gemini_vision,Bracket/other punctuation,717,0,0.0
+ALL_PAGES,M3_gemini_vision,"(insertions, no ref class -- not in error_rate above)",,1,

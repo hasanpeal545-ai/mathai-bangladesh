@@ -1,0 +1,34 @@
+378                                                      Mathematics Classes IX-X
+
+18. (x + ay + y)(ax − x + y)            19. (x + 2)(x² + x + 1)
+20. (a − 3)(a² − 3a + 3)                21. (a − b)(2a² + 5ab + 8b²)
+22. (2x − 3)(4x² + 12x + 21)           23. 1/27 (6a + b)(36a² − 6ab + b²)
+24. (a²/3 − b²)(a⁴/9 + a²b²/3 + b⁴)    25. (2a − 1/2a)(2a − 1/2a + 2)
+26. (a + 4)(19a² − 13a + 7)           27. (x² + 7x + 4)(x² + 7x + 18)
+28. (x² − 8x + 20)(x² − 8x + 2)        29. (a+b+c)(b+c−a)(c+a−b)(a+b−c)
+30. (2z − 3x − 5)(10x + 7z + 3)
+
+Exercises 3.4
+
+1. (a + 1)(3a² − 3a + 5)               2. (x + y)(x − 3y)(x + 2y)
+3. (x − 2)(x + 1)(x + 3)               4. (x − 1)(x + 2)(x + 3)
+5. (a + 3)(a² − 3a + 12)               6. (a − 1)(a − 1)(a² + 2a + 3)
+7. (a + 1)(a − 4)(a + 2)               8. (x − 2)(x² − x + 2)
+9. (a − b)(a² − 6ab + b²)              10. (x − 3)(x² + 3x + 8)
+11. (x + 1)(x + 2)(x + 3)              12. (x − 2)(2x + 1)(x² + 1)
+13. (2x − 1)(2x + 1)(x + 1)(x + 2)      14. x(x − 1)(x² + x + 1)(x² − x + 1)
+15. (4x − 1)(x² − x + 1)               16. (2x + 1)(3x + 2)(3x − 1)
+
+Exercises 3.5
+
+9. 2/3(p + r) days                     10. 5 hours
+11. 6 days                             12. 100 persons
+13. Speed of current d/2 (1/q − 1/p) km/hr and speed of boat d/2 (1/p + 1/q) km/hr
+14. Speed of boat 8 km/hr and speed of current 2 km/hr
+15. t₁t₂/(t₂ − t₁) minute               16. 240 litre
+17. 1) Tk. 120        2) Tk. 80        3) Tk. 60
+18. Tk. 450                            19. Tk. 10
+20. Tk. 48                             21. 4%
+22. Tk. 625                            23. 28%
+24. Tk. 600                            25. Tk. 61
+26. Tk. px/(100 + x); VAT amount Tk. 300

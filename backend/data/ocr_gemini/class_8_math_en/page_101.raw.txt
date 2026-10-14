@@ -1,0 +1,37 @@
+96
+Math
+
+Exercise 5.2
+
+1. Which one is correct if a/x, b/y, c/z, p/q are reduced to the common denominator?
+(a) ayzq/xyzq, bxzq/xyzq, cxyq/xyzq, pxyz/xyzq (b) axy/xyzq, byz/xyzq, czx/xyzq, pxy/xyzq
+(c) a/xyzq, b/xyzq, c/xyzq, p/xyzq (d) axyzq/xyzq, bxyzq/xyzq, cxyzq/xyzq, pxyzq/xyzq
+
+2. Which one of the following is the product of x²y²/ab and c³d²/x⁵y³ ?
+(a) x²y²c³d²/abx³y² (b) c³d²/abx³y (c) x²y²c³/x³y (d) xyd²/ab
+
+3. Which one of the following is the value of (P+x)/(P−x) ÷ (P+x)²/(P²−x²) ?
+A. 1
+B. p − x
+C. p+x
+D. (P−x)/(P+x)
+
+4. Which one of the following expressions will be correct if (x+y)/(x−y) and (x−y)/(x+y)
+are turned into fractions with common denominator?
+A. (x+y)²/(x²−y²), (x−y)²/(x²−y²) B. (x+y)²/(x−y), (x−y)²/(x+y) C. (x+y)²/(x²+y²), (x−y)²/(x²+y²) D. (x−y)/(x+y)², (x+y)/(x−y)²
+
+5. Which one of the following is the quotient of (x²+2x−3)/(x²+x−2) and (x²+x−6)/(x²−4)
+A. (x+3)/(x+2)
+B. (x−1)/(x+3)
+C. 1
+D. 0
+
+6. What is the simplified value of 1/(x−2) − 1/(x+2) − 4/(x²−4)
+A. 8/(x²−4)
+B. 2x/(x²−4)
+C. 1
+D. 0
+
+7. Multiply :
+(a) 9x²y²/7y²z², 5b²c²/3z²x² and 7c²a²/x²y² (b) 16a²b²/21z², 28z⁴/9x³y⁴ and 3y⁷z/10x
+(c) yz/x², zx/y² and xy/z² (d) (x−1)/(x+1), (x−1)²/(x²+x) and x²/(x²−4x+5)

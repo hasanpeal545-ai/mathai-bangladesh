@@ -1,0 +1,30 @@
+৫২	গণিত
+
+$= 8³ + 15 \times 8 + 8 \times 84$
+$= 8(8² + 15 + 84) = 8(64 + 15 + 84)$
+$= 8 \times 163 = 1304$
+উদাহরণ ১৬. যদি $a = \sqrt{3} + \sqrt{2}$ হয়, তবে প্রমাণ করো যে, $a³ + \frac{1}{a³} = 18\sqrt{3}$
+
+সমাধান: দেওয়া আছে, $a = \sqrt{3} + \sqrt{2}$
+$\therefore \frac{1}{a} = \frac{1}{\sqrt{3} + \sqrt{2}}$
+$= \frac{\sqrt{3} - \sqrt{2}}{(\sqrt{3} + \sqrt{2})(\sqrt{3} - \sqrt{2})}$ [লব ও হরকে $(\sqrt{3} - \sqrt{2})$ দ্বারা গুণ করে]
+$= \frac{\sqrt{3} - \sqrt{2}}{(\sqrt{3})^2 - (\sqrt{2})^2} = \frac{\sqrt{3} - \sqrt{2}}{3 - 2} = \sqrt{3} - \sqrt{2}$
+$\therefore a + \frac{1}{a} = (\sqrt{3} + \sqrt{2}) + (\sqrt{3} - \sqrt{2}) = \sqrt{3} + \sqrt{2} + \sqrt{3} - \sqrt{2} = 2\sqrt{3}$
+
+এখন, $a³ + \frac{1}{a³} = (a + \frac{1}{a})³ - 3 \cdot a \cdot \frac{1}{a}(a + \frac{1}{a})$
+$= (2\sqrt{3})³ - 3(2\sqrt{3}) \left[\because a + \frac{1}{a} = 2\sqrt{3}\right]$
+$= 2³ \cdot (\sqrt{3})³ - 3 \times 2\sqrt{3} = 8 \cdot 3\sqrt{3} - 6\sqrt{3}$
+$= 24\sqrt{3} - 6\sqrt{3} = 18\sqrt{3}$ (প্রমাণিত)
+
+উদাহরণ ১৭. $x + y = 5$, $xy = 6$ এবং $x > y$ হলে—
+ক) $2(x² + y²)$ এর মান নির্ণয় করো।
+খ) $x³ - y³ - 3(x² + y²)$ এর মান নির্ণয় করো।
+গ) $x⁵ + y⁵$ এর মান নির্ণয় করো।
+
+সমাধান:
+ক) আমরা জানি, $2(x² + y²) = 2\{(x + y)² - 2xy\}$
+$= 2(5² - 2 \cdot 6) = 2 \times 13 = 26$
+$\therefore 2(x² + y²) = 26$
+
+খ) দেওয়া আছে $x + y = 5$ এবং $xy = 6$, $x > y$
+$\therefore x - y = \sqrt{(x + y)² - 4xy}$ (প্রদত্ত শর্ত মোতাবেক ঋণাত্মক মান গ্রহণযোগ্য নয়)

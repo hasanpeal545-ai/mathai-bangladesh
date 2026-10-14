@@ -1,0 +1,22 @@
+book,page,time,lang,resolution,note
+class_9_Higher_math_en,28,2026-10-06T22:19:34,en,tesseract-fallback,every available Gemini reading was blocked (RECITATION); used Tesseract raw text instead
+class_9_General_math_bn,9,2026-10-07T07:32:53,bn,tesseract-fallback,every available Gemini reading was blocked (RECITATION); used Tesseract raw text instead
+class_9_General_math_bn,9,2026-10-07T07:57:12,bn,tesseract-fallback,"every available Gemini reading, including the escalation ladder, was blocked (RECITATION); used Tesseract raw text instead"
+class_9_General_math_bn,14,2026-10-07T08:16:21,bn,secondary-promoted,primary (temp 0) blocked; promoted secondary (temp 0.4) reading to be the page's output
+class_9_General_math_bn,16,2026-10-07T08:16:46,bn,secondary-promoted,primary (temp 0) blocked; promoted secondary (temp 0.4) reading to be the page's output
+class_9_General_math_bn,17,2026-10-07T08:17:15,bn,tesseract-fallback,"every available Gemini reading, including the escalation ladder, was blocked (RECITATION); used Tesseract raw text instead"
+class_9_General_math_bn,19,2026-10-07T08:17:56,bn,escalate_gemini-3.6-flash,"primary (and secondary, if bn) blocked; recovered via escalate_gemini-3.6-flash"
+class_9_General_math_bn,16,2026-10-08T15:00:59,bn,secondary-promoted,primary (temp 0) blocked; promoted secondary (temp 0.4) reading to be the page's output
+class_9_General_math_bn,23,2026-10-08T15:22:38,bn,tesseract-fallback,"every available Gemini reading, including the escalation ladder, was blocked (RECITATION); used Tesseract raw text instead"
+class_9_General_math_bn,33,2026-10-08T16:11:18,bn,escalate_temp0.4,"primary (and secondary, if bn) blocked; recovered via escalate_temp0.4"
+class_9_General_math_bn,72,2026-10-08T19:39:44,bn,escalate_gemini-3.6-flash,"primary (and secondary, if bn) blocked; recovered via escalate_gemini-3.6-flash"
+class_9_General_math_bn,83,2026-10-08T19:55:49,bn,escalate_gemini-3.6-flash,"primary (and secondary, if bn) blocked; recovered via escalate_gemini-3.6-flash"
+class_9_General_math_bn,92,2026-10-08T23:15:09,bn,tesseract-fallback,"every available Gemini reading, including the escalation ladder, was blocked (RECITATION); used Tesseract raw text instead"
+class_9_General_math_bn,95,2026-10-08T23:15:47,bn,escalate_accessibility_prompt,"primary (and secondary, if bn) blocked; recovered via escalate_accessibility_prompt"
+class_9_General_math_bn,98,2026-10-08T23:16:30,bn,tesseract-fallback,"every available Gemini reading, including the escalation ladder, was blocked (RECITATION); used Tesseract raw text instead"
+class_9_General_math_bn,99,2026-10-08T23:16:58,bn,escalate_gemini-3.6-flash,"primary (and secondary, if bn) blocked; recovered via escalate_gemini-3.6-flash"
+class_9_General_math_bn,102,2026-10-08T23:37:03,bn,tesseract-fallback,"every available Gemini reading, including the escalation ladder, was blocked (RECITATION); used Tesseract raw text instead"
+class_9_General_math_bn,116,2026-10-08T23:49:01,bn,secondary-promoted,primary (temp 0) blocked; promoted secondary (temp 0.4) reading to be the page's output
+class_9_General_math_bn,117,2026-10-08T23:49:30,bn,tesseract-fallback,"every available Gemini reading, including the escalation ladder, was blocked (RECITATION); used Tesseract raw text instead"
+class_9_General_math_bn,119,2026-10-08T23:50:09,bn,tesseract-fallback,"every available Gemini reading, including the escalation ladder, was blocked (RECITATION); used Tesseract raw text instead"
+class_9_General_math_bn,120,2026-10-08T23:51:19,bn,tesseract-fallback,"every available Gemini reading, including the escalation ladder, was blocked (RECITATION); used Tesseract raw text instead"

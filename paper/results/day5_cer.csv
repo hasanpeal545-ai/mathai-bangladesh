@@ -1,0 +1,17 @@
+﻿page,method,ref_chars,hyp_chars,S,I,D,CER,CER_with_spaces
+30,M1_tesseract_raw,1379,1376,99,4,7,0.0798,0.1032
+30,M1b_tesseract_raw_altrun,1379,1373,108,8,14,0.0943,0.1154
+30,M2_tesseract_groq_fixed,1379,1365,70,3,17,0.0653,0.0943
+30,M3_gemini_vision,1379,1380,0,1,0,0.0007,0.0006
+36,M1_tesseract_raw,916,903,88,11,24,0.1343,0.19
+36,M1b_tesseract_raw_altrun,916,899,76,10,27,0.1234,0.1845
+36,M2_tesseract_groq_fixed,916,886,46,10,40,0.1048,0.1217
+36,M3_gemini_vision,916,916,1,0,0,0.0011,0.0008
+44,M1_tesseract_raw,978,970,92,14,22,0.1309,0.1679
+44,M1b_tesseract_raw_altrun,978,974,68,21,25,0.1166,0.1574
+44,M2_tesseract_groq_fixed,978,1005,44,36,9,0.091,0.0885
+44,M3_gemini_vision,978,974,2,0,4,0.0061,0.0052
+MEAN(micro),M1_tesseract_raw,3273,,279,29,53,0.1103,0.1479
+MEAN(micro),M1b_tesseract_raw_altrun,3273,,252,39,66,0.1091,0.1481
+MEAN(micro),M2_tesseract_groq_fixed,3273,,160,49,66,0.084,0.1004
+MEAN(micro),M3_gemini_vision,3273,,3,1,4,0.0024,0.002

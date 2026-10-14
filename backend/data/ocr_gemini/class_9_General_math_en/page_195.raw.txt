@@ -1,0 +1,25 @@
+190                                              Mathematics Classes IX-X
+
+(a)                     (b)                     (c)
+
+Solution:
+
+1)  Hypotenuse 17 units        2)  Hypotenuse p        3)  Hypotenuse EF
+    opposite side 8 units          opposite side r         opposite side EG
+    adjacent side 15 units         adjacent side q         adjacent side FG
+
+Example 2.  Find the lengths of hypotenuse, the adjacent side and the opposite
+side for the angles α and β.
+
+Solution:
+
+1)  For α angle                                2)  For β angle
+    hypotenuse 25 units                             hypotenuse 25 units
+    adjacent side 7 units                           adjacent side 24 units
+    opposite side 24 units                          opposite side 7 units
+
+Work:
+
+Indicate the hypotenuse, adjacent side and opposite for the angle θ and ϕ.
+
+Constancy of ratios of the sides of similar right-angled triangles

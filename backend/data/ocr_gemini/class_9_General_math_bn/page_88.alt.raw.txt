@@ -1,0 +1,31 @@
+অধ্যায় ৪. সূচক ও লগারিদম
+৮৩
+
+প্রমাণ: ধরি, $\log_a M = x, \log_a N = y$
+$\therefore M = a^x, N = a^y$
+এখন, $MN = a^x \cdot a^y = a^{x+y}$
+$\therefore \log_a(MN) = x + y$
+বা, $\log_a(MN) = \log_a M + \log_a N$ [$x, y$ এর মান বসিয়ে]
+$\therefore \log_a(MN) = \log_a M + \log_a N$ (প্রমাণিত)
+দ্রষ্টব্য: $\log_a(MNP\dots) = \log_a M + \log_a N + \log_a P + \dots$
+দ্রষ্টব্য: $\log_a(M \pm N) \neq \log_a M \pm \log_a N$
+সূত্র ৮ (ভাগফলের লগ). $\log_a \frac{M}{N} = \log_a M - \log_a N$
+
+প্রমাণ: ধরি, $\log_a M = x, \log_a N = y$
+$\therefore M = a^x, N = a^y$
+এখন, $\frac{M}{N} = \frac{a^x}{a^y} = a^{x-y}$
+$\therefore \log_a \frac{M}{N} = x - y$
+$\therefore \log_a \frac{M}{N} = \log_a M - \log_a N$ (প্রমাণিত)
+সূত্র ৯ (ঘাতের লগ). $\log_a M^r = r \log_a M$
+
+প্রমাণ: ধরি, $\log_a M = x, \therefore M = a^x$
+বা, $(M)^r = (a^x)^r$ বা, $M^r = a^{rx}$
+$\therefore \log_a M^r = rx$ বা, $\log_a M^r = r \log_a M$
+$\therefore \log_a M^r = r \log_a M$ (প্রমাণিত)।
+দ্রষ্টব্য: $(\log_a M)^r$ এবং $r\log_a M$ সমান নাও হতে পারে।
+যেমন $(\log_2 4)^5 = (\log_2 2^2)^5 = 2^5 = 32, 5\log_2 4 = 5 \cdot 2 = 10 \neq 32$
+সূত্র ১০ (ভিত্তি পরিবর্তন). $\log_a M = \log_b M \times \log_a b$
+
+প্রমাণ: ধরি, $\log_a M = x, \log_b M = y$
+$\therefore a^x = M, b^y = M$
+$\therefore a^x = b^y$ বা, $(a^x)^{\frac{1}{y}} = (b^y)^{\frac{1}{y}}$ বা, $b = a^{\frac{x}{y}}$

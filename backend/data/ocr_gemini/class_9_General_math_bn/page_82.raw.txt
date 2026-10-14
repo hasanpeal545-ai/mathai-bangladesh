@@ -1,0 +1,41 @@
+অধ্যায় ৪. সূচক ও লগারিদম
+৭৭
+
+∴ সাধারণভাবে $a^m \times a^n = a^{m+n}$ এবং $\frac{a^m}{a^n} = \begin{cases} a^{m-n} \text{ যখন } m \ge n \\ \frac{1}{a^{n-m}} \text{ যখন } n > m \end{cases}$
+
+সূত্র ৩ (গুণফলের ঘাত)। $(ab)^n = a^n \times b^n$
+
+লক্ষ করি, $(5 \times 2)^3 = (5 \times 2) \times (5 \times 2) \times (5 \times 2)$ $[\because a^3 = a \times a \times a, a = 5 \times 2]$
+$= (5 \times 5 \times 5) \times (2 \times 2 \times 2)$
+$= 5^3 \times 2^3$
+
+সাধারণভাবে, $(ab)^n = ab \times ab \times ab \times \dots \times ab$ [$n$ সংখ্যক $ab$ এর ক্রমিক গুণ]
+$= (a \times a \times a \times \dots \times a) \times (b \times b \times b \times \dots \times b)$
+$= a^n \times b^n$
+
+সূত্র ৪ (ভাগফলের ঘাত)। $(\frac{a}{b})^n = \frac{a^n}{b^n}, (b \neq 0)$
+
+লক্ষ করি, $(\frac{5}{2})^3 = \frac{5}{2} \times \frac{5}{2} \times \frac{5}{2} = \frac{5^3}{2^3}$
+
+সাধারণভাবে, $(\frac{a}{b})^n = \frac{a}{b} \times \frac{a}{b} \times \frac{a}{b} \times \dots \times \frac{a}{b}$ [$n$ সংখ্যক $\frac{a}{b}$ এর ক্রমিক গুণ]
+$= \frac{a \times a \times a \times \dots \times a}{b \times b \times b \times \dots \times b} = \frac{a^n}{b^n}$
+
+সূত্র ৫ (ঘাতের ঘাত)। $(a^m)^n = a^{mn}$
+
+$(a^m)^n = a^m \times a^m \times a^m \times \dots \times a^m$ [$n$ সংখ্যক $a^m$ এর ক্রমিক গুণ]
+$= a^{m+m+m\dots+m}$ [ঘাতে $n$ সংখ্যক সূচকের যোগফল]
+$= a^{m \times n} = a^{mn}$
+
+$\therefore (a^m)^n = a^{mn}$
+
+শূন্য ও ঋণাত্মক সূচক (Zero and Negative Indices)
+
+সূচকে সূত্রবলির প্রয়োগ ক্ষেত্র সকল পূর্ণসংখ্যা সম্প্রসারণের লক্ষ্যে $a^0$ এবং $a^{-n}$ (যেখানে $n$ স্বাভাবিক
+সংখ্যা) এর সংজ্ঞা দেয়া প্রয়োজন।
+
+সংজ্ঞা ১ (শূন্য সূচক)। $a^0 = 1, (a \neq 0)$
+
+সংজ্ঞা ২ (ঋণাত্মক সূচক)। $a^{-n} = \frac{1}{a^n}, (a \neq 0, n \in N)$
+
+এই সংজ্ঞা দুইটির ফলে সূচক বিধি $m$ এবং $n$ এর সকল পূর্ণসাংখ্যিক মানের জন্য বলবৎ থাকে এবং
+এরুপ সকল সূচকের জন্য $\frac{a^m}{a^n} = a^{m-n}$ খাটে।

@@ -1,0 +1,59 @@
+[FALLBACK: TESSERACT — Gemini RECITATION block]
+Chapter 1. Set and Function 23
+
+21.
+
+23.
+
+24,
+
+26.
+
+27.
+
+Given that, A= {:2<a<5, 7€ R}andB={a:1<a4<3,r€ R}
+Express the following sets in set builder method:
+
+1) ANB 2) ANB 3) AUB
+Given that, U = {m: 2 <10,c eR}, A={x:1<a<4fand B= {r:
+3 <a <6}. Express the following sets in set builder method:
+
+1) ANB 2) A'NB 3) ANB’ 4) ANB
+Sets A and B are given below for each case. Find AU B and verify that
+AC (AUB) and BC (AUB).
+
+1) A= {-2,-1,0,1,2} and B = {—3,0,3}
+
+2) A={a:x EN, « < 10 and « is the multiple of 2} and B= {x:r€
+
+N, a < 10 and z is the multiple of 3}
+Find out AM B in every case below and verify that, (AM B) Cc A and
+(ANB)CB.
+
+1) A= {0,1,2,3}, B={-1,0,2} 2) A= {a,b,c,d}, B= {b,x,c,y}
+Among the female students of Begum Rokeya College, a survey was
+conducted about their reading habits of the magazines the Bichitra, the
+Sandhani and the Purbani. It was found that 60% of the girls read the
+Bichitra, 50% read the Sandhani, 50% read the Pubani, 30% read the
+Bichitra and the Sandhani, 30% read the Bichitra and the Purbani, 20%
+read the Sandhani and the Purbani, while 10% read all three magazines.
+
+1) What percentage of the girls do not read any of the three magazines?
+
+2) What percentage of the girls read just two of the above magazines?
+A={x:x€ Rand a? —(a+b)x + ab=0}, B= {1,2} and C = {2,4,5}
+
+1) Find out the elelments of set A.
+
+2) Show that, P(BNC) = P(B)N P(C).
+
+3) Prove that, Ax (BUC) =(Ax B)U(Ax C).
+
+Out of 100 students of a class, 42 students play football, 46 play cricket and
+39 play chess. Among them 13 play football and cricket, 14 play cricket and
+chess and 12 play football and chess. Besides, 7 students are not expert in
+any of these games.
+
+1) Show theset of students whoare expert in all three games and students
+
+who are expert in none of the games in Venn diagrram.
