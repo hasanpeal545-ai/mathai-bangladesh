@@ -123,3 +123,10 @@ class_9_General_math_bn/page_156.txt
 class_9_General_math_bn/page_158.txt
 class_9_General_math_bn/page_159.txt
 class_9_General_math_bn/page_160.txt
+class_9_General_math_bn/page_161.txt
+class_9_General_math_bn/page_162.txt
+class_9_General_math_bn/page_164.txt
+class_9_General_math_bn/page_166.txt
+class_9_General_math_bn/page_167.txt
+class_9_General_math_bn/page_168.txt
+class_9_General_math_bn/page_169.txt

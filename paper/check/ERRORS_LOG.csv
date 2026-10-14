@@ -249,3 +249,21 @@ pilot,2026-10-06,class_9_General_math_en,en,383,omission,margin_year,(missing),2
 16,2026-10-14,class_9_General_math_bn,bn,159,spelling,word_substitution,ওপর (x2) / ধরে নেওয়া,উপর / ধরে নেয়া,"16,23,27",spelling normalisation
 16,2026-10-14,class_9_General_math_bn,bn,159,latex_left,latex_left,\Delta (x4),Δ,31,\Delta here = triangle sign
 16,2026-10-14,class_9_General_math_bn,bn,160,spelling,bangla_word,ব্যাসাই,ব্যাসই,25,
+17,2026-10-14,class_9_General_math_bn,bn,161,omission,figure_data,(30° only in figure),[চিত্র …: ∠OQP = 30° …],17,exercise 8.1 Q8(ক) needs the 30° angle
+17,2026-10-14,class_9_General_math_bn,bn,162,spelling,word_substitution,লক্ষ্য করি,লক্ষ করি,6,
+17,2026-10-14,class_9_General_math_bn,bn,162,spelling,bangla_word,অন্তুঃস্থ,অন্তঃস্থ,9,
+17,2026-10-14,class_9_General_math_bn,bn,162,spelling,word_substitution,প্রতিটি বিন্দু,প্রত্যেকটি বিন্দু,23,same substitution as p29
+17,2026-10-14,class_9_General_math_bn,bn,162,spelling,bangla_word,লক্ষনীয়,লক্ষণীয়,38,same as p142
+17,2026-10-14,class_9_General_math_bn,bn,163,ok,,,,,
+17,2026-10-14,class_9_General_math_bn,bn,164,spelling,word_substitution,চাপের ওপর (heading),চাপের উপর,8,উপর/ওপর
+17,2026-10-14,class_9_General_math_bn,bn,165,ok,,,,,
+17,2026-10-14,class_9_General_math_bn,bn,166,error,postprocess_artifact,table rows ১-৫ deleted,restored from raw,7,OUR bug: FIX_BATCH15 ascii_figure rule treats Markdown table rows (| | | |) as ASCII art
+17,2026-10-14,class_9_General_math_bn,bn,166,format,punctuation,"অর্থাৎ, কোণ",অর্থাৎ কোণ,24,
+17,2026-10-14,class_9_General_math_bn,bn,167,spelling,bangla_word,অন্তলিখিত (x3),অন্তর্লিখিত,"3,6,19",র-ফলা dropped
+17,2026-10-14,class_9_General_math_bn,bn,167,format,numbering,১। ২। ৩। ৪।,১. ২. ৩. ৪.,34-44,exercise 8.3 numbers with দাঁড়ি
+17,2026-10-14,class_9_General_math_bn,bn,168,format,figure_labels,labels D C O A B appended to text lines + ASCII circle figure,removed; figure note added,3-35,figure labels to the RIGHT of text (same line) — not caught by any rule
+17,2026-10-14,class_9_General_math_bn,bn,168,spelling,bangla_word,শিরোকোণদ্বয়,শিরঃকোণদ্বয়,9,
+17,2026-10-14,class_9_General_math_bn,bn,168,format,punctuation,রয়েছেঃ / মন্তব্যঃ,রয়েছে: / মন্তব্য:,"20,47",visarga ঃ instead of colon
+17,2026-10-14,class_9_General_math_bn,bn,169,omission,bangla_word,রূপ ক্ষেত্রে,এরূপ ক্ষেত্রে,19,first letter dropped
+17,2026-10-14,class_9_General_math_bn,bn,169,spelling,word_substitution,সরলরেখার ওপর,সরলরেখার উপর,35,
+17,2026-10-14,class_9_General_math_bn,bn,170,ok,,,,,
