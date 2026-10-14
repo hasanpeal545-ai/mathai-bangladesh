@@ -267,3 +267,26 @@ pilot,2026-10-06,class_9_General_math_en,en,383,omission,margin_year,(missing),2
 17,2026-10-14,class_9_General_math_bn,bn,169,omission,bangla_word,রূপ ক্ষেত্রে,এরূপ ক্ষেত্রে,19,first letter dropped
 17,2026-10-14,class_9_General_math_bn,bn,169,spelling,word_substitution,সরলরেখার ওপর,সরলরেখার উপর,35,
 17,2026-10-14,class_9_General_math_bn,bn,170,ok,,,,,
+18,2026-10-14,class_9_General_math_bn,bn,171,spelling,word_substitution,অনুরূপ ∠POB,তদ্রুপ ∠POB,12,synonym
+18,2026-10-14,class_9_General_math_bn,bn,171,spelling,word_substitution,লম্বদ্বিখণ্ডক,লম্বসমদ্বিখণ্ডক,29,exercise 8.4 Q1
+18,2026-10-14,class_9_General_math_bn,bn,172,spelling,word_substitution,বৃত্ত সম্পর্কিত সম্পাদ্য,বৃত্ত সম্পর্কীয় সম্পাদ্য,15,section heading
+18,2026-10-14,class_9_General_math_bn,bn,172,spelling,bangla_word,বিন্দুুই (x2),বিন্দুই,"25,28",doubled u-kar
+18,2026-10-14,class_9_General_math_bn,bn,173,spelling,omission,এই বৃত্তটি,এই বৃত্তটিই,41,emphatic ই dropped
+18,2026-10-14,class_9_General_math_bn,bn,174,spelling,omission,এই বৃত্তটি,এই বৃত্তটিই,6,same
+18,2026-10-14,class_9_General_math_bn,bn,174,spelling,bangla_word,লক্ষনীয়,লক্ষণীয়,10,3rd occurrence; FIX_BATCH17 rule did not fire here
+18,2026-10-14,class_9_General_math_bn,bn,175,digit,page_number,১৯০,১৭০,1,"৭->৯ (not ৪/৮), page-number auto-fix does not cover it"
+18,2026-10-14,class_9_General_math_bn,bn,175,omission,heading,পাদ্য ১১।,সম্পাদ্য ১১.,3,first syllable dropped + dari
+18,2026-10-14,class_9_General_math_bn,bn,175,spelling,bangla_word,বহিবৃত্ত (x6),বহির্বৃত্ত,3-29,r-reph dropped
+18,2026-10-14,class_9_General_math_bn,bn,175,spelling,bangla_word,দ্বিধণ্ডক (x2),দ্বিখণ্ডক,"18,19",
+18,2026-10-14,class_9_General_math_bn,bn,175,script_leak,malayalam_leak,অন্তര്‍লিখিত,অন্তর্লিখিত,34,NEW: Malayalam ര് + ZWJ inside a Bangla word
+18,2026-10-14,class_9_General_math_bn,bn,176,digit,page_number,১৯১,১৭১,2,৭->৯
+18,2026-10-14,class_9_General_math_bn,bn,176,script_leak,assamese_leak,বহিৰ্বৃত্ত,বহির্বৃত্ত,21,"Assamese ৰ (again, cf. p39)"
+18,2026-10-14,class_9_General_math_bn,bn,176,spelling,word_substitution,ওপরের তথ্য,উপরের তথ্য,36,
+18,2026-10-14,class_9_General_math_bn,bn,176,omission,figure_data,"(80° only in figure; P,Q extensions)",[চিত্র …] notes,4,MCQ 2 and Q12 need figure data
+18,2026-10-14,class_9_General_math_bn,bn,177,digit,page_number,১৯২,১৭২,1,৭->৯
+18,2026-10-14,class_9_General_math_bn,bn,177,spelling,word_substitution,দুইটি স্পর্শক অঙ্কন,দুইটি স্পর্শ অঙ্কন,4,model corrected the book's own typo — kept verbatim
+18,2026-10-14,class_9_General_math_bn,bn,177,omission,figure_data,(108° only in figure),[চিত্র …: ∠BOD = 108°],10,MCQ 1 needs it
+18,2026-10-14,class_9_General_math_bn,bn,178,error,postprocess_artifact,দুইটি সমান জ্যা,দুটি সমান জ্যা,8,OUR DUTI rule: book really prints দুটি here (Raw was right)
+18,2026-10-14,class_9_General_math_bn,bn,178,omission,figure_data,(OD ⊥ AB only in figure),[চিত্র …],8,
+18,2026-10-14,class_9_General_math_bn,bn,179,spelling,bangla_word,গাাণিতিক,গাণিতিক,10,doubled আ-কার
+18,2026-10-14,class_9_General_math_bn,bn,180,omission,figure_data,"figures, 2 tables lost; side lengths 17/15/8",tables + figure notes rebuilt,11-56,flagged by figure_values_lost

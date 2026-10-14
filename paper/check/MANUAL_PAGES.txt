@@ -130,3 +130,13 @@ class_9_General_math_bn/page_166.txt
 class_9_General_math_bn/page_167.txt
 class_9_General_math_bn/page_168.txt
 class_9_General_math_bn/page_169.txt
+class_9_General_math_bn/page_171.txt
+class_9_General_math_bn/page_172.txt
+class_9_General_math_bn/page_173.txt
+class_9_General_math_bn/page_174.txt
+class_9_General_math_bn/page_175.txt
+class_9_General_math_bn/page_176.txt
+class_9_General_math_bn/page_177.txt
+class_9_General_math_bn/page_178.txt
+class_9_General_math_bn/page_179.txt
+class_9_General_math_bn/page_180.txt
