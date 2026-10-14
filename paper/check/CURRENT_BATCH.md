@@ -73,7 +73,7 @@ Batch 19: 20 Gemini calls (10 pages × primary+secondary, no escalation needed).
 
 ## Task 6 — commit + push
 
-`git status` checked first. Committed and pushed to `origin/main`.
+`git status` checked first (only `full_gemini_ocr.py`, `RUN_LOG.csv`, `digit_disagreements.csv`, this file, and this batch's new `page_181..190.*`/`.png` files — no `.env`/API keys/`venv`). Committed as `eee61ad` and pushed to `origin/main` successfully (`e802486..eee61ad`).
 
 ---
 
