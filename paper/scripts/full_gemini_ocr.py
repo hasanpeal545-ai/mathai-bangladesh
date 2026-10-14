@@ -139,7 +139,7 @@ SECONDARY_TEMPERATURE = 0.4  # bn pages only, Step 3b.2
 PROMPT = (
     "Transcribe this textbook page exactly as printed. Keep Bangla text in Bangla "
     "script and English in English. Write mathematical symbols as Unicode "
-    "(∈ ∉ ∪ ∩ ∅ ∴ × − ⊂ ⊆, superscripts "
+    "(∈ ∉ ∪ ∩ ∅ ∴ × − ⊂ ⊆ ∠ ∥ Δ ° ≠, superscripts "
     "like ² ⁿ). Keep line breaks. Do not correct, translate, summarise, add "
     "or skip anything. Output only the transcription. "
     "Ignore any text printed vertically in the page "
@@ -151,8 +151,14 @@ PROMPT = (
     "write that digit followed by U+0307 (e.g. 0.2̇4̇, 5.234̇57̇). Never drop "
     "these dots, and never read a dotted 1 as the letter i. Also keep "
     "fractions on one line as a/b even inside worked solutions. "
-    "Keep negation slashes on relation symbols (e.g. x R̸ y, ∉, ≠) -- never "
-    "drop them. "
+    # FIX_BATCH13 task 2: the prompt's own worked example was leaking into
+    # output -- p129's real "AB = AC ≠ BC" came back as "AB = AC R̸ BC"
+    # (the model literally copied the example's "R̸" placeholder symbol
+    # instead of transcribing the page's actual ≠). Dropped the "x R̸ y"
+    # example entirely rather than swapping it for a different placeholder,
+    # which could leak the same way; named the real symbols instead.
+    "Keep negation slashes on symbols exactly as printed (∉, ≠, ⊄) -- never "
+    "drop them, and never replace one symbol with another. "
     "When a fraction multiplies something (a fraction coefficient), wrap the "
     "fraction in parentheses: write (1/27)(3a + 1), (1/2)x², f(−(1/2)a) -- "
     "never 1/27(3a + 1) or 1/2x², which read as a different expression. "
@@ -181,7 +187,12 @@ ACCESSIBILITY_PREFIX = (
 )
 
 # Step 3b.3: standalone margin-year tokens to strip from every output.
-MARGIN_YEAR_TOKENS = ["২০২৩", "২০২৪", "২০২৫", "২০২৬", "2023", "2024", "2025", "2026"]
+# FIX_BATCH13 task 3(a): 2021/2022 added -- page 130 had a "২০২১" leak at
+# the end of the page the existing 2023-2026 list didn't cover.
+MARGIN_YEAR_TOKENS = [
+    "২০২১", "২০২২", "২০২৩", "২০২৪", "২০২৫", "২০২৬",
+    "2021", "2022", "2023", "2024", "2025", "2026",
+]
 _YEAR_ALT = "|".join(MARGIN_YEAR_TOKENS)
 _MARGIN_YEAR_WHOLE_LINE_RE = re.compile(rf"^\s*(?:{_YEAR_ALT})\s*$")
 _MARGIN_YEAR_TRAILING_RE = re.compile(rf" {{10,}}(?:{_YEAR_ALT})\s*$")
@@ -781,7 +792,9 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
     any `extra` note(s) (str or list of
     str; e.g. FIX_BATCH2 task 3's missing_recurring_dot, FIX_BATCH3 task 2's
     quality-pick note) into a single note for a RUN_LOG row's "error" field.
-    Empty string if nothing applies."""
+    FIX_BATCH13 task 3(c) added figure_labels_suspect (a flag-only line
+    range, computed here directly from `text` rather than passed in via
+    `counts`, since it's never auto-fixed). Empty string if nothing applies."""
     counts = counts or {}
     parts = []
     if counts.get("typo_fixes"):
@@ -802,6 +815,13 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
         parts.append(f"log_fixes: {counts['log_fixes']}")
     if counts.get("sqrt_parens"):
         parts.append(f"sqrt_parens: {counts['sqrt_parens']}")
+    if counts.get("parallel_fixes"):
+        parts.append(f"parallel_fixes: {counts['parallel_fixes']}")
+    if counts.get("figure_labels_removed"):
+        parts.append(f"figure_labels_removed: {counts['figure_labels_removed']}")
+    suspect = find_figure_labels_suspect_lines(text)
+    if suspect:
+        parts.append(f"figure_labels_suspect: L{',L'.join(str(n) for n in suspect)}")
     leftover = find_latex_leftover(text)
     if leftover:
         parts.append(f"latex_left: {','.join(leftover)}")
@@ -1044,7 +1064,19 @@ _BIJOGANITIK_RE = re.compile(r"বীজগণিতিক")
 # FIX_BATCH5 task 1: the book always writes the full "দুইটি", never the
 # contracted "দুটি" -- a plain substring replace also fixes "দুটিকে" ->
 # "দুইটিকে" as a side effect, since "দুটি" is a literal prefix of "দুটিকে".
-_DUTI_RE = re.compile(r"দুটি")
+# FIX_BATCH13 task 1: that same substring-replace nature was a real bug --
+# with no word-boundary guard, the pattern also matched the "দুটি" hiding
+# INSIDE the unrelated, already-correct word "বিন্দুটি" ("বি"+"ন্দুটি"),
+# turning it into the nonsense "বিন্দুইটি" (ERRORS_LOG batch=13, pages 123
+# and 124 -- confirmed against each page's raw.txt: Gemini's own reading was
+# already correct, this function broke it). Python's `\b` doesn't reliably
+# treat Bangla conjuncts/matras as word characters, so a lookbehind for ANY
+# preceding Bangla character (the full Bengali Unicode block, U+0980-U+09FF)
+# is used instead of `\b` -- this blocks exactly the mid-word case
+# ("ন্দুটি") while still matching "দুটি" at a real word start (preceded by
+# whitespace, punctuation, or the start of the text), so "দুটিকে"/"দুটির"
+# etc. (the intentional prefix-match side effect above) keep working.
+_DUTI_RE = re.compile(r"(?<![ঀ-৿])দুটি")
 
 # FIX_BATCH5 task 1: doubled আ-কার misread ("উদাাহরণ" for "উদাহরণ", page 43).
 # MUST run before _UDAHARON_PERIOD_RE above so a page with BOTH typos (e.g. a
@@ -1087,9 +1119,24 @@ _FORMI_RE = re.compile(r"ফর্মী")
 # "বহুম্পদী" for "বহুপদী" ("polynomial", page 100: "বহুম্পদী" x6 -- an extra
 # ম inserted). "সংখ্যাক" for "সংখ্যক" (page 99: "সংখ্যাক" -- an extra া
 # inserted; "সংখ্যক" is the correct "-numbered" suffix, e.g. "নির্দিষ্টসংখ্যক").
+# FIX_BATCH13 task 1: _SONKHYAK_RE had the same substring-collision bug as
+# _DUTI_RE, just in the OTHER direction -- "সংখ্যাক" (7 chars) is a literal
+# PREFIX of "সংখ্যাকে" ("the number", object case: "সংখ্যা" + the everyday
+# "-কে" case suffix), a completely common, correct word with nothing to do
+# with the "-numbered" typo this pattern exists to fix. Unguarded, it would
+# have rewritten "সংখ্যাকে" into the nonsense "সংখ্যকে" (confirmed: found 57
+# real "সংখ্যাকে" occurrences across pages 1-130's raw OCR text that would
+# hit this exact collision; none have actually been corrupted in the
+# DELIVERED corpus yet only because every page containing one either
+# predates this rule, which FIX_BATCH10 added, or was later manually
+# reviewed -- so this was a live, armed bug, not merely a theoretical one).
+# Fixed with a negative lookahead for the one continuation that actually
+# causes the collision ("ে", U+09C7) -- "সংখ্যক" (the correct target
+# spelling) is always the LAST element of its own compound and never takes
+# a further suffix, so this guard costs no real fix, only blocks the false one.
 _LOGNER_RE = re.compile(r"লগ্নের")
 _BOHUMPODI_RE = re.compile(r"বহুম্পদী")
-_SONKHYAK_RE = re.compile(r"সংখ্যাক")
+_SONKHYAK_RE = re.compile(r"সংখ্যাক(?!ে)")
 
 # FIX_BATCH11 task 2: two more recurring OCR mis-readings (ERRORS_LOG
 # batch=11, page 106's section heading). "দ্বিমাত" for "দ্বিঘাত"
@@ -1098,7 +1145,22 @@ _SONKHYAK_RE = re.compile(r"সংখ্যাক")
 # "বহুম্পদী" (that one has an extra hasant-ম conjunct; this one has a plain
 # extra ম with no hasant at all), so it needs its own pattern, not a
 # broadening of _BOHUMPODI_RE.
-_DBIMATO_RE = re.compile(r"দ্বিমাত")
+# FIX_BATCH13 task 1: _DBIMATO_RE had the same class of bug as _SONKHYAK_RE
+# above -- "দ্বিমাত" (7 chars) is a literal PREFIX of "দ্বিমাত্রিক"
+# ("two-dimensional", দ্বি- + মাত্রিক) AND of "দ্বিমাত্রা" ("two
+# dimensions", দ্বি- + মাত্রা) -- both real geometry terms with nothing to
+# do with "দ্বিঘাত" ("quadratic"). Confirmed live on page 106's own raw.txt
+# (the exact page this pattern was written for): running fix_known_bangla_
+# typos() on it corrupts "দ্বিমাত্রিক" into "দ্বিঘাত্রিক"; it only never
+# showed up in page_106.txt itself because that page was later manually
+# rewritten by a human (MANUAL_PAGES.txt), which papered over the bug
+# without actually fixing it. Chapter 6 (solid geometry: points, lines,
+# PLANES) is exactly the content now being processed (batch 14 onward), so
+# "two-dimensional"/"two dimensions" were only going to come up more, not
+# less. Both bad continuations start with "্র" (hasant + র, the start of
+# "ত্রিক"/"ত্রা"), so one lookahead blocks both at once; the real typo
+# "দ্বিমাত" is always followed by a space before "সমীকরণ" ("equation"), never by "্র".
+_DBIMATO_RE = re.compile(r"দ্বিমাত(?!্র)")
 _BOHUMPODI2_RE = re.compile(r"বহুমপদী")
 
 
@@ -1200,6 +1262,93 @@ def fix_sqrt_parens(text):
     return _SQRT_PAREN_NUMBER_RE.subn(r"√\1", text)
 
 
+# FIX_BATCH13 task 3(b): "||" between two 2-letter line-segment names (e.g.
+# "AB || CD" meaning "line AB is parallel to line CD") -> the real Unicode
+# parallel sign ∥ (U+2225, a DIFFERENT character from "|", U+007C, even
+# though they render almost identically) -- a plain "||" risks the tutor
+# reading it as nested absolute-value bars instead of "parallel to". Scoped
+# to exactly two consecutive uppercase Latin letters on each side (this
+# book's own naming convention for a line/segment, e.g. "AB", "CD") rather
+# than a bare "||" anywhere, so an unrelated use of double-pipe (none seen
+# in this corpus, but not worth risking) is left alone.
+# FIX_BATCH13 task 3(b), real bug caught running batch 14: the task's own
+# literal regex -- `([A-Z]{2})\s*\|\|\s*([A-Z]{2})` -> `\1 ∥ \2` -- CONSUMES
+# both flanking tokens into its match, so a 3-way chain like page 139's
+# real "AB || EF || CD" only converted the first "||" ("AB ∥ EF || CD") --
+# "EF" was already spent as the first match's group 2, leaving nothing
+# un-consumed on its left for a second match to anchor against. Fixed by
+# matching ONLY the "||" itself, via fixed-width lookaround (Python's `re`
+# allows a fixed-width lookbehind) instead of capturing the letters -- so
+# neither token is ever consumed, and every "||" in a chain converts
+# independently.
+_PARALLEL_SYMBOL_RE = re.compile(r"(?<=[A-Z]{2})\s*\|\|\s*(?=[A-Z]{2})")
+
+
+def fix_parallel_symbol(text):
+    """Returns (text, parallel_count)."""
+    return _PARALLEL_SYMBOL_RE.subn(" ∥ ", text)
+
+
+# FIX_BATCH13 task 3(c): on geometry pages a figure's own labels (point
+# names, angle marks, axis labels) sometimes get transcribed as their own
+# separate lines of body text instead of staying attached to the diagram
+# (page 130: ~30 such lines -- A, B, C, 2, 1, x, y, 40⁰, (i), (ii)). A
+# SINGLE such line is ambiguous on its own (a real line of content could
+# legitimately BE just "x" or "(i)" -- e.g. "∴ x = 5" or a sub-part
+# heading), but a RUN of 3+ CONSECUTIVE ones is a strong, safe signal that
+# a whole cluster of figure labels leaked in -- removed outright. A run of
+# only 1-2 is left alone and merely flagged (figure_labels_suspect, see
+# build_qc_note) for a human to check against the page image.
+_FIGURE_LABEL_LINE_RE = re.compile(
+    r"^(?:[A-Z]{1,2}|[0-9০-৯]{1,3}[°⁰]?|[xy]|\([ivxIVX]{1,4}\))$"
+)
+
+
+def _is_figure_label_line(line):
+    stripped = line.strip()
+    return bool(stripped) and len(stripped) <= 4 and bool(_FIGURE_LABEL_LINE_RE.match(stripped))
+
+
+def find_figure_label_runs(text):
+    """Returns (remove_line_nums, suspect_line_nums) -- sorted 1-based line
+    numbers that are part of a run of consecutive figure-label-like lines
+    (_is_figure_label_line): a run of length >=3 contributes to
+    remove_line_nums, a run of length 1-2 to suspect_line_nums."""
+    lines = text.split("\n")
+    remove_nums, suspect_nums = [], []
+    i, n = 0, len(lines)
+    while i < n:
+        if not _is_figure_label_line(lines[i]):
+            i += 1
+            continue
+        start = i
+        while i < n and _is_figure_label_line(lines[i]):
+            i += 1
+        run_nums = list(range(start + 1, i + 1))  # 1-based, inclusive
+        (remove_nums if len(run_nums) >= 3 else suspect_nums).extend(run_nums)
+    return remove_nums, suspect_nums
+
+
+def strip_figure_labels(text):
+    """Returns (text, removed_count) -- deletes every line belonging to a
+    run of >=3 consecutive figure-label-like lines (find_figure_label_runs);
+    a shorter run (1-2 lines) is left untouched and only flagged
+    separately, never guessed at here."""
+    remove_nums, _ = find_figure_label_runs(text)
+    if not remove_nums:
+        return text, 0
+    remove_set = set(remove_nums)
+    lines = text.split("\n")
+    kept = [line for i, line in enumerate(lines, start=1) if i not in remove_set]
+    return "\n".join(kept), len(remove_nums)
+
+
+def find_figure_labels_suspect_lines(text):
+    """QC-only flag (never removed) -- see strip_figure_labels()."""
+    _, suspect_nums = find_figure_label_runs(text)
+    return suspect_nums
+
+
 # FIX_BATCH9 task 1: Gemini occasionally writes a styled "Mathematical
 # Alphanumeric Symbols" character (bold/italic/script/etc., U+1D400-
 # U+1D7FF) instead of a plain ASCII letter/digit -- page 83 batch 9: "a𝑞"
@@ -1294,7 +1443,10 @@ def post_process(text):
     log₁0/log_e notation fix, and FIX_BATCH11's √(N) parens-stripping fix.
     Returns (processed_text, counts) where counts is a dict with keys
     typo_fixes, token_leak, overline, devanagari_leak, margin_digit,
-    script_leak, greek_subscript, log_fixes, sqrt_parens (any may be 0)."""
+    script_leak, greek_subscript, log_fixes, sqrt_parens, parallel_fixes,
+    figure_labels_removed (any may be 0). FIX_BATCH13 task 3 added the last
+    two (plus MARGIN_YEAR_TOKENS' 2021/2022 entries, inside
+    strip_margin_year itself)."""
     text = strip_margin_year(text)
     text, margin_digit_count = strip_margin_digit(text)
     text, overline_count = latex_to_plain(text)
@@ -1303,6 +1455,8 @@ def post_process(text):
     text, greek_subscript_count = fix_log_greek_subscript(text)
     text, log_fixes_count = fix_log_misnotation(text)
     text, sqrt_parens_count = fix_sqrt_parens(text)
+    text, parallel_count = fix_parallel_symbol(text)
+    text, figure_labels_removed_count = strip_figure_labels(text)
     devanagari_count = count_devanagari(text)
     script_leak_count = count_script_leak(text)
     return text, {
@@ -1315,6 +1469,8 @@ def post_process(text):
         "greek_subscript": greek_subscript_count,
         "log_fixes": log_fixes_count,
         "sqrt_parens": sqrt_parens_count,
+        "parallel_fixes": parallel_count,
+        "figure_labels_removed": figure_labels_removed_count,
     }
 
 

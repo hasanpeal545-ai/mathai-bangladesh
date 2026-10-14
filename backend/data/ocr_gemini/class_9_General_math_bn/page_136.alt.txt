@@ -1,0 +1,28 @@
+অধ্যায় ৬. রেখা, কোণ ও ত্রিভুজ
+১৩১
+
+গ) দেওয়া আছে AB = AC সুতরাং ∠ABC = ∠ACB
+অর্থাৎ ∠DBC = ∠ACB
+অঙ্কন অনুসারে AC = AD সুতরাং ∠ADC = ∠ACD
+অর্থাৎ ∠BDC = ∠ACD
+ΔBCD এ
+∠BDC + ∠DBC + ∠BCD = দুই সমকোণ [ত্রিভুজের তিন কোণের সমষ্টি দুই সমকোণের
+সমান]
+বা, ∠ACD + ∠ACB + ∠BCD = দুই সমকোণ
+বা ∠BCD + ∠BCD = দুই সমকোণ
+বা, 2∠BCD = দুই সমকোণ।
+∴ ∠BCD = এক সমকোণ।
+উদাহরণ ২. PQR একটি ত্রিভুজ। PA, QB ও RC তিনটি মধ্যমা O বিন্দুতে ছেদ করেছে।
+ক) প্রদত্ত তথ্যের আলোকে চিত্র আঁকো।
+খ) প্রমাণ করো যে, PQ + PR > QO + RO
+গ) প্রমাণ করো যে, PA + QB + RC < PQ + QR + PR
+
+সমাধান:
+ক)
+[Image: A triangle PQR with medians PA, QB, and RC intersecting at point O. Point C is on PQ, point B is on PR, and point A is on QR.]
+খ) চিত্র ‘ক’ থেকে প্রমাণ করতে হবে যে, PQ + PR > QO + RO
+প্রমাণ: ত্রিভুজের যেকোনো দুই বাহুর সমষ্টি তার ৩য় বাহু অপেক্ষা বৃহত্তর।
+ΔPQB এ PQ + PB > QB
+আবার ΔBOR এ BR + BO > RO
+∴ PQ + PB + BR + BO > QB + RO
+বা, PQ + PR + BO > QO + OB + RO

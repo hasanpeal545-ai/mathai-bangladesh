@@ -445,3 +445,43 @@ class_9_General_math_bn,119,2026-10-14T12:34:15,gemini-3.5-flash-lite,1514,312,"
 class_9_General_math_bn,119,2026-10-14T12:34:19,gemini-3.5-flash-lite,1514,353,"OK escalate_split_bottom temp=0 (attempt 1, finish_reason=STOP)","FIX_BATCH12 task 1: standalone test of new escalate_split step against a known pre-existing fully-RECITATION-blocked page (already manually fixed in MANUAL_PAGES.txt -- this call does NOT overwrite that output, verification only)"
 class_9_General_math_bn,120,2026-10-14T12:34:25,gemini-3.5-flash-lite,1514,284,"OK escalate_split_top temp=0 (attempt 1, finish_reason=STOP)","FIX_BATCH12 task 1: standalone test of new escalate_split step against a known pre-existing fully-RECITATION-blocked page (already manually fixed in MANUAL_PAGES.txt -- this call does NOT overwrite that output, verification only)"
 class_9_General_math_bn,120,2026-10-14T12:34:29,gemini-3.5-flash-lite,1514,367,"OK escalate_split_bottom temp=0 (attempt 1, finish_reason=STOP)","FIX_BATCH12 task 1: standalone test of new escalate_split step against a known pre-existing fully-RECITATION-blocked page (already manually fixed in MANUAL_PAGES.txt -- this call does NOT overwrite that output, verification only)"
+class_9_General_math_bn,131,2026-10-14T13:26:09,gemini-3.5-flash-lite,1547,409,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 2; figure_labels_suspect: L1; stacked_fraction: L1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,131,2026-10-14T13:26:17,gemini-3.5-flash-lite,1547,408,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L1; stacked_fraction: L1
+class_9_General_math_bn,132,2026-10-14T13:26:24,gemini-3.5-flash-lite,1547,461,"OK primary temp=0 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L2; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,132,2026-10-14T13:26:31,gemini-3.5-flash-lite,1547,461,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,133,2026-10-14T13:26:36,gemini-3.5-flash-lite,1547,431,"OK primary temp=0 (attempt 1, finish_reason=STOP)",script_digit_mismatch: 1 Bangla digit(s) vs 0 Latin digit(s) on math-like lines; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,133,2026-10-14T13:26:41,gemini-3.5-flash-lite,1547,421,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L1; stacked_fraction: L1; script_digit_mismatch: 1 Bangla digit(s) vs 0 Latin digit(s) on math-like lines
+class_9_General_math_bn,134,2026-10-14T13:27:02,gemini-3.5-flash-lite,1547,437,"OK primary temp=0 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L2; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,134,2026-10-14T13:27:07,gemini-3.5-flash-lite,1547,437,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,135,2026-10-14T13:27:11,gemini-3.5-flash-lite,1547,263,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,135,2026-10-14T13:27:16,gemini-3.5-flash-lite,1547,263,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,136,2026-10-14T13:27:21,gemini-3.5-flash-lite,1547,327,"OK primary temp=0 (attempt 1, finish_reason=STOP)","figure_labels_removed: 6; figure_labels_suspect: L2,L23; stacked_fraction: L2,L23; quality: kept primary (0 <= 0 issues)"
+class_9_General_math_bn,136,2026-10-14T13:27:25,gemini-3.5-flash-lite,1547,356,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,137,2026-10-14T13:27:30,gemini-3.5-flash-lite,1547,367,"OK primary temp=0 (attempt 1, finish_reason=STOP)","figure_labels_suspect: L16,L18,L20,L22,L24,L26,L28,L50,L52,L54,L56,L58,L60; stacked_fraction: L16,L18,L20,L22,L24,L26,L28,L50,L52,L58,L60; quality: kept primary (0 <= 0 issues)"
+class_9_General_math_bn,137,2026-10-14T13:27:35,gemini-3.5-flash-lite,1547,370,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",figure_labels_removed: 13
+class_9_General_math_bn,138,2026-10-14T13:27:41,gemini-3.5-flash-lite,1547,501,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 13; figure_labels_suspect: L2; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,138,2026-10-14T13:27:45,gemini-3.5-flash-lite,1547,543,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,139,2026-10-14T13:27:52,gemini-3.5-flash-lite,1547,327,"OK primary temp=0 (attempt 1, finish_reason=STOP)",parallel_fixes: 1; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,139,2026-10-14T13:27:57,gemini-3.5-flash-lite,1547,329,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,140,2026-10-14T13:28:03,gemini-3.5-flash-lite,1547,453,"OK primary temp=0 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L2; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,140,2026-10-14T13:28:09,gemini-3.5-flash-lite,1547,468,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,131,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,typo_fixes: 2; figure_labels_suspect: L1; stacked_fraction: L1
+class_9_General_math_bn,131,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,figure_labels_suspect: L1; stacked_fraction: L1
+class_9_General_math_bn,132,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,132,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,133,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,script_digit_mismatch: 1 Bangla digit(s) vs 0 Latin digit(s) on math-like lines
+class_9_General_math_bn,133,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,figure_labels_suspect: L1; stacked_fraction: L1; script_digit_mismatch: 1 Bangla digit(s) vs 0 Latin digit(s) on math-like lines
+class_9_General_math_bn,134,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,134,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,135,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,
+class_9_General_math_bn,135,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,136,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,"figure_labels_removed: 6; figure_labels_suspect: L2,L23; stacked_fraction: L2,L23"
+class_9_General_math_bn,136,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,137,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,"figure_labels_suspect: L16,L18,L20,L22,L24,L26,L28,L50,L52,L54,L56,L58,L60; stacked_fraction: L16,L18,L20,L22,L24,L26,L28,L50,L52,L58,L60"
+class_9_General_math_bn,137,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,figure_labels_removed: 13
+class_9_General_math_bn,138,2026-10-14T13:30:40,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,typo_fixes: 13; figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,138,2026-10-14T13:30:41,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,139,2026-10-14T13:30:41,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,parallel_fixes: 2
+class_9_General_math_bn,139,2026-10-14T13:30:41,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,
+class_9_General_math_bn,140,2026-10-14T13:30:41,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY,figure_labels_suspect: L2; stacked_fraction: L2
+class_9_General_math_bn,140,2026-10-14T13:30:41,gemini-3.5-flash-lite,0,0,REPROCESS_ONLY_ALT,figure_labels_suspect: L2; stacked_fraction: L2
