@@ -176,7 +176,14 @@ PROMPT = (
     # it verbatim. Appended, not inserted elsewhere, per the task's own
     # "append to the existing prompt" convention (Step 3b.1/Step 3c.1).
     "Transcribe exactly as printed -- do not replace any word with a synonym "
-    "or 'correct' the book's wording."
+    "or 'correct' the book's wording. "
+    # FIX_BATCH15 task 2: Claude (chat)'s batch-15 review found the model
+    # literally DRAWING a page's geometric figures as ASCII art (p147/p150
+    # -- lines like "a__________________", "-----+-----") instead of
+    # skipping them -- this instruction tells it not to attempt that at
+    # all; the post-process ASCII-art stripper (strip_ascii_figures()) is
+    # the backstop for whatever still slips through.
+    "Do not draw figures or diagrams; skip them."
 )
 
 # FIX_BATCH1 task 3(b): accessibility framing, prepended to PROMPT as one of the
@@ -251,11 +258,36 @@ _LATEX_SYMBOL_MAP = {
     # FIX_BATCH7 task 2: \% is just an escaped literal percent sign -- no
     # prefix collision risk with anything else in this map.
     r"\%": "%",
+    # FIX_BATCH15 task 4: batch 15 left \angle/\circ/\perp as literal LaTeX
+    # text on p147/p148 (not in this map yet at the time). \angle is handled
+    # separately via _LATEX_ANGLE_RE (below), not a plain dict entry here --
+    # it needs its trailing space consumed too (this book always writes
+    # "∠ABC", never "∠ ABC"). No prefix collision with anything else in this
+    # map or each other (\perp/\parallel/\triangle/\cong/\circ all diverge
+    # from every existing key by their 2nd character at the latest).
+    r"\perp": "⊥", r"\parallel": "∥", r"\triangle": "Δ",
+    r"\cong": "≅", r"\circ": "°",
 }
 # FIX_BATCH3 task 1: Gemini sometimes renders "⊆" as the Unicode "⊂" symbol
 # immediately followed by literal text "eq" (a garbled \subseteq) instead of
 # either the symbol or the LaTeX command -- fix the literal garbled string.
 _SUBSETEQ_GARBLED_RE = re.compile(r"⊂eq")
+# FIX_BATCH15 task 4: "∠" is always glued directly to the point letters it
+# names throughout this book's own OCR'd text (∠ABC, ∠x -- confirmed by
+# grepping every already-processed page, never "∠ ABC"), but Gemini writes
+# "\angle" the ordinary LaTeX way, with a space after the command name
+# ("\angle BAD"). A plain dict replace() would leave that space behind, so
+# \angle gets its own regex (consumes any trailing whitespace too) instead
+# of a _LATEX_SYMBOL_MAP entry.
+_LATEX_ANGLE_RE = re.compile(r"\\angle\s*")
+# FIX_BATCH15 task 4: "60^\circ" / "60^{\circ}" (a degree sign written as a
+# LaTeX superscript command) must become a plain "60°" -- the "^" has to be
+# consumed as part of THIS substitution, before anything else (sup.fix()'s
+# own generic superscript handling included) ever sees the caret, or else
+# either step leaves a stray "^" or "\circ" behind instead of a clean "°".
+# Runs first, at the very top of latex_to_plain(); any bare "\circ" NOT
+# preceded by "^" is left for the plain _LATEX_SYMBOL_MAP entry below.
+_LATEX_CIRC_SUPERSCRIPT_RE = re.compile(r"\^\{?\\circ\}?")
 _SUPERSCRIPT_MAP = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵",
                      "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "n": "ⁿ"}
 # FIX_BATCH4 task 1: \left/\right are LaTeX's auto-sizing delimiter commands
@@ -558,17 +590,33 @@ _BANGLA_DIGITS = "০১২৩৪৫৬৭৮৯"
 _BANGLA_TO_LATIN_DIGITS = str.maketrans(_BANGLA_DIGITS, "0123456789")
 _LATIN_DIGIT_RUN_RE = re.compile(r"[0-9]+")
 _BANGLA_DIGIT_RUN_RE = re.compile(r"[০-৯]+")
-# A chapter-opening title page's header is just "অধ্যায় N" (its CHAPTER
-# number, not a page number -- e.g. page 48: "অধ্যায় ৩" then a blank line,
+# A chapter-opening title page's header is just "অধ্যায় N" (its CHAPTER
+# number, not a page number -- e.g. page 48: "অধ্যায় ৩" then a blank line,
 # no page number anywhere on the page). Strips that specific number out
 # before hunting for a page-number candidate, so it's never mistaken for one.
-# The word is built from explicit code points, not typed literally: Gemini's
-# output consistently uses the PRECOMPOSED "য়" (U+09DF), and a literal in
-# this source file risked silently normalizing to the DECOMPOSED "য"+nukta
-# (U+09AF U+09BC) instead -- same glyph, different codepoints, so a plain
-# string literal here would never match any real page (confirmed empirically
-# against every batch-5 raw.txt before relying on this).
-_CHAPTER_WORD = "অধ্যায়"  # অধ্যায় (precomposed form, matches throughout)
+# The word is built from chr()-joined plain decimal code points, not a typed
+# string literal: Gemini's output consistently uses the PRECOMPOSED "য়"
+# (U+09DF), and a literal in this source file risked silently normalizing to
+# the DECOMPOSED "য"+nukta (U+09AF U+09BC) instead -- same glyph, different
+# codepoints, so a plain string literal here would never match any real page.
+# FIX_BATCH15 task 1 bugfix (found while testing task 1 against p150's real
+# header, not a synthetic case): a plain typed string literal here had in fact
+# drifted back into exactly the decomposed form this comment warns about
+# (verified directly: ord() on the old literal's last two characters gave
+# U+09AF U+09BC, not U+09DF). This made _CHAPTER_NUMBER_RE a silent no-op on
+# every real "অধ্যায়" header -- never visibly wrong before now purely by
+# luck (the one page that ever needed the chapter-number-stripping to succeed,
+# p48/p141's bare "অধ্যায় N" title page, produces the same end result --
+# "skip, no page number" -- whether the strip runs or not), but it broke
+# FIX_BATCH15 task 1's new _CHAPTER_TITLE_TRAILING_NUM_RE /
+# _CHAPTER_TITLE_NO_NUM_RE outright (p150/p144 silently matched nothing). A
+# plain "\uXXXX" escape sequence in the literal is no safer either -- it
+# decodes to the real character the moment any tool reads/writes this file
+# through a layer that resolves \u escapes, landing right back at a literal
+# character subject to the same renormalization risk. chr()-joining from
+# plain decimal ints is immune to both: nothing in this expression IS a
+# Unicode character until Python evaluates it at import time.
+_CHAPTER_WORD = "".join(chr(c) for c in (2437, 2471, 2509, 2479, 2494, 2527))
 _CHAPTER_NUMBER_RE = re.compile(rf"({_CHAPTER_WORD}\s*)[০-৯]+")
 
 # FIX_BATCH7 fix (found while running batch 7, not a synthetic case): when
@@ -583,22 +631,104 @@ _CHAPTER_NUMBER_RE = re.compile(rf"({_CHAPTER_WORD}\s*)[০-৯]+")
 # skipped entirely (contributing NO candidate digits, Latin or Bangla).
 _HEADER_LIKE_LINE_RE = re.compile(r"^[\s0-9০-৯]*(গণিত[\s0-9০-৯]*)?$")
 
+# FIX_BATCH15 task 1: a chapter-opening page sometimes prints the FULL
+# "অধ্যায় N. <title>" line with the running page number appended far to the
+# right across a big horizontal gap -- the same "swept margin element"
+# layout signature as _MARGIN_YEAR_TRAILING_RE's 10+-space gap -- instead of
+# this book's usual short "গণিত" running header (page 150 batch 15:
+# "অধ্যায় ৭. ব্যবহারিক জ্যামিতি                                   ১৮৫").
+# Plain _HEADER_LIKE_LINE_RE never matches this (the real chapter-title text
+# in the middle isn't digits/"গণিত"), so this page's own (wrong) number was
+# silently skipped and never checked at all. Scoped to a line that starts
+# with the chapter marker + number + a "."/"।" + actual title text, so an
+# ordinary body line (e.g. one of this chapter's own wide-spaced geometry
+# figure labels) is never mistaken for this specific layout. The gap before
+# the trailing number varies by page and is NOT required to be any specific
+# width or kind -- all 3 of these are real, confirmed by testing this
+# function against the whole book's existing OCR output, not just this
+# batch's own 10 pages: a tab (page 130: "...ত্রিভুজ<TAB>১২৫"), a wide space
+# gap (page 150: "...জ্যামিতি" + many spaces + "১৮৫"), and NO gap at all,
+# the number glued directly onto the title word (page 268: "...সসীম
+# ধারা২৬৩" -- "২৬৩" there is exactly this page's correct expected number,
+# 268-5, just OCR'd with its horizontal gap collapsed to nothing). An
+# earlier, narrower version of this regex (tab or 8+ spaces only) silently
+# fell through to _CHAPTER_TITLE_NO_NUM_RE on both of the first two real
+# pages found this way and misreported "page_number_missing" even though
+# the number was right there.
+_CHAPTER_TITLE_TRAILING_NUM_RE = re.compile(
+    rf"^{_CHAPTER_WORD}\s*[০-৯]+[.।]\s*\S.*?\s*([0-9০-৯]+)\s*$"
+)
+# Same chapter-title-line shape as above, but with NO trailing page number
+# anywhere on the line -- a real OCR omission (page 144 batch 15:
+# "অধ্যায় ৭. ব্যবহারিক জ্যামিতি", no number printed at all on that page).
+# Distinct from a BARE "অধ্যায় N" title-divider page (page 141: just the
+# chapter number alone, the title itself a few lines further down) -- that
+# layout never prints a running number at all by the book's own design, so
+# it must stay silently unflagged, not reported as missing. The chapter-
+# number-then-"."-then-more-text shape is exactly what tells the two apart;
+# _header_number_candidates() only reaches this check once the trailing-
+# number regex above has already failed to match the same line.
+_CHAPTER_TITLE_NO_NUM_RE = re.compile(rf"^{_CHAPTER_WORD}\s*[০-৯]+[.।]\s*\S")
+
 
 def _bangla_digits_to_int(run):
     return int(run.translate(_BANGLA_TO_LATIN_DIGITS))
 
 
+def _int_to_bangla_digits(n):
+    return str(n).translate(str.maketrans("0123456789", _BANGLA_DIGITS))
+
+
+def _header_number_candidates(text):
+    """Shared scan used by both detect_page_number_mismatch() (flag-only)
+    and fix_page_number_swap() (FIX_BATCH15 task 1's auto-fix) -- looks at
+    the first 2 lines (this book's own header zone, see
+    detect_page_number_mismatch's docstring) for page-number candidates.
+    Returns (latin_runs, bangla_runs, title_no_number):
+      - latin_runs / bangla_runs: list of (line_index, run_string) pairs --
+        one entry per digit run found on an ordinary header-like line
+        ("<num> গণিত" / "গণিত <num>", any order/spacing -- _HEADER_LIKE_LINE_RE)
+        or a chapter-opening title line's own far-right trailing page
+        number (_CHAPTER_TITLE_TRAILING_NUM_RE, FIX_BATCH15 task 1).
+      - title_no_number: True if a chapter-opening title line (chapter
+        number + "."/"।" + real title text) was found with NO trailing page
+        number at all -- an OCR omission, NOT a bare "অধ্যায় N" title-divider
+        page (which never prints one, by design, and is left out of this
+        entirely -- see _CHAPTER_TITLE_NO_NUM_RE's own comment)."""
+    latin_runs, bangla_runs = [], []
+    title_no_number = False
+    for idx, line in enumerate(text.split("\n")[:2]):
+        stripped = _CHAPTER_NUMBER_RE.sub(r"\1", line)
+        if _HEADER_LIKE_LINE_RE.match(stripped):
+            for run in _LATIN_DIGIT_RUN_RE.findall(stripped):
+                latin_runs.append((idx, run))
+            for run in _BANGLA_DIGIT_RUN_RE.findall(stripped):
+                bangla_runs.append((idx, run))
+            continue
+        m = _CHAPTER_TITLE_TRAILING_NUM_RE.match(line)
+        if m:
+            run = m.group(1)
+            (bangla_runs if run[0] in _BANGLA_DIGITS else latin_runs).append((idx, run))
+            continue
+        if _CHAPTER_TITLE_NO_NUM_RE.match(line):
+            title_no_number = True
+    return latin_runs, bangla_runs, title_no_number
+
+
 def detect_page_number_mismatch(text, book, pdf_page):
-    """FIX_BATCH5 task 2 (bullet 1, extended by a FIX_BATCH7 fix): checks
-    the page's own printed page number, which this book always prints in
-    its running header (within the first 2 lines -- see page_41.raw.txt's
-    "৩৬<TAB>গণিত" / page_46.raw.txt's "...ফাংশন<TAB>৪১" / page_49.raw.txt's
-    standalone "৪৪"). Only lines that look like header/boilerplate
-    (_HEADER_LIKE_LINE_RE, after stripping a chapter-number prefix)
-    contribute candidate digit runs -- a real content line is never scanned
-    (page 67 batch 7: line 2 was an equation with ordinary Latin-digit
-    coefficients, "2"/"0", which a blind first-2-lines scan mistook for a
-    misread page number before this fix). Flags (does not fix):
+    """FIX_BATCH5 task 2 (bullet 1, extended by a FIX_BATCH7 fix and
+    FIX_BATCH15 task 1): checks the page's own printed page number, which
+    this book always prints in its running header (within the first 2
+    lines -- see page_41.raw.txt's "৩৬<TAB>গণিত" / page_46.raw.txt's
+    "...ফাংশন<TAB>৪১" / page_49.raw.txt's standalone "৪৪"). Only lines that
+    look like header/boilerplate (_header_number_candidates -- a plain
+    "<num> গণিত" layout, after stripping a chapter-number prefix, OR a
+    chapter-opening title line's own far-right trailing number) contribute
+    candidate digit runs -- a real content line is never scanned (page 67
+    batch 7: line 2 was an equation with ordinary Latin-digit coefficients,
+    "2"/"0", which a blind first-2-lines scan mistook for a misread page
+    number before that fix). Flags (does not fix -- see fix_page_number_swap
+    for the one narrow case that IS auto-corrected, upstream of this call):
       (a) ANY Latin-digit run on a header-like line -- this book's headers
           are always Bangla-script, so Latin digits there are a misread
           (page 49: header OCR'd as "88" instead of "৪৪").
@@ -606,32 +736,85 @@ def detect_page_number_mismatch(text, book, pdf_page):
           printed number (pdf_page - PAGE_NUMBER_OFFSET[book]) -- page 45:
           header OCR'd as "৮০" instead of the expected "৪০" (৪/৮ misread);
           page 69 batch 7: "৫৪" instead of the expected "৬৪" (৬/৫ misread).
-    A chapter-opening title page prints no running header at all beyond its
-    own chapter number (see page 48: first 2 lines are just "অধ্যায় ৩" with
-    a blank line, no page number anywhere) -- that line still counts as
-    header-like (it's JUST the chapter number) but contributes no digit run
-    of its own once the chapter number is stripped, so there's nothing to
-    check -- silently skipped rather than flagged as a mismatch. A book with
-    no confirmed PAGE_NUMBER_OFFSET entry is skipped the same way.
+      (c) FIX_BATCH15 task 1: a chapter-opening title line (chapter number +
+          "."/"।" + real title text, e.g. "অধ্যায় ৭. ব্যবহারিক জ্যামিতি")
+          with NO page number anywhere on it -- "page_number_missing" (page
+          144 batch 15). A bare "অধ্যায় N" title-divider page (page 48/141:
+          just the chapter number, title itself further down) still prints
+          no number at all, by the book's own design -- NOT an omission, so
+          it stays silently unflagged, same as before this task.
+    A book with no confirmed PAGE_NUMBER_OFFSET entry is skipped entirely.
     Returns a note string, or None if clean / not checkable."""
     offset = PAGE_NUMBER_OFFSET.get(book)
     if offset is None:
         return None
     expected = pdf_page - offset
-    latin_runs, bangla_runs = [], []
-    for line in text.split("\n")[:2]:
-        stripped = _CHAPTER_NUMBER_RE.sub(r"\1", line)
-        if not _HEADER_LIKE_LINE_RE.match(stripped):
-            continue  # real body content, not header/boilerplate -- skip entirely
-        latin_runs += _LATIN_DIGIT_RUN_RE.findall(stripped)
-        bangla_runs += _BANGLA_DIGIT_RUN_RE.findall(stripped)
+    latin_runs, bangla_runs, title_no_number = _header_number_candidates(text)
     if latin_runs:
-        return f"page_number_mismatch: Latin digits {latin_runs} in header (expected page {expected} in Bangla digits)"
+        runs = [r for _, r in latin_runs]
+        return f"page_number_mismatch: Latin digits {runs} in header (expected page {expected} in Bangla digits)"
     if not bangla_runs:
-        return None
-    if expected not in [_bangla_digits_to_int(r) for r in bangla_runs]:
-        return f"page_number_mismatch: header number(s) {bangla_runs} don't match expected page {expected}"
+        return "page_number_missing" if title_no_number else None
+    runs = [r for _, r in bangla_runs]
+    if expected not in [_bangla_digits_to_int(r) for r in runs]:
+        return f"page_number_mismatch: header number(s) {runs} don't match expected page {expected}"
     return None
+
+
+# FIX_BATCH15 task 1: the ৪<->৮ digit is this batch's single most common
+# header-number misread (confirmed 4 times in ERRORS_LOG batch=15: p145
+# ১৮০->১৪০, p147 ১৮২->১৪২, p149 ১৪৮->১৪৪, p150 ১৮৫->১৪৫) -- narrow enough
+# (same digit COUNT, every differing position a 4/8 pair, nothing else
+# different) to auto-correct safely. Any other kind of mismatch is left
+# entirely to detect_page_number_mismatch's existing flag-only path.
+def _four_eight_swap_target(run, expected_bn):
+    """True if `run` and `expected_bn` are the same length and differ ONLY
+    at position(s) where one has ৪ and the other ৮ -- at least one such
+    differing position required (an exact match returns False; nothing to
+    fix). Any other kind of difference (extra/missing digit, a non-4/8
+    digit error) returns False."""
+    if len(run) != len(expected_bn):
+        return False
+    swapped = False
+    for a, b in zip(run, expected_bn):
+        if a == b:
+            continue
+        if {a, b} == {"৪", "৮"}:
+            swapped = True
+        else:
+            return False
+    return swapped
+
+
+def fix_page_number_swap(text, book, pdf_page):
+    """FIX_BATCH15 task 1: auto-corrects a header's own printed page number
+    in place when the ONLY difference from the expected number is a ৪<->৮
+    digit swap (see _four_eight_swap_target). Reuses the same
+    _header_number_candidates() scan detect_page_number_mismatch uses, so
+    every layout that function can flag (incl. the new chapter-opening
+    trailing-number case) is also eligible to be fixed here. Replaces just
+    that one digit run, on the specific line it was found on, with the
+    expected number (in Bangla digits, matching the book's own header
+    script) -- never touches a Latin-digit misread or any other mismatch
+    shape, which stay flag-only exactly as before.
+    Returns (text, note_or_None) where note is "<read>-><expected>" (both in
+    Bangla digits) when a fix was made, else text is returned unchanged."""
+    offset = PAGE_NUMBER_OFFSET.get(book)
+    if offset is None:
+        return text, None
+    expected = pdf_page - offset
+    expected_bn = _int_to_bangla_digits(expected)
+    _, bangla_runs, _ = _header_number_candidates(text)
+    if not bangla_runs:
+        return text, None
+    if expected in [_bangla_digits_to_int(r) for _, r in bangla_runs]:
+        return text, None  # already correct -- nothing to fix
+    for idx, run in bangla_runs:
+        if _four_eight_swap_target(run, expected_bn):
+            lines = text.split("\n")
+            lines[idx] = lines[idx].replace(run, expected_bn, 1)
+            return "\n".join(lines), f"{run}->{expected_bn}"
+    return text, None  # some other kind of mismatch -- leave to the flag-only path
 
 
 # FIX_BATCH11 task 1: this book normally writes inline equation digits in
@@ -794,7 +977,11 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
     quality-pick note) into a single note for a RUN_LOG row's "error" field.
     FIX_BATCH13 task 3(c) added figure_labels_suspect (a flag-only line
     range, computed here directly from `text` rather than passed in via
-    `counts`, since it's never auto-fixed). Empty string if nothing applies."""
+    `counts`, since it's never auto-fixed). FIX_BATCH15 added
+    page_number_fixed/markdown_stripped/ascii_figure_removed (counts keys)
+    plus ascii_figure_suspect and latin_in_bangla_word (flag-only, computed
+    directly from `text` same as figure_labels_suspect). Empty string if
+    nothing applies."""
     counts = counts or {}
     parts = []
     if counts.get("typo_fixes"):
@@ -823,9 +1010,21 @@ def build_qc_note(text, counts=None, extra=None, book=None, pdf_page=None):
         parts.append(f"figure_values_lost: {counts['figure_values_lost']}")
     if counts.get("margin_year_tail"):
         parts.append(f"margin_year_tail: {counts['margin_year_tail']}")
+    if counts.get("page_number_fixed"):
+        parts.append(f"page_number_fixed: {counts['page_number_fixed']}")
+    if counts.get("markdown_stripped"):
+        parts.append(f"markdown_stripped: {counts['markdown_stripped']}")
+    if counts.get("ascii_figure_removed"):
+        parts.append(f"ascii_figure_removed: {counts['ascii_figure_removed']}")
     suspect = find_figure_labels_suspect_lines(text)
     if suspect:
         parts.append(f"figure_labels_suspect: L{',L'.join(str(n) for n in suspect)}")
+    ascii_suspect = find_ascii_figure_suspect_lines(text)
+    if ascii_suspect:
+        parts.append(f"ascii_figure_suspect: L{',L'.join(str(n) for n in ascii_suspect)}")
+    latin_in_bangla = find_latin_in_bangla_words(text)
+    if latin_in_bangla:
+        parts.append(f"latin_in_bangla_word: {','.join(latin_in_bangla)}")
     leftover = find_latex_leftover(text)
     if leftover:
         parts.append(f"latex_left: {','.join(leftover)}")
@@ -955,6 +1154,9 @@ def _convert_frac_once(text):
 
 def latex_to_plain(text):
     """Returns (plain_text, overline_count)."""
+    # FIX_BATCH15 task 4: must run before anything else touches a "^" or
+    # "\circ" (see _LATEX_CIRC_SUPERSCRIPT_RE's own comment above).
+    text = _LATEX_CIRC_SUPERSCRIPT_RE.sub("°", text)
     # FIX_BATCH4 task 1: \cline must be gone from the text BEFORE the table
     # conversion splits rows/cells (otherwise a leftover "\cline{..}" token
     # would end up embedded inside a cell). The smart table conversion runs
@@ -1024,6 +1226,7 @@ def latex_to_plain(text):
         text = new_text
 
     text = _SUBSETEQ_GARBLED_RE.sub("⊆", text)
+    text = _LATEX_ANGLE_RE.sub("∠", text)
     for cmd, repl in _LATEX_SYMBOL_MAP.items():
         text = text.replace(cmd, repl)
     text = _LATEX_ESCAPED_BRACE_RE.sub(r"\1", text)  # \{ -> {, \} -> }
@@ -1389,13 +1592,22 @@ def find_figure_label_runs(text):
         but never reaching past the outermost label lines into ordinary
         surrounding blank/paragraph spacing).
       - suspect_line_nums: flat list of 1-based line numbers of label
-        lines belonging to a cluster of only 1-2 (never removed, flag only)."""
+        lines belonging to a cluster of only 1-2 (never removed, flag only).
+    FIX_BATCH15 task 5: the first 2 lines (this book's own running-header
+    zone -- see detect_page_number_mismatch's docstring) never start or
+    extend a run, even when they happen to be digit-shaped. Page 148 found
+    this live: the page's own header number ("১৪৩") sat directly next to a
+    cluster of real stray figure labels and got swept into the same removed
+    run, then wrongly reported as a "lost figure value" -- it's just the
+    page number, not part of any figure. Skipping index 0/1 here also keeps
+    the header number intact for detect_page_number_mismatch/
+    fix_page_number_swap to still find afterward."""
     lines = text.split("\n")
     n = len(lines)
     remove_spans, suspect_nums = [], []
     i = 0
     while i < n:
-        if not _is_figure_label_line(lines[i]):
+        if i < 2 or not _is_figure_label_line(lines[i]):
             i += 1
             continue
         label_idxs = [i]
@@ -1456,6 +1668,144 @@ def find_figure_labels_suspect_lines(text):
     """QC-only flag (never removed) -- see strip_figure_labels()."""
     _, suspect_nums = find_figure_label_runs(text)
     return suspect_nums
+
+
+# FIX_BATCH15 task 2: on p147/p150, Gemini literally DREW a page's geometric
+# figures as ASCII art instead of skipping them -- lines like
+# "a__________________", "-----+-----", "_.-'|". A line qualifies as
+# ASCII-art if it has a run of >=4 consecutive "_"/"-" (the long
+# construction-line signature), OR if >=50% of its non-space characters are
+# drawing-glyphs from this narrow set: "_ - | / \ * . ' +". Deliberately
+# ASCII-only ("-" U+002D, not the proper minus sign "−" U+2212 this book
+# always uses for real subtraction) -- that alone is what keeps ordinary
+# math content like "AB − AC = d" or "1/2" from ever matching (see the
+# task's own test case).
+_ASCII_ART_CHARS = set("_-|/\\*.'+")
+_ASCII_ART_RUN_RE = re.compile(r"[_-]{4,}")
+
+
+def _is_ascii_art_line(line):
+    stripped = line.strip()
+    if not stripped:
+        return False
+    if _ASCII_ART_RUN_RE.search(stripped):
+        return True
+    non_space = [ch for ch in stripped if not ch.isspace()]
+    if not non_space:
+        return False
+    art_chars = sum(1 for ch in non_space if ch in _ASCII_ART_CHARS)
+    return art_chars / len(non_space) >= 0.5
+
+
+def _is_ascii_art_transparent(line):
+    """Lines that keep an in-progress ASCII-art run open without extending
+    it -- a blank line, or a bare figure-label line (point name, angle
+    mark, (i)/(ii) sub-part), the same kind of line that often sits
+    between pieces of hand-drawn artwork. Same tolerance convention as
+    find_figure_label_runs' own blank-line handling (FIX_BATCH14 task 3)."""
+    return line.strip() == "" or _is_figure_label_line(line)
+
+
+def find_ascii_figure_runs(text):
+    """Returns (remove_spans, suspect_line_nums) -- same shape/semantics as
+    find_figure_label_runs(): remove_spans is a list of 1-based INCLUSIVE
+    (start, end) line ranges for each run of >=2 ASCII-art lines (a blank
+    or figure-label line in between keeps the run open but doesn't count
+    toward its length); suspect_line_nums is every ASCII-art line that was
+    NOT part of such a run (a lone instance -- flagged, never removed, per
+    Peal: "একা একটা ---- লাইন বাদ দেবে না, শুধু flag")."""
+    lines = text.split("\n")
+    n = len(lines)
+    remove_spans, suspect_nums = [], []
+    i = 0
+    while i < n:
+        if not _is_ascii_art_line(lines[i]):
+            i += 1
+            continue
+        art_idxs = [i]
+        j = i + 1
+        while j < n:
+            if _is_ascii_art_line(lines[j]):
+                art_idxs.append(j)
+                j += 1
+            elif _is_ascii_art_transparent(lines[j]):
+                j += 1
+            else:
+                break
+        if len(art_idxs) >= 2:
+            remove_spans.append((art_idxs[0] + 1, art_idxs[-1] + 1))
+        else:
+            suspect_nums.extend(p + 1 for p in art_idxs)
+        i = art_idxs[-1] + 1
+    return remove_spans, suspect_nums
+
+
+def strip_ascii_figures(text):
+    """Returns (text, removed_count). Each removed run's full line range
+    (ASCII-art lines plus any transparent blank/label lines swept in
+    between -- they were part of the same drawn figure, not independent
+    content) collapses to a single blank line, same paragraph-preserving
+    convention as strip_figure_labels(). removed_count only counts the
+    actual ASCII-art lines, not the collapsed transparent ones."""
+    remove_spans, _ = find_ascii_figure_runs(text)
+    if not remove_spans:
+        return text, 0
+    lines = text.split("\n")
+    out = []
+    cursor = 0
+    removed_count = 0
+    for start, end in remove_spans:
+        start0, end0 = start - 1, end - 1
+        out.extend(lines[cursor:start0])
+        span_lines = lines[start0:end0 + 1]
+        removed_count += sum(1 for ln in span_lines if _is_ascii_art_line(ln))
+        out.append("")
+        cursor = end0 + 1
+    out.extend(lines[cursor:])
+    return "\n".join(out), removed_count
+
+
+def find_ascii_figure_suspect_lines(text):
+    """QC-only flag (never removed) -- see strip_ascii_figures()."""
+    _, suspect_nums = find_ascii_figure_runs(text)
+    return suspect_nums
+
+
+# FIX_BATCH15 task 3(a): Markdown bold markers leaking into the
+# transcription (page 150: "**সম্পাদ্য ৪.**") -- strip just the ** / __
+# delimiters, keep the text between them. Non-greedy so "**a** text **b**"
+# resolves as two separate spans instead of one swallowing everything
+# between the first "**" and the last.
+_MARKDOWN_BOLD_RE = re.compile(r"\*\*(.+?)\*\*|__(.+?)__")
+
+
+def strip_markdown_bold(text):
+    """Returns (text, markdown_stripped_count)."""
+    return _MARKDOWN_BOLD_RE.subn(
+        lambda m: m.group(1) if m.group(1) is not None else m.group(2), text
+    )
+
+
+# FIX_BATCH15 task 3(b): a lowercase Latin letter glued directly onto a
+# Bangla word with no space in between is a script-confusion artifact (page
+# 149: "নিমne" for "নিম্নে") -- flagged, never corrected (no safe way to
+# guess the intended Bangla spelling). Scoped to a single whitespace-
+# delimited token containing BOTH a Bangla character and a LOWERCASE Latin
+# letter -- uppercase A-Z is excluded entirely (Peal: "বড় হাতের A-Z বাদ"),
+# since this book legitimately writes geometry names like "ABC" immediately
+# next to Bangla text (e.g. "ত্রিভুজ ABC").
+_BANGLA_CHAR_RE = re.compile(r"[ঀ-৿]")
+_LOWERCASE_LATIN_RE = re.compile(r"[a-z]")
+
+
+def find_latin_in_bangla_words(text):
+    """Returns the sorted, distinct list of whitespace-delimited tokens
+    mixing Bangla script with a lowercase Latin letter (empty if none)."""
+    words = set()
+    for token in text.split():
+        if _BANGLA_CHAR_RE.search(token) and _LOWERCASE_LATIN_RE.search(token):
+            words.add(token)
+    return sorted(words)
 
 
 # FIX_BATCH9 task 1: Gemini occasionally writes a styled "Mathematical
@@ -1540,7 +1890,7 @@ def count_recurring_dots(text):
     return text.count(_COMBINING_DOT_ABOVE)
 
 
-def post_process(text):
+def post_process(text, book=None, pdf_page=None):
     """Step 3b.3 margin-year stripping, FIX_BATCH5 margin-digit stripping,
     Step 3e.3 LaTeX-to-plain (incl. FIX_BATCH3's \\text/\\overline/nested-
     \\frac handling and FIX_BATCH9's dfrac/tfrac/indexed-sqrt/cases/HTML-
@@ -1550,17 +1900,31 @@ def post_process(text):
     FIX_BATCH6/8's Cyrillic/Assamese/Gurmukhi/Gujarati/Odia/Tamil script_leak
     detection), FIX_BATCH9's log-base Greek-subscript fix, FIX_BATCH10's
     log₁0/log_e notation fix, and FIX_BATCH11's √(N) parens-stripping fix.
+    FIX_BATCH15 added Markdown-bold stripping, ASCII-art figure stripping,
+    and (only when both `book` and `pdf_page` are given, same convention as
+    build_qc_note) task 1's narrow ৪<->৮ page-number auto-fix.
     Returns (processed_text, counts) where counts is a dict with keys
     typo_fixes, token_leak, overline, devanagari_leak, margin_digit,
     script_leak, greek_subscript, log_fixes, sqrt_parens, parallel_fixes,
-    figure_labels_removed, figure_values_lost, margin_year_tail (any may
-    be 0/empty). FIX_BATCH13 task 3 added parallel_fixes/
+    figure_labels_removed, figure_values_lost, margin_year_tail,
+    page_number_fixed, markdown_stripped, ascii_figure_removed (any may be
+    0/empty/None). FIX_BATCH13 task 3 added parallel_fixes/
     figure_labels_removed (plus MARGIN_YEAR_TOKENS' 2021/2022 entries,
     inside strip_margin_year itself); FIX_BATCH14 tasks 4/5 added
     figure_values_lost and margin_year_tail."""
     text = strip_margin_year(text)
     text, margin_digit_count = strip_margin_digit(text)
+    # FIX_BATCH15 task 1: runs early, before anything else has a chance to
+    # reshape the header's own 2 lines -- skipped entirely (page_number_fixed
+    # stays None) for a book with no confirmed PAGE_NUMBER_OFFSET entry, or
+    # when the caller didn't pass book/pdf_page at all (same opt-in
+    # convention build_qc_note already uses for its own page-number check).
+    page_number_fixed = None
+    if book is not None and pdf_page is not None:
+        text, page_number_fixed = fix_page_number_swap(text, book, pdf_page)
     text, overline_count = latex_to_plain(text)
+    text, markdown_stripped_count = strip_markdown_bold(text)
+    text, ascii_figure_removed_count = strip_ascii_figures(text)
     text, typo_count = fix_known_bangla_typos(text)
     text, token_leak_count = strip_model_tokens(text)
     text, greek_subscript_count = fix_log_greek_subscript(text)
@@ -1586,6 +1950,9 @@ def post_process(text):
         "log_fixes": log_fixes_count,
         "sqrt_parens": sqrt_parens_count,
         "parallel_fixes": parallel_count,
+        "page_number_fixed": page_number_fixed,
+        "markdown_stripped": markdown_stripped_count,
+        "ascii_figure_removed": ascii_figure_removed_count,
         "figure_labels_removed": figure_labels_removed_count,
         "figure_values_lost": figure_values_lost,
         "margin_year_tail": margin_year_tail,
@@ -2144,7 +2511,7 @@ def escalate_missing_recurring_dot(image, book, page):
     )
     if hard_stop or blocked or not raw_text:
         return None, None, {}, log_row, in_tok, out_tok, hard_stop
-    new_processed, counts = post_process(raw_text)
+    new_processed, counts = post_process(raw_text, book, page)
     if _COMBINING_DOT_ABOVE in new_processed:
         return raw_text, new_processed, counts, log_row, in_tok, out_tok, None
     return None, None, {}, log_row, in_tok, out_tok, None
@@ -2253,8 +2620,8 @@ def process_page(model, book, lang, pdf_path, page, save_images_to):
     alt_text, alt_log_row = None, None
     if is_bn and p_text and not p_blocked and s_text and not s_blocked:
         # FIX_BATCH3 task 2: both readings succeeded -- pick the cleaner one.
-        p_processed, p_counts = post_process(p_text)
-        s_processed, s_counts = post_process(s_text)
+        p_processed, p_counts = post_process(p_text, book, page)
+        s_processed, s_counts = post_process(s_text, book, page)
         p_issues = _quality_issue_count(p_processed, p_counts)
         s_issues = _quality_issue_count(s_processed, s_counts)
         # FIX_BATCH11 task 1: a wrong-script digit changes the actual math
@@ -2323,7 +2690,7 @@ def process_page(model, book, lang, pdf_path, page, save_images_to):
             fh.write(final_text)
         # No .raw.txt here -- there is no usable API text to keep a raw copy of.
     else:
-        processed_primary, counts = post_process(final_text)
+        processed_primary, counts = post_process(final_text, book, page)
         dot_note = None
 
         # FIX_BATCH2 task 3: one extra gemini-3.6-flash reading if this page's
@@ -2382,7 +2749,7 @@ def process_page(model, book, lang, pdf_path, page, save_images_to):
         alt_file = os.path.join(output_path(book), f"page_{page}.alt.txt")
         with open(alt_raw_file, "w", encoding="utf-8") as fh:
             fh.write(alt_text)
-        processed_secondary, alt_counts = post_process(alt_text)
+        processed_secondary, alt_counts = post_process(alt_text, book, page)
         append_qc_note(alt_log_row, processed_secondary, alt_counts, book=book, pdf_page=page)
         with open(alt_file, "w", encoding="utf-8") as fh:
             fh.write(processed_secondary)
@@ -2500,7 +2867,7 @@ def main():
                 continue
             with open(raw_file, encoding="utf-8") as fh:
                 raw_text = fh.read()
-            processed, counts = post_process(raw_text)
+            processed, counts = post_process(raw_text, book, p)
             note = build_qc_note(processed, counts, book=book, pdf_page=p)
             with open(page_output_file(book, p), "w", encoding="utf-8") as fh:
                 fh.write(processed)
@@ -2518,7 +2885,7 @@ def main():
             if os.path.exists(alt_raw_file):
                 with open(alt_raw_file, encoding="utf-8") as fh:
                     alt_raw_text = fh.read()
-                alt_processed, alt_counts = post_process(alt_raw_text)
+                alt_processed, alt_counts = post_process(alt_raw_text, book, p)
                 alt_note = build_qc_note(alt_processed, alt_counts, book=book, pdf_page=p)
                 alt_out_file = os.path.join(output_path(book), f"page_{p}.alt.txt")
                 with open(alt_out_file, "w", encoding="utf-8") as fh:

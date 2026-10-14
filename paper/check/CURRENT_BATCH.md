@@ -1,66 +1,70 @@
 # Step 4 — Current batch for review
 
 **Book:** class_9_General_math_bn (book 1/10 in BOOK_ORDER)
-**Pages:** 141–150 (of 362) — batch 15. Batch 14's images cleared (text files untouched).
-**Settings:** all prior accumulated fixes, plus **FIX_BATCH14**: নির্বচন/উপপাদ্য heading typo fixes, blank-line-tolerant figure-label-run removal, a `figure_values_lost` flag, and a `margin_year_tail` rule for unknown rotated-margin years. **No RECITATION this batch — `escalate_split` not exercised live again.**
+**Pages:** 151–160 (of 362) — batch 16. Batch 15's images cleared (text files untouched).
+**Settings:** all prior accumulated fixes, plus **FIX_BATCH15**: ৪↔৮ page-number self-fix, ASCII-art figure stripping, Markdown/Latin-leak handling, 5 new LaTeX symbols. **No RECITATION this batch.**
 
-## Task 1 — নির্বচন (rare word → common word)
+## Task 1 — page number ৪↔৮ self-fix
 
-Added to `fix_known_bangla_typos()`: `"বিশেষ নির্বাচন"` → `"বিশেষ নির্বচন"`, `"সাধারণ নির্বাচন"` → `"সাধারণ নির্বচন"` -- scoped to exactly these two 2-word phrases (not a bare `"নির্বাচন"` rule), since `"নির্বাচন"` ("election") is also a real, common, unrelated word, and `"বহুনির্বাচনি"` ("multiple-choice") contains it as a literal substring too. Test: `"বহুনির্বাচনি প্রশ্ন"` unchanged; `"বিশেষ নির্বাচন:"` → `"বিশেষ নির্বচন:"`; also checked `"ছাত্র সংসদ নির্বাচন..."` (a real, unrelated election) stays untouched. All pass. **Did not fire live in batch 15** (pages 141-150 are Chapter 7's practical-geometry constructions, not yet back in theorem-heavy Chapter 6 content) -- ready for when it reappears.
+`detect_page_number_mismatch()` is now backed by a shared `_header_number_candidates()` scan and a new `fix_page_number_swap()`: when the header's read number and the expected number are the **same length and differ only at ৪↔৮ digit positions**, the header is corrected in place (qc note `page_number_fixed: <read>-><expected>`); any other kind of mismatch (extra/missing digit, non-4/8 digit error, Latin-script misread) is still flag-only, unchanged. Also added a new `page_number_missing` flag for a chapter-opening title line (`অধ্যায় N. <title>`) with no page number anywhere on it (p144) — distinct from a bare `অধ্যায় N` title-divider page (p141), which never prints a number by design and stays silently unflagged.
 
-## Task 2 — উপপাদ্য heading
+**Why p147/p150 "didn't fire" last batch, investigated as asked:**
+- **p147 actually DID fire** — on the secondary (temp 0.4) reading, which was the one quality-promoted into the final output (RUN_LOG confirms `page_number_mismatch: header number(s) ['১৮২']...` attached to that row). The *primary* reading had read the number correctly (`১৪২`) and so had nothing to flag — not a bug, just a case where the cleaner-looking reading happened to have the wrong digit.
+- **p150 genuinely never fired** — real bug, now fixed. Its header is a different layout this book also uses: the full `অধ্যায় ৭. ব্যবহারিক জ্যামিতি` chapter-title line with the page number appended far to the right (`...জ্যামিতি` + a wide space gap + `১৮৫`), not the usual short `<num> গণিত` header. The old `_HEADER_LIKE_LINE_RE`-only check required the *whole* line to be just digits/"গণিত", so a real title line never matched and its number was never looked at. New `_CHAPTER_TITLE_TRAILING_NUM_RE` recognizes this layout specifically.
+- **A second, more basic bug found underneath both of these**: `_CHAPTER_WORD` (used by `_CHAPTER_NUMBER_RE` and now by the two new chapter-title regexes) was a plain typed string literal that had silently NFD-normalized to the *decomposed* "য়" (U+09AF + nukta) instead of the *precomposed* form (U+09DF) the OCR output actually uses — despite the code's own existing comment warning this exact thing could happen. This made every "অধ্যায়"-matching regex a silent no-op; it was never visibly wrong before because the one place it used to matter (p141's bare `অধ্যায় N` divider page) produces the same "skip, no number" result wheither way. Rebuilt `_CHAPTER_WORD` from `chr()`-joined plain decimal code points, which can't be silently renormalized by any future save/editor round-trip.
+- Found and fixed two more real-page separator variants while testing against the whole book, not just this batch: a **tab** separator (p130: `...ত্রিভুজ<TAB>১২৫`) and **no separator at all**, the number glued straight onto the title word (p268: `...ধারা২৬৩`) — both initially produced a false `page_number_missing` before the trailing-number regex was loosened to accept any gap width.
 
-(a) Added `"উপপাদ্য"` into the existing `_SUTRO_ANUSIDDHANTO_PERIOD_RE` (now fixes `"উপপাদ্য N।"` → `"...N."` too, same as `"সূত্র"`/`"অনুসিদ্ধান্ত"`).
-(b) New `_UPOPADDO_MISSING_PHOLA_RE = re.compile(r"(?<![ঀ-৿])উপপাদ(?=\s+[০-৯])")` fixes `"উপপাদ N."` (missing্য) → `"উপপাদ্য N."`. Needed the lookahead guard since `"উপপাদ"` is a literal prefix of the already-correct `"উপপাদ্য"` -- without it, a correct heading would double up into `"উপপাদ্য্য"`. Runs BEFORE the period-fix (same ordering reason as the existing `_UDAAHARON_RE`/`_UDAHARON_PERIOD_RE` pair) so a hypothetical page with both bugs together gets both fixed in one pass. Tests: `"উপপাদ ১৫."` → `"উপপাদ্য ১৫."`; `"উপপাদ্য ১৫."` unchanged (no double-up); `"উপপাদ ১৫।"` (both bugs at once) → `"উপপাদ্য ১৫."`. All pass. **Also did not fire live in batch 15** (same reason as Task 1 -- this batch is Chapter 7 constructions, no numbered theorems on these 10 pages).
+**Tests (from the task spec) pass**: `"১৮০\nগণিত"` (expected ১৪০) → `"১৪০\nগণিত"`; `"১২৮"` (expected ১২৮) unchanged; `"১৩৫"` (expected ১২৮) → unchanged text, flag only.
 
-## Task 3 — figure labels across a blank line
+**Swept the whole already-OCR'd book (152 pages) as a regression check**: 7 pages auto-fixed (p45, p109, p129 — pre-existing known mismatches, now corrected retroactively too — plus the 4 from this batch's own review: p145/147/149/150), 2 genuine `page_number_missing` (p104, p144), 2 correctly left flag-only (p49's Latin-digit misread, p69's ৫↔৬ misread — not a 4/8 swap). Zero crashes, zero new false positives.
 
-`find_figure_label_runs()` no longer requires LITERAL consecutiveness: a blank line now keeps a run open (without counting toward its length) instead of ending it. A removed run's span (first label line to last, interior blanks included) collapses to exactly ONE blank line in the output rather than deleting outright, so two real paragraphs on either side of a stripped figure don't get mashed together. Tests: `"P\n\nC\n\nB\n\nQ"` (as a whole text) → collapses to empty; `"(i)\n\nকোনো লেখা"` stays untouched (only 1 label, flagged suspect, not removed); `"∴ x = 5"` stays (not a label line at all).
+## Task 2 — ASCII-art figures
 
-**Fired live, twice, in this very batch:**
-- **Page 142** (`figure_labels_removed: 25`, on the reading that was NOT chosen as the final output -- see its `.alt.raw.txt`): six small construction diagrams' point labels (`a`,`b`,`x`,`E`,`A`,`C`,`B`,`y`,`F`,`G`,`D`,`c`...) were scattered through a numbered list of triangle-construction cases. These particular clusters turned out to already be literally consecutive (no blank lines needed) -- so this specific instance would have fired under the OLD rule too -- but confirms the removal logic handles a real, dense, multi-cluster page correctly without touching the list's own numbered headings or the closing paragraph.
-- **Page 148** (`figure_labels_removed: 6`, chosen output): two separate 3-line clusters of stray `X`/`4`/page-number removed from around a square-construction diagram. **This one DOES exercise the new blank-line-tolerance** -- line 2 (`"১৪৩"`, directly adjacent) + line 3 (`"X"`) + a blank line + line 5 (`"X"`) form one cluster only because the blank line no longer breaks it.
+Prompt gained `"Do not draw figures or diagrams; skip them."` (appended, English, no example). New `strip_ascii_figures()`: a line with a run of ≥4 consecutive `_`/`-`, or where ≥50% of non-space characters are drawing glyphs (`_ - | / \ * . ' +`, ASCII-only — never the proper Unicode minus `−` this book uses for real subtraction), is "ASCII-art"; a run of ≥2 such lines (blank or figure-label lines in between stay transparent, same tolerance as the existing figure-label-run logic) is removed, noted `ascii_figure_removed: N`; a lone instance is left untouched, only flagged (`ascii_figure_suspect`). Test confirms `"AB − AC = d"` and `"x = 1/2"` are untouched (the proper minus sign and a plain fraction never match the ASCII-only character set); a lone `"-----"` line is flagged, not removed. **Retroactive test against p147's real raw text**: now correctly strips 21 ASCII-art lines instead of leaving them in the output.
 
-## Task 4 — figure value loss flag
+## Task 3 — Markdown and Latin leak
 
-New: any removed run's label lines that are purely a number (optionally with ° / ⁰) are called out by value in `figure_values_lost`, never reconstructed. Test: a run of `"30°"`, `"40°"`, `"A"` → removed, `figure_values_lost: "30°, 40°"` (the `"A"` itself isn't a value, correctly excluded).
+(a) New `strip_markdown_bold()`: `**text**` / `__text__` → `text`, note `markdown_stripped: N`. Retroactive test against p150's real raw text strips 46 instances.
+(b) New `find_latin_in_bangla_words()`: a whitespace-delimited token mixing Bangla script with a **lowercase** Latin letter (no space between) is flagged `latin_in_bangla_word: <word>`, never corrected — uppercase A-Z excluded entirely (this book legitimately writes geometry names like "ABC" next to Bangla text). Retroactive test against p149's real raw text correctly flags `নিমne` and nothing else.
 
-**Fired live on page 148**: `figure_values_lost: ১৪৩, 4`. **Worth flagging honestly**: `"১৪৩"` here is actually just this page's own running-header PAGE NUMBER (PDF page 148 − offset 5 = printed ১৪৩ -- confirmed via `detect_page_number_mismatch`'s own offset table) -- it happened to sit immediately next to the real stray `"X"` labels and got swept into the same cluster. The other value, `"4"`, came from a broken diagram fraction (`"1/4p"` split across lines near `"2 s"` / `"P 1"` / `"--- p"`, themselves NOT label-shaped so left untouched) -- also not a clean "angle value" in the sense Task 4's own examples (p137/p139's 30°/40°/120°/150°) described. **Not fixed or filtered out** -- the task said flag, not judge, so both are reported as-is; a human checking page 148's image should expect one of the two flagged values to just be page-number noise.
+## Task 4 — LaTeX map additions
 
-## Task 5 — margin year (unknown year)
+Added to the symbol map: `\perp`→⊥, `\parallel`→∥, `\triangle`→Δ, `\cong`→≅, `\circ`→°. `\angle`→∠ got its own regex instead of a plain dict entry so the trailing space after the command is consumed too (this book always writes `∠ABC`, never `∠ ABC` — confirmed by grepping the whole corpus). `^\circ` / `^{\circ}` resolve to a plain `°` via a dedicated regex that runs first, before anything else (including the generic superscript handler) can see the `^`. Tests pass: `"60^\circ"` → `"60°"`, `"\angle BAD"` → `"∠BAD"`.
 
-New `strip_margin_year_tail()`: if a page's LAST non-empty line is exactly 4 digits (Bangla or Latin) starting with ২০/20, it's stripped regardless of which specific digits (catches a misread year like page 137's "২০২৯" that the fixed `MARGIN_YEAR_TOKENS` list can't name in advance), noted as `margin_year_tail: <year>`. Scoped to only the last line -- never a middle one. Tests: `"...\n২০২৯"` → year stripped, noted; `"...\n2029"` → same for Latin digits; a 4-digit token in the MIDDLE of the page → untouched; a non-২০/20-prefixed 4-digit tail (`"১২৩৪"`) → untouched. All pass. **Did not fire in batch 15** (no page in this batch had a stray year at the very end) -- its only real-page confirmation so far remains page 137 (re-tested directly against its raw text, read-only, not reprocessed since that page is in MANUAL_PAGES.txt).
+## Task 5 — figure_values_lost header exclusion
 
-## Task 6 — batch 15 (pages 141-150)
+`find_figure_label_runs()` now skips the first 2 lines (this book's own header zone) entirely when scanning for label-line runs — a header page number can no longer be swept into a removed figure-label cluster or reported as a "lost value". **Retroactive test against p148's real raw text**: `figure_values_lost` now correctly reports just `4` instead of `১৪৩, 4` (১৪৩ was always just that page's own header number, confirmed via `detect_page_number_mismatch`'s offset table).
 
-**No RECITATION at all this batch.** Already in **Chapter 7** (ব্যবহারিক জ্যামিতি, practical/construction geometry) as of page 142.
+## Task 6 — batch 16 (pages 151-160)
+
+**No RECITATION, no escalation needed.** Still in Chapter 7 (ব্যবহারিক জ্যামিতি, practical geometry).
 
 | Page | Chars | Note |
 |---|---|---|
-| 141 | 1426 | 1 typo fix |
-| 142 | 565 | **`figure_labels_removed: 25`** on the non-chosen reading (see Task 3) -- chosen reading itself clean |
-| 143 | 1014 | 4 typo fixes (secondary); 1 line flagged `figure_labels_suspect` |
-| 144 | 1163 | 7 typo fixes (Chapter 7 opening page) |
-| 145 | 1200 | `page_number_mismatch` flagged (header read as ১৮০, expected ১৪০) -- flag only |
-| 146 | 800 | clean (secondary has 1 flagged line) |
-| 147 | 1854 | `latex_left: \angle,\circ` flagged (pre-existing limitation, not in scope for this batch -- these two LaTeX commands aren't in the symbol map yet); `page_number_mismatch` on secondary |
-| **148** | 1408 | **`figure_labels_removed: 6`, `figure_values_lost: ১৪৩, 4`** -- see Tasks 3/4 above; also `latex_left: \angle,\circ,\perp` (same pre-existing limitation) |
-| 149 | 1314 | 1 typo fix; `page_number_mismatch` flagged (header read as ১৪৮, expected ১৪৪) |
-| 150 | 2696 | 1 typo fix; several lines flagged `figure_labels_suspect` (longest page this batch) |
+| 151 | 2905 | clean; secondary (discarded alt) had `page_number_fixed: ১৮৬->১৪৬` |
+| 152 | 2603 | clean both readings |
+| 153 | 1605 | clean; secondary (discarded alt) had `page_number_fixed: ১৮৮->১৪৮` |
+| **154** | 2047 | **`page_number_fixed: ১৮৯->১৪৯`** — fired on BOTH readings this time, so it's in the final delivered text (verified: `page_154.txt`'s header now reads `১৪৯`, the correct number) |
+| 155 | 4296 | clean both readings |
+| 156 | 3107 | 1 typo fix; `sqrt_parens: 5` |
+| 157 | 4021 | clean |
+| 158 | 3996 | clean |
+| 159 | 2851 | secondary promoted (1 < 3 issues); 4 typo fixes; `latex_left: \Delta` flagged — **new leftover, not one of Task 4's named symbols** (capital `\Delta` means something different in context from `\triangle`, e.g. "change in x" — left for a future task to decide the right mapping rather than guessed at here) |
+| 160 | 2469 | clean |
 
-All 10 pages got both the primary (temp 0) and secondary (temp 0.4) bn readings.
+Tasks 2/3/5 did not fire live in this specific batch (no ASCII art, Markdown, or Latin-leak content, and no figure-label runs, on these 10 pages) — all three are verified against real prior-batch data instead (see their sections above). Task 1 fired 3 times (p151/153 alt only, p154 on the final output).
 
 ## Cost
 
-Batch 15: 20 Gemini calls (10 pages × primary+secondary, no escalation needed).
-**Cumulative gemini-3.5-flash-lite spend (Step 4 total so far): $0.5864** (502,881 in / 174,212 out tokens) of the $7.00 stop.
+Batch 16: 20 Gemini calls (10 pages × primary+secondary, no escalation needed).
+**Cumulative gemini-3.5-flash-lite spend (Step 4 total so far): $0.6203** (534,021 in / 184,038 out tokens) of the $7.00 stop.
 
 ## Task 7 — commit + push
 
-`git status` checked first: no `.env`/API keys/`venv` in the diff (only `full_gemini_ocr.py`, `RUN_LOG.csv`, `digit_disagreements.csv`, and this batch's new `backend/data/ocr_gemini/class_9_General_math_bn/page_141..150.*` files).
+`git status` checked first: no `.env`/API keys/`venv` in the diff (only `full_gemini_ocr.py`, `RUN_LOG.csv`, `digit_disagreements.csv`, this file, and this batch's new `backend/data/ocr_gemini/class_9_General_math_bn/page_151..160.*` + `paper/check/class_9_General_math_bn/page_151..160.png` files).
 
 **Push result:** _(filled in after the push below)_
 
 ---
 
-**Batch ready: class_9_General_math_bn pages 141-150.**
+**Batch ready: class_9_General_math_bn pages 151-160.**

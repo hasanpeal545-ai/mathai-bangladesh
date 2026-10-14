@@ -505,3 +505,23 @@ class_9_General_math_bn,149,2026-10-14T14:00:46,gemini-3.5-flash-lite,1547,419,"
 class_9_General_math_bn,149,2026-10-14T14:00:50,gemini-3.5-flash-lite,1547,429,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1; page_number_mismatch: header number(s) ['১৪৮'] don't match expected page 144
 class_9_General_math_bn,150,2026-10-14T14:00:55,gemini-3.5-flash-lite,1547,477,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; figure_labels_suspect: L19; stacked_fraction: L19; quality: kept primary (0 <= 1 issues)
 class_9_General_math_bn,150,2026-10-14T14:01:00,gemini-3.5-flash-lite,1547,520,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)","typo_fixes: 1; figure_labels_suspect: L2,L10,L16,L24,L32; latex_left: \b; stacked_fraction: L2,L10,L16,L24,L32"
+class_9_General_math_bn,151,2026-10-14T14:46:32,gemini-3.5-flash-lite,1557,538,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,151,2026-10-14T14:46:37,gemini-3.5-flash-lite,1557,538,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",page_number_fixed: ১৮৬->১৪৬; stacked_fraction: L1
+class_9_General_math_bn,152,2026-10-14T14:46:42,gemini-3.5-flash-lite,1557,448,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,152,2026-10-14T14:46:47,gemini-3.5-flash-lite,1557,448,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,153,2026-10-14T14:46:51,gemini-3.5-flash-lite,1557,293,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,153,2026-10-14T14:46:55,gemini-3.5-flash-lite,1557,298,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",page_number_fixed: ১৮৮->১৪৮
+class_9_General_math_bn,154,2026-10-14T14:46:58,gemini-3.5-flash-lite,1557,380,"OK primary temp=0 (attempt 1, finish_reason=STOP)",page_number_fixed: ১৮৯->১৪৯; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,154,2026-10-14T14:47:03,gemini-3.5-flash-lite,1557,380,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",page_number_fixed: ১৮৯->১৪৯; stacked_fraction: L2
+class_9_General_math_bn,155,2026-10-14T14:47:08,gemini-3.5-flash-lite,1557,777,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,155,2026-10-14T14:47:13,gemini-3.5-flash-lite,1557,775,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,156,2026-10-14T14:47:18,gemini-3.5-flash-lite,1557,585,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 1; sqrt_parens: 5; stacked_fraction: L2; quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,156,2026-10-14T14:47:23,gemini-3.5-flash-lite,1557,573,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 1
+class_9_General_math_bn,157,2026-10-14T14:47:28,gemini-3.5-flash-lite,1557,422,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,157,2026-10-14T14:47:32,gemini-3.5-flash-lite,1557,422,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,158,2026-10-14T14:47:37,gemini-3.5-flash-lite,1557,551,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,158,2026-10-14T14:47:42,gemini-3.5-flash-lite,1557,547,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
+class_9_General_math_bn,159,2026-10-14T14:47:47,gemini-3.5-flash-lite,1557,506,"OK primary temp=0 (attempt 1, finish_reason=STOP)",typo_fixes: 4; devanagari_leak: 3
+class_9_General_math_bn,159,2026-10-14T14:47:51,gemini-3.5-flash-lite,1557,509,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",typo_fixes: 4; latex_left: \Delta; quality: promoted secondary over primary (1 < 3 issues)
+class_9_General_math_bn,160,2026-10-14T14:47:55,gemini-3.5-flash-lite,1557,418,"OK primary temp=0 (attempt 1, finish_reason=STOP)",quality: kept primary (0 <= 0 issues)
+class_9_General_math_bn,160,2026-10-14T14:47:58,gemini-3.5-flash-lite,1557,418,"OK secondary temp=0.4 (attempt 1, finish_reason=STOP)",
